@@ -1,7 +1,7 @@
-# An Introduction to Coding in R
+# R Coding Basics
 
 This repository contains the text of 
-<a href="https://www.gastonsanchez.com/R-coding-basics" target="_blank"><strong>An Introduction to Coding in R</strong></a> by 
+<a href="https://www.gastonsanchez.com/R-coding-basics" target="_blank"><strong>An Introduction to the Basics of Coding in R</strong></a> by 
 <a href="https://www.gastonsanchez.com" target="_blank">Gaston Sanchez</a>
 
 
