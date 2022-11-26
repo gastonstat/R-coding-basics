@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>21 Exporting Data | R Coding Basics</title>
+  <meta name="description" content="This is yet another book about programming in the statistical programming R language." />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="21 Exporting Data | R Coding Basics" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is yet another book about programming in the statistical programming R language." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="21 Exporting Data | R Coding Basics" />
+  
+  <meta name="twitter:description" content="This is yet another book about programming in the statistical programming R language." />
+  
+
+<meta name="author" content="Gaston Sanchez" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="import-tables.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"><b>R Coding Basics</b><br><small>Gaston Sanchez</small></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#my-series-of-r-tutorials"><i class="fa fa-check"></i>My Series of R Tutorials</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#donation"><i class="fa fa-check"></i>Donation</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i>License</a></li>
+</ul></li>
+<li class="part"><span><b>I Data Objects: Vectors</b></span></li>
+<li class="chapter" data-level="1" data-path="vectors1.html"><a href="vectors1.html"><i class="fa fa-check"></i><b>1</b> First Contact with Vectors</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="vectors1.html"><a href="vectors1.html#motivation-compound-interest"><i class="fa fa-check"></i><b>1.1</b> Motivation: Compound Interest</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="vectors1.html"><a href="vectors1.html#comments"><i class="fa fa-check"></i><b>1.1.1</b> Comments</a></li>
+<li class="chapter" data-level="1.1.2" data-path="vectors1.html"><a href="vectors1.html#creating-objects"><i class="fa fa-check"></i><b>1.1.2</b> Creating Objects</a></li>
+<li class="chapter" data-level="1.1.3" data-path="vectors1.html"><a href="vectors1.html#assignment-statements"><i class="fa fa-check"></i><b>1.1.3</b> Assignment Statements</a></li>
+<li class="chapter" data-level="1.1.4" data-path="vectors1.html"><a href="vectors1.html#case-sensitive"><i class="fa fa-check"></i><b>1.1.4</b> Case Sensitive</a></li>
+<li class="chapter" data-level="1.1.5" data-path="vectors1.html"><a href="vectors1.html#use-descriptive-names"><i class="fa fa-check"></i><b>1.1.5</b> Use Descriptive Names</a></li>
+<li class="chapter" data-level="1.1.6" data-path="vectors1.html"><a href="vectors1.html#combining-various-objects-into-a-single-one"><i class="fa fa-check"></i><b>1.1.6</b> Combining various objects into a single one</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="vectors1.html"><a href="vectors1.html#exercises"><i class="fa fa-check"></i><b>1.2</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="vectors2.html"><a href="vectors2.html"><i class="fa fa-check"></i><b>2</b> Properties of Vectors</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="vectors2.html"><a href="vectors2.html#motivation"><i class="fa fa-check"></i><b>2.1</b> Motivation</a></li>
+<li class="chapter" data-level="2.2" data-path="vectors2.html"><a href="vectors2.html#vectors-are-atomic-objects"><i class="fa fa-check"></i><b>2.2</b> Vectors are Atomic Objects</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="vectors2.html"><a href="vectors2.html#complex-and-raw-types"><i class="fa fa-check"></i><b>2.2.1</b> Complex and Raw Types</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="vectors2.html"><a href="vectors2.html#types-and-modes"><i class="fa fa-check"></i><b>2.3</b> Types and Modes</a></li>
+<li class="chapter" data-level="2.4" data-path="vectors2.html"><a href="vectors2.html#special-values"><i class="fa fa-check"></i><b>2.4</b> Special Values</a></li>
+<li class="chapter" data-level="2.5" data-path="vectors2.html"><a href="vectors2.html#length-of-vectors"><i class="fa fa-check"></i><b>2.5</b> Length of Vectors</a></li>
+<li class="chapter" data-level="2.6" data-path="vectors2.html"><a href="vectors2.html#vector-elements-can-have-names"><i class="fa fa-check"></i><b>2.6</b> Vector elements can have names</a></li>
+<li class="chapter" data-level="2.7" data-path="vectors2.html"><a href="vectors2.html#exercises-1"><i class="fa fa-check"></i><b>2.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="vectors3.html"><a href="vectors3.html"><i class="fa fa-check"></i><b>3</b> Creating Vectors</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="vectors3.html"><a href="vectors3.html#creating-vectors-with-c"><i class="fa fa-check"></i><b>3.1</b> Creating vectors with <code>c()</code></a></li>
+<li class="chapter" data-level="3.2" data-path="vectors3.html"><a href="vectors3.html#default-vectors"><i class="fa fa-check"></i><b>3.2</b> Default Vectors</a></li>
+<li class="chapter" data-level="3.3" data-path="vectors3.html"><a href="vectors3.html#numeric-sequences"><i class="fa fa-check"></i><b>3.3</b> Numeric Sequences</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="vectors3.html"><a href="vectors3.html#sequences-with"><i class="fa fa-check"></i><b>3.3.1</b> Sequences with <code>:</code></a></li>
+<li class="chapter" data-level="3.3.2" data-path="vectors3.html"><a href="vectors3.html#sequences-with-seq"><i class="fa fa-check"></i><b>3.3.2</b> Sequences with <code>seq()</code></a></li>
+<li class="chapter" data-level="3.3.3" data-path="vectors3.html"><a href="vectors3.html#sequences-with-seq_len-and-seq_along"><i class="fa fa-check"></i><b>3.3.3</b> Sequences with <code>seq_len()</code> and <code>seq_along()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="vectors3.html"><a href="vectors3.html#replicated-vectors"><i class="fa fa-check"></i><b>3.4</b> Replicated Vectors</a></li>
+<li class="chapter" data-level="3.5" data-path="vectors3.html"><a href="vectors3.html#coercion"><i class="fa fa-check"></i><b>3.5</b> Coercion</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="vectors3.html"><a href="vectors3.html#implicit-coercion-rules"><i class="fa fa-check"></i><b>3.5.1</b> Implicit Coercion Rules</a></li>
+<li class="chapter" data-level="3.5.2" data-path="vectors3.html"><a href="vectors3.html#explicit-coercion-functions"><i class="fa fa-check"></i><b>3.5.2</b> Explicit Coercion Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="vectors3.html"><a href="vectors3.html#exercises-2"><i class="fa fa-check"></i><b>3.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="vectors4.html"><a href="vectors4.html"><i class="fa fa-check"></i><b>4</b> More About Vectors</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="vectors4.html"><a href="vectors4.html#motivation-future-value"><i class="fa fa-check"></i><b>4.1</b> Motivation: Future Value</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="vectors4.html"><a href="vectors4.html#future-value-formula"><i class="fa fa-check"></i><b>4.1.1</b> Future Value Formula</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="vectors4.html"><a href="vectors4.html#vectorization"><i class="fa fa-check"></i><b>4.2</b> Vectorization</a></li>
+<li class="chapter" data-level="4.3" data-path="vectors4.html"><a href="vectors4.html#recycling"><i class="fa fa-check"></i><b>4.3</b> Recycling</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="vectors4.html"><a href="vectors4.html#vectorization-and-recycling"><i class="fa fa-check"></i><b>4.3.1</b> Vectorization and Recycling</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="vectors4.html"><a href="vectors4.html#manipulating-vectors-subsetting"><i class="fa fa-check"></i><b>4.4</b> Manipulating Vectors: Subsetting</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="vectors4.html"><a href="vectors4.html#numeric-subsetting"><i class="fa fa-check"></i><b>4.4.1</b> Numeric Subsetting</a></li>
+<li class="chapter" data-level="4.4.2" data-path="vectors4.html"><a href="vectors4.html#character-subsetting"><i class="fa fa-check"></i><b>4.4.2</b> Character Subsetting</a></li>
+<li class="chapter" data-level="4.4.3" data-path="vectors4.html"><a href="vectors4.html#logical-subsetting"><i class="fa fa-check"></i><b>4.4.3</b> Logical Subsetting</a></li>
+<li class="chapter" data-level="4.4.4" data-path="vectors4.html"><a href="vectors4.html#summary-of-subsetting"><i class="fa fa-check"></i><b>4.4.4</b> Summary of Subsetting</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="vectors4.html"><a href="vectors4.html#exercises-3"><i class="fa fa-check"></i><b>4.5</b> Exercises</a></li>
+</ul></li>
+<li class="part"><span><b>II More Atomic Objects</b></span></li>
+<li class="chapter" data-level="5" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>5</b> Factors</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="factors.html"><a href="factors.html#creating-factors"><i class="fa fa-check"></i><b>5.1</b> Creating Factors</a></li>
+<li class="chapter" data-level="5.2" data-path="factors.html"><a href="factors.html#how-r-treats-factors"><i class="fa fa-check"></i><b>5.2</b> How R treats factors</a></li>
+<li class="chapter" data-level="5.3" data-path="factors.html"><a href="factors.html#a-closer-look-at-factor"><i class="fa fa-check"></i><b>5.3</b> A closer look at <code>factor()</code></a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="factors.html"><a href="factors.html#function-factor"><i class="fa fa-check"></i><b>5.3.1</b> Function <code>factor()</code></a></li>
+<li class="chapter" data-level="5.3.2" data-path="factors.html"><a href="factors.html#unclassing-factors"><i class="fa fa-check"></i><b>5.3.2</b> Unclassing factors</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="factors.html"><a href="factors.html#ordinal-factors"><i class="fa fa-check"></i><b>5.4</b> Ordinal Factors</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="matrices1.html"><a href="matrices1.html"><i class="fa fa-check"></i><b>6</b> Matrices and Arrays</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="matrices1.html"><a href="matrices1.html#motivation-1"><i class="fa fa-check"></i><b>6.1</b> Motivation</a></li>
+<li class="chapter" data-level="6.2" data-path="matrices1.html"><a href="matrices1.html#matrices"><i class="fa fa-check"></i><b>6.2</b> Matrices</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="matrices1.html"><a href="matrices1.html#what-kind-of-object-is-a-matrix"><i class="fa fa-check"></i><b>6.2.1</b> What kind of object is a matrix?</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="matrices1.html"><a href="matrices1.html#creating-matrices-with-matrix"><i class="fa fa-check"></i><b>6.3</b> Creating matrices with <code>matrix()</code></a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="matrices1.html"><a href="matrices1.html#column-major-matrices"><i class="fa fa-check"></i><b>6.3.1</b> Column-Major Matrices</a></li>
+<li class="chapter" data-level="6.3.2" data-path="matrices1.html"><a href="matrices1.html#giving-names-to-rows-and-columns"><i class="fa fa-check"></i><b>6.3.2</b> Giving names to rows and columns</a></li>
+<li class="chapter" data-level="6.3.3" data-path="matrices1.html"><a href="matrices1.html#more-matrices"><i class="fa fa-check"></i><b>6.3.3</b> More Matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="matrices1.html"><a href="matrices1.html#exercises-4"><i class="fa fa-check"></i><b>6.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="matrices2.html"><a href="matrices2.html"><i class="fa fa-check"></i><b>7</b> More About Matrices</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="matrices2.html"><a href="matrices2.html#basic-operations-with-matrices"><i class="fa fa-check"></i><b>7.1</b> Basic Operations with Matrices</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="matrices2.html"><a href="matrices2.html#selecting-elements"><i class="fa fa-check"></i><b>7.1.1</b> Selecting elements</a></li>
+<li class="chapter" data-level="7.1.2" data-path="matrices2.html"><a href="matrices2.html#adding-a-column"><i class="fa fa-check"></i><b>7.1.2</b> Adding a column</a></li>
+<li class="chapter" data-level="7.1.3" data-path="matrices2.html"><a href="matrices2.html#deleting-a-column"><i class="fa fa-check"></i><b>7.1.3</b> Deleting a column</a></li>
+<li class="chapter" data-level="7.1.4" data-path="matrices2.html"><a href="matrices2.html#moving-a-column"><i class="fa fa-check"></i><b>7.1.4</b> Moving a column</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>III Non-Atomic Objects</b></span></li>
+<li class="chapter" data-level="8" data-path="lists.html"><a href="lists.html"><i class="fa fa-check"></i><b>8</b> Lists</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="lists.html"><a href="lists.html#motivation-2"><i class="fa fa-check"></i><b>8.1</b> Motivation</a></li>
+<li class="chapter" data-level="8.2" data-path="lists.html"><a href="lists.html#lists-1"><i class="fa fa-check"></i><b>8.2</b> Lists</a></li>
+<li class="chapter" data-level="8.3" data-path="lists.html"><a href="lists.html#creating-lists"><i class="fa fa-check"></i><b>8.3</b> Creating Lists</a></li>
+<li class="chapter" data-level="8.4" data-path="lists.html"><a href="lists.html#manipulating-lists"><i class="fa fa-check"></i><b>8.4</b> Manipulating Lists</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="lists.html"><a href="lists.html#single-brackets"><i class="fa fa-check"></i><b>8.4.1</b> Single brackets</a></li>
+<li class="chapter" data-level="8.4.2" data-path="lists.html"><a href="lists.html#double-brackets"><i class="fa fa-check"></i><b>8.4.2</b> Double Brackets</a></li>
+<li class="chapter" data-level="8.4.3" data-path="lists.html"><a href="lists.html#dollar-signs"><i class="fa fa-check"></i><b>8.4.3</b> Dollar signs</a></li>
+<li class="chapter" data-level="8.4.4" data-path="lists.html"><a href="lists.html#adding-new-elements"><i class="fa fa-check"></i><b>8.4.4</b> Adding new elements</a></li>
+<li class="chapter" data-level="8.4.5" data-path="lists.html"><a href="lists.html#removing-elements"><i class="fa fa-check"></i><b>8.4.5</b> Removing elements</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="lists.html"><a href="lists.html#exercises-5"><i class="fa fa-check"></i><b>8.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="dataframes.html"><a href="dataframes.html"><i class="fa fa-check"></i><b>9</b> Data Frames</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="dataframes.html"><a href="dataframes.html#r-data-frames"><i class="fa fa-check"></i><b>9.1</b> R Data Frames</a></li>
+<li class="chapter" data-level="9.2" data-path="dataframes.html"><a href="dataframes.html#inspecting-data-frames"><i class="fa fa-check"></i><b>9.2</b> Inspecting data frames</a></li>
+<li class="chapter" data-level="9.3" data-path="dataframes.html"><a href="dataframes.html#creating-data-frames"><i class="fa fa-check"></i><b>9.3</b> Creating data frames</a></li>
+<li class="chapter" data-level="9.4" data-path="dataframes.html"><a href="dataframes.html#basic-operations-with-data-frames"><i class="fa fa-check"></i><b>9.4</b> Basic Operations with Data Frames</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="dataframes.html"><a href="dataframes.html#selecting-elements-1"><i class="fa fa-check"></i><b>9.4.1</b> Selecting elements</a></li>
+<li class="chapter" data-level="9.4.2" data-path="dataframes.html"><a href="dataframes.html#adding-a-column-1"><i class="fa fa-check"></i><b>9.4.2</b> Adding a column</a></li>
+<li class="chapter" data-level="9.4.3" data-path="dataframes.html"><a href="dataframes.html#deleting-a-column-1"><i class="fa fa-check"></i><b>9.4.3</b> Deleting a column</a></li>
+<li class="chapter" data-level="9.4.4" data-path="dataframes.html"><a href="dataframes.html#renaming-a-column"><i class="fa fa-check"></i><b>9.4.4</b> Renaming a column</a></li>
+<li class="chapter" data-level="9.4.5" data-path="dataframes.html"><a href="dataframes.html#moving-a-column-1"><i class="fa fa-check"></i><b>9.4.5</b> Moving a column</a></li>
+<li class="chapter" data-level="9.4.6" data-path="dataframes.html"><a href="dataframes.html#transforming-a-column"><i class="fa fa-check"></i><b>9.4.6</b> Transforming a column</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="dataframes.html"><a href="dataframes.html#exercises-6"><i class="fa fa-check"></i><b>9.5</b> Exercises</a></li>
+</ul></li>
+<li class="part"><span><b>IV Graphics</b></span></li>
+<li class="chapter" data-level="10" data-path="graphics1.html"><a href="graphics1.html"><i class="fa fa-check"></i><b>10</b> Base Graphics</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="graphics1.html"><a href="graphics1.html#basics-of-graphics-in-r"><i class="fa fa-check"></i><b>10.1</b> Basics of Graphics in R</a></li>
+<li class="chapter" data-level="10.2" data-path="graphics1.html"><a href="graphics1.html#the-plot-function"><i class="fa fa-check"></i><b>10.2</b> The <code>plot()</code> function</a></li>
+<li class="chapter" data-level="10.3" data-path="graphics1.html"><a href="graphics1.html#traditional-graphics-in-r"><i class="fa fa-check"></i><b>10.3</b> Traditional Graphics in R</a></li>
+<li class="chapter" data-level="10.4" data-path="graphics1.html"><a href="graphics1.html#low-level-functions"><i class="fa fa-check"></i><b>10.4</b> Low-Level Functions</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="graphics1.html"><a href="graphics1.html#low-level-functions-1"><i class="fa fa-check"></i><b>10.4.1</b> Low-level functions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="graphics2.html"><a href="graphics2.html"><i class="fa fa-check"></i><b>11</b> More Base Graphics</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="graphics2.html"><a href="graphics2.html#the-plot-function-1"><i class="fa fa-check"></i><b>11.1</b> The <code>plot()</code> function</a></li>
+<li class="chapter" data-level="11.2" data-path="graphics2.html"><a href="graphics2.html#one-variable-graphics"><i class="fa fa-check"></i><b>11.2</b> One variable graphics</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="graphics2.html"><a href="graphics2.html#more-high-level-graphics-of-a-single-variable"><i class="fa fa-check"></i><b>11.2.1</b> More high-level graphics of a single variable</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="graphics2.html"><a href="graphics2.html#plots-of-two-variables"><i class="fa fa-check"></i><b>11.3</b> Plots of Two Variables</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="graphics2.html"><a href="graphics2.html#example-plots-of-two-variables"><i class="fa fa-check"></i><b>11.3.1</b> Example: Plots of two variables</a></li>
+<li class="chapter" data-level="11.3.2" data-path="graphics2.html"><a href="graphics2.html#more-high-level-graphics-of-two-variables"><i class="fa fa-check"></i><b>11.3.2</b> More high-level graphics of two variables</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="graphics3.html"><a href="graphics3.html"><i class="fa fa-check"></i><b>12</b> Plots from Scratch</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="graphics3.html"><a href="graphics3.html#making-a-graphic-from-scratch"><i class="fa fa-check"></i><b>12.1</b> Making a graphic from scratch</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="graphics3.html"><a href="graphics3.html#how-does-it-work"><i class="fa fa-check"></i><b>12.1.1</b> How does it work</a></li>
+<li class="chapter" data-level="12.1.2" data-path="graphics3.html"><a href="graphics3.html#drawing-arrows"><i class="fa fa-check"></i><b>12.1.2</b> Drawing Arrows</a></li>
+<li class="chapter" data-level="12.1.3" data-path="graphics3.html"><a href="graphics3.html#drawing-rectangles"><i class="fa fa-check"></i><b>12.1.3</b> Drawing Rectangles</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>V Programming Basics</b></span></li>
+<li class="chapter" data-level="13" data-path="functions1.html"><a href="functions1.html"><i class="fa fa-check"></i><b>13</b> Intro to Functions</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="functions1.html"><a href="functions1.html#motivation-3"><i class="fa fa-check"></i><b>13.1</b> Motivation</a></li>
+<li class="chapter" data-level="13.2" data-path="functions1.html"><a href="functions1.html#writing-a-simple-function"><i class="fa fa-check"></i><b>13.2</b> Writing a Simple Function</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="functions1.html"><a href="functions1.html#arguments-with-default-values"><i class="fa fa-check"></i><b>13.2.1</b> Arguments with default values</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="functions1.html"><a href="functions1.html#writing-functions-for-humans"><i class="fa fa-check"></i><b>13.3</b> Writing Functions for Humans</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="functions1.html"><a href="functions1.html#naming-functions"><i class="fa fa-check"></i><b>13.3.1</b> Naming Functions</a></li>
+<li class="chapter" data-level="13.3.2" data-path="functions1.html"><a href="functions1.html#functions-documentation"><i class="fa fa-check"></i><b>13.3.2</b> Function’s Documentation</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="functions1.html"><a href="functions1.html#exercises-7"><i class="fa fa-check"></i><b>13.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="expressions.html"><a href="expressions.html"><i class="fa fa-check"></i><b>14</b> Expressions</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="expressions.html"><a href="expressions.html#r-expressions"><i class="fa fa-check"></i><b>14.1</b> R Expressions</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="expressions.html"><a href="expressions.html#simple-expressions"><i class="fa fa-check"></i><b>14.1.1</b> Simple Expressions</a></li>
+<li class="chapter" data-level="14.1.2" data-path="expressions.html"><a href="expressions.html#compound-expressions"><i class="fa fa-check"></i><b>14.1.2</b> Compound Expressions</a></li>
+<li class="chapter" data-level="14.1.3" data-path="expressions.html"><a href="expressions.html#every-expression-has-a-value"><i class="fa fa-check"></i><b>14.1.3</b> Every expression has a value</a></li>
+<li class="chapter" data-level="14.1.4" data-path="expressions.html"><a href="expressions.html#assignments-within-compound-expressions"><i class="fa fa-check"></i><b>14.1.4</b> Assignments within Compound Expressions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="conditionals.html"><a href="conditionals.html"><i class="fa fa-check"></i><b>15</b> Conditionals: If-Else</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="conditionals.html"><a href="conditionals.html#motivation-4"><i class="fa fa-check"></i><b>15.1</b> Motivation</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="conditionals.html"><a href="conditionals.html#future-value-of-ordinary-annuity"><i class="fa fa-check"></i><b>15.1.1</b> Future Value of Ordinary Annuity</a></li>
+<li class="chapter" data-level="15.1.2" data-path="conditionals.html"><a href="conditionals.html#future-value-of-annuity-due"><i class="fa fa-check"></i><b>15.1.2</b> Future Value of Annuity Due</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="conditionals.html"><a href="conditionals.html#conditionals-1"><i class="fa fa-check"></i><b>15.2</b> Conditionals</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="conditionals.html"><a href="conditionals.html#if-else-conditions"><i class="fa fa-check"></i><b>15.2.1</b> If-else conditions</a></li>
+<li class="chapter" data-level="15.2.2" data-path="conditionals.html"><a href="conditionals.html#anatomy-of-if-else-statements"><i class="fa fa-check"></i><b>15.2.2</b> Anatomy of if-else statements</a></li>
+<li class="chapter" data-level="15.2.3" data-path="conditionals.html"><a href="conditionals.html#minimalist-if-then-else"><i class="fa fa-check"></i><b>15.2.3</b> Minimalist If-then-else</a></li>
+<li class="chapter" data-level="15.2.4" data-path="conditionals.html"><a href="conditionals.html#simple-ifs"><i class="fa fa-check"></i><b>15.2.4</b> Simple If’s</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="conditionals.html"><a href="conditionals.html#multiple-ifs"><i class="fa fa-check"></i><b>15.3</b> Multiple If’s</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="conditionals.html"><a href="conditionals.html#switch-statements"><i class="fa fa-check"></i><b>15.3.1</b> Switch statements</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="conditionals.html"><a href="conditionals.html#derivation-of-fvoa"><i class="fa fa-check"></i><b>15.4</b> Derivation of FVOA</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="for-loop.html"><a href="for-loop.html"><i class="fa fa-check"></i><b>16</b> Iterations: For Loop</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="for-loop.html"><a href="for-loop.html#motivation-5"><i class="fa fa-check"></i><b>16.1</b> Motivation</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="for-loop.html"><a href="for-loop.html#us-stock-market-historical-annual-returns"><i class="fa fa-check"></i><b>16.1.1</b> US Stock Market Historical Annual Returns</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="for-loop.html"><a href="for-loop.html#simulating-normal-random-numbers"><i class="fa fa-check"></i><b>16.2</b> Simulating Normal Random Numbers</a>
+<ul>
+<li class="chapter" data-level="16.2.1" data-path="for-loop.html"><a href="for-loop.html#investing-in-the-us-stock-market-during-three-years"><i class="fa fa-check"></i><b>16.2.1</b> Investing in the US stock market during three years</a></li>
+<li class="chapter" data-level="16.2.2" data-path="for-loop.html"><a href="for-loop.html#investing-during-ten-years"><i class="fa fa-check"></i><b>16.2.2</b> Investing during ten years</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="for-loop.html"><a href="for-loop.html#iterations-to-the-rescue"><i class="fa fa-check"></i><b>16.3</b> Iterations to the Rescue</a></li>
+<li class="chapter" data-level="16.4" data-path="for-loop.html"><a href="for-loop.html#for-loop-example"><i class="fa fa-check"></i><b>16.4</b> For Loop Example</a></li>
+<li class="chapter" data-level="16.5" data-path="for-loop.html"><a href="for-loop.html#about-for-loops"><i class="fa fa-check"></i><b>16.5</b> About For Loops</a>
+<ul>
+<li class="chapter" data-level="16.5.1" data-path="for-loop.html"><a href="for-loop.html#anatomy-of-a-for-loop"><i class="fa fa-check"></i><b>16.5.1</b> Anatomy of a For Loop</a></li>
+<li class="chapter" data-level="16.5.2" data-path="for-loop.html"><a href="for-loop.html#for-loops-and-next-statement"><i class="fa fa-check"></i><b>16.5.2</b> For Loops and Next statement</a></li>
+<li class="chapter" data-level="16.5.3" data-path="for-loop.html"><a href="for-loop.html#for-loops-and-break-statement"><i class="fa fa-check"></i><b>16.5.3</b> For Loops and Break statement</a></li>
+<li class="chapter" data-level="16.5.4" data-path="for-loop.html"><a href="for-loop.html#nested-loops"><i class="fa fa-check"></i><b>16.5.4</b> Nested Loops</a></li>
+<li class="chapter" data-level="16.5.5" data-path="for-loop.html"><a href="for-loop.html#about-for-loops-and-vectorized-computations"><i class="fa fa-check"></i><b>16.5.5</b> About <code>for</code> Loops and Vectorized Computations</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="while-loop.html"><a href="while-loop.html"><i class="fa fa-check"></i><b>17</b> Iterations: While Loop</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="while-loop.html"><a href="while-loop.html#motivation-6"><i class="fa fa-check"></i><b>17.1</b> Motivation</a></li>
+<li class="chapter" data-level="17.2" data-path="while-loop.html"><a href="while-loop.html#anatomy-of-a-while-loop"><i class="fa fa-check"></i><b>17.2</b> Anatomy of a While Loop</a></li>
+<li class="chapter" data-level="17.3" data-path="while-loop.html"><a href="while-loop.html#another-example"><i class="fa fa-check"></i><b>17.3</b> Another Example</a>
+<ul>
+<li class="chapter" data-level="17.3.1" data-path="while-loop.html"><a href="while-loop.html#while-loops-and-next-statement"><i class="fa fa-check"></i><b>17.3.1</b> While Loops and Next statement</a></li>
+<li class="chapter" data-level="17.3.2" data-path="while-loop.html"><a href="while-loop.html#while-loops-and-break-statement"><i class="fa fa-check"></i><b>17.3.2</b> While Loops and Break statement</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="functions2.html"><a href="functions2.html"><i class="fa fa-check"></i><b>18</b> More About Functions</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="functions2.html"><a href="functions2.html#functions-recap"><i class="fa fa-check"></i><b>18.1</b> Functions Recap</a>
+<ul>
+<li class="chapter" data-level="18.1.1" data-path="functions2.html"><a href="functions2.html#simple-expressions-1"><i class="fa fa-check"></i><b>18.1.1</b> Simple Expressions</a></li>
+<li class="chapter" data-level="18.1.2" data-path="functions2.html"><a href="functions2.html#nested-functions"><i class="fa fa-check"></i><b>18.1.2</b> Nested Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="functions2.html"><a href="functions2.html#function-output"><i class="fa fa-check"></i><b>18.2</b> Function Output</a>
+<ul>
+<li class="chapter" data-level="18.2.1" data-path="functions2.html"><a href="functions2.html#the-return-command"><i class="fa fa-check"></i><b>18.2.1</b> The <code>return()</code> command</a></li>
+<li class="chapter" data-level="18.2.2" data-path="functions2.html"><a href="functions2.html#white-spaces"><i class="fa fa-check"></i><b>18.2.2</b> White Spaces</a></li>
+</ul></li>
+<li class="chapter" data-level="18.3" data-path="functions2.html"><a href="functions2.html#indentation"><i class="fa fa-check"></i><b>18.3</b> Indentation</a>
+<ul>
+<li class="chapter" data-level="18.3.1" data-path="functions2.html"><a href="functions2.html#meaningful-names"><i class="fa fa-check"></i><b>18.3.1</b> Meaningful Names</a></li>
+<li class="chapter" data-level="18.3.2" data-path="functions2.html"><a href="functions2.html#syntax-parentheses"><i class="fa fa-check"></i><b>18.3.2</b> Syntax: Parentheses</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="functions2.html"><a href="functions2.html#recommendations"><i class="fa fa-check"></i><b>18.4</b> Recommendations</a></li>
+</ul></li>
+<li class="part"><span><b>VI Import / Export</b></span></li>
+<li class="chapter" data-level="19" data-path="input-output.html"><a href="input-output.html"><i class="fa fa-check"></i><b>19</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="input-output.html"><a href="input-output.html#importing-and-exporting-resources"><i class="fa fa-check"></i><b>19.1</b> Importing and Exporting Resources</a>
+<ul>
+<li class="chapter" data-level="19.1.1" data-path="input-output.html"><a href="input-output.html#behind-importexport-functions"><i class="fa fa-check"></i><b>19.1.1</b> Behind import/export functions</a></li>
+</ul></li>
+<li class="chapter" data-level="19.2" data-path="input-output.html"><a href="input-output.html#connections"><i class="fa fa-check"></i><b>19.2</b> Connections</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="import-tables.html"><a href="import-tables.html"><i class="fa fa-check"></i><b>20</b> Importing Data Tables</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="import-tables.html"><a href="import-tables.html#motivation-7"><i class="fa fa-check"></i><b>20.1</b> Motivation</a>
+<ul>
+<li class="chapter" data-level="20.1.1" data-path="import-tables.html"><a href="import-tables.html#data-in-text-files"><i class="fa fa-check"></i><b>20.1.1</b> Data in Text Files</a></li>
+</ul></li>
+<li class="chapter" data-level="20.2" data-path="import-tables.html"><a href="import-tables.html#character-delimited-text-files"><i class="fa fa-check"></i><b>20.2</b> Character Delimited Text Files</a>
+<ul>
+<li class="chapter" data-level="20.2.1" data-path="import-tables.html"><a href="import-tables.html#common-delimiters"><i class="fa fa-check"></i><b>20.2.1</b> Common Delimiters</a></li>
+<li class="chapter" data-level="20.2.2" data-path="import-tables.html"><a href="import-tables.html#delimiters-in-data-values"><i class="fa fa-check"></i><b>20.2.2</b> Delimiters in Data Values</a></li>
+<li class="chapter" data-level="20.2.3" data-path="import-tables.html"><a href="import-tables.html#fixed-width-format-files"><i class="fa fa-check"></i><b>20.2.3</b> Fixed-Width Format Files</a></li>
+<li class="chapter" data-level="20.2.4" data-path="import-tables.html"><a href="import-tables.html#summary"><i class="fa fa-check"></i><b>20.2.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="20.3" data-path="import-tables.html"><a href="import-tables.html#importing-data-tables"><i class="fa fa-check"></i><b>20.3</b> Importing Data Tables</a>
+<ul>
+<li class="chapter" data-level="20.3.1" data-path="import-tables.html"><a href="import-tables.html#function-read.table-and-friends"><i class="fa fa-check"></i><b>20.3.1</b> Function <code>read.table()</code> and friends</a></li>
+<li class="chapter" data-level="20.3.2" data-path="import-tables.html"><a href="import-tables.html#reading-space-separated-files"><i class="fa fa-check"></i><b>20.3.2</b> Reading space-separated files</a></li>
+<li class="chapter" data-level="20.3.3" data-path="import-tables.html"><a href="import-tables.html#reading-comma-separated-files-with-read.csv"><i class="fa fa-check"></i><b>20.3.3</b> Reading comma-separated files with <code>read.csv()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="20.4" data-path="import-tables.html"><a href="import-tables.html#importing-with-scan"><i class="fa fa-check"></i><b>20.4</b> Importing with <code>scan()</code></a></li>
+<li class="chapter" data-level="20.5" data-path="import-tables.html"><a href="import-tables.html#in-summary-1"><i class="fa fa-check"></i><b>20.5</b> In Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="export-data.html"><a href="export-data.html"><i class="fa fa-check"></i><b>21</b> Exporting Data</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="export-data.html"><a href="export-data.html#exporting-tables"><i class="fa fa-check"></i><b>21.1</b> Exporting Tables</a></li>
+<li class="chapter" data-level="21.2" data-path="export-data.html"><a href="export-data.html#exporting-text"><i class="fa fa-check"></i><b>21.2</b> Exporting Text</a></li>
+<li class="chapter" data-level="21.3" data-path="export-data.html"><a href="export-data.html#sending-output-with-cat"><i class="fa fa-check"></i><b>21.3</b> Sending output with <code>cat()</code></a>
+<ul>
+<li class="chapter" data-level="21.3.1" data-path="export-data.html"><a href="export-data.html#sending-output-with-cat-1"><i class="fa fa-check"></i><b>21.3.1</b> Sending output with <code>cat()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="21.4" data-path="export-data.html"><a href="export-data.html#redirecting-output-with-sink"><i class="fa fa-check"></i><b>21.4</b> Redirecting output with <code>sink()</code></a></li>
+<li class="chapter" data-level="21.5" data-path="export-data.html"><a href="export-data.html#exporting-rs-binary-data"><i class="fa fa-check"></i><b>21.5</b> Exporting R’s Binary Data</a></li>
+<li class="chapter" data-level="21.6" data-path="export-data.html"><a href="export-data.html#exporting-images"><i class="fa fa-check"></i><b>21.6</b> Exporting Images</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://www.gastonsanchez.com" target="_blank">gastonsanchez.com</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Coding Basics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="export-data" class="section level1 hasAnchor" number="21">
+<h1><span class="header-section-number">21</span> Exporting Data<a href="export-data.html#export-data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>One common task in most data analysis projects involves exporting data to
+external files.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-381"></span>
+<img src="images/inout/export-resources.png" alt="Conceptual diagram illustrating some exporting resources" width="60%" />
+<p class="caption">
+Figure 21.1: Conceptual diagram illustrating some exporting resources
+</p>
+</div>
+<div id="exporting-tables" class="section level2 hasAnchor" number="21.1">
+<h2><span class="header-section-number">21.1</span> Exporting Tables<a href="export-data.html#exporting-tables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>One common task in most data analysis projects involves exporting derived
+data tables (e.g. clean data sets, or processed tables). To accomplish this
+task you can use any of the write-table functions such as <code>write.table()</code>,
+<code>write.csv()</code>, etc.</p>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="export-data.html#cb398-1" aria-hidden="true" tabindex="-1"></a><span class="co"># blank separated (default)</span></span>
+<span id="cb398-2"><a href="export-data.html#cb398-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(mtcars, <span class="at">file =</span> <span class="st">&#39;mtcars.txt&#39;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb398-3"><a href="export-data.html#cb398-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb398-4"><a href="export-data.html#cb398-4" aria-hidden="true" tabindex="-1"></a><span class="co"># tab-separated value</span></span>
+<span id="cb398-5"><a href="export-data.html#cb398-5" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(mtcars, <span class="at">file =</span> <span class="st">&#39;mtcars.tsv&#39;</span>, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb398-6"><a href="export-data.html#cb398-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb398-7"><a href="export-data.html#cb398-7" aria-hidden="true" tabindex="-1"></a><span class="co"># comma-separated value</span></span>
+<span id="cb398-8"><a href="export-data.html#cb398-8" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(mtcars, <span class="at">file =</span> <span class="st">&#39;mtcars.csv&#39;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+</div>
+<div id="exporting-text" class="section level2 hasAnchor" number="21.2">
+<h2><span class="header-section-number">21.2</span> Exporting Text<a href="export-data.html#exporting-text" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Another type of data-exporting operation has to do with “unstructured” text,
+and text output in general. By “unstructured” I mean non-tabular data.</p>
+<p>Consider the following piece of code, which writes the elements of a character
+vector <code>some_text</code>, one element per line (via a file connection) to the file
+<code>mytext.txt</code> in the local working directory:</p>
+<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="export-data.html#cb399-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a connection to a file</span></span>
+<span id="cb399-2"><a href="export-data.html#cb399-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (assuming output file in working directory)</span></span>
+<span id="cb399-3"><a href="export-data.html#cb399-3" aria-hidden="true" tabindex="-1"></a>txt <span class="ot">&lt;-</span> <span class="fu">file</span>(<span class="st">&quot;mytext.txt&quot;</span>)</span>
+<span id="cb399-4"><a href="export-data.html#cb399-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb399-5"><a href="export-data.html#cb399-5" aria-hidden="true" tabindex="-1"></a><span class="co"># write contents to the file </span></span>
+<span id="cb399-6"><a href="export-data.html#cb399-6" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(<span class="at">text =</span> some_text, <span class="at">con =</span> txt)</span></code></pre></div>
+<p>Note: Calling <code>file()</code> just creates the connection object but it does not open
+it. The function <code>writeLines()</code> is the one that opens the connection, writes
+the content to the file <code>mytext.txt</code>, and then closes the connection on exiting.</p>
+<p>The previous code can be compactly written with one command without the need
+to explicitly use the connection function <code>file()</code> as follows:</p>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="export-data.html#cb400-1" aria-hidden="true" tabindex="-1"></a><span class="co"># write contents to the file </span></span>
+<span id="cb400-2"><a href="export-data.html#cb400-2" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(<span class="at">text =</span> some_text, <span class="at">con =</span> <span class="st">&quot;mytext.txt&quot;</span>)</span></code></pre></div>
+</div>
+<div id="sending-output-with-cat" class="section level2 hasAnchor" number="21.3">
+<h2><span class="header-section-number">21.3</span> Sending output with <code>cat()</code><a href="export-data.html#sending-output-with-cat" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>You can use <code>cat()</code> to concatenate and print information to a file.
+For instance, say you are interested in some descriptive statistics about
+the column <code>mpg</code> (miles per gallon) from the <code>mtcars</code> data frame:</p>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="export-data.html#cb401-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summary statistics of mpg</span></span>
+<span id="cb401-2"><a href="export-data.html#cb401-2" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb401-3"><a href="export-data.html#cb401-3" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb401-4"><a href="export-data.html#cb401-4" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb401-5"><a href="export-data.html#cb401-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb401-6"><a href="export-data.html#cb401-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(mtcars<span class="sc">$</span>mpg)</span></code></pre></div>
+<p>Suppose the goal is to generate a file <code>mpg-statistics.txt</code> with the following
+contents:</p>
+<pre><code>Miles per Gallon Statistics
+
+Minimum: 10.4 
+Maximum: 33.9 
+Median : 19.2 
+Mean   : 20.09062 
+Std Dev: 6.026948</code></pre>
+<p>How can this goal be achieved? We can create objects for all the summary
+statistics, and then involke <code>cat()</code> as many times as there are lines of text
+to be exported in the output file.</p>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="export-data.html#cb403-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summary statistics of mpg</span></span>
+<span id="cb403-2"><a href="export-data.html#cb403-2" aria-hidden="true" tabindex="-1"></a>mpg_min <span class="ot">&lt;-</span> <span class="fu">min</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb403-3"><a href="export-data.html#cb403-3" aria-hidden="true" tabindex="-1"></a>mpg_max <span class="ot">&lt;-</span> <span class="fu">max</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb403-4"><a href="export-data.html#cb403-4" aria-hidden="true" tabindex="-1"></a>mpg_med <span class="ot">&lt;-</span> <span class="fu">median</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb403-5"><a href="export-data.html#cb403-5" aria-hidden="true" tabindex="-1"></a>mpg_avg <span class="ot">&lt;-</span> <span class="fu">mean</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb403-6"><a href="export-data.html#cb403-6" aria-hidden="true" tabindex="-1"></a>mpg_sd <span class="ot">&lt;-</span> <span class="fu">sd</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb403-7"><a href="export-data.html#cb403-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb403-8"><a href="export-data.html#cb403-8" aria-hidden="true" tabindex="-1"></a><span class="co"># name of output file</span></span>
+<span id="cb403-9"><a href="export-data.html#cb403-9" aria-hidden="true" tabindex="-1"></a>outfile <span class="ot">&lt;-</span> <span class="st">&quot;mpg-statistics.txt&quot;</span></span>
+<span id="cb403-10"><a href="export-data.html#cb403-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb403-11"><a href="export-data.html#cb403-11" aria-hidden="true" tabindex="-1"></a><span class="co"># first line of the file</span></span>
+<span id="cb403-12"><a href="export-data.html#cb403-12" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Miles per Gallon Statistics</span><span class="sc">\n\n</span><span class="st">&quot;</span>, <span class="at">file =</span> outfile)</span>
+<span id="cb403-13"><a href="export-data.html#cb403-13" aria-hidden="true" tabindex="-1"></a><span class="co"># subsequent lines appended to the output file</span></span>
+<span id="cb403-14"><a href="export-data.html#cb403-14" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Minimum:&quot;</span>, mpg_min, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">file =</span> outfile, <span class="at">append =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb403-15"><a href="export-data.html#cb403-15" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Maximum:&quot;</span>, mpg_max, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">file =</span> outfile, <span class="at">append =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb403-16"><a href="export-data.html#cb403-16" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Median :&quot;</span>, mpg_med, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">file =</span> outfile, <span class="at">append =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb403-17"><a href="export-data.html#cb403-17" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Mean   :&quot;</span>, mpg_avg, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">file =</span> outfile, <span class="at">append =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb403-18"><a href="export-data.html#cb403-18" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Std Dev:&quot;</span>, mpg_sd, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">file =</span> outfile, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>Notice that the first call to <code>cat()</code> exports the text that is supposed to be
+in the first line of content in the output file <code>outfile</code>. The subsequent calls
+to <code>cat()</code> use the argument <code>append = TRUE</code> so that the next lines of content
+are appended to the existing <code>outfile</code>. If we don’t use <code>append = TRUE</code>, R will
+override the existing contents in <code>outfile</code>.</p>
+<div id="sending-output-with-cat-1" class="section level3 hasAnchor" number="21.3.1">
+<h3><span class="header-section-number">21.3.1</span> Sending output with <code>cat()</code><a href="export-data.html#sending-output-with-cat-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To make the content in <code>"mpg-statistics.txt"</code> look “prettier”, limiting the
+number of decimals digits to just 2, you may consider using <code>sprintf()</code>. This
+function allows you to print strings using C-style formatting.</p>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="export-data.html#cb404-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Miles per Gallon Statistics</span><span class="sc">\n\n</span><span class="st">&quot;</span>, <span class="at">file =</span> outfile)</span>
+<span id="cb404-2"><a href="export-data.html#cb404-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;Minimum: %0.2f&quot;</span>, mpg_min), <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">file =</span> outfile, <span class="at">append =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb404-3"><a href="export-data.html#cb404-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;Maximum: %0.2f&quot;</span>, mpg_max), <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">file =</span> outfile, <span class="at">append =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb404-4"><a href="export-data.html#cb404-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;Median : %0.2f&quot;</span>, mpg_med), <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">file =</span> outfile, <span class="at">append =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb404-5"><a href="export-data.html#cb404-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;Mean   : %0.2f&quot;</span>, mpg_avg), <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">file =</span> outfile, <span class="at">append =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb404-6"><a href="export-data.html#cb404-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;Std Dev: %0.2f&quot;</span>, mpg_sd), <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">file =</span> outfile, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>Look at the call of <code>sprintf()</code> in the second line: the one that prints the
+minimum value of miles-per-gallon:</p>
+<pre><code>sprintf(&quot;Minimum: %0.2f&quot;, mpg_min)</code></pre>
+<p>What does <code>sprintf()</code> do in this example? It takes the string <code>"Minimum: %0.2f"</code>
+and the numeric value <code>mpg_min</code>. Observe that the provided string contains
+some weird-looking characters: <code>%0.2f</code>. This set of characters have a meaning
+and they are used as a place holder to be replaced with the formatted value
+<code>mpg_min</code>. Specifically, the notation <code>%0.2f</code> indicates two decimal digits
+of a double precision value. In other words, a numeric value <code>10.4</code> will be
+printed using two decimal digits as: <code>10.40</code>. Likewise, a number such as
+<code>20.09062</code> will be printed as <code>20.09</code>. If you are curious about the various
+types of <em>C-style string formatting</em> place-holders, check the documentation
+of <code>sprintf()</code></p>
+<pre><code>help(sprintf)</code></pre>
+</div>
+</div>
+<div id="redirecting-output-with-sink" class="section level2 hasAnchor" number="21.4">
+<h2><span class="header-section-number">21.4</span> Redirecting output with <code>sink()</code><a href="export-data.html#redirecting-output-with-sink" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Another interesting function is <code>sink()</code>. This function is very useful when
+you want to export R output <strong>as it is displayed in R’s console</strong>.</p>
+<p>For example, consider the following output from <code>summary()</code> applied on three
+columns of <code>mtcars</code></p>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="export-data.html#cb407-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mtcars[ ,<span class="fu">c</span>(<span class="st">&#39;mpg&#39;</span>, <span class="st">&#39;hp&#39;</span>, <span class="st">&#39;cyl&#39;</span>)])</span>
+<span id="cb407-2"><a href="export-data.html#cb407-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>       mpg              hp             cyl       </span>
+<span id="cb407-3"><a href="export-data.html#cb407-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  Min.   <span class="sc">:</span><span class="fl">10.40</span>   Min.   <span class="sc">:</span> <span class="fl">52.0</span>   Min.   <span class="sc">:</span><span class="fl">4.000</span>  </span>
+<span id="cb407-4"><a href="export-data.html#cb407-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  1st Qu.<span class="sc">:</span><span class="fl">15.43</span>   1st Qu.<span class="sc">:</span> <span class="fl">96.5</span>   1st Qu.<span class="sc">:</span><span class="fl">4.000</span>  </span>
+<span id="cb407-5"><a href="export-data.html#cb407-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  Median <span class="sc">:</span><span class="fl">19.20</span>   Median <span class="sc">:</span><span class="fl">123.0</span>   Median <span class="sc">:</span><span class="fl">6.000</span>  </span>
+<span id="cb407-6"><a href="export-data.html#cb407-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  Mean   <span class="sc">:</span><span class="fl">20.09</span>   Mean   <span class="sc">:</span><span class="fl">146.7</span>   Mean   <span class="sc">:</span><span class="fl">6.188</span>  </span>
+<span id="cb407-7"><a href="export-data.html#cb407-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  3rd Qu.<span class="sc">:</span><span class="fl">22.80</span>   3rd Qu.<span class="sc">:</span><span class="fl">180.0</span>   3rd Qu.<span class="sc">:</span><span class="fl">8.000</span>  </span>
+<span id="cb407-8"><a href="export-data.html#cb407-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  Max.   <span class="sc">:</span><span class="fl">33.90</span>   Max.   <span class="sc">:</span><span class="fl">335.0</span>   Max.   <span class="sc">:</span><span class="fl">8.000</span></span></code></pre></div>
+<p>To be able to keep the same output displayed by R, you must use <code>sink()</code>. This
+function will <strong>divert</strong> R output to the specified file.</p>
+<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="export-data.html#cb408-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sink output</span></span>
+<span id="cb408-2"><a href="export-data.html#cb408-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sink</span>(<span class="at">file =</span> <span class="st">&quot;mtcars-stats.txt&quot;</span>)</span>
+<span id="cb408-3"><a href="export-data.html#cb408-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb408-4"><a href="export-data.html#cb408-4" aria-hidden="true" tabindex="-1"></a><span class="co"># summary statistics</span></span>
+<span id="cb408-5"><a href="export-data.html#cb408-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mtcars[ ,<span class="fu">c</span>(<span class="st">&#39;mpg&#39;</span>, <span class="st">&#39;hp&#39;</span>, <span class="st">&#39;cyl&#39;</span>)])</span>
+<span id="cb408-6"><a href="export-data.html#cb408-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb408-7"><a href="export-data.html#cb408-7" aria-hidden="true" tabindex="-1"></a><span class="co"># stops diverting output</span></span>
+<span id="cb408-8"><a href="export-data.html#cb408-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sink</span>()</span></code></pre></div>
+<p>The use of <code>sink()</code> is a bit different from other data-exporting functions. As
+you can tell from this example, we start by invoking <code>sink()</code> and specifying
+the name of the output file. Then we include the commands whose outputs will
+be redirected to the target file. In order to stop the redirecting mechanism,
+we need to invoke <code>sink()</code> again, without specifying any arguments.</p>
+<p>Consider one more example involving the use of <code>sink()</code> to send the output
+from running a linear regression of <code>mpg</code> on <code>hp</code> with the function <code>lm()</code>.
+To make things more interesting, we will also export the results returned by
+<code>summary()</code> on the regression object. And not only that; we will also run a
+t-test between <code>am</code> and <code>hp</code> with <code>t.test()</code>, and export the results of such test.</p>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="export-data.html#cb409-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sink output</span></span>
+<span id="cb409-2"><a href="export-data.html#cb409-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sink</span>(<span class="at">file =</span> <span class="st">&quot;regression-output.txt&quot;</span>)</span>
+<span id="cb409-3"><a href="export-data.html#cb409-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb409-4"><a href="export-data.html#cb409-4" aria-hidden="true" tabindex="-1"></a><span class="co"># regression of mpg onto hp</span></span>
+<span id="cb409-5"><a href="export-data.html#cb409-5" aria-hidden="true" tabindex="-1"></a>reg <span class="ot">=</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp, <span class="at">data =</span> mtcars)</span>
+<span id="cb409-6"><a href="export-data.html#cb409-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg)</span>
+<span id="cb409-7"><a href="export-data.html#cb409-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb409-8"><a href="export-data.html#cb409-8" aria-hidden="true" tabindex="-1"></a><span class="co"># t-test</span></span>
+<span id="cb409-9"><a href="export-data.html#cb409-9" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(hp <span class="sc">~</span> am, <span class="at">data =</span> mtcars)</span>
+<span id="cb409-10"><a href="export-data.html#cb409-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb409-11"><a href="export-data.html#cb409-11" aria-hidden="true" tabindex="-1"></a><span class="co"># stop sinking process</span></span>
+<span id="cb409-12"><a href="export-data.html#cb409-12" aria-hidden="true" tabindex="-1"></a><span class="fu">sink</span>()</span></code></pre></div>
+</div>
+<div id="exporting-rs-binary-data" class="section level2 hasAnchor" number="21.5">
+<h2><span class="header-section-number">21.5</span> Exporting R’s Binary Data<a href="export-data.html#exporting-rs-binary-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>R also allows you to save objects in R’s binary format with the functions
+<code>save()</code> and <code>save.image()</code>. It is customary to use the <code>RData</code> extension for
+the files created by <code>save()</code> and <code>save.image()</code>. You may also find
+users specifying the old extension <code>.rda</code> or some other variation.</p>
+<p>You can use <code>save()</code> to save specific objects from your current session.
+For example, here is how to save the data frame <code>mtcars3</code></p>
+<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="export-data.html#cb410-1" aria-hidden="true" tabindex="-1"></a>mtcars3 <span class="ot">=</span> mtcars[ ,<span class="fu">c</span>(<span class="st">&#39;mpg&#39;</span>, <span class="st">&#39;hp&#39;</span>, <span class="st">&#39;cyl&#39;</span>)]</span>
+<span id="cb410-2"><a href="export-data.html#cb410-2" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(mtcars3, <span class="at">file =</span> <span class="st">&#39;mtcars3.RData&#39;</span>)</span></code></pre></div>
+<p>The difference between <code>save()</code> and <code>save.image()</code> is that the latter saves
+all the objects in your current session. This is actually the function that is
+run behind the scenes every time you quit R and accept to save the so-called
+<em>workspace image</em>.</p>
+<p>You can share <code>mtcars3.RData</code> with any other R user, regardless of the
+operating system that they use. To read in binary R files, use <code>load()</code>.</p>
+</div>
+<div id="exporting-images" class="section level2 hasAnchor" number="21.6">
+<h2><span class="header-section-number">21.6</span> Exporting Images<a href="export-data.html#exporting-images" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In addition to exporting tables and/or a combination of text-numeric output
+in the form of several objects, another typical data-exporting activity
+involves saving graphics, and images in general.</p>
+<p>R comes with a handful of functions to export graphics in various formats:</p>
+<table>
+<colgroup>
+<col width="24%" />
+<col width="75%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>png()</code></td>
+<td align="left"><a href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">Portable Network Graphics</a></td>
+</tr>
+<tr class="even">
+<td align="left"><code>jpeg()</code></td>
+<td align="left"><a href="https://en.wikipedia.org/wiki/JPEG">Joint Photographic Experts Group</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>pdf()</code></td>
+<td align="left"><a href="https://en.wikipedia.org/wiki/PDF">Portable Document Format</a></td>
+</tr>
+<tr class="even">
+<td align="left"><code>bmp()</code></td>
+<td align="left"><a href="https://en.wikipedia.org/wiki/BMP_file_format">Bitmap</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>tiff()</code></td>
+<td align="left"><a href="https://en.wikipedia.org/wiki/TIFF">Tag Image File Format</a></td>
+</tr>
+<tr class="even">
+<td align="left"><code>svg()</code></td>
+<td align="left"><a href="https://en.wikipedia.org/wiki/Scalable_Vector_Graphics">Scalable Vector Graphics</a></td>
+</tr>
+</tbody>
+</table>
+<p>For example, say you have a plot like the following one:</p>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="export-data.html#cb411-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">2</span><span class="sc">*</span>pi <span class="sc">*</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">to =</span> <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.01</span>)</span>
+<span id="cb411-2"><a href="export-data.html#cb411-2" aria-hidden="true" tabindex="-1"></a>sin_x <span class="ot">=</span> <span class="fu">sin</span>(x)</span>
+<span id="cb411-3"><a href="export-data.html#cb411-3" aria-hidden="true" tabindex="-1"></a>cos_x <span class="ot">=</span> <span class="fu">cos</span>(x)</span>
+<span id="cb411-4"><a href="export-data.html#cb411-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb411-5"><a href="export-data.html#cb411-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, sin_x, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, <span class="at">las =</span> <span class="dv">1</span>, <span class="at">ylab =</span> <span class="st">&quot;y&quot;</span>)</span>
+<span id="cb411-6"><a href="export-data.html#cb411-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">&quot;gray50&quot;</span>)</span>
+<span id="cb411-7"><a href="export-data.html#cb411-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, sin_x, <span class="at">lwd =</span> <span class="dv">3</span>, <span class="at">col =</span> <span class="st">&quot;#5A73EB&quot;</span>)</span>
+<span id="cb411-8"><a href="export-data.html#cb411-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, cos_x, <span class="at">lwd =</span> <span class="dv">3</span>, <span class="at">col =</span> <span class="st">&quot;#eb5a73&quot;</span>)</span></code></pre></div>
+<p><img src="R-coding-basics_files/figure-html/unnamed-chunk-392-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>To export the graphic into a PNG image file, we use <code>png()</code> and <code>dev.off()</code></p>
+<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="export-data.html#cb412-1" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="at">file =</span> <span class="st">&quot;myplot.png&quot;</span>, <span class="at">bg =</span> <span class="st">&quot;transparent&quot;</span>)</span>
+<span id="cb412-2"><a href="export-data.html#cb412-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, sin_x, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, <span class="at">las =</span> <span class="dv">1</span>, <span class="at">ylab =</span> <span class="st">&quot;y&quot;</span>)</span>
+<span id="cb412-3"><a href="export-data.html#cb412-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">&quot;gray50&quot;</span>)</span>
+<span id="cb412-4"><a href="export-data.html#cb412-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, sin_x, <span class="at">lwd =</span> <span class="dv">3</span>, <span class="at">col =</span> <span class="st">&quot;#5A73EB&quot;</span>)</span>
+<span id="cb412-5"><a href="export-data.html#cb412-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, cos_x, <span class="at">lwd =</span> <span class="dv">3</span>, <span class="at">col =</span> <span class="st">&quot;#eb5a73&quot;</span>)</span>
+<span id="cb412-6"><a href="export-data.html#cb412-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<p>The usage of <code>png()</code> and friends is similar to <code>sink()</code>. By default, when
+you use any of the graphing functions such as e.g. <code>plot()</code>, <code>barplot()</code>,
+<code>boxplot()</code>, etc, the image is rendered in the graphics device that comes in
+R (or RStudio). By using <code>png()</code>, the rendering mechanism is diverted into an
+external file. This is why we need to use the function <code>dev.off()</code> to shut
+down the device used when we are done exporting an image to an external file.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="import-tables.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["R-coding-basics.pdf", "R-coding-basics.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

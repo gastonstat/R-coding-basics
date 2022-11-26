@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6 Matrices and Arrays | R Coding Basics</title>
+  <meta name="description" content="This is yet another book about programming in the statistical programming R language." />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6 Matrices and Arrays | R Coding Basics" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is yet another book about programming in the statistical programming R language." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6 Matrices and Arrays | R Coding Basics" />
+  
+  <meta name="twitter:description" content="This is yet another book about programming in the statistical programming R language." />
+  
+
+<meta name="author" content="Gaston Sanchez" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="factors.html"/>
+<link rel="next" href="matrices2.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"><b>R Coding Basics</b><br><small>Gaston Sanchez</small></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#my-series-of-r-tutorials"><i class="fa fa-check"></i>My Series of R Tutorials</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#donation"><i class="fa fa-check"></i>Donation</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i>License</a></li>
+</ul></li>
+<li class="part"><span><b>I Data Objects: Vectors</b></span></li>
+<li class="chapter" data-level="1" data-path="vectors1.html"><a href="vectors1.html"><i class="fa fa-check"></i><b>1</b> First Contact with Vectors</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="vectors1.html"><a href="vectors1.html#motivation-compound-interest"><i class="fa fa-check"></i><b>1.1</b> Motivation: Compound Interest</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="vectors1.html"><a href="vectors1.html#comments"><i class="fa fa-check"></i><b>1.1.1</b> Comments</a></li>
+<li class="chapter" data-level="1.1.2" data-path="vectors1.html"><a href="vectors1.html#creating-objects"><i class="fa fa-check"></i><b>1.1.2</b> Creating Objects</a></li>
+<li class="chapter" data-level="1.1.3" data-path="vectors1.html"><a href="vectors1.html#assignment-statements"><i class="fa fa-check"></i><b>1.1.3</b> Assignment Statements</a></li>
+<li class="chapter" data-level="1.1.4" data-path="vectors1.html"><a href="vectors1.html#case-sensitive"><i class="fa fa-check"></i><b>1.1.4</b> Case Sensitive</a></li>
+<li class="chapter" data-level="1.1.5" data-path="vectors1.html"><a href="vectors1.html#use-descriptive-names"><i class="fa fa-check"></i><b>1.1.5</b> Use Descriptive Names</a></li>
+<li class="chapter" data-level="1.1.6" data-path="vectors1.html"><a href="vectors1.html#combining-various-objects-into-a-single-one"><i class="fa fa-check"></i><b>1.1.6</b> Combining various objects into a single one</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="vectors1.html"><a href="vectors1.html#exercises"><i class="fa fa-check"></i><b>1.2</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="vectors2.html"><a href="vectors2.html"><i class="fa fa-check"></i><b>2</b> Properties of Vectors</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="vectors2.html"><a href="vectors2.html#motivation"><i class="fa fa-check"></i><b>2.1</b> Motivation</a></li>
+<li class="chapter" data-level="2.2" data-path="vectors2.html"><a href="vectors2.html#vectors-are-atomic-objects"><i class="fa fa-check"></i><b>2.2</b> Vectors are Atomic Objects</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="vectors2.html"><a href="vectors2.html#complex-and-raw-types"><i class="fa fa-check"></i><b>2.2.1</b> Complex and Raw Types</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="vectors2.html"><a href="vectors2.html#types-and-modes"><i class="fa fa-check"></i><b>2.3</b> Types and Modes</a></li>
+<li class="chapter" data-level="2.4" data-path="vectors2.html"><a href="vectors2.html#special-values"><i class="fa fa-check"></i><b>2.4</b> Special Values</a></li>
+<li class="chapter" data-level="2.5" data-path="vectors2.html"><a href="vectors2.html#length-of-vectors"><i class="fa fa-check"></i><b>2.5</b> Length of Vectors</a></li>
+<li class="chapter" data-level="2.6" data-path="vectors2.html"><a href="vectors2.html#vector-elements-can-have-names"><i class="fa fa-check"></i><b>2.6</b> Vector elements can have names</a></li>
+<li class="chapter" data-level="2.7" data-path="vectors2.html"><a href="vectors2.html#exercises-1"><i class="fa fa-check"></i><b>2.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="vectors3.html"><a href="vectors3.html"><i class="fa fa-check"></i><b>3</b> Creating Vectors</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="vectors3.html"><a href="vectors3.html#creating-vectors-with-c"><i class="fa fa-check"></i><b>3.1</b> Creating vectors with <code>c()</code></a></li>
+<li class="chapter" data-level="3.2" data-path="vectors3.html"><a href="vectors3.html#default-vectors"><i class="fa fa-check"></i><b>3.2</b> Default Vectors</a></li>
+<li class="chapter" data-level="3.3" data-path="vectors3.html"><a href="vectors3.html#numeric-sequences"><i class="fa fa-check"></i><b>3.3</b> Numeric Sequences</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="vectors3.html"><a href="vectors3.html#sequences-with"><i class="fa fa-check"></i><b>3.3.1</b> Sequences with <code>:</code></a></li>
+<li class="chapter" data-level="3.3.2" data-path="vectors3.html"><a href="vectors3.html#sequences-with-seq"><i class="fa fa-check"></i><b>3.3.2</b> Sequences with <code>seq()</code></a></li>
+<li class="chapter" data-level="3.3.3" data-path="vectors3.html"><a href="vectors3.html#sequences-with-seq_len-and-seq_along"><i class="fa fa-check"></i><b>3.3.3</b> Sequences with <code>seq_len()</code> and <code>seq_along()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="vectors3.html"><a href="vectors3.html#replicated-vectors"><i class="fa fa-check"></i><b>3.4</b> Replicated Vectors</a></li>
+<li class="chapter" data-level="3.5" data-path="vectors3.html"><a href="vectors3.html#coercion"><i class="fa fa-check"></i><b>3.5</b> Coercion</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="vectors3.html"><a href="vectors3.html#implicit-coercion-rules"><i class="fa fa-check"></i><b>3.5.1</b> Implicit Coercion Rules</a></li>
+<li class="chapter" data-level="3.5.2" data-path="vectors3.html"><a href="vectors3.html#explicit-coercion-functions"><i class="fa fa-check"></i><b>3.5.2</b> Explicit Coercion Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="vectors3.html"><a href="vectors3.html#exercises-2"><i class="fa fa-check"></i><b>3.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="vectors4.html"><a href="vectors4.html"><i class="fa fa-check"></i><b>4</b> More About Vectors</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="vectors4.html"><a href="vectors4.html#motivation-future-value"><i class="fa fa-check"></i><b>4.1</b> Motivation: Future Value</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="vectors4.html"><a href="vectors4.html#future-value-formula"><i class="fa fa-check"></i><b>4.1.1</b> Future Value Formula</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="vectors4.html"><a href="vectors4.html#vectorization"><i class="fa fa-check"></i><b>4.2</b> Vectorization</a></li>
+<li class="chapter" data-level="4.3" data-path="vectors4.html"><a href="vectors4.html#recycling"><i class="fa fa-check"></i><b>4.3</b> Recycling</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="vectors4.html"><a href="vectors4.html#vectorization-and-recycling"><i class="fa fa-check"></i><b>4.3.1</b> Vectorization and Recycling</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="vectors4.html"><a href="vectors4.html#manipulating-vectors-subsetting"><i class="fa fa-check"></i><b>4.4</b> Manipulating Vectors: Subsetting</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="vectors4.html"><a href="vectors4.html#numeric-subsetting"><i class="fa fa-check"></i><b>4.4.1</b> Numeric Subsetting</a></li>
+<li class="chapter" data-level="4.4.2" data-path="vectors4.html"><a href="vectors4.html#character-subsetting"><i class="fa fa-check"></i><b>4.4.2</b> Character Subsetting</a></li>
+<li class="chapter" data-level="4.4.3" data-path="vectors4.html"><a href="vectors4.html#logical-subsetting"><i class="fa fa-check"></i><b>4.4.3</b> Logical Subsetting</a></li>
+<li class="chapter" data-level="4.4.4" data-path="vectors4.html"><a href="vectors4.html#summary-of-subsetting"><i class="fa fa-check"></i><b>4.4.4</b> Summary of Subsetting</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="vectors4.html"><a href="vectors4.html#exercises-3"><i class="fa fa-check"></i><b>4.5</b> Exercises</a></li>
+</ul></li>
+<li class="part"><span><b>II More Atomic Objects</b></span></li>
+<li class="chapter" data-level="5" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>5</b> Factors</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="factors.html"><a href="factors.html#creating-factors"><i class="fa fa-check"></i><b>5.1</b> Creating Factors</a></li>
+<li class="chapter" data-level="5.2" data-path="factors.html"><a href="factors.html#how-r-treats-factors"><i class="fa fa-check"></i><b>5.2</b> How R treats factors</a></li>
+<li class="chapter" data-level="5.3" data-path="factors.html"><a href="factors.html#a-closer-look-at-factor"><i class="fa fa-check"></i><b>5.3</b> A closer look at <code>factor()</code></a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="factors.html"><a href="factors.html#function-factor"><i class="fa fa-check"></i><b>5.3.1</b> Function <code>factor()</code></a></li>
+<li class="chapter" data-level="5.3.2" data-path="factors.html"><a href="factors.html#unclassing-factors"><i class="fa fa-check"></i><b>5.3.2</b> Unclassing factors</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="factors.html"><a href="factors.html#ordinal-factors"><i class="fa fa-check"></i><b>5.4</b> Ordinal Factors</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="matrices1.html"><a href="matrices1.html"><i class="fa fa-check"></i><b>6</b> Matrices and Arrays</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="matrices1.html"><a href="matrices1.html#motivation-1"><i class="fa fa-check"></i><b>6.1</b> Motivation</a></li>
+<li class="chapter" data-level="6.2" data-path="matrices1.html"><a href="matrices1.html#matrices"><i class="fa fa-check"></i><b>6.2</b> Matrices</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="matrices1.html"><a href="matrices1.html#what-kind-of-object-is-a-matrix"><i class="fa fa-check"></i><b>6.2.1</b> What kind of object is a matrix?</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="matrices1.html"><a href="matrices1.html#creating-matrices-with-matrix"><i class="fa fa-check"></i><b>6.3</b> Creating matrices with <code>matrix()</code></a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="matrices1.html"><a href="matrices1.html#column-major-matrices"><i class="fa fa-check"></i><b>6.3.1</b> Column-Major Matrices</a></li>
+<li class="chapter" data-level="6.3.2" data-path="matrices1.html"><a href="matrices1.html#giving-names-to-rows-and-columns"><i class="fa fa-check"></i><b>6.3.2</b> Giving names to rows and columns</a></li>
+<li class="chapter" data-level="6.3.3" data-path="matrices1.html"><a href="matrices1.html#more-matrices"><i class="fa fa-check"></i><b>6.3.3</b> More Matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="matrices1.html"><a href="matrices1.html#exercises-4"><i class="fa fa-check"></i><b>6.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="matrices2.html"><a href="matrices2.html"><i class="fa fa-check"></i><b>7</b> More About Matrices</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="matrices2.html"><a href="matrices2.html#basic-operations-with-matrices"><i class="fa fa-check"></i><b>7.1</b> Basic Operations with Matrices</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="matrices2.html"><a href="matrices2.html#selecting-elements"><i class="fa fa-check"></i><b>7.1.1</b> Selecting elements</a></li>
+<li class="chapter" data-level="7.1.2" data-path="matrices2.html"><a href="matrices2.html#adding-a-column"><i class="fa fa-check"></i><b>7.1.2</b> Adding a column</a></li>
+<li class="chapter" data-level="7.1.3" data-path="matrices2.html"><a href="matrices2.html#deleting-a-column"><i class="fa fa-check"></i><b>7.1.3</b> Deleting a column</a></li>
+<li class="chapter" data-level="7.1.4" data-path="matrices2.html"><a href="matrices2.html#moving-a-column"><i class="fa fa-check"></i><b>7.1.4</b> Moving a column</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>III Non-Atomic Objects</b></span></li>
+<li class="chapter" data-level="8" data-path="lists.html"><a href="lists.html"><i class="fa fa-check"></i><b>8</b> Lists</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="lists.html"><a href="lists.html#motivation-2"><i class="fa fa-check"></i><b>8.1</b> Motivation</a></li>
+<li class="chapter" data-level="8.2" data-path="lists.html"><a href="lists.html#lists-1"><i class="fa fa-check"></i><b>8.2</b> Lists</a></li>
+<li class="chapter" data-level="8.3" data-path="lists.html"><a href="lists.html#creating-lists"><i class="fa fa-check"></i><b>8.3</b> Creating Lists</a></li>
+<li class="chapter" data-level="8.4" data-path="lists.html"><a href="lists.html#manipulating-lists"><i class="fa fa-check"></i><b>8.4</b> Manipulating Lists</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="lists.html"><a href="lists.html#single-brackets"><i class="fa fa-check"></i><b>8.4.1</b> Single brackets</a></li>
+<li class="chapter" data-level="8.4.2" data-path="lists.html"><a href="lists.html#double-brackets"><i class="fa fa-check"></i><b>8.4.2</b> Double Brackets</a></li>
+<li class="chapter" data-level="8.4.3" data-path="lists.html"><a href="lists.html#dollar-signs"><i class="fa fa-check"></i><b>8.4.3</b> Dollar signs</a></li>
+<li class="chapter" data-level="8.4.4" data-path="lists.html"><a href="lists.html#adding-new-elements"><i class="fa fa-check"></i><b>8.4.4</b> Adding new elements</a></li>
+<li class="chapter" data-level="8.4.5" data-path="lists.html"><a href="lists.html#removing-elements"><i class="fa fa-check"></i><b>8.4.5</b> Removing elements</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="lists.html"><a href="lists.html#exercises-5"><i class="fa fa-check"></i><b>8.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="dataframes.html"><a href="dataframes.html"><i class="fa fa-check"></i><b>9</b> Data Frames</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="dataframes.html"><a href="dataframes.html#r-data-frames"><i class="fa fa-check"></i><b>9.1</b> R Data Frames</a></li>
+<li class="chapter" data-level="9.2" data-path="dataframes.html"><a href="dataframes.html#inspecting-data-frames"><i class="fa fa-check"></i><b>9.2</b> Inspecting data frames</a></li>
+<li class="chapter" data-level="9.3" data-path="dataframes.html"><a href="dataframes.html#creating-data-frames"><i class="fa fa-check"></i><b>9.3</b> Creating data frames</a></li>
+<li class="chapter" data-level="9.4" data-path="dataframes.html"><a href="dataframes.html#basic-operations-with-data-frames"><i class="fa fa-check"></i><b>9.4</b> Basic Operations with Data Frames</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="dataframes.html"><a href="dataframes.html#selecting-elements-1"><i class="fa fa-check"></i><b>9.4.1</b> Selecting elements</a></li>
+<li class="chapter" data-level="9.4.2" data-path="dataframes.html"><a href="dataframes.html#adding-a-column-1"><i class="fa fa-check"></i><b>9.4.2</b> Adding a column</a></li>
+<li class="chapter" data-level="9.4.3" data-path="dataframes.html"><a href="dataframes.html#deleting-a-column-1"><i class="fa fa-check"></i><b>9.4.3</b> Deleting a column</a></li>
+<li class="chapter" data-level="9.4.4" data-path="dataframes.html"><a href="dataframes.html#renaming-a-column"><i class="fa fa-check"></i><b>9.4.4</b> Renaming a column</a></li>
+<li class="chapter" data-level="9.4.5" data-path="dataframes.html"><a href="dataframes.html#moving-a-column-1"><i class="fa fa-check"></i><b>9.4.5</b> Moving a column</a></li>
+<li class="chapter" data-level="9.4.6" data-path="dataframes.html"><a href="dataframes.html#transforming-a-column"><i class="fa fa-check"></i><b>9.4.6</b> Transforming a column</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="dataframes.html"><a href="dataframes.html#exercises-6"><i class="fa fa-check"></i><b>9.5</b> Exercises</a></li>
+</ul></li>
+<li class="part"><span><b>IV Graphics</b></span></li>
+<li class="chapter" data-level="10" data-path="graphics1.html"><a href="graphics1.html"><i class="fa fa-check"></i><b>10</b> Base Graphics</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="graphics1.html"><a href="graphics1.html#basics-of-graphics-in-r"><i class="fa fa-check"></i><b>10.1</b> Basics of Graphics in R</a></li>
+<li class="chapter" data-level="10.2" data-path="graphics1.html"><a href="graphics1.html#the-plot-function"><i class="fa fa-check"></i><b>10.2</b> The <code>plot()</code> function</a></li>
+<li class="chapter" data-level="10.3" data-path="graphics1.html"><a href="graphics1.html#traditional-graphics-in-r"><i class="fa fa-check"></i><b>10.3</b> Traditional Graphics in R</a></li>
+<li class="chapter" data-level="10.4" data-path="graphics1.html"><a href="graphics1.html#low-level-functions"><i class="fa fa-check"></i><b>10.4</b> Low-Level Functions</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="graphics1.html"><a href="graphics1.html#low-level-functions-1"><i class="fa fa-check"></i><b>10.4.1</b> Low-level functions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="graphics2.html"><a href="graphics2.html"><i class="fa fa-check"></i><b>11</b> More Base Graphics</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="graphics2.html"><a href="graphics2.html#the-plot-function-1"><i class="fa fa-check"></i><b>11.1</b> The <code>plot()</code> function</a></li>
+<li class="chapter" data-level="11.2" data-path="graphics2.html"><a href="graphics2.html#one-variable-graphics"><i class="fa fa-check"></i><b>11.2</b> One variable graphics</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="graphics2.html"><a href="graphics2.html#more-high-level-graphics-of-a-single-variable"><i class="fa fa-check"></i><b>11.2.1</b> More high-level graphics of a single variable</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="graphics2.html"><a href="graphics2.html#plots-of-two-variables"><i class="fa fa-check"></i><b>11.3</b> Plots of Two Variables</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="graphics2.html"><a href="graphics2.html#example-plots-of-two-variables"><i class="fa fa-check"></i><b>11.3.1</b> Example: Plots of two variables</a></li>
+<li class="chapter" data-level="11.3.2" data-path="graphics2.html"><a href="graphics2.html#more-high-level-graphics-of-two-variables"><i class="fa fa-check"></i><b>11.3.2</b> More high-level graphics of two variables</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="graphics3.html"><a href="graphics3.html"><i class="fa fa-check"></i><b>12</b> Plots from Scratch</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="graphics3.html"><a href="graphics3.html#making-a-graphic-from-scratch"><i class="fa fa-check"></i><b>12.1</b> Making a graphic from scratch</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="graphics3.html"><a href="graphics3.html#how-does-it-work"><i class="fa fa-check"></i><b>12.1.1</b> How does it work</a></li>
+<li class="chapter" data-level="12.1.2" data-path="graphics3.html"><a href="graphics3.html#drawing-arrows"><i class="fa fa-check"></i><b>12.1.2</b> Drawing Arrows</a></li>
+<li class="chapter" data-level="12.1.3" data-path="graphics3.html"><a href="graphics3.html#drawing-rectangles"><i class="fa fa-check"></i><b>12.1.3</b> Drawing Rectangles</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>V Programming Basics</b></span></li>
+<li class="chapter" data-level="13" data-path="functions1.html"><a href="functions1.html"><i class="fa fa-check"></i><b>13</b> Intro to Functions</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="functions1.html"><a href="functions1.html#motivation-3"><i class="fa fa-check"></i><b>13.1</b> Motivation</a></li>
+<li class="chapter" data-level="13.2" data-path="functions1.html"><a href="functions1.html#writing-a-simple-function"><i class="fa fa-check"></i><b>13.2</b> Writing a Simple Function</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="functions1.html"><a href="functions1.html#arguments-with-default-values"><i class="fa fa-check"></i><b>13.2.1</b> Arguments with default values</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="functions1.html"><a href="functions1.html#writing-functions-for-humans"><i class="fa fa-check"></i><b>13.3</b> Writing Functions for Humans</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="functions1.html"><a href="functions1.html#naming-functions"><i class="fa fa-check"></i><b>13.3.1</b> Naming Functions</a></li>
+<li class="chapter" data-level="13.3.2" data-path="functions1.html"><a href="functions1.html#functions-documentation"><i class="fa fa-check"></i><b>13.3.2</b> Function’s Documentation</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="functions1.html"><a href="functions1.html#exercises-7"><i class="fa fa-check"></i><b>13.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="expressions.html"><a href="expressions.html"><i class="fa fa-check"></i><b>14</b> Expressions</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="expressions.html"><a href="expressions.html#r-expressions"><i class="fa fa-check"></i><b>14.1</b> R Expressions</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="expressions.html"><a href="expressions.html#simple-expressions"><i class="fa fa-check"></i><b>14.1.1</b> Simple Expressions</a></li>
+<li class="chapter" data-level="14.1.2" data-path="expressions.html"><a href="expressions.html#compound-expressions"><i class="fa fa-check"></i><b>14.1.2</b> Compound Expressions</a></li>
+<li class="chapter" data-level="14.1.3" data-path="expressions.html"><a href="expressions.html#every-expression-has-a-value"><i class="fa fa-check"></i><b>14.1.3</b> Every expression has a value</a></li>
+<li class="chapter" data-level="14.1.4" data-path="expressions.html"><a href="expressions.html#assignments-within-compound-expressions"><i class="fa fa-check"></i><b>14.1.4</b> Assignments within Compound Expressions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="conditionals.html"><a href="conditionals.html"><i class="fa fa-check"></i><b>15</b> Conditionals: If-Else</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="conditionals.html"><a href="conditionals.html#motivation-4"><i class="fa fa-check"></i><b>15.1</b> Motivation</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="conditionals.html"><a href="conditionals.html#future-value-of-ordinary-annuity"><i class="fa fa-check"></i><b>15.1.1</b> Future Value of Ordinary Annuity</a></li>
+<li class="chapter" data-level="15.1.2" data-path="conditionals.html"><a href="conditionals.html#future-value-of-annuity-due"><i class="fa fa-check"></i><b>15.1.2</b> Future Value of Annuity Due</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="conditionals.html"><a href="conditionals.html#conditionals-1"><i class="fa fa-check"></i><b>15.2</b> Conditionals</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="conditionals.html"><a href="conditionals.html#if-else-conditions"><i class="fa fa-check"></i><b>15.2.1</b> If-else conditions</a></li>
+<li class="chapter" data-level="15.2.2" data-path="conditionals.html"><a href="conditionals.html#anatomy-of-if-else-statements"><i class="fa fa-check"></i><b>15.2.2</b> Anatomy of if-else statements</a></li>
+<li class="chapter" data-level="15.2.3" data-path="conditionals.html"><a href="conditionals.html#minimalist-if-then-else"><i class="fa fa-check"></i><b>15.2.3</b> Minimalist If-then-else</a></li>
+<li class="chapter" data-level="15.2.4" data-path="conditionals.html"><a href="conditionals.html#simple-ifs"><i class="fa fa-check"></i><b>15.2.4</b> Simple If’s</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="conditionals.html"><a href="conditionals.html#multiple-ifs"><i class="fa fa-check"></i><b>15.3</b> Multiple If’s</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="conditionals.html"><a href="conditionals.html#switch-statements"><i class="fa fa-check"></i><b>15.3.1</b> Switch statements</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="conditionals.html"><a href="conditionals.html#derivation-of-fvoa"><i class="fa fa-check"></i><b>15.4</b> Derivation of FVOA</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="for-loop.html"><a href="for-loop.html"><i class="fa fa-check"></i><b>16</b> Iterations: For Loop</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="for-loop.html"><a href="for-loop.html#motivation-5"><i class="fa fa-check"></i><b>16.1</b> Motivation</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="for-loop.html"><a href="for-loop.html#us-stock-market-historical-annual-returns"><i class="fa fa-check"></i><b>16.1.1</b> US Stock Market Historical Annual Returns</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="for-loop.html"><a href="for-loop.html#simulating-normal-random-numbers"><i class="fa fa-check"></i><b>16.2</b> Simulating Normal Random Numbers</a>
+<ul>
+<li class="chapter" data-level="16.2.1" data-path="for-loop.html"><a href="for-loop.html#investing-in-the-us-stock-market-during-three-years"><i class="fa fa-check"></i><b>16.2.1</b> Investing in the US stock market during three years</a></li>
+<li class="chapter" data-level="16.2.2" data-path="for-loop.html"><a href="for-loop.html#investing-during-ten-years"><i class="fa fa-check"></i><b>16.2.2</b> Investing during ten years</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="for-loop.html"><a href="for-loop.html#iterations-to-the-rescue"><i class="fa fa-check"></i><b>16.3</b> Iterations to the Rescue</a></li>
+<li class="chapter" data-level="16.4" data-path="for-loop.html"><a href="for-loop.html#for-loop-example"><i class="fa fa-check"></i><b>16.4</b> For Loop Example</a></li>
+<li class="chapter" data-level="16.5" data-path="for-loop.html"><a href="for-loop.html#about-for-loops"><i class="fa fa-check"></i><b>16.5</b> About For Loops</a>
+<ul>
+<li class="chapter" data-level="16.5.1" data-path="for-loop.html"><a href="for-loop.html#anatomy-of-a-for-loop"><i class="fa fa-check"></i><b>16.5.1</b> Anatomy of a For Loop</a></li>
+<li class="chapter" data-level="16.5.2" data-path="for-loop.html"><a href="for-loop.html#for-loops-and-next-statement"><i class="fa fa-check"></i><b>16.5.2</b> For Loops and Next statement</a></li>
+<li class="chapter" data-level="16.5.3" data-path="for-loop.html"><a href="for-loop.html#for-loops-and-break-statement"><i class="fa fa-check"></i><b>16.5.3</b> For Loops and Break statement</a></li>
+<li class="chapter" data-level="16.5.4" data-path="for-loop.html"><a href="for-loop.html#nested-loops"><i class="fa fa-check"></i><b>16.5.4</b> Nested Loops</a></li>
+<li class="chapter" data-level="16.5.5" data-path="for-loop.html"><a href="for-loop.html#about-for-loops-and-vectorized-computations"><i class="fa fa-check"></i><b>16.5.5</b> About <code>for</code> Loops and Vectorized Computations</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="while-loop.html"><a href="while-loop.html"><i class="fa fa-check"></i><b>17</b> Iterations: While Loop</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="while-loop.html"><a href="while-loop.html#motivation-6"><i class="fa fa-check"></i><b>17.1</b> Motivation</a></li>
+<li class="chapter" data-level="17.2" data-path="while-loop.html"><a href="while-loop.html#anatomy-of-a-while-loop"><i class="fa fa-check"></i><b>17.2</b> Anatomy of a While Loop</a></li>
+<li class="chapter" data-level="17.3" data-path="while-loop.html"><a href="while-loop.html#another-example"><i class="fa fa-check"></i><b>17.3</b> Another Example</a>
+<ul>
+<li class="chapter" data-level="17.3.1" data-path="while-loop.html"><a href="while-loop.html#while-loops-and-next-statement"><i class="fa fa-check"></i><b>17.3.1</b> While Loops and Next statement</a></li>
+<li class="chapter" data-level="17.3.2" data-path="while-loop.html"><a href="while-loop.html#while-loops-and-break-statement"><i class="fa fa-check"></i><b>17.3.2</b> While Loops and Break statement</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="functions2.html"><a href="functions2.html"><i class="fa fa-check"></i><b>18</b> More About Functions</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="functions2.html"><a href="functions2.html#functions-recap"><i class="fa fa-check"></i><b>18.1</b> Functions Recap</a>
+<ul>
+<li class="chapter" data-level="18.1.1" data-path="functions2.html"><a href="functions2.html#simple-expressions-1"><i class="fa fa-check"></i><b>18.1.1</b> Simple Expressions</a></li>
+<li class="chapter" data-level="18.1.2" data-path="functions2.html"><a href="functions2.html#nested-functions"><i class="fa fa-check"></i><b>18.1.2</b> Nested Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="functions2.html"><a href="functions2.html#function-output"><i class="fa fa-check"></i><b>18.2</b> Function Output</a>
+<ul>
+<li class="chapter" data-level="18.2.1" data-path="functions2.html"><a href="functions2.html#the-return-command"><i class="fa fa-check"></i><b>18.2.1</b> The <code>return()</code> command</a></li>
+<li class="chapter" data-level="18.2.2" data-path="functions2.html"><a href="functions2.html#white-spaces"><i class="fa fa-check"></i><b>18.2.2</b> White Spaces</a></li>
+</ul></li>
+<li class="chapter" data-level="18.3" data-path="functions2.html"><a href="functions2.html#indentation"><i class="fa fa-check"></i><b>18.3</b> Indentation</a>
+<ul>
+<li class="chapter" data-level="18.3.1" data-path="functions2.html"><a href="functions2.html#meaningful-names"><i class="fa fa-check"></i><b>18.3.1</b> Meaningful Names</a></li>
+<li class="chapter" data-level="18.3.2" data-path="functions2.html"><a href="functions2.html#syntax-parentheses"><i class="fa fa-check"></i><b>18.3.2</b> Syntax: Parentheses</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="functions2.html"><a href="functions2.html#recommendations"><i class="fa fa-check"></i><b>18.4</b> Recommendations</a></li>
+</ul></li>
+<li class="part"><span><b>VI Import / Export</b></span></li>
+<li class="chapter" data-level="19" data-path="input-output.html"><a href="input-output.html"><i class="fa fa-check"></i><b>19</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="input-output.html"><a href="input-output.html#importing-and-exporting-resources"><i class="fa fa-check"></i><b>19.1</b> Importing and Exporting Resources</a>
+<ul>
+<li class="chapter" data-level="19.1.1" data-path="input-output.html"><a href="input-output.html#behind-importexport-functions"><i class="fa fa-check"></i><b>19.1.1</b> Behind import/export functions</a></li>
+</ul></li>
+<li class="chapter" data-level="19.2" data-path="input-output.html"><a href="input-output.html#connections"><i class="fa fa-check"></i><b>19.2</b> Connections</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="import-tables.html"><a href="import-tables.html"><i class="fa fa-check"></i><b>20</b> Importing Data Tables</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="import-tables.html"><a href="import-tables.html#motivation-7"><i class="fa fa-check"></i><b>20.1</b> Motivation</a>
+<ul>
+<li class="chapter" data-level="20.1.1" data-path="import-tables.html"><a href="import-tables.html#data-in-text-files"><i class="fa fa-check"></i><b>20.1.1</b> Data in Text Files</a></li>
+</ul></li>
+<li class="chapter" data-level="20.2" data-path="import-tables.html"><a href="import-tables.html#character-delimited-text-files"><i class="fa fa-check"></i><b>20.2</b> Character Delimited Text Files</a>
+<ul>
+<li class="chapter" data-level="20.2.1" data-path="import-tables.html"><a href="import-tables.html#common-delimiters"><i class="fa fa-check"></i><b>20.2.1</b> Common Delimiters</a></li>
+<li class="chapter" data-level="20.2.2" data-path="import-tables.html"><a href="import-tables.html#delimiters-in-data-values"><i class="fa fa-check"></i><b>20.2.2</b> Delimiters in Data Values</a></li>
+<li class="chapter" data-level="20.2.3" data-path="import-tables.html"><a href="import-tables.html#fixed-width-format-files"><i class="fa fa-check"></i><b>20.2.3</b> Fixed-Width Format Files</a></li>
+<li class="chapter" data-level="20.2.4" data-path="import-tables.html"><a href="import-tables.html#summary"><i class="fa fa-check"></i><b>20.2.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="20.3" data-path="import-tables.html"><a href="import-tables.html#importing-data-tables"><i class="fa fa-check"></i><b>20.3</b> Importing Data Tables</a>
+<ul>
+<li class="chapter" data-level="20.3.1" data-path="import-tables.html"><a href="import-tables.html#function-read.table-and-friends"><i class="fa fa-check"></i><b>20.3.1</b> Function <code>read.table()</code> and friends</a></li>
+<li class="chapter" data-level="20.3.2" data-path="import-tables.html"><a href="import-tables.html#reading-space-separated-files"><i class="fa fa-check"></i><b>20.3.2</b> Reading space-separated files</a></li>
+<li class="chapter" data-level="20.3.3" data-path="import-tables.html"><a href="import-tables.html#reading-comma-separated-files-with-read.csv"><i class="fa fa-check"></i><b>20.3.3</b> Reading comma-separated files with <code>read.csv()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="20.4" data-path="import-tables.html"><a href="import-tables.html#importing-with-scan"><i class="fa fa-check"></i><b>20.4</b> Importing with <code>scan()</code></a></li>
+<li class="chapter" data-level="20.5" data-path="import-tables.html"><a href="import-tables.html#in-summary-1"><i class="fa fa-check"></i><b>20.5</b> In Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="export-data.html"><a href="export-data.html"><i class="fa fa-check"></i><b>21</b> Exporting Data</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="export-data.html"><a href="export-data.html#exporting-tables"><i class="fa fa-check"></i><b>21.1</b> Exporting Tables</a></li>
+<li class="chapter" data-level="21.2" data-path="export-data.html"><a href="export-data.html#exporting-text"><i class="fa fa-check"></i><b>21.2</b> Exporting Text</a></li>
+<li class="chapter" data-level="21.3" data-path="export-data.html"><a href="export-data.html#sending-output-with-cat"><i class="fa fa-check"></i><b>21.3</b> Sending output with <code>cat()</code></a>
+<ul>
+<li class="chapter" data-level="21.3.1" data-path="export-data.html"><a href="export-data.html#sending-output-with-cat-1"><i class="fa fa-check"></i><b>21.3.1</b> Sending output with <code>cat()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="21.4" data-path="export-data.html"><a href="export-data.html#redirecting-output-with-sink"><i class="fa fa-check"></i><b>21.4</b> Redirecting output with <code>sink()</code></a></li>
+<li class="chapter" data-level="21.5" data-path="export-data.html"><a href="export-data.html#exporting-rs-binary-data"><i class="fa fa-check"></i><b>21.5</b> Exporting R’s Binary Data</a></li>
+<li class="chapter" data-level="21.6" data-path="export-data.html"><a href="export-data.html#exporting-images"><i class="fa fa-check"></i><b>21.6</b> Exporting Images</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://www.gastonsanchez.com" target="_blank">gastonsanchez.com</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Coding Basics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="matrices1" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">6</span> Matrices and Arrays<a href="matrices1.html#matrices1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In the previous four chapters, we discussed a number of ideas and concepts that
+basically have to do with vectors and their cousins factors. You can think of
+vectors and factors as one-dimensional objects. While many data sets can be
+handled through vectors and factors, there are occasions in which one dimension
+is not enough. The classic example for when one-dimensional objects are not
+enough involves working with data that fits better into a tabular structure
+consisting of a series of rows (one dimension) and columns (another dimension).</p>
+<p>In this chapter we introduce R <code>arrays</code>, which are multidimensional atomic
+objects including 2-dimensional arrays better known as matrices, and
+N-dimensional generic arrays.</p>
+<div id="motivation-1" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Motivation<a href="matrices1.html#motivation-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Let us continue discussing the savings-investing scenario in which you deposit
+$1000 into a savings account that pays you an annual interest rate of 2%.</p>
+<p>Assuming that you leave that money in the bank for several years, with a
+constant rate of return <span class="math inline">\(r\)</span>, you can use the Future Value (FV) formula to
+calculate how much money you’ll have at the end of year <span class="math inline">\(n\)</span>:</p>
+<p><span class="math display">\[
+\text{FV} = \text{PV} (1 + r)^n
+\]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(\text{FV}\)</span> = future value</li>
+<li><span class="math inline">\(\text{PV}\)</span> = present value</li>
+<li><span class="math inline">\(\text{r}\)</span> = annual interest rate</li>
+<li><span class="math inline">\(\text{n}\)</span> = number of years</li>
+</ul>
+<p>Here’s some R code to obtain a vector <code>amounts</code> containing the amount of money
+that you would have from the beginning of time, and at the end of every year
+during a 5 year period:</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="matrices1.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inputs</span></span>
+<span id="cb122-2"><a href="matrices1.html#cb122-2" aria-hidden="true" tabindex="-1"></a>deposit <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb122-3"><a href="matrices1.html#cb122-3" aria-hidden="true" tabindex="-1"></a>rate <span class="ot">=</span> <span class="fl">0.02</span></span>
+<span id="cb122-4"><a href="matrices1.html#cb122-4" aria-hidden="true" tabindex="-1"></a>years <span class="ot">=</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb122-5"><a href="matrices1.html#cb122-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-6"><a href="matrices1.html#cb122-6" aria-hidden="true" tabindex="-1"></a><span class="co"># future values</span></span>
+<span id="cb122-7"><a href="matrices1.html#cb122-7" aria-hidden="true" tabindex="-1"></a>amounts <span class="ot">=</span> deposit <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years</span>
+<span id="cb122-8"><a href="matrices1.html#cb122-8" aria-hidden="true" tabindex="-1"></a>amounts</span>
+<span id="cb122-9"><a href="matrices1.html#cb122-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">1000.000</span> <span class="fl">1020.000</span> <span class="fl">1040.400</span> <span class="fl">1061.208</span> <span class="fl">1082.432</span></span>
+<span id="cb122-10"><a href="matrices1.html#cb122-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">6</span>] <span class="fl">1104.081</span></span></code></pre></div>
+<p>Recall that this code is an example of vectorized (and recycling) code because
+the FV formula is applied to all the elements of the involved vectors, some
+of which have different lengths.</p>
+<p>So far, so good.</p>
+<p>Now, consider a seemingly simple modification. What if you want to organize
+the amount values in a table? Something like this:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">year</th>
+<th align="center">amount</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">0</td>
+<td align="center">1000.000</td>
+</tr>
+<tr class="even">
+<td align="center">1</td>
+<td align="center">1020.000</td>
+</tr>
+<tr class="odd">
+<td align="center">2</td>
+<td align="center">1040.400</td>
+</tr>
+<tr class="even">
+<td align="center">3</td>
+<td align="center">1061.208</td>
+</tr>
+<tr class="odd">
+<td align="center">4</td>
+<td align="center">1082.432</td>
+</tr>
+<tr class="even">
+<td align="center">5</td>
+<td align="center">1104.081</td>
+</tr>
+</tbody>
+</table>
+<p>In other words, what if you are interested not in getting the set of future
+values in a vector, but instead you want them to be arranged in some sort of
+tabular object? How can you create a table in which the first column <code>year</code>
+corresponds to the years, and the second column <code>amount</code> corresponds to the
+future amounts? Let’s find out.</p>
+</div>
+<div id="matrices" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Matrices<a href="matrices1.html#matrices" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>R provides two main ways to organize data in a tabular (i.e. rectangular)
+object. One of them is a <code>matrix</code>—the topic of this chapter—and the other
+one is a <code>data.frame</code>—to be discussed in a subsequent chapter.</p>
+<div id="creating-a-matrix-by-column-binding-vectors" class="section level4 unnumbered hasAnchor">
+<h4>Creating a matrix by column-binding vectors<a href="matrices1.html#creating-a-matrix-by-column-binding-vectors" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>You can build a matrix by <strong>column binding</strong> vectors using the function
+<code>cbind()</code>. In the code below we pass <code>years</code> and <code>amount</code> to the <code>cbind()</code>
+function, which returns a matrix having the tabular structure that we are
+looking for: <code>years</code> in the first column, and <code>amounts</code> in the second column.</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="matrices1.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inputs</span></span>
+<span id="cb123-2"><a href="matrices1.html#cb123-2" aria-hidden="true" tabindex="-1"></a>deposit <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb123-3"><a href="matrices1.html#cb123-3" aria-hidden="true" tabindex="-1"></a>rate <span class="ot">=</span> <span class="fl">0.02</span></span>
+<span id="cb123-4"><a href="matrices1.html#cb123-4" aria-hidden="true" tabindex="-1"></a>years <span class="ot">=</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb123-5"><a href="matrices1.html#cb123-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-6"><a href="matrices1.html#cb123-6" aria-hidden="true" tabindex="-1"></a><span class="co"># future values</span></span>
+<span id="cb123-7"><a href="matrices1.html#cb123-7" aria-hidden="true" tabindex="-1"></a>amounts <span class="ot">=</span> deposit <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years</span>
+<span id="cb123-8"><a href="matrices1.html#cb123-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-9"><a href="matrices1.html#cb123-9" aria-hidden="true" tabindex="-1"></a><span class="co"># output as a matrix via cbind()</span></span>
+<span id="cb123-10"><a href="matrices1.html#cb123-10" aria-hidden="true" tabindex="-1"></a>savings <span class="ot">=</span> <span class="fu">cbind</span>(years, amounts)</span>
+<span id="cb123-11"><a href="matrices1.html#cb123-11" aria-hidden="true" tabindex="-1"></a>savings</span>
+<span id="cb123-12"><a href="matrices1.html#cb123-12" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>      years  amounts</span>
+<span id="cb123-13"><a href="matrices1.html#cb123-13" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>,]     <span class="dv">0</span> <span class="fl">1000.000</span></span>
+<span id="cb123-14"><a href="matrices1.html#cb123-14" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">2</span>,]     <span class="dv">1</span> <span class="fl">1020.000</span></span>
+<span id="cb123-15"><a href="matrices1.html#cb123-15" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">3</span>,]     <span class="dv">2</span> <span class="fl">1040.400</span></span>
+<span id="cb123-16"><a href="matrices1.html#cb123-16" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">4</span>,]     <span class="dv">3</span> <span class="fl">1061.208</span></span>
+<span id="cb123-17"><a href="matrices1.html#cb123-17" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">5</span>,]     <span class="dv">4</span> <span class="fl">1082.432</span></span>
+<span id="cb123-18"><a href="matrices1.html#cb123-18" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">6</span>,]     <span class="dv">5</span> <span class="fl">1104.081</span></span></code></pre></div>
+<p>As you can tell, the use of <code>cbind()</code> is straightforward. All you have to do
+is pass the vectors, separating them with a comma. Each vector will become a
+column of the returned matrix.</p>
+</div>
+<div id="creating-a-matrix-by-row-binding-vectors" class="section level4 unnumbered hasAnchor">
+<h4>Creating a matrix by row-binding vectors<a href="matrices1.html#creating-a-matrix-by-row-binding-vectors" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>You can also build a matrix by <strong>row binding</strong> vectors. For instance, pretend
+for a minute that we are interested in obtaining a tabular object in which
+the first row corresponds to <code>years</code>, and the second row to <code>amounts</code>. To
+obtain this object we use <code>rbind()</code> as follows:</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="matrices1.html#cb124-1" aria-hidden="true" tabindex="-1"></a>savings <span class="ot">=</span> <span class="fu">rbind</span>(years, amounts)</span>
+<span id="cb124-2"><a href="matrices1.html#cb124-2" aria-hidden="true" tabindex="-1"></a>savings</span>
+<span id="cb124-3"><a href="matrices1.html#cb124-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>         [,<span class="dv">1</span>] [,<span class="dv">2</span>]   [,<span class="dv">3</span>]     [,<span class="dv">4</span>]     [,<span class="dv">5</span>]</span>
+<span id="cb124-4"><a href="matrices1.html#cb124-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> years      <span class="dv">0</span>    <span class="dv">1</span>    <span class="fl">2.0</span>    <span class="fl">3.000</span>    <span class="fl">4.000</span></span>
+<span id="cb124-5"><a href="matrices1.html#cb124-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> amounts <span class="dv">1000</span> <span class="dv">1020</span> <span class="fl">1040.4</span> <span class="fl">1061.208</span> <span class="fl">1082.432</span></span>
+<span id="cb124-6"><a href="matrices1.html#cb124-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>             [,<span class="dv">6</span>]</span>
+<span id="cb124-7"><a href="matrices1.html#cb124-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> years      <span class="fl">5.000</span></span>
+<span id="cb124-8"><a href="matrices1.html#cb124-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> amounts <span class="fl">1104.081</span></span></code></pre></div>
+<p>The difference between <code>cbind()</code> and <code>rbind()</code> is that the latter will “stack”
+the given vectors on top of each other. That is, each vector will become a row
+of the returned matrix.</p>
+</div>
+<div id="what-kind-of-object-is-a-matrix" class="section level3 hasAnchor" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> What kind of object is a matrix?<a href="matrices1.html#what-kind-of-object-is-a-matrix" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In turns out that an R <code>matrix</code> is a special type of multi-dimensional atomic
+object called <code>array</code>. Both classes of objects, together with vectors and
+factors, form the triad of atomic objects. This is illustrated in the following
+diagram in terms of their number of dimensions.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-101"></span>
+<img src="images/objects/obj-atomics.png" alt="Triad of atomic data objects in R." width="50%" />
+<p class="caption">
+Figure 6.1: Triad of atomic data objects in R.
+</p>
+</div>
+<p>Personally, I prefer to reserve the term <code>array</code> for three or more dimensional
+arrays. As you can tell from the above diagram, this is how I’m using this
+term in the book. However, you should always keep in mind that a <code>matrix</code> is an
+<code>array</code>. The other way around is not necessarily true: not all arrays are
+matrices.</p>
+</div>
+</div>
+<div id="creating-matrices-with-matrix" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Creating matrices with <code>matrix()</code><a href="matrices1.html#creating-matrices-with-matrix" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <code>cbind()</code> and <code>rbind()</code> functions provide a convenient way to create
+matrices from different input vectors. But the kind of matrices that you can
+create with them is limited if all you have is just one input vector.</p>
+<p>So, in addition to <code>cbind()</code> and <code>rbind()</code>, R comes with the function <code>matrix()</code>
+which is the workhorse function for creating matrices. Usually, you provide
+an input vector, and also the number of rows and columns (i.e. the
+<em>matrix dimensions</em>) that the returned matrix should have.</p>
+<p>Here is how to use <code>matrix()</code> to create the <code>savings</code> matrix that we are
+interested in obtaining:</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="matrices1.html#cb125-1" aria-hidden="true" tabindex="-1"></a>savings <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(years, amounts), <span class="at">nrow =</span> <span class="dv">6</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb125-2"><a href="matrices1.html#cb125-2" aria-hidden="true" tabindex="-1"></a>savings</span>
+<span id="cb125-3"><a href="matrices1.html#cb125-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>      [,<span class="dv">1</span>]     [,<span class="dv">2</span>]</span>
+<span id="cb125-4"><a href="matrices1.html#cb125-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>,]    <span class="dv">0</span> <span class="fl">1000.000</span></span>
+<span id="cb125-5"><a href="matrices1.html#cb125-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">2</span>,]    <span class="dv">1</span> <span class="fl">1020.000</span></span>
+<span id="cb125-6"><a href="matrices1.html#cb125-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">3</span>,]    <span class="dv">2</span> <span class="fl">1040.400</span></span>
+<span id="cb125-7"><a href="matrices1.html#cb125-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">4</span>,]    <span class="dv">3</span> <span class="fl">1061.208</span></span>
+<span id="cb125-8"><a href="matrices1.html#cb125-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">5</span>,]    <span class="dv">4</span> <span class="fl">1082.432</span></span>
+<span id="cb125-9"><a href="matrices1.html#cb125-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">6</span>,]    <span class="dv">5</span> <span class="fl">1104.081</span></span></code></pre></div>
+<p>This is an interesting piece of code. Notice that <code>years</code> and <code>amounts</code> are
+combined into a single vector, which is the main input of <code>matrix()</code>. The two
+other arguments correspond to the matrix dimensions: <code>nrow = 6</code> tells R that
+we want to produce a matrix with 6 rows; <code>ncol = 2</code> indicates that we want the
+matrix to have 2 columns.</p>
+<div id="column-major-matrices" class="section level3 hasAnchor" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> Column-Major Matrices<a href="matrices1.html#column-major-matrices" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When creating a matrix via the function <code>matrix()</code>, R takes into consideration
+three important aspects:</p>
+<ol style="list-style-type: decimal">
+<li><p>the length of the input vector.</p></li>
+<li><p>the “size” of the matrix given by its number of rows and columns; think of
+this as the total number of cells or entries in the matrix.</p></li>
+<li><p>whether the length of the input vector is a multiple or sub-multiple of the
+size of the matrix.</p></li>
+</ol>
+<p>In the current example, the input vector <code>c(years, amounts)</code> has 12 elements.
+In turn, the size of the desired matrix is given by the multiplication of the
+number of rows (2) times the number of columns (6), that is:</p>
+<p><span class="math display">\[
+\text{size of matrix} = 6 \times 2 = 12 \text{ cells}
+\]</span></p>
+<p>R then compares the length of the input vector against the size of the matrix.
+If these numbers are the same, like in this example, R proceeds to split the
+elements of the input vector into 2 sections or sub-vectors, each one
+containing 6 elements. Each of these sections will become a column of the
+output matrix.</p>
+<p>In other words, the vector <code>c(years, amounts)</code> is split into 2 sub-vectors:</p>
+<pre><code># the first sub-vector is:
+0  1  2  3  4  5
+
+# the second sub-vector is:
+1000.000  1020.000  1040.400  1061.208  1082.432  1104.081</code></pre>
+<p>The first sub-vector, which corresponds to <code>years</code>, becomes the first column.
+The second sub-vector, which corresponds to <code>amounts</code>, becomes the second
+column. In technical terms we say that R matrices are stored
+<strong>column-major</strong> because of the mechanism used by R to arrange the elements of
+an input vector in order to create a matrix.</p>
+<div id="mismatch-between-length-of-input-vector-and-size-of-matrix" class="section level4 unnumbered hasAnchor">
+<h4>Mismatch between length of input vector and size of matrix<a href="matrices1.html#mismatch-between-length-of-input-vector-and-size-of-matrix" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>What about those cases in which the length of the input vector does not match
+the size of the desired matrix? For example, consider the following commands
+illustrating this type of situation:</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="matrices1.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="co"># examples in which length of input vector</span></span>
+<span id="cb127-2"><a href="matrices1.html#cb127-2" aria-hidden="true" tabindex="-1"></a><span class="co"># does not match size of matrix</span></span>
+<span id="cb127-3"><a href="matrices1.html#cb127-3" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb127-4"><a href="matrices1.html#cb127-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-5"><a href="matrices1.html#cb127-5" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb127-6"><a href="matrices1.html#cb127-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-7"><a href="matrices1.html#cb127-7" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb127-8"><a href="matrices1.html#cb127-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Warning <span class="cf">in</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">2</span>)<span class="sc">:</span> data</span>
+<span id="cb127-9"><a href="matrices1.html#cb127-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> length differs from size of matrix<span class="sc">:</span> [<span class="dv">12</span> <span class="sc">!=</span> <span class="dv">3</span> x <span class="dv">2</span>]</span>
+<span id="cb127-10"><a href="matrices1.html#cb127-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-11"><a href="matrices1.html#cb127-11" aria-hidden="true" tabindex="-1"></a>m4 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb127-12"><a href="matrices1.html#cb127-12" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Warning <span class="cf">in</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">2</span>)<span class="sc">:</span> data</span>
+<span id="cb127-13"><a href="matrices1.html#cb127-13" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> length [<span class="dv">4</span>] is not a sub<span class="sc">-</span>multiple or multiple of</span>
+<span id="cb127-14"><a href="matrices1.html#cb127-14" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> the number of rows [<span class="dv">3</span>]</span>
+<span id="cb127-15"><a href="matrices1.html#cb127-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-16"><a href="matrices1.html#cb127-16" aria-hidden="true" tabindex="-1"></a>m5 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb127-17"><a href="matrices1.html#cb127-17" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Warning <span class="cf">in</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>)<span class="sc">:</span> data</span>
+<span id="cb127-18"><a href="matrices1.html#cb127-18" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> length [<span class="dv">8</span>] is not a sub<span class="sc">-</span>multiple or multiple of</span>
+<span id="cb127-19"><a href="matrices1.html#cb127-19" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> the number of columns [<span class="dv">3</span>]</span></code></pre></div>
+<p>In matrices <code>m1</code> and <code>m2</code> the input vector <code>1:3</code> is a sub-multiple of the size
+of the matrix 6.</p>
+<p>In matrix <code>m3</code> the input vector <code>1:12</code> is longer than the size of the matrix: 6.
+However, the entire length of the vector, 12, is a multiple of the size 6.</p>
+<p>In matrices <code>m4</code> and <code>m5</code>, all the input vectors have lengths that are
+neither a multiple or sub-multiple of the size of the returned matrix.</p>
+<p>When the length of the input vector does not match the size of the desired
+matrix, R applies its recycling rules. Let’s pay attention to <code>m1</code>:</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="matrices1.html#cb128-1" aria-hidden="true" tabindex="-1"></a>m1</span>
+<span id="cb128-2"><a href="matrices1.html#cb128-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>      [,<span class="dv">1</span>] [,<span class="dv">2</span>]</span>
+<span id="cb128-3"><a href="matrices1.html#cb128-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>,]    <span class="dv">1</span>    <span class="dv">1</span></span>
+<span id="cb128-4"><a href="matrices1.html#cb128-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">2</span>,]    <span class="dv">2</span>    <span class="dv">2</span></span>
+<span id="cb128-5"><a href="matrices1.html#cb128-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">3</span>,]    <span class="dv">3</span>    <span class="dv">3</span></span></code></pre></div>
+<p>Note how the values of the input vector <code>1:3</code> are recycled to form the columns
+of <code>m1</code>. The values appear in the first column, but they also appear in the
+second column after being recycled.</p>
+<p>In contrast, matrix <code>m3</code> does not use all the elements in the input vector
+<code>1:12</code>. Instead, only the first six values are retained.</p>
+<p>As for the matrices <code>m4</code> and <code>m5</code>, they all have an input vector whose
+length is neither a multiple nor a sub-multiple of the size of the matrix.
+In these cases R will also apply its recycling rules, but it will also display
+a warning message letting us know that the length of the input vector is not a
+multiple or sub-multiple of either the number of rows or the number of columns.</p>
+</div>
+</div>
+<div id="giving-names-to-rows-and-columns" class="section level3 hasAnchor" number="6.3.2">
+<h3><span class="header-section-number">6.3.2</span> Giving names to rows and columns<a href="matrices1.html#giving-names-to-rows-and-columns" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Often, you may need to provide names for either the rows and/or the columns of
+a matrix. R comes with the functions <code>rownames()</code> and <code>colnames()</code> that can be
+used to assign names for the rows and columns, for example:</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="matrices1.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="co"># matrix of savings amounts</span></span>
+<span id="cb129-2"><a href="matrices1.html#cb129-2" aria-hidden="true" tabindex="-1"></a>savings <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(years, amounts), <span class="at">nrow =</span> <span class="dv">6</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb129-3"><a href="matrices1.html#cb129-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-4"><a href="matrices1.html#cb129-4" aria-hidden="true" tabindex="-1"></a><span class="co"># row and columns names</span></span>
+<span id="cb129-5"><a href="matrices1.html#cb129-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(savings) <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span>
+<span id="cb129-6"><a href="matrices1.html#cb129-6" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(savings) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;amount&quot;</span>)</span>
+<span id="cb129-7"><a href="matrices1.html#cb129-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-8"><a href="matrices1.html#cb129-8" aria-hidden="true" tabindex="-1"></a>savings</span>
+<span id="cb129-9"><a href="matrices1.html#cb129-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>   year   amount</span>
+<span id="cb129-10"><a href="matrices1.html#cb129-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">1</span>    <span class="dv">0</span> <span class="fl">1000.000</span></span>
+<span id="cb129-11"><a href="matrices1.html#cb129-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">2</span>    <span class="dv">1</span> <span class="fl">1020.000</span></span>
+<span id="cb129-12"><a href="matrices1.html#cb129-12" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">3</span>    <span class="dv">2</span> <span class="fl">1040.400</span></span>
+<span id="cb129-13"><a href="matrices1.html#cb129-13" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">4</span>    <span class="dv">3</span> <span class="fl">1061.208</span></span>
+<span id="cb129-14"><a href="matrices1.html#cb129-14" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">5</span>    <span class="dv">4</span> <span class="fl">1082.432</span></span>
+<span id="cb129-15"><a href="matrices1.html#cb129-15" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">6</span>    <span class="dv">5</span> <span class="fl">1104.081</span></span></code></pre></div>
+</div>
+<div id="more-matrices" class="section level3 hasAnchor" number="6.3.3">
+<h3><span class="header-section-number">6.3.3</span> More Matrices<a href="matrices1.html#more-matrices" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let’s make things a bit more complex. Say you have the following investments:</p>
+<ul>
+<li><p>$1000 in a <strong>savings account</strong> that pays 2% annual return, during 4 years</p></li>
+<li><p>$2000 in a <strong>money market</strong> account that pays 2.5% annual return, during
+2 years</p></li>
+<li><p>$5000 in a <strong>certificate of deposit</strong> that pays 3% annual return, during
+3 years</p></li>
+</ul>
+<p>In R, we can calculate the future values of each type of investment product:</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="matrices1.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="co"># savings account</span></span>
+<span id="cb130-2"><a href="matrices1.html#cb130-2" aria-hidden="true" tabindex="-1"></a>savings <span class="ot">=</span> <span class="dv">1000</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fl">0.02</span>)<span class="sc">^</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">4</span>)</span>
+<span id="cb130-3"><a href="matrices1.html#cb130-3" aria-hidden="true" tabindex="-1"></a>savings</span>
+<span id="cb130-4"><a href="matrices1.html#cb130-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">1000.000</span> <span class="fl">1020.000</span> <span class="fl">1040.400</span> <span class="fl">1061.208</span> <span class="fl">1082.432</span></span></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="matrices1.html#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="co"># money market</span></span>
+<span id="cb131-2"><a href="matrices1.html#cb131-2" aria-hidden="true" tabindex="-1"></a>moneymkt <span class="ot">=</span> <span class="dv">2000</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fl">0.025</span>)<span class="sc">^</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">2</span>)</span>
+<span id="cb131-3"><a href="matrices1.html#cb131-3" aria-hidden="true" tabindex="-1"></a>moneymkt</span>
+<span id="cb131-4"><a href="matrices1.html#cb131-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">2000.00</span> <span class="fl">2050.00</span> <span class="fl">2101.25</span></span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="matrices1.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="co"># certificate of deposit</span></span>
+<span id="cb132-2"><a href="matrices1.html#cb132-2" aria-hidden="true" tabindex="-1"></a>certificate <span class="ot">=</span> <span class="dv">5000</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fl">0.03</span>)<span class="sc">^</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>)</span>
+<span id="cb132-3"><a href="matrices1.html#cb132-3" aria-hidden="true" tabindex="-1"></a>certificate</span>
+<span id="cb132-4"><a href="matrices1.html#cb132-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">5000.000</span> <span class="fl">5150.000</span> <span class="fl">5304.500</span> <span class="fl">5463.635</span></span></code></pre></div>
+<div id="separated-matrices" class="section level4 unnumbered hasAnchor">
+<h4>Separated matrices<a href="matrices1.html#separated-matrices" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>We can create individual matrices for each type of account:</p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="matrices1.html#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="co"># savings account</span></span>
+<span id="cb133-2"><a href="matrices1.html#cb133-2" aria-hidden="true" tabindex="-1"></a>sav_mat <span class="ot">=</span> <span class="fu">cbind</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">4</span>, savings)</span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="matrices1.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="co"># money market</span></span>
+<span id="cb134-2"><a href="matrices1.html#cb134-2" aria-hidden="true" tabindex="-1"></a>mm_mat <span class="ot">=</span> <span class="fu">cbind</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">2</span>, moneymkt)</span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="matrices1.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="co"># certificate of deposit</span></span>
+<span id="cb135-2"><a href="matrices1.html#cb135-2" aria-hidden="true" tabindex="-1"></a>cd_mat <span class="ot">=</span> <span class="fu">cbind</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>, certificate)</span></code></pre></div>
+</div>
+<div id="single-matrix" class="section level4 unnumbered hasAnchor">
+<h4>Single matrix<a href="matrices1.html#single-matrix" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Alternatively, we can stack everything into a single matrix:</p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="matrices1.html#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>), <span class="fu">c</span>(savings, moneymkt, certificate))</span>
+<span id="cb136-2"><a href="matrices1.html#cb136-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>       [,<span class="dv">1</span>]     [,<span class="dv">2</span>]</span>
+<span id="cb136-3"><a href="matrices1.html#cb136-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">1</span>,]    <span class="dv">0</span> <span class="fl">1000.000</span></span>
+<span id="cb136-4"><a href="matrices1.html#cb136-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">2</span>,]    <span class="dv">1</span> <span class="fl">1020.000</span></span>
+<span id="cb136-5"><a href="matrices1.html#cb136-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">3</span>,]    <span class="dv">2</span> <span class="fl">1040.400</span></span>
+<span id="cb136-6"><a href="matrices1.html#cb136-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">4</span>,]    <span class="dv">3</span> <span class="fl">1061.208</span></span>
+<span id="cb136-7"><a href="matrices1.html#cb136-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">5</span>,]    <span class="dv">4</span> <span class="fl">1082.432</span></span>
+<span id="cb136-8"><a href="matrices1.html#cb136-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">6</span>,]    <span class="dv">0</span> <span class="fl">2000.000</span></span>
+<span id="cb136-9"><a href="matrices1.html#cb136-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">7</span>,]    <span class="dv">1</span> <span class="fl">2050.000</span></span>
+<span id="cb136-10"><a href="matrices1.html#cb136-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">8</span>,]    <span class="dv">2</span> <span class="fl">2101.250</span></span>
+<span id="cb136-11"><a href="matrices1.html#cb136-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">9</span>,]    <span class="dv">0</span> <span class="fl">5000.000</span></span>
+<span id="cb136-12"><a href="matrices1.html#cb136-12" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">10</span>,]    <span class="dv">1</span> <span class="fl">5150.000</span></span>
+<span id="cb136-13"><a href="matrices1.html#cb136-13" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">11</span>,]    <span class="dv">2</span> <span class="fl">5304.500</span></span>
+<span id="cb136-14"><a href="matrices1.html#cb136-14" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">12</span>,]    <span class="dv">3</span> <span class="fl">5463.635</span></span></code></pre></div>
+</div>
+<div id="what-about-mixing-data-types" class="section level4 unnumbered hasAnchor">
+<h4>What about mixing data types?<a href="matrices1.html#what-about-mixing-data-types" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>What if you want some table like this:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">account</th>
+<th align="center">year</th>
+<th align="center">amount</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">savings</td>
+<td align="center">0</td>
+<td align="center">1000.000</td>
+</tr>
+<tr class="even">
+<td align="center">savings</td>
+<td align="center">1</td>
+<td align="center">1020.000</td>
+</tr>
+<tr class="odd">
+<td align="center">savings</td>
+<td align="center">2</td>
+<td align="center">1040.400</td>
+</tr>
+<tr class="even">
+<td align="center">savings</td>
+<td align="center">3</td>
+<td align="center">1061.208</td>
+</tr>
+<tr class="odd">
+<td align="center">savings</td>
+<td align="center">4</td>
+<td align="center">1082.432</td>
+</tr>
+<tr class="even">
+<td align="center">moneymkt</td>
+<td align="center">0</td>
+<td align="center">2000.000</td>
+</tr>
+<tr class="odd">
+<td align="center">moneymkt</td>
+<td align="center">1</td>
+<td align="center">2050.000</td>
+</tr>
+<tr class="even">
+<td align="center">moneymkt</td>
+<td align="center">2</td>
+<td align="center">2101.250</td>
+</tr>
+<tr class="odd">
+<td align="center">certif</td>
+<td align="center">0</td>
+<td align="center">5000.000</td>
+</tr>
+<tr class="even">
+<td align="center">certif</td>
+<td align="center">1</td>
+<td align="center">5150.250</td>
+</tr>
+<tr class="odd">
+<td align="center">certif</td>
+<td align="center">2</td>
+<td align="center">5304.500</td>
+</tr>
+<tr class="even">
+<td align="center">certif</td>
+<td align="center">3</td>
+<td align="center">5463.635</td>
+</tr>
+</tbody>
+</table>
+<p>We could use the <code>cbind()</code> function in an attempt to obtain a matrix having
+a similar rectangular structure as in the above table:</p>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="matrices1.html#cb137-1" aria-hidden="true" tabindex="-1"></a>investments <span class="ot">=</span> <span class="fu">cbind</span>(</span>
+<span id="cb137-2"><a href="matrices1.html#cb137-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;savings&quot;</span>, <span class="st">&quot;moneymkt&quot;</span>, <span class="st">&quot;certif&quot;</span>), <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">4</span>)),</span>
+<span id="cb137-3"><a href="matrices1.html#cb137-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>), </span>
+<span id="cb137-4"><a href="matrices1.html#cb137-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(savings, moneymkt, certificate))</span>
+<span id="cb137-5"><a href="matrices1.html#cb137-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb137-6"><a href="matrices1.html#cb137-6" aria-hidden="true" tabindex="-1"></a>investments</span>
+<span id="cb137-7"><a href="matrices1.html#cb137-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>       [,<span class="dv">1</span>]       [,<span class="dv">2</span>] [,<span class="dv">3</span>]        </span>
+<span id="cb137-8"><a href="matrices1.html#cb137-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">1</span>,] <span class="st">&quot;savings&quot;</span>  <span class="st">&quot;0&quot;</span>  <span class="st">&quot;1000&quot;</span>      </span>
+<span id="cb137-9"><a href="matrices1.html#cb137-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">2</span>,] <span class="st">&quot;savings&quot;</span>  <span class="st">&quot;1&quot;</span>  <span class="st">&quot;1020&quot;</span>      </span>
+<span id="cb137-10"><a href="matrices1.html#cb137-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">3</span>,] <span class="st">&quot;savings&quot;</span>  <span class="st">&quot;2&quot;</span>  <span class="st">&quot;1040.4&quot;</span>    </span>
+<span id="cb137-11"><a href="matrices1.html#cb137-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">4</span>,] <span class="st">&quot;savings&quot;</span>  <span class="st">&quot;3&quot;</span>  <span class="st">&quot;1061.208&quot;</span>  </span>
+<span id="cb137-12"><a href="matrices1.html#cb137-12" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">5</span>,] <span class="st">&quot;savings&quot;</span>  <span class="st">&quot;4&quot;</span>  <span class="st">&quot;1082.43216&quot;</span></span>
+<span id="cb137-13"><a href="matrices1.html#cb137-13" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">6</span>,] <span class="st">&quot;moneymkt&quot;</span> <span class="st">&quot;0&quot;</span>  <span class="st">&quot;2000&quot;</span>      </span>
+<span id="cb137-14"><a href="matrices1.html#cb137-14" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">7</span>,] <span class="st">&quot;moneymkt&quot;</span> <span class="st">&quot;1&quot;</span>  <span class="st">&quot;2050&quot;</span>      </span>
+<span id="cb137-15"><a href="matrices1.html#cb137-15" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">8</span>,] <span class="st">&quot;moneymkt&quot;</span> <span class="st">&quot;2&quot;</span>  <span class="st">&quot;2101.25&quot;</span>   </span>
+<span id="cb137-16"><a href="matrices1.html#cb137-16" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>  [<span class="dv">9</span>,] <span class="st">&quot;certif&quot;</span>   <span class="st">&quot;0&quot;</span>  <span class="st">&quot;5000&quot;</span>      </span>
+<span id="cb137-17"><a href="matrices1.html#cb137-17" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">10</span>,] <span class="st">&quot;certif&quot;</span>   <span class="st">&quot;1&quot;</span>  <span class="st">&quot;5150&quot;</span>      </span>
+<span id="cb137-18"><a href="matrices1.html#cb137-18" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">11</span>,] <span class="st">&quot;certif&quot;</span>   <span class="st">&quot;2&quot;</span>  <span class="st">&quot;5304.5&quot;</span>    </span>
+<span id="cb137-19"><a href="matrices1.html#cb137-19" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">12</span>,] <span class="st">&quot;certif&quot;</span>   <span class="st">&quot;3&quot;</span>  <span class="st">&quot;5463.635&quot;</span></span></code></pre></div>
+<p>Do you notice something funny with the matrix <code>investments</code>?</p>
+<p>As you can tell, all the values in <code>investments</code> are displayed being surrounded
+with double quotes. This indicates that all the values are of type <code>character</code>.
+Why is this?</p>
+<p>Recall that matrices are <strong>atomic</strong> objects. Usually, you provide an input
+vector containing the elements to be arranged into a rectangular array with
+a certain number of rows and columns. Because vectors are atomic, this property
+is “inherited” by the returned matrix.</p>
+<p>It turns out that you can use other classes of data objects, not necessarily
+atomic, for creating a matrix. If the input object is non-atomic, R will
+coerce it into a vector, making the input an atomic object.</p>
+<p>So either way, whether you provide an atomic input or a non-atomic input,
+to any of the matrix-creation functions, R will always produce an atomic
+output. This is the reason why the below command produces a <code>character</code> matrix:</p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="matrices1.html#cb138-1" aria-hidden="true" tabindex="-1"></a>investments <span class="ot">=</span> <span class="fu">cbind</span>(</span>
+<span id="cb138-2"><a href="matrices1.html#cb138-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;savings&quot;</span>, <span class="st">&quot;moneymkt&quot;</span>, <span class="st">&quot;certif&quot;</span>), <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">4</span>)),</span>
+<span id="cb138-3"><a href="matrices1.html#cb138-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>), </span>
+<span id="cb138-4"><a href="matrices1.html#cb138-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(savings, moneymkt, certificate))</span>
+<span id="cb138-5"><a href="matrices1.html#cb138-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-6"><a href="matrices1.html#cb138-6" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(investments)</span>
+<span id="cb138-7"><a href="matrices1.html#cb138-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;character&quot;</span></span></code></pre></div>
+<p>The three input vectors are coerced into a single vector of <code>character</code> data
+type, causing the <code>investments</code> matrix to be of type <code>character</code>.</p>
+<hr />
+</div>
+</div>
+</div>
+<div id="exercises-4" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> Exercises<a href="matrices1.html#exercises-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>1)</strong> Use <code>matrix()</code> to create a matrix <code>mat1</code> (see below) from the input
+vector <code>x = letters[1:15]</code>:</p>
+<pre><code># mat1
+&quot;a&quot;  &quot;d&quot;  &quot;g&quot;  &quot;j&quot;  &quot;m&quot; 
+&quot;b&quot;  &quot;e&quot;  &quot;h&quot;  &quot;k&quot;  &quot;n&quot; 
+&quot;c&quot;  &quot;f&quot;  &quot;i&quot;  &quot;l&quot;  &quot;o&quot;</code></pre>
+<p><br></p>
+<p><strong>2)</strong> Find out how to use the functions <code>rownames()</code> and <code>colnames()</code> to give
+names to the rows and the columns of matrix <code>mat1</code>. Choose any names you want,
+and display matrix <code>mat1</code></p>
+<p><br></p>
+<p><strong>3)</strong> Use <code>matrix()</code> to create a matrix <code>mat2</code> (see below) from the input
+vector <code>y = month.name</code>:</p>
+<pre><code># mat2
+&quot;January&quot; &quot;February&quot; &quot;March&quot;    
+&quot;April&quot;   &quot;May&quot;      &quot;June&quot;     
+&quot;July&quot;    &quot;August&quot;   &quot;September&quot;
+&quot;October&quot; &quot;November&quot; &quot;December&quot; </code></pre>
+<p><br></p>
+<p><strong>4)</strong> Use <code>matrix()</code>—and its recycling principle—to create a matrix <code>mat3</code>
+(see below) from the input vector <code>a = c(3, 6, 9)</code>:</p>
+<pre><code># mat3
+3    3    3
+6    6    6
+9    9    9</code></pre>
+<p><br></p>
+<p><strong>5)</strong> Use <code>matrix()</code>—and its recycling principle—to create a matrix <code>mat4</code>
+(see below) from the input vector <code>a = c(3, 6, 9)</code>:</p>
+<pre><code># mat4
+3    3    3
+6    6    6
+9    9    9
+3    3    3
+6    6    6
+9    9    9</code></pre>
+<p><br></p>
+<p><strong>6)</strong> Consider the following vectors <code>a</code> and <code>b</code></p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="matrices1.html#cb143-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>)</span>
+<span id="cb143-2"><a href="matrices1.html#cb143-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)</span></code></pre></div>
+<p>Use the row-binding function <code>rbind()</code>, with inputs <code>a</code> and <code>b</code>, to create the
+matrix displayed below:</p>
+<pre><code>&gt;      [,1] [,2] [,3]
+&gt; [1,]    1    3    5
+&gt; [2,]    2    4    6</code></pre>
+<p><br></p>
+<p><strong>7)</strong> Consider the following vectors <code>u</code> and <code>v</code></p>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="matrices1.html#cb145-1" aria-hidden="true" tabindex="-1"></a>u <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>)</span>
+<span id="cb145-2"><a href="matrices1.html#cb145-2" aria-hidden="true" tabindex="-1"></a>v <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>)</span></code></pre></div>
+<p>Use the column-binding function <code>cbind()</code>, with inputs <code>u</code> and <code>v</code>, to create
+the matrix displayed below:</p>
+<pre><code>&gt;      [,1] [,2] [,3]
+&gt; [1,]    2    1    2
+&gt; [2,]    4    3    4
+&gt; [3,]    6    5    6
+&gt; [4,]    8    7    8</code></pre>
+<p><br></p>
+<p><strong>8)</strong> Find out how to use the <code>diag()</code> function to create an <strong>identity matrix</strong>
+of dimensions 4 rows and 4 columns (see below). BTW: An identity matrix is a
+matrix with the same number of rows and columns, has ones in the diagonal,
+and zeroes off-diagonal.</p>
+<pre><code>1    0    0    0
+0    1    0    0
+0    0    1    0
+0    0    0    1</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="factors.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="matrices2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["R-coding-basics.pdf", "R-coding-basics.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>20 Importing Data Tables | R Coding Basics</title>
+  <meta name="description" content="This is yet another book about programming in the statistical programming R language." />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="20 Importing Data Tables | R Coding Basics" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is yet another book about programming in the statistical programming R language." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="20 Importing Data Tables | R Coding Basics" />
+  
+  <meta name="twitter:description" content="This is yet another book about programming in the statistical programming R language." />
+  
+
+<meta name="author" content="Gaston Sanchez" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="input-output.html"/>
+<link rel="next" href="export-data.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"><b>R Coding Basics</b><br><small>Gaston Sanchez</small></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#my-series-of-r-tutorials"><i class="fa fa-check"></i>My Series of R Tutorials</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#donation"><i class="fa fa-check"></i>Donation</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i>License</a></li>
+</ul></li>
+<li class="part"><span><b>I Data Objects: Vectors</b></span></li>
+<li class="chapter" data-level="1" data-path="vectors1.html"><a href="vectors1.html"><i class="fa fa-check"></i><b>1</b> First Contact with Vectors</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="vectors1.html"><a href="vectors1.html#motivation-compound-interest"><i class="fa fa-check"></i><b>1.1</b> Motivation: Compound Interest</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="vectors1.html"><a href="vectors1.html#comments"><i class="fa fa-check"></i><b>1.1.1</b> Comments</a></li>
+<li class="chapter" data-level="1.1.2" data-path="vectors1.html"><a href="vectors1.html#creating-objects"><i class="fa fa-check"></i><b>1.1.2</b> Creating Objects</a></li>
+<li class="chapter" data-level="1.1.3" data-path="vectors1.html"><a href="vectors1.html#assignment-statements"><i class="fa fa-check"></i><b>1.1.3</b> Assignment Statements</a></li>
+<li class="chapter" data-level="1.1.4" data-path="vectors1.html"><a href="vectors1.html#case-sensitive"><i class="fa fa-check"></i><b>1.1.4</b> Case Sensitive</a></li>
+<li class="chapter" data-level="1.1.5" data-path="vectors1.html"><a href="vectors1.html#use-descriptive-names"><i class="fa fa-check"></i><b>1.1.5</b> Use Descriptive Names</a></li>
+<li class="chapter" data-level="1.1.6" data-path="vectors1.html"><a href="vectors1.html#combining-various-objects-into-a-single-one"><i class="fa fa-check"></i><b>1.1.6</b> Combining various objects into a single one</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="vectors1.html"><a href="vectors1.html#exercises"><i class="fa fa-check"></i><b>1.2</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="vectors2.html"><a href="vectors2.html"><i class="fa fa-check"></i><b>2</b> Properties of Vectors</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="vectors2.html"><a href="vectors2.html#motivation"><i class="fa fa-check"></i><b>2.1</b> Motivation</a></li>
+<li class="chapter" data-level="2.2" data-path="vectors2.html"><a href="vectors2.html#vectors-are-atomic-objects"><i class="fa fa-check"></i><b>2.2</b> Vectors are Atomic Objects</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="vectors2.html"><a href="vectors2.html#complex-and-raw-types"><i class="fa fa-check"></i><b>2.2.1</b> Complex and Raw Types</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="vectors2.html"><a href="vectors2.html#types-and-modes"><i class="fa fa-check"></i><b>2.3</b> Types and Modes</a></li>
+<li class="chapter" data-level="2.4" data-path="vectors2.html"><a href="vectors2.html#special-values"><i class="fa fa-check"></i><b>2.4</b> Special Values</a></li>
+<li class="chapter" data-level="2.5" data-path="vectors2.html"><a href="vectors2.html#length-of-vectors"><i class="fa fa-check"></i><b>2.5</b> Length of Vectors</a></li>
+<li class="chapter" data-level="2.6" data-path="vectors2.html"><a href="vectors2.html#vector-elements-can-have-names"><i class="fa fa-check"></i><b>2.6</b> Vector elements can have names</a></li>
+<li class="chapter" data-level="2.7" data-path="vectors2.html"><a href="vectors2.html#exercises-1"><i class="fa fa-check"></i><b>2.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="vectors3.html"><a href="vectors3.html"><i class="fa fa-check"></i><b>3</b> Creating Vectors</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="vectors3.html"><a href="vectors3.html#creating-vectors-with-c"><i class="fa fa-check"></i><b>3.1</b> Creating vectors with <code>c()</code></a></li>
+<li class="chapter" data-level="3.2" data-path="vectors3.html"><a href="vectors3.html#default-vectors"><i class="fa fa-check"></i><b>3.2</b> Default Vectors</a></li>
+<li class="chapter" data-level="3.3" data-path="vectors3.html"><a href="vectors3.html#numeric-sequences"><i class="fa fa-check"></i><b>3.3</b> Numeric Sequences</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="vectors3.html"><a href="vectors3.html#sequences-with"><i class="fa fa-check"></i><b>3.3.1</b> Sequences with <code>:</code></a></li>
+<li class="chapter" data-level="3.3.2" data-path="vectors3.html"><a href="vectors3.html#sequences-with-seq"><i class="fa fa-check"></i><b>3.3.2</b> Sequences with <code>seq()</code></a></li>
+<li class="chapter" data-level="3.3.3" data-path="vectors3.html"><a href="vectors3.html#sequences-with-seq_len-and-seq_along"><i class="fa fa-check"></i><b>3.3.3</b> Sequences with <code>seq_len()</code> and <code>seq_along()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="vectors3.html"><a href="vectors3.html#replicated-vectors"><i class="fa fa-check"></i><b>3.4</b> Replicated Vectors</a></li>
+<li class="chapter" data-level="3.5" data-path="vectors3.html"><a href="vectors3.html#coercion"><i class="fa fa-check"></i><b>3.5</b> Coercion</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="vectors3.html"><a href="vectors3.html#implicit-coercion-rules"><i class="fa fa-check"></i><b>3.5.1</b> Implicit Coercion Rules</a></li>
+<li class="chapter" data-level="3.5.2" data-path="vectors3.html"><a href="vectors3.html#explicit-coercion-functions"><i class="fa fa-check"></i><b>3.5.2</b> Explicit Coercion Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="vectors3.html"><a href="vectors3.html#exercises-2"><i class="fa fa-check"></i><b>3.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="vectors4.html"><a href="vectors4.html"><i class="fa fa-check"></i><b>4</b> More About Vectors</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="vectors4.html"><a href="vectors4.html#motivation-future-value"><i class="fa fa-check"></i><b>4.1</b> Motivation: Future Value</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="vectors4.html"><a href="vectors4.html#future-value-formula"><i class="fa fa-check"></i><b>4.1.1</b> Future Value Formula</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="vectors4.html"><a href="vectors4.html#vectorization"><i class="fa fa-check"></i><b>4.2</b> Vectorization</a></li>
+<li class="chapter" data-level="4.3" data-path="vectors4.html"><a href="vectors4.html#recycling"><i class="fa fa-check"></i><b>4.3</b> Recycling</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="vectors4.html"><a href="vectors4.html#vectorization-and-recycling"><i class="fa fa-check"></i><b>4.3.1</b> Vectorization and Recycling</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="vectors4.html"><a href="vectors4.html#manipulating-vectors-subsetting"><i class="fa fa-check"></i><b>4.4</b> Manipulating Vectors: Subsetting</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="vectors4.html"><a href="vectors4.html#numeric-subsetting"><i class="fa fa-check"></i><b>4.4.1</b> Numeric Subsetting</a></li>
+<li class="chapter" data-level="4.4.2" data-path="vectors4.html"><a href="vectors4.html#character-subsetting"><i class="fa fa-check"></i><b>4.4.2</b> Character Subsetting</a></li>
+<li class="chapter" data-level="4.4.3" data-path="vectors4.html"><a href="vectors4.html#logical-subsetting"><i class="fa fa-check"></i><b>4.4.3</b> Logical Subsetting</a></li>
+<li class="chapter" data-level="4.4.4" data-path="vectors4.html"><a href="vectors4.html#summary-of-subsetting"><i class="fa fa-check"></i><b>4.4.4</b> Summary of Subsetting</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="vectors4.html"><a href="vectors4.html#exercises-3"><i class="fa fa-check"></i><b>4.5</b> Exercises</a></li>
+</ul></li>
+<li class="part"><span><b>II More Atomic Objects</b></span></li>
+<li class="chapter" data-level="5" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>5</b> Factors</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="factors.html"><a href="factors.html#creating-factors"><i class="fa fa-check"></i><b>5.1</b> Creating Factors</a></li>
+<li class="chapter" data-level="5.2" data-path="factors.html"><a href="factors.html#how-r-treats-factors"><i class="fa fa-check"></i><b>5.2</b> How R treats factors</a></li>
+<li class="chapter" data-level="5.3" data-path="factors.html"><a href="factors.html#a-closer-look-at-factor"><i class="fa fa-check"></i><b>5.3</b> A closer look at <code>factor()</code></a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="factors.html"><a href="factors.html#function-factor"><i class="fa fa-check"></i><b>5.3.1</b> Function <code>factor()</code></a></li>
+<li class="chapter" data-level="5.3.2" data-path="factors.html"><a href="factors.html#unclassing-factors"><i class="fa fa-check"></i><b>5.3.2</b> Unclassing factors</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="factors.html"><a href="factors.html#ordinal-factors"><i class="fa fa-check"></i><b>5.4</b> Ordinal Factors</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="matrices1.html"><a href="matrices1.html"><i class="fa fa-check"></i><b>6</b> Matrices and Arrays</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="matrices1.html"><a href="matrices1.html#motivation-1"><i class="fa fa-check"></i><b>6.1</b> Motivation</a></li>
+<li class="chapter" data-level="6.2" data-path="matrices1.html"><a href="matrices1.html#matrices"><i class="fa fa-check"></i><b>6.2</b> Matrices</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="matrices1.html"><a href="matrices1.html#what-kind-of-object-is-a-matrix"><i class="fa fa-check"></i><b>6.2.1</b> What kind of object is a matrix?</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="matrices1.html"><a href="matrices1.html#creating-matrices-with-matrix"><i class="fa fa-check"></i><b>6.3</b> Creating matrices with <code>matrix()</code></a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="matrices1.html"><a href="matrices1.html#column-major-matrices"><i class="fa fa-check"></i><b>6.3.1</b> Column-Major Matrices</a></li>
+<li class="chapter" data-level="6.3.2" data-path="matrices1.html"><a href="matrices1.html#giving-names-to-rows-and-columns"><i class="fa fa-check"></i><b>6.3.2</b> Giving names to rows and columns</a></li>
+<li class="chapter" data-level="6.3.3" data-path="matrices1.html"><a href="matrices1.html#more-matrices"><i class="fa fa-check"></i><b>6.3.3</b> More Matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="matrices1.html"><a href="matrices1.html#exercises-4"><i class="fa fa-check"></i><b>6.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="matrices2.html"><a href="matrices2.html"><i class="fa fa-check"></i><b>7</b> More About Matrices</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="matrices2.html"><a href="matrices2.html#basic-operations-with-matrices"><i class="fa fa-check"></i><b>7.1</b> Basic Operations with Matrices</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="matrices2.html"><a href="matrices2.html#selecting-elements"><i class="fa fa-check"></i><b>7.1.1</b> Selecting elements</a></li>
+<li class="chapter" data-level="7.1.2" data-path="matrices2.html"><a href="matrices2.html#adding-a-column"><i class="fa fa-check"></i><b>7.1.2</b> Adding a column</a></li>
+<li class="chapter" data-level="7.1.3" data-path="matrices2.html"><a href="matrices2.html#deleting-a-column"><i class="fa fa-check"></i><b>7.1.3</b> Deleting a column</a></li>
+<li class="chapter" data-level="7.1.4" data-path="matrices2.html"><a href="matrices2.html#moving-a-column"><i class="fa fa-check"></i><b>7.1.4</b> Moving a column</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>III Non-Atomic Objects</b></span></li>
+<li class="chapter" data-level="8" data-path="lists.html"><a href="lists.html"><i class="fa fa-check"></i><b>8</b> Lists</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="lists.html"><a href="lists.html#motivation-2"><i class="fa fa-check"></i><b>8.1</b> Motivation</a></li>
+<li class="chapter" data-level="8.2" data-path="lists.html"><a href="lists.html#lists-1"><i class="fa fa-check"></i><b>8.2</b> Lists</a></li>
+<li class="chapter" data-level="8.3" data-path="lists.html"><a href="lists.html#creating-lists"><i class="fa fa-check"></i><b>8.3</b> Creating Lists</a></li>
+<li class="chapter" data-level="8.4" data-path="lists.html"><a href="lists.html#manipulating-lists"><i class="fa fa-check"></i><b>8.4</b> Manipulating Lists</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="lists.html"><a href="lists.html#single-brackets"><i class="fa fa-check"></i><b>8.4.1</b> Single brackets</a></li>
+<li class="chapter" data-level="8.4.2" data-path="lists.html"><a href="lists.html#double-brackets"><i class="fa fa-check"></i><b>8.4.2</b> Double Brackets</a></li>
+<li class="chapter" data-level="8.4.3" data-path="lists.html"><a href="lists.html#dollar-signs"><i class="fa fa-check"></i><b>8.4.3</b> Dollar signs</a></li>
+<li class="chapter" data-level="8.4.4" data-path="lists.html"><a href="lists.html#adding-new-elements"><i class="fa fa-check"></i><b>8.4.4</b> Adding new elements</a></li>
+<li class="chapter" data-level="8.4.5" data-path="lists.html"><a href="lists.html#removing-elements"><i class="fa fa-check"></i><b>8.4.5</b> Removing elements</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="lists.html"><a href="lists.html#exercises-5"><i class="fa fa-check"></i><b>8.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="dataframes.html"><a href="dataframes.html"><i class="fa fa-check"></i><b>9</b> Data Frames</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="dataframes.html"><a href="dataframes.html#r-data-frames"><i class="fa fa-check"></i><b>9.1</b> R Data Frames</a></li>
+<li class="chapter" data-level="9.2" data-path="dataframes.html"><a href="dataframes.html#inspecting-data-frames"><i class="fa fa-check"></i><b>9.2</b> Inspecting data frames</a></li>
+<li class="chapter" data-level="9.3" data-path="dataframes.html"><a href="dataframes.html#creating-data-frames"><i class="fa fa-check"></i><b>9.3</b> Creating data frames</a></li>
+<li class="chapter" data-level="9.4" data-path="dataframes.html"><a href="dataframes.html#basic-operations-with-data-frames"><i class="fa fa-check"></i><b>9.4</b> Basic Operations with Data Frames</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="dataframes.html"><a href="dataframes.html#selecting-elements-1"><i class="fa fa-check"></i><b>9.4.1</b> Selecting elements</a></li>
+<li class="chapter" data-level="9.4.2" data-path="dataframes.html"><a href="dataframes.html#adding-a-column-1"><i class="fa fa-check"></i><b>9.4.2</b> Adding a column</a></li>
+<li class="chapter" data-level="9.4.3" data-path="dataframes.html"><a href="dataframes.html#deleting-a-column-1"><i class="fa fa-check"></i><b>9.4.3</b> Deleting a column</a></li>
+<li class="chapter" data-level="9.4.4" data-path="dataframes.html"><a href="dataframes.html#renaming-a-column"><i class="fa fa-check"></i><b>9.4.4</b> Renaming a column</a></li>
+<li class="chapter" data-level="9.4.5" data-path="dataframes.html"><a href="dataframes.html#moving-a-column-1"><i class="fa fa-check"></i><b>9.4.5</b> Moving a column</a></li>
+<li class="chapter" data-level="9.4.6" data-path="dataframes.html"><a href="dataframes.html#transforming-a-column"><i class="fa fa-check"></i><b>9.4.6</b> Transforming a column</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="dataframes.html"><a href="dataframes.html#exercises-6"><i class="fa fa-check"></i><b>9.5</b> Exercises</a></li>
+</ul></li>
+<li class="part"><span><b>IV Graphics</b></span></li>
+<li class="chapter" data-level="10" data-path="graphics1.html"><a href="graphics1.html"><i class="fa fa-check"></i><b>10</b> Base Graphics</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="graphics1.html"><a href="graphics1.html#basics-of-graphics-in-r"><i class="fa fa-check"></i><b>10.1</b> Basics of Graphics in R</a></li>
+<li class="chapter" data-level="10.2" data-path="graphics1.html"><a href="graphics1.html#the-plot-function"><i class="fa fa-check"></i><b>10.2</b> The <code>plot()</code> function</a></li>
+<li class="chapter" data-level="10.3" data-path="graphics1.html"><a href="graphics1.html#traditional-graphics-in-r"><i class="fa fa-check"></i><b>10.3</b> Traditional Graphics in R</a></li>
+<li class="chapter" data-level="10.4" data-path="graphics1.html"><a href="graphics1.html#low-level-functions"><i class="fa fa-check"></i><b>10.4</b> Low-Level Functions</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="graphics1.html"><a href="graphics1.html#low-level-functions-1"><i class="fa fa-check"></i><b>10.4.1</b> Low-level functions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="graphics2.html"><a href="graphics2.html"><i class="fa fa-check"></i><b>11</b> More Base Graphics</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="graphics2.html"><a href="graphics2.html#the-plot-function-1"><i class="fa fa-check"></i><b>11.1</b> The <code>plot()</code> function</a></li>
+<li class="chapter" data-level="11.2" data-path="graphics2.html"><a href="graphics2.html#one-variable-graphics"><i class="fa fa-check"></i><b>11.2</b> One variable graphics</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="graphics2.html"><a href="graphics2.html#more-high-level-graphics-of-a-single-variable"><i class="fa fa-check"></i><b>11.2.1</b> More high-level graphics of a single variable</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="graphics2.html"><a href="graphics2.html#plots-of-two-variables"><i class="fa fa-check"></i><b>11.3</b> Plots of Two Variables</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="graphics2.html"><a href="graphics2.html#example-plots-of-two-variables"><i class="fa fa-check"></i><b>11.3.1</b> Example: Plots of two variables</a></li>
+<li class="chapter" data-level="11.3.2" data-path="graphics2.html"><a href="graphics2.html#more-high-level-graphics-of-two-variables"><i class="fa fa-check"></i><b>11.3.2</b> More high-level graphics of two variables</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="graphics3.html"><a href="graphics3.html"><i class="fa fa-check"></i><b>12</b> Plots from Scratch</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="graphics3.html"><a href="graphics3.html#making-a-graphic-from-scratch"><i class="fa fa-check"></i><b>12.1</b> Making a graphic from scratch</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="graphics3.html"><a href="graphics3.html#how-does-it-work"><i class="fa fa-check"></i><b>12.1.1</b> How does it work</a></li>
+<li class="chapter" data-level="12.1.2" data-path="graphics3.html"><a href="graphics3.html#drawing-arrows"><i class="fa fa-check"></i><b>12.1.2</b> Drawing Arrows</a></li>
+<li class="chapter" data-level="12.1.3" data-path="graphics3.html"><a href="graphics3.html#drawing-rectangles"><i class="fa fa-check"></i><b>12.1.3</b> Drawing Rectangles</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>V Programming Basics</b></span></li>
+<li class="chapter" data-level="13" data-path="functions1.html"><a href="functions1.html"><i class="fa fa-check"></i><b>13</b> Intro to Functions</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="functions1.html"><a href="functions1.html#motivation-3"><i class="fa fa-check"></i><b>13.1</b> Motivation</a></li>
+<li class="chapter" data-level="13.2" data-path="functions1.html"><a href="functions1.html#writing-a-simple-function"><i class="fa fa-check"></i><b>13.2</b> Writing a Simple Function</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="functions1.html"><a href="functions1.html#arguments-with-default-values"><i class="fa fa-check"></i><b>13.2.1</b> Arguments with default values</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="functions1.html"><a href="functions1.html#writing-functions-for-humans"><i class="fa fa-check"></i><b>13.3</b> Writing Functions for Humans</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="functions1.html"><a href="functions1.html#naming-functions"><i class="fa fa-check"></i><b>13.3.1</b> Naming Functions</a></li>
+<li class="chapter" data-level="13.3.2" data-path="functions1.html"><a href="functions1.html#functions-documentation"><i class="fa fa-check"></i><b>13.3.2</b> Function’s Documentation</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="functions1.html"><a href="functions1.html#exercises-7"><i class="fa fa-check"></i><b>13.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="expressions.html"><a href="expressions.html"><i class="fa fa-check"></i><b>14</b> Expressions</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="expressions.html"><a href="expressions.html#r-expressions"><i class="fa fa-check"></i><b>14.1</b> R Expressions</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="expressions.html"><a href="expressions.html#simple-expressions"><i class="fa fa-check"></i><b>14.1.1</b> Simple Expressions</a></li>
+<li class="chapter" data-level="14.1.2" data-path="expressions.html"><a href="expressions.html#compound-expressions"><i class="fa fa-check"></i><b>14.1.2</b> Compound Expressions</a></li>
+<li class="chapter" data-level="14.1.3" data-path="expressions.html"><a href="expressions.html#every-expression-has-a-value"><i class="fa fa-check"></i><b>14.1.3</b> Every expression has a value</a></li>
+<li class="chapter" data-level="14.1.4" data-path="expressions.html"><a href="expressions.html#assignments-within-compound-expressions"><i class="fa fa-check"></i><b>14.1.4</b> Assignments within Compound Expressions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="conditionals.html"><a href="conditionals.html"><i class="fa fa-check"></i><b>15</b> Conditionals: If-Else</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="conditionals.html"><a href="conditionals.html#motivation-4"><i class="fa fa-check"></i><b>15.1</b> Motivation</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="conditionals.html"><a href="conditionals.html#future-value-of-ordinary-annuity"><i class="fa fa-check"></i><b>15.1.1</b> Future Value of Ordinary Annuity</a></li>
+<li class="chapter" data-level="15.1.2" data-path="conditionals.html"><a href="conditionals.html#future-value-of-annuity-due"><i class="fa fa-check"></i><b>15.1.2</b> Future Value of Annuity Due</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="conditionals.html"><a href="conditionals.html#conditionals-1"><i class="fa fa-check"></i><b>15.2</b> Conditionals</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="conditionals.html"><a href="conditionals.html#if-else-conditions"><i class="fa fa-check"></i><b>15.2.1</b> If-else conditions</a></li>
+<li class="chapter" data-level="15.2.2" data-path="conditionals.html"><a href="conditionals.html#anatomy-of-if-else-statements"><i class="fa fa-check"></i><b>15.2.2</b> Anatomy of if-else statements</a></li>
+<li class="chapter" data-level="15.2.3" data-path="conditionals.html"><a href="conditionals.html#minimalist-if-then-else"><i class="fa fa-check"></i><b>15.2.3</b> Minimalist If-then-else</a></li>
+<li class="chapter" data-level="15.2.4" data-path="conditionals.html"><a href="conditionals.html#simple-ifs"><i class="fa fa-check"></i><b>15.2.4</b> Simple If’s</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="conditionals.html"><a href="conditionals.html#multiple-ifs"><i class="fa fa-check"></i><b>15.3</b> Multiple If’s</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="conditionals.html"><a href="conditionals.html#switch-statements"><i class="fa fa-check"></i><b>15.3.1</b> Switch statements</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="conditionals.html"><a href="conditionals.html#derivation-of-fvoa"><i class="fa fa-check"></i><b>15.4</b> Derivation of FVOA</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="for-loop.html"><a href="for-loop.html"><i class="fa fa-check"></i><b>16</b> Iterations: For Loop</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="for-loop.html"><a href="for-loop.html#motivation-5"><i class="fa fa-check"></i><b>16.1</b> Motivation</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="for-loop.html"><a href="for-loop.html#us-stock-market-historical-annual-returns"><i class="fa fa-check"></i><b>16.1.1</b> US Stock Market Historical Annual Returns</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="for-loop.html"><a href="for-loop.html#simulating-normal-random-numbers"><i class="fa fa-check"></i><b>16.2</b> Simulating Normal Random Numbers</a>
+<ul>
+<li class="chapter" data-level="16.2.1" data-path="for-loop.html"><a href="for-loop.html#investing-in-the-us-stock-market-during-three-years"><i class="fa fa-check"></i><b>16.2.1</b> Investing in the US stock market during three years</a></li>
+<li class="chapter" data-level="16.2.2" data-path="for-loop.html"><a href="for-loop.html#investing-during-ten-years"><i class="fa fa-check"></i><b>16.2.2</b> Investing during ten years</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="for-loop.html"><a href="for-loop.html#iterations-to-the-rescue"><i class="fa fa-check"></i><b>16.3</b> Iterations to the Rescue</a></li>
+<li class="chapter" data-level="16.4" data-path="for-loop.html"><a href="for-loop.html#for-loop-example"><i class="fa fa-check"></i><b>16.4</b> For Loop Example</a></li>
+<li class="chapter" data-level="16.5" data-path="for-loop.html"><a href="for-loop.html#about-for-loops"><i class="fa fa-check"></i><b>16.5</b> About For Loops</a>
+<ul>
+<li class="chapter" data-level="16.5.1" data-path="for-loop.html"><a href="for-loop.html#anatomy-of-a-for-loop"><i class="fa fa-check"></i><b>16.5.1</b> Anatomy of a For Loop</a></li>
+<li class="chapter" data-level="16.5.2" data-path="for-loop.html"><a href="for-loop.html#for-loops-and-next-statement"><i class="fa fa-check"></i><b>16.5.2</b> For Loops and Next statement</a></li>
+<li class="chapter" data-level="16.5.3" data-path="for-loop.html"><a href="for-loop.html#for-loops-and-break-statement"><i class="fa fa-check"></i><b>16.5.3</b> For Loops and Break statement</a></li>
+<li class="chapter" data-level="16.5.4" data-path="for-loop.html"><a href="for-loop.html#nested-loops"><i class="fa fa-check"></i><b>16.5.4</b> Nested Loops</a></li>
+<li class="chapter" data-level="16.5.5" data-path="for-loop.html"><a href="for-loop.html#about-for-loops-and-vectorized-computations"><i class="fa fa-check"></i><b>16.5.5</b> About <code>for</code> Loops and Vectorized Computations</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="while-loop.html"><a href="while-loop.html"><i class="fa fa-check"></i><b>17</b> Iterations: While Loop</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="while-loop.html"><a href="while-loop.html#motivation-6"><i class="fa fa-check"></i><b>17.1</b> Motivation</a></li>
+<li class="chapter" data-level="17.2" data-path="while-loop.html"><a href="while-loop.html#anatomy-of-a-while-loop"><i class="fa fa-check"></i><b>17.2</b> Anatomy of a While Loop</a></li>
+<li class="chapter" data-level="17.3" data-path="while-loop.html"><a href="while-loop.html#another-example"><i class="fa fa-check"></i><b>17.3</b> Another Example</a>
+<ul>
+<li class="chapter" data-level="17.3.1" data-path="while-loop.html"><a href="while-loop.html#while-loops-and-next-statement"><i class="fa fa-check"></i><b>17.3.1</b> While Loops and Next statement</a></li>
+<li class="chapter" data-level="17.3.2" data-path="while-loop.html"><a href="while-loop.html#while-loops-and-break-statement"><i class="fa fa-check"></i><b>17.3.2</b> While Loops and Break statement</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="functions2.html"><a href="functions2.html"><i class="fa fa-check"></i><b>18</b> More About Functions</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="functions2.html"><a href="functions2.html#functions-recap"><i class="fa fa-check"></i><b>18.1</b> Functions Recap</a>
+<ul>
+<li class="chapter" data-level="18.1.1" data-path="functions2.html"><a href="functions2.html#simple-expressions-1"><i class="fa fa-check"></i><b>18.1.1</b> Simple Expressions</a></li>
+<li class="chapter" data-level="18.1.2" data-path="functions2.html"><a href="functions2.html#nested-functions"><i class="fa fa-check"></i><b>18.1.2</b> Nested Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="functions2.html"><a href="functions2.html#function-output"><i class="fa fa-check"></i><b>18.2</b> Function Output</a>
+<ul>
+<li class="chapter" data-level="18.2.1" data-path="functions2.html"><a href="functions2.html#the-return-command"><i class="fa fa-check"></i><b>18.2.1</b> The <code>return()</code> command</a></li>
+<li class="chapter" data-level="18.2.2" data-path="functions2.html"><a href="functions2.html#white-spaces"><i class="fa fa-check"></i><b>18.2.2</b> White Spaces</a></li>
+</ul></li>
+<li class="chapter" data-level="18.3" data-path="functions2.html"><a href="functions2.html#indentation"><i class="fa fa-check"></i><b>18.3</b> Indentation</a>
+<ul>
+<li class="chapter" data-level="18.3.1" data-path="functions2.html"><a href="functions2.html#meaningful-names"><i class="fa fa-check"></i><b>18.3.1</b> Meaningful Names</a></li>
+<li class="chapter" data-level="18.3.2" data-path="functions2.html"><a href="functions2.html#syntax-parentheses"><i class="fa fa-check"></i><b>18.3.2</b> Syntax: Parentheses</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="functions2.html"><a href="functions2.html#recommendations"><i class="fa fa-check"></i><b>18.4</b> Recommendations</a></li>
+</ul></li>
+<li class="part"><span><b>VI Import / Export</b></span></li>
+<li class="chapter" data-level="19" data-path="input-output.html"><a href="input-output.html"><i class="fa fa-check"></i><b>19</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="input-output.html"><a href="input-output.html#importing-and-exporting-resources"><i class="fa fa-check"></i><b>19.1</b> Importing and Exporting Resources</a>
+<ul>
+<li class="chapter" data-level="19.1.1" data-path="input-output.html"><a href="input-output.html#behind-importexport-functions"><i class="fa fa-check"></i><b>19.1.1</b> Behind import/export functions</a></li>
+</ul></li>
+<li class="chapter" data-level="19.2" data-path="input-output.html"><a href="input-output.html#connections"><i class="fa fa-check"></i><b>19.2</b> Connections</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="import-tables.html"><a href="import-tables.html"><i class="fa fa-check"></i><b>20</b> Importing Data Tables</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="import-tables.html"><a href="import-tables.html#motivation-7"><i class="fa fa-check"></i><b>20.1</b> Motivation</a>
+<ul>
+<li class="chapter" data-level="20.1.1" data-path="import-tables.html"><a href="import-tables.html#data-in-text-files"><i class="fa fa-check"></i><b>20.1.1</b> Data in Text Files</a></li>
+</ul></li>
+<li class="chapter" data-level="20.2" data-path="import-tables.html"><a href="import-tables.html#character-delimited-text-files"><i class="fa fa-check"></i><b>20.2</b> Character Delimited Text Files</a>
+<ul>
+<li class="chapter" data-level="20.2.1" data-path="import-tables.html"><a href="import-tables.html#common-delimiters"><i class="fa fa-check"></i><b>20.2.1</b> Common Delimiters</a></li>
+<li class="chapter" data-level="20.2.2" data-path="import-tables.html"><a href="import-tables.html#delimiters-in-data-values"><i class="fa fa-check"></i><b>20.2.2</b> Delimiters in Data Values</a></li>
+<li class="chapter" data-level="20.2.3" data-path="import-tables.html"><a href="import-tables.html#fixed-width-format-files"><i class="fa fa-check"></i><b>20.2.3</b> Fixed-Width Format Files</a></li>
+<li class="chapter" data-level="20.2.4" data-path="import-tables.html"><a href="import-tables.html#summary"><i class="fa fa-check"></i><b>20.2.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="20.3" data-path="import-tables.html"><a href="import-tables.html#importing-data-tables"><i class="fa fa-check"></i><b>20.3</b> Importing Data Tables</a>
+<ul>
+<li class="chapter" data-level="20.3.1" data-path="import-tables.html"><a href="import-tables.html#function-read.table-and-friends"><i class="fa fa-check"></i><b>20.3.1</b> Function <code>read.table()</code> and friends</a></li>
+<li class="chapter" data-level="20.3.2" data-path="import-tables.html"><a href="import-tables.html#reading-space-separated-files"><i class="fa fa-check"></i><b>20.3.2</b> Reading space-separated files</a></li>
+<li class="chapter" data-level="20.3.3" data-path="import-tables.html"><a href="import-tables.html#reading-comma-separated-files-with-read.csv"><i class="fa fa-check"></i><b>20.3.3</b> Reading comma-separated files with <code>read.csv()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="20.4" data-path="import-tables.html"><a href="import-tables.html#importing-with-scan"><i class="fa fa-check"></i><b>20.4</b> Importing with <code>scan()</code></a></li>
+<li class="chapter" data-level="20.5" data-path="import-tables.html"><a href="import-tables.html#in-summary-1"><i class="fa fa-check"></i><b>20.5</b> In Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="export-data.html"><a href="export-data.html"><i class="fa fa-check"></i><b>21</b> Exporting Data</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="export-data.html"><a href="export-data.html#exporting-tables"><i class="fa fa-check"></i><b>21.1</b> Exporting Tables</a></li>
+<li class="chapter" data-level="21.2" data-path="export-data.html"><a href="export-data.html#exporting-text"><i class="fa fa-check"></i><b>21.2</b> Exporting Text</a></li>
+<li class="chapter" data-level="21.3" data-path="export-data.html"><a href="export-data.html#sending-output-with-cat"><i class="fa fa-check"></i><b>21.3</b> Sending output with <code>cat()</code></a>
+<ul>
+<li class="chapter" data-level="21.3.1" data-path="export-data.html"><a href="export-data.html#sending-output-with-cat-1"><i class="fa fa-check"></i><b>21.3.1</b> Sending output with <code>cat()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="21.4" data-path="export-data.html"><a href="export-data.html#redirecting-output-with-sink"><i class="fa fa-check"></i><b>21.4</b> Redirecting output with <code>sink()</code></a></li>
+<li class="chapter" data-level="21.5" data-path="export-data.html"><a href="export-data.html#exporting-rs-binary-data"><i class="fa fa-check"></i><b>21.5</b> Exporting R’s Binary Data</a></li>
+<li class="chapter" data-level="21.6" data-path="export-data.html"><a href="export-data.html#exporting-images"><i class="fa fa-check"></i><b>21.6</b> Exporting Images</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://www.gastonsanchez.com" target="_blank">gastonsanchez.com</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Coding Basics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="import-tables" class="section level1 hasAnchor" number="20">
+<h1><span class="header-section-number">20</span> Importing Data Tables<a href="import-tables.html#import-tables" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The most common type of data-import operation in R has to do with importing
+data tables. Because of this, I have decided to exclusively dedicate this
+chapter to review this type of operation. In a nutshell, I describe various
+standard ways to import tabular data. By “standard” I mean using base functions
+such as <code>read.table()</code> and friends. This is in contrast to alternative functions
+from packages such as <code>"readr"</code>, and other packages.</p>
+<div id="motivation-7" class="section level2 hasAnchor" number="20.1">
+<h2><span class="header-section-number">20.1</span> Motivation<a href="import-tables.html#motivation-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Suppose we have data about the accounts of an individual’s portfolio (see table
+below). There are five different accounts, the type of bank (brick-and-mortar
+or online) associated to the account, the annual rate of return, and the
+balance amount (in dollars).</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">account</th>
+<th align="left">bank</th>
+<th align="left">rate</th>
+<th align="left">balance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">savings</td>
+<td align="left">brick-n-mortar</td>
+<td align="left">0.020</td>
+<td align="left">1000</td>
+</tr>
+<tr class="even">
+<td align="left">money market</td>
+<td align="left">online</td>
+<td align="left">0.025</td>
+<td align="left">2000</td>
+</tr>
+<tr class="odd">
+<td align="left">certificate</td>
+<td align="left">brick-n-mortar</td>
+<td align="left">0.030</td>
+<td align="left">3000</td>
+</tr>
+<tr class="even">
+<td align="left">brokerage</td>
+<td align="left">online</td>
+<td align="left">0.070</td>
+<td align="left">5000</td>
+</tr>
+<tr class="odd">
+<td align="left">retirement</td>
+<td align="left">online</td>
+<td align="left">0.050</td>
+<td align="left">9000</td>
+</tr>
+</tbody>
+</table>
+<p>A data table like this one could be stored in various types of files. For
+example, it could be stored in a <em>Comma Separated Value</em> (CSV) file, which is a
+very common kind of text file format used to store tables. Another possible way
+in which this table could be stored is in a spreadsheet (e.g. Excel, Google
+Sheets, Mac Numbers).</p>
+<div id="data-in-text-files" class="section level3 hasAnchor" number="20.1.1">
+<h3><span class="header-section-number">20.1.1</span> Data in Text Files<a href="import-tables.html#data-in-text-files" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let’s assume that the table is stored in a text file. Because the term text
+file is used in slightly different ways, let me be a bit more specific about
+what I mean by <em>text</em> file:</p>
+<ul>
+<li><p>By text file I mean a plain text file that can be read and manipulated with a
+text editor (not to be confused with a word-processor)</p></li>
+<li><p>Plain text as an umbrella term for any file that is in a human-readable form,
+with comon file extensions such as <code>.txt</code>, <code>.csv</code>, <code>.xml</code>, <code>.html</code>.</p></li>
+<li><p>Text file implying that its content is stored as a sequence of characters</p></li>
+<li><p>Each character stored as a single byte of data</p></li>
+<li><p>Data is arranged in rows, with several values stored on each row</p></li>
+</ul>
+</div>
+</div>
+<div id="character-delimited-text-files" class="section level2 hasAnchor" number="20.2">
+<h2><span class="header-section-number">20.2</span> Character Delimited Text Files<a href="import-tables.html#character-delimited-text-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A common way to store data tables is via text files. But how is this actually
+done? How can a data table be stored in a text file?</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-360"></span>
+<img src="images/inout/table-storing-data.png" alt="How are data tables stored in text files?" width="65%" />
+<p class="caption">
+Figure 20.1: How are data tables stored in text files?
+</p>
+</div>
+<p>You may not have thought about this before. This was certainly the case for
+me back when I was an undergraduate student. I could perfectly picture a data
+table in my head, with a bunch of rows and columns forming its grid-like
+structure. But I never considered a table’s storage format in a text file.</p>
+<p>Think about it: a table is made of cells that come from the intersection of
+rows and columns. So the two fundamental questions when storing data in a text
+file are: 1) how to represent rows?, and 2) how to represent columns? Or in
+other words: how to convey the notion of cells in a text file?</p>
+<p>The answer to this question comes from realizing what a data cell does. A
+cell is basically a placeholder for a data value. Cells let us separate or
+delimit one data value from another. So all we have to do is to come up with
+a <strong>delimiter</strong> or <strong>separator</strong> to differentiate from one data point to the
+next one. The way this is done is by choosing a certain character as the
+delimiter. As for the notion of rows, we can simply use newlines.</p>
+<p>Here is an example of how the accounts data table can be store in a
+text file, using commas <code>","</code> as the character to separate values:</p>
+<pre><code>account,bank,rate,balance
+savings,bricknmor,0.020,1000
+monmarket,online,0.025,2000
+certificate,bricknmor,0.030,3000
+brokerage,online,0.070,5000
+retirement,online,0.050,9000</code></pre>
+<div id="common-delimiters" class="section level3 hasAnchor" number="20.2.1">
+<h3><span class="header-section-number">20.2.1</span> Common Delimiters<a href="import-tables.html#common-delimiters" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>As you can tell, the idea of storing data tables via text files is very simple
+and clever. More formally, this storage option is commonly referred to as
+<strong>field-delimiter</strong> formats. The term “field” is a synonym of <em>variable</em> or
+<em>column</em>. The term “delimiter” indicates that a certain character is used to
+delimit the values of every column.</p>
+<p>Common examples of such delimiters are blank space characters <code>" "</code>, tab
+characters <code>"\t"</code>, or comma characters <code>","</code>.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Delimiter</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>" "</code></td>
+<td align="left">white space</td>
+</tr>
+<tr class="even">
+<td align="left"><code>","</code></td>
+<td align="left">comma</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>"\t"</code></td>
+<td align="left">tab</td>
+</tr>
+<tr class="even">
+<td align="left"><code>";"</code></td>
+<td align="left">semicolon</td>
+</tr>
+</tbody>
+</table>
+<p>As a matter of fact, you can come up with your own delimiter. For instance,
+I can use vertical bars <code>"|"</code> as delimiters:</p>
+<pre><code>account|bank|rate|balance
+savings|bricknmor|0.020|1000
+monmarket|online|0.025|2000
+certificate|bricknmor|0.030|3000
+brokerage|online|0.070|5000
+retirement|online|0.050|9000</code></pre>
+<p>Or even use double colons as delimiters:</p>
+<pre><code>account::bank::rate::balance
+savings::bricknmor::0.020::1000
+monmarket::online::0.025::2000
+certificate::bricknmor::0.030::3000
+brokerage::online::0.070::5000
+retirement::online::0.050::9000</code></pre>
+<p>To be honest, if you have to choose a certain character for delimiting
+purposes, I would recommend not to be creative, and instead to stick with one
+of the conventional delimiters. Below are some examples of what the content of
+a text file—storing the accounts table—could look like when using different
+delimiters.</p>
+<div id="space-delimited" class="section level4 unnumbered hasAnchor">
+<h4>Space Delimited<a href="import-tables.html#space-delimited" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Example of a <strong>space</strong> delimited file (common file extension <code>.txt</code>)</p>
+<pre><code>account bank rate balance
+savings bricknmor 0.020 1000
+monmarket online 0.025 2000
+certificate bricknmor 0.030 3000
+brokerage online 0.070 5000
+retirement online 0.050 9000</code></pre>
+</div>
+<div id="tab-delimited" class="section level4 unnumbered hasAnchor">
+<h4>Tab Delimited<a href="import-tables.html#tab-delimited" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Example of a <strong>tab</strong> delimited file (common file extensions <code>.txt</code> or <code>.tsv</code>)</p>
+<pre><code>account   bank    rate    balance
+savings   bricknmor   0.020   1000
+monmarket   online    0.025   2000
+certificate   bricknmor   0.030   3000
+brokerage   online    0.070   5000
+retirement    online    0.050   9000</code></pre>
+</div>
+<div id="semicolon-delimited" class="section level4 unnumbered hasAnchor">
+<h4>Semicolon Delimited<a href="import-tables.html#semicolon-delimited" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Example of a <strong>semicolon</strong> delimited file (common file extension <code>.csv</code>)</p>
+<pre><code>account;bank;rate;balance
+savings;bricknmor;0.020;1000
+monmarket;online;0.025;2000
+certificate;bricknmor;0.030;3000
+brokerage;online;0.070;5000
+retirement;online;0.050;9000</code></pre>
+</div>
+</div>
+<div id="delimiters-in-data-values" class="section level3 hasAnchor" number="20.2.2">
+<h3><span class="header-section-number">20.2.2</span> Delimiters in Data Values<a href="import-tables.html#delimiters-in-data-values" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>What happens if the chosen delimiter is actually part of a data value? As an
+example of this type of situation, let’s modify the accounts data table.
+In particular, suppose that the values in column <code>balance</code> contain a comma
+to better distinguish numbers in thousands of dollars:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">account</th>
+<th align="left">bank</th>
+<th align="left">rate</th>
+<th align="left">balance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">savings</td>
+<td align="left">brick-n-mortar</td>
+<td align="left">0.020</td>
+<td align="left">1,000</td>
+</tr>
+<tr class="even">
+<td align="left">money market</td>
+<td align="left">online</td>
+<td align="left">0.025</td>
+<td align="left">2,000</td>
+</tr>
+<tr class="odd">
+<td align="left">certificate</td>
+<td align="left">brick-n-mortar</td>
+<td align="left">0.030</td>
+<td align="left">3,000</td>
+</tr>
+<tr class="even">
+<td align="left">brokerage</td>
+<td align="left">online</td>
+<td align="left">0.070</td>
+<td align="left">5,000</td>
+</tr>
+<tr class="odd">
+<td align="left">retirement</td>
+<td align="left">online</td>
+<td align="left">0.050</td>
+<td align="left">9,000</td>
+</tr>
+</tbody>
+</table>
+<p>If commas are also used as delimiters, we will have a conflict because the
+commas in balance values are not intended to be delimiters:</p>
+<pre><code>account,bank,rate,balance
+savings,bricknmor,0.020,1,000
+monmarket,online,0.025,2,000
+certificate,bricknmor,0.030,3,000
+brokerage,online,0.070,5,000
+retirement,online,0.050,9,000</code></pre>
+<p>When something like this happens, to avoid a conflict between the delimiting
+character and its usage as part of a data value, the convention is to surround
+the values within quotes (typically double quotes), like this:</p>
+<pre><code>account,bank,rate,balance
+savings,bricknmor,0.020,&quot;1,000&quot;
+monmarket,online,0.025,&quot;2,000&quot;
+certificate,bricknmor,0.030,&quot;3,000&quot;
+brokerage,online,0.070,&quot;5,000&quot;
+retirement,online,0.050,&quot;9,000&quot;</code></pre>
+</div>
+<div id="fixed-width-format-files" class="section level3 hasAnchor" number="20.2.3">
+<h3><span class="header-section-number">20.2.3</span> Fixed-Width Format Files<a href="import-tables.html#fixed-width-format-files" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In addition to character-delimited files, there is another kind of plain text
+format that can also be used to store data tables: the so-called
+<strong>fixed-width formats</strong> or <em>fwf</em> for short.</p>
+<p>In a fixed-width format file, the way in which values are separated is not with
+a character. Instead, values in a column are given a fixed width expressed in a
+certain number of characters.</p>
+<p>Here’s an example of a <strong>fixed width</strong> delimited file (common file extension
+<code>.txt</code>). For sake of illustration, I’m adding a sequence of digits at the top.
+In real life, the first line of digits is not supposed to be part of the file.</p>
+<pre><code>12345678901234567890123456789012345
+account     bank      rate  balance
+savings     bricknmor 0.020 1000
+monmarket   online    0.025 2000
+certificate bricknmor 0.030 3000
+brokerage   online    0.070 5000
+retirement  online    0.050 9000</code></pre>
+<p>All the data of the first column <code>account</code> is given a width of 12 characters
+(i.e. digits <code>123456789012</code>). In turn, all the data in column <code>bank</code> fits
+within a width of 10 characters (i.e. digits <code>3456789012</code>), and so on.</p>
+</div>
+<div id="summary" class="section level3 hasAnchor" number="20.2.4">
+<h3><span class="header-section-number">20.2.4</span> Summary<a href="import-tables.html#summary" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To summarize:</p>
+<ul>
+<li><p>A common way to store data in tabular form is via text files</p></li>
+<li><p>To store the data we need a way to separate data values</p></li>
+<li><p>Each line represents a “row”</p></li>
+<li><p>The idea of “columns” is conveyed with delimiters</p></li>
+<li><p>Fields within each line are separated by the delimiter</p></li>
+<li><p>Quotation marks are used when the delimiter character occurs within one of
+the fields</p></li>
+</ul>
+</div>
+</div>
+<div id="importing-data-tables" class="section level2 hasAnchor" number="20.3">
+<h2><span class="header-section-number">20.3</span> Importing Data Tables<a href="import-tables.html#importing-data-tables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Now that we have talked about how data tables are stored in text files, and
+the various formats in which this is done, let’s review the set of
+functions to import tables in R, as well as important considerations to keep
+in mind when importing data in general.</p>
+<p>Considerations before importing a data table in R:</p>
+<ul>
+<li><p>What is the character used as field delimiter?</p></li>
+<li><p>Does the file contain names of columns?</p></li>
+<li><p>Does the file contain a column for row names?</p></li>
+<li><p>Are there any missing values? If yes, how are missing values encoded?</p></li>
+<li><p>Do you want to read in all rows, or just some of them?</p></li>
+<li><p>Do you want to read in all columns, or just some of them?</p></li>
+<li><p>Do you need to convert delimiter characters? (e.g. from space to comma)</p></li>
+<li><p>Can you determine the data-type of each column?</p></li>
+<li><p>Are there any uninformative numbers?</p></li>
+<li><p>Can you convert those uninformative numbers to informative labels?</p></li>
+</ul>
+<div id="function-read.table-and-friends" class="section level3 hasAnchor" number="20.3.1">
+<h3><span class="header-section-number">20.3.1</span> Function <code>read.table()</code> and friends<a href="import-tables.html#function-read.table-and-friends" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The most common way to read and import tables in R is by using
+<code>read.table()</code> and friends such as <code>read.csv()</code>, <code>read.delim()</code>, etc. If you
+take a look at the arguments of <code>read.table()</code> you’ll see that this function
+has more than 20 of them. Actually, if you inspect the help documentation,
+<code>read.table()</code> comes with the following usage:</p>
+<pre><code>read.table(file, header = FALSE, sep = &quot;&quot;, quote = &quot;\&quot;&#39;&quot;,
+           dec = &quot;.&quot;, row.names, col.names,
+           as.is = !stringsAsFactors,
+           na.strings = &quot;NA&quot;, colClasses = NA, nrows = -1,
+           skip = 0, check.names = TRUE,
+           fill = !blank.lines.skip,
+           strip.white = FALSE, blank.lines.skip = TRUE,
+           comment.char = &quot;#&quot;,
+           allowEscapes = FALSE, flush = FALSE,
+           stringsAsFactors = default.stringsAsFactors(),
+           fileEncoding = &quot;&quot;, encoding = &quot;unknown&quot;, text,
+           skipNul = FALSE)</code></pre>
+<p>As I mention in the foregoing chapter, the mandatory input for <code>read.table()</code>
+and friends is <code>file</code> which is the name of the file which the data are to be
+read from. On the more technical side, recall that there is a <code>connection()</code>
+function used by R related to the <code>file</code> argument.</p>
+<p>The following table lists some <code>read.table()</code> arguments and their meaning:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Argument</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>file</code></td>
+<td align="left">Name of file</td>
+</tr>
+<tr class="even">
+<td align="left"><code>header</code></td>
+<td align="left">Whether column names are in 1st line</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>sep</code></td>
+<td align="left">Character used as field separator</td>
+</tr>
+<tr class="even">
+<td align="left"><code>quote</code></td>
+<td align="left">Quoting characters</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>dec</code></td>
+<td align="left">Character for decimal point</td>
+</tr>
+<tr class="even">
+<td align="left"><code>row.names</code></td>
+<td align="left">Optional vector of row names</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>col.names</code></td>
+<td align="left">Optional vector of column names</td>
+</tr>
+<tr class="even">
+<td align="left"><code>na.strings</code></td>
+<td align="left">Characters treated as missing values</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>colClasses</code></td>
+<td align="left">Optional vector of data types for columns</td>
+</tr>
+<tr class="even">
+<td align="left"><code>nrows</code></td>
+<td align="left">Maximum number of rows to read in</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>skip</code></td>
+<td align="left">Number of lines to skip before reading data</td>
+</tr>
+<tr class="even">
+<td align="left"><code>check.names</code></td>
+<td align="left">Check valid column names</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>stringsAsFactors</code></td>
+<td align="left">Should characters be converted to factors</td>
+</tr>
+</tbody>
+</table>
+<p>In versions of R <code>&lt; 4.0.0</code>, <code>read.table()</code> and friends convert character
+strings into factors by default.</p>
+<p>In addition to <code>read.table()</code>, there’s a handful of sibling functions to
+read other types of text files (see table below). By the way, all these
+functions are actually wrappers of <code>read.table()</code>:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>read.csv()</code></td>
+<td align="left">import comma separated values</td>
+</tr>
+<tr class="even">
+<td align="left"><code>read.csv2()</code></td>
+<td align="left">import semicolon separated values (Europe)</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>read.delim()</code></td>
+<td align="left">import tab separated values</td>
+</tr>
+<tr class="even">
+<td align="left"><code>read.delim2()</code></td>
+<td align="left">import tab separated values (Europe)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="reading-space-separated-files" class="section level3 hasAnchor" number="20.3.2">
+<h3><span class="header-section-number">20.3.2</span> Reading space-separated files<a href="import-tables.html#reading-space-separated-files" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let’s review some examples that illustrate the use of the read-table functions.
+For simplicity’s sake, we’ll assume that all data files are located in your
+working directory.</p>
+<p>Suppose you have the following data in a file: <code>accounts.txt</code></p>
+<pre><code>account bank rate balance
+savings bricknmor 0.020 1000
+monmarket online 0.025 2000
+certificate bricknmor 0.030 3000
+brokerage online 0.070 5000
+retirement online 0.050 9000</code></pre>
+<p><strong>Example 1</strong>. Importing table in blank separated file</p>
+<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="import-tables.html#cb379-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using read.table()</span></span>
+<span id="cb379-2"><a href="import-tables.html#cb379-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.table</span>(</span>
+<span id="cb379-3"><a href="import-tables.html#cb379-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">&quot;accounts.txt&quot;</span>, </span>
+<span id="cb379-4"><a href="import-tables.html#cb379-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>The imported data frame <code>dat</code> will be:</p>
+<pre><code>&gt;        account       bank   rate  balance
+&gt; 1      savings  bricknmor  0.020     1000
+&gt; 2    monmarket     online  0.025     2000
+&gt; 3  certificate  bricknmor  0.030     3000
+&gt; 4    brokerage     online  0.070     5000
+&gt; 5   retirement     online  0.050     9000</code></pre>
+<p><strong>Example 2</strong>. Limit the number of rows to read in (first 2 rows):</p>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="import-tables.html#cb381-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.table</span>(</span>
+<span id="cb381-2"><a href="import-tables.html#cb381-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">&quot;accounts.txt&quot;</span>, </span>
+<span id="cb381-3"><a href="import-tables.html#cb381-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb381-4"><a href="import-tables.html#cb381-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrows =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p>The imported data frame <code>dat</code> will be:</p>
+<pre><code>&gt;      account       bank   rate  balance
+&gt; 1    savings  bricknmor  0.020     1000
+&gt; 2  monmarket     online  0.025     2000</code></pre>
+<p><strong>Example 3</strong>. Skip the first row (no header) and limit the number of rows to
+read in (4 rows)</p>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="import-tables.html#cb383-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.table</span>(</span>
+<span id="cb383-2"><a href="import-tables.html#cb383-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">&quot;accounts.txt&quot;</span>, </span>
+<span id="cb383-3"><a href="import-tables.html#cb383-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb383-4"><a href="import-tables.html#cb383-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">skip =</span> <span class="dv">1</span>,</span>
+<span id="cb383-5"><a href="import-tables.html#cb383-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrows =</span> <span class="dv">4</span>)</span></code></pre></div>
+<p>The imported data frame <code>dat</code> will be:</p>
+<pre><code>&gt;             V1         V2     V3    V4
+&gt; 1      savings  bricknmor  0.020  1000
+&gt; 2    monmarket     online  0.025  2000
+&gt; 3  certificate  bricknmor  0.030  3000
+&gt; 4    brokerage     online  0.070  5000</code></pre>
+<p><strong>Example 4</strong>. Skip importing the second and third columns</p>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="import-tables.html#cb385-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.table</span>(</span>
+<span id="cb385-2"><a href="import-tables.html#cb385-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">&quot;accounts.txt&quot;</span>, </span>
+<span id="cb385-3"><a href="import-tables.html#cb385-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb385-4"><a href="import-tables.html#cb385-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">colClasses =</span> <span class="fu">c</span>(</span>
+<span id="cb385-5"><a href="import-tables.html#cb385-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;character&quot;</span>,</span>
+<span id="cb385-6"><a href="import-tables.html#cb385-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;NULL&quot;</span>,</span>
+<span id="cb385-7"><a href="import-tables.html#cb385-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;NULL&quot;</span>,</span>
+<span id="cb385-8"><a href="import-tables.html#cb385-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;numeric&quot;</span>))</span></code></pre></div>
+<p>The imported data frame <code>dat</code> will be:</p>
+<pre><code>&gt;        account  balance
+&gt; 1      savings     1000
+&gt; 2    monmarket     2000
+&gt; 3  certificate     3000
+&gt; 4    brokerage     5000
+&gt; 5   retirement     9000</code></pre>
+</div>
+<div id="reading-comma-separated-files-with-read.csv" class="section level3 hasAnchor" number="20.3.3">
+<h3><span class="header-section-number">20.3.3</span> Reading comma-separated files with <code>read.csv()</code><a href="import-tables.html#reading-comma-separated-files-with-read.csv" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let’s now consider a data table stored in a CSV file: <code>accounts.csv</code></p>
+<pre><code>account,bank,rate,balance
+savings,bricknmor,0.020,1000
+monmarket,online,0.025,2000
+certificate,bricknmor,0.030,3000
+brokerage,online,0.070,5000
+retirement,online,0.050,9000</code></pre>
+<p><strong>Example 1.</strong> Data in comma separated value (CSV) file</p>
+<p>We can use <code>read.table()</code></p>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="import-tables.html#cb388-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using read.table()</span></span>
+<span id="cb388-2"><a href="import-tables.html#cb388-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.table</span>(</span>
+<span id="cb388-3"><a href="import-tables.html#cb388-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">&quot;accounts.csv&quot;</span>,</span>
+<span id="cb388-4"><a href="import-tables.html#cb388-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb388-5"><a href="import-tables.html#cb388-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>)</span></code></pre></div>
+<p>Or more conveniently, we can use <code>read.csv()</code></p>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="import-tables.html#cb389-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using read.csv()</span></span>
+<span id="cb389-2"><a href="import-tables.html#cb389-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">&quot;accounts.csv&quot;</span>)</span></code></pre></div>
+<p>The imported data frame <code>dat</code> will be:</p>
+<pre><code>&gt;        account       bank   rate  balance
+&gt; 1      savings  bricknmor  0.020     1000
+&gt; 2    monmarket     online  0.025     2000
+&gt; 3  certificate  bricknmor  0.030     3000
+&gt; 4    brokerage     online  0.070     5000
+&gt; 5   retirement     online  0.050     9000</code></pre>
+</div>
+</div>
+<div id="importing-with-scan" class="section level2 hasAnchor" number="20.4">
+<h2><span class="header-section-number">20.4</span> Importing with <code>scan()</code><a href="import-tables.html#importing-with-scan" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To finish this chapter, I want to briefly talk to you about the <code>scan()</code>
+function. This is another function that you can use to read data into a vector
+or list from the console or from a file. As a matter of fact, <code>scan()</code> is
+under the hood of <code>read.table()</code> and friends. Because of this, I often refer
+to <code>scan()</code> as a low-level function.</p>
+<p>Let’s see an example for how to use <code>scan()</code> with a <strong>space</strong> delimited file.
+Suppose that we have the data in the file <code>accounts.txt</code>, located in our
+working directory.</p>
+<pre><code>account bank rate balance
+savings bricknmor 0.020 1000
+monmarket online 0.025 2000
+certificate bricknmor 0.030 3000
+brokerage online 0.070 5000
+retirement online 0.050 9000</code></pre>
+<p><code>scan()</code> is what I call a “low-level function”. What I mean by that is that
+we typically need to write more code when using this kind of functions. To be
+more precise, we usually have to specify more arguments when calling <code>scan()</code>
+than when calling other high-level functions like <code>read.table()</code> and friends.</p>
+<p>Like all other data-import functions, the first argument of <code>scan()</code> is the
+the name of the file (i.e. file path) to be imported. The second argument is
+called <code>what</code>, and this has to do with the <em>type of data</em> to be read.</p>
+<p>If you look at the content of <code>accounts.txt</code>, the first line contains the
+column names: <code>account bank rate balance</code>. Because the data in this first line
+is to be used as names, their data-type is <code>"character"</code>.</p>
+<p>The rest of the lines have to do with the actual data of the accounts. Each
+line contains four pieces of data:</p>
+<ul>
+<li><p>the kind of <code>account</code>, to be encoded as <code>"character"</code></p></li>
+<li><p>the kind of <code>bank</code>, to be encoded also as <code>"character"</code></p></li>
+<li><p>the <code>rate</code> of return, to be encoded as <code>"double"</code> (or <code>"numeric"</code>)</p></li>
+<li><p>the <code>balance</code> amount, to be encoded as <code>"integer"</code> or if you prefer as
+<code>"double"</code> (or generically as <code>"numeric"</code>)</p></li>
+</ul>
+<p>In order to import the <code>accounts.txt</code> data into R, we must use a two-step
+process:</p>
+<ol style="list-style-type: decimal">
+<li><p>first we import the column names into a character vector</p></li>
+<li><p>then we import the rest of the lines into a list</p></li>
+</ol>
+<p>Here is how to do it:</p>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="import-tables.html#cb392-1" aria-hidden="true" tabindex="-1"></a><span class="co"># step 1) scan column names</span></span>
+<span id="cb392-2"><a href="import-tables.html#cb392-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ins a character vector</span></span>
+<span id="cb392-3"><a href="import-tables.html#cb392-3" aria-hidden="true" tabindex="-1"></a>header <span class="ot">=</span> <span class="fu">scan</span>(</span>
+<span id="cb392-4"><a href="import-tables.html#cb392-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">&quot;accounts.txt&quot;</span>, </span>
+<span id="cb392-5"><a href="import-tables.html#cb392-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">what =</span> <span class="fu">list</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;&quot;</span>), </span>
+<span id="cb392-6"><a href="import-tables.html#cb392-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">nmax =</span> <span class="dv">1</span>)</span>
+<span id="cb392-7"><a href="import-tables.html#cb392-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb392-8"><a href="import-tables.html#cb392-8" aria-hidden="true" tabindex="-1"></a>header</span></code></pre></div>
+<pre><code>&gt; [1] &quot;account&quot; &quot;bank&quot;    &quot;rate&quot;    &quot;balance&quot;</code></pre>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="import-tables.html#cb394-1" aria-hidden="true" tabindex="-1"></a><span class="co"># step 2) scan the rest of the lines</span></span>
+<span id="cb394-2"><a href="import-tables.html#cb394-2" aria-hidden="true" tabindex="-1"></a><span class="co"># into a list</span></span>
+<span id="cb394-3"><a href="import-tables.html#cb394-3" aria-hidden="true" tabindex="-1"></a>dat_list <span class="ot">=</span> <span class="fu">scan</span>(</span>
+<span id="cb394-4"><a href="import-tables.html#cb394-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">&quot;accounts.txt&quot;</span>, </span>
+<span id="cb394-5"><a href="import-tables.html#cb394-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">what =</span> <span class="fu">list</span>(<span class="fu">character</span>(), <span class="fu">character</span>(), <span class="fu">double</span>(), <span class="fu">integer</span>()),</span>
+<span id="cb394-6"><a href="import-tables.html#cb394-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">skip =</span> <span class="dv">1</span>)</span>
+<span id="cb394-7"><a href="import-tables.html#cb394-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb394-8"><a href="import-tables.html#cb394-8" aria-hidden="true" tabindex="-1"></a>dat_list</span></code></pre></div>
+<pre><code>&gt; [[1]]
+&gt; [1] &quot;savings&quot;     &quot;monmarket&quot;   &quot;certificate&quot; &quot;brokerage&quot;  
+&gt; [5] &quot;retirement&quot; 
+&gt; 
+&gt; [[2]]
+&gt; [1] &quot;bricknmor&quot; &quot;online&quot;    &quot;bricknmor&quot; &quot;online&quot;   
+&gt; [5] &quot;online&quot;   
+&gt; 
+&gt; [[3]]
+&gt; [1] 0.020 0.025 0.030 0.070 0.050
+&gt; 
+&gt; [[4]]
+&gt; [1] 1000 2000 3000 5000 9000</code></pre>
+<p>Once we have the vector of column names <code>header</code> and the list with the data
+for each of the columns, we can then assemble the data into a data table using
+the <code>as.data.frame()</code> function as follows:</p>
+<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="import-tables.html#cb396-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">=</span> <span class="fu">as.data.frame</span>(dat_list, <span class="at">col.names =</span> header)</span>
+<span id="cb396-2"><a href="import-tables.html#cb396-2" aria-hidden="true" tabindex="-1"></a>dat</span></code></pre></div>
+<pre><code>&gt;       account      bank  rate balance
+&gt; 1     savings bricknmor 0.020    1000
+&gt; 2   monmarket    online 0.025    2000
+&gt; 3 certificate bricknmor 0.030    3000
+&gt; 4   brokerage    online 0.070    5000
+&gt; 5  retirement    online 0.050    9000</code></pre>
+</div>
+<div id="in-summary-1" class="section level2 hasAnchor" number="20.5">
+<h2><span class="header-section-number">20.5</span> In Summary<a href="import-tables.html#in-summary-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>When importing a data table, you should keep in mind the following
+considerations.</p>
+<p>What is the field separator?</p>
+<ul>
+<li><p>space <code>" "</code></p></li>
+<li><p>tab <code>"\t"</code></p></li>
+<li><p>comma <code>","</code></p></li>
+<li><p>semicolon <code>";"</code></p></li>
+<li><p>other?</p></li>
+</ul>
+<p>Does the data file contains:</p>
+<ul>
+<li><p>row names?</p></li>
+<li><p>column names?</p></li>
+<li><p>missing values?</p></li>
+<li><p>special characters?</p></li>
+</ul>
+<p>So far …</p>
+<ul>
+<li><p>There are multiple ways to import data tables</p></li>
+<li><p>The workhorse function is <code>read.table()</code></p></li>
+<li><p>But you can use the other wrappers, e.g. <code>read.csv()</code></p></li>
+<li><p>The output is a <code>"data.frame"</code> object</p></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="input-output.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="export-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["R-coding-basics.pdf", "R-coding-basics.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

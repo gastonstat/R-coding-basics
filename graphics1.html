@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>10 Base Graphics | R Coding Basics</title>
+  <meta name="description" content="This is yet another book about programming in the statistical programming R language." />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="10 Base Graphics | R Coding Basics" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is yet another book about programming in the statistical programming R language." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="10 Base Graphics | R Coding Basics" />
+  
+  <meta name="twitter:description" content="This is yet another book about programming in the statistical programming R language." />
+  
+
+<meta name="author" content="Gaston Sanchez" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="dataframes.html"/>
+<link rel="next" href="graphics2.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"><b>R Coding Basics</b><br><small>Gaston Sanchez</small></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#my-series-of-r-tutorials"><i class="fa fa-check"></i>My Series of R Tutorials</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#donation"><i class="fa fa-check"></i>Donation</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i>License</a></li>
+</ul></li>
+<li class="part"><span><b>I Data Objects: Vectors</b></span></li>
+<li class="chapter" data-level="1" data-path="vectors1.html"><a href="vectors1.html"><i class="fa fa-check"></i><b>1</b> First Contact with Vectors</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="vectors1.html"><a href="vectors1.html#motivation-compound-interest"><i class="fa fa-check"></i><b>1.1</b> Motivation: Compound Interest</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="vectors1.html"><a href="vectors1.html#comments"><i class="fa fa-check"></i><b>1.1.1</b> Comments</a></li>
+<li class="chapter" data-level="1.1.2" data-path="vectors1.html"><a href="vectors1.html#creating-objects"><i class="fa fa-check"></i><b>1.1.2</b> Creating Objects</a></li>
+<li class="chapter" data-level="1.1.3" data-path="vectors1.html"><a href="vectors1.html#assignment-statements"><i class="fa fa-check"></i><b>1.1.3</b> Assignment Statements</a></li>
+<li class="chapter" data-level="1.1.4" data-path="vectors1.html"><a href="vectors1.html#case-sensitive"><i class="fa fa-check"></i><b>1.1.4</b> Case Sensitive</a></li>
+<li class="chapter" data-level="1.1.5" data-path="vectors1.html"><a href="vectors1.html#use-descriptive-names"><i class="fa fa-check"></i><b>1.1.5</b> Use Descriptive Names</a></li>
+<li class="chapter" data-level="1.1.6" data-path="vectors1.html"><a href="vectors1.html#combining-various-objects-into-a-single-one"><i class="fa fa-check"></i><b>1.1.6</b> Combining various objects into a single one</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="vectors1.html"><a href="vectors1.html#exercises"><i class="fa fa-check"></i><b>1.2</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="vectors2.html"><a href="vectors2.html"><i class="fa fa-check"></i><b>2</b> Properties of Vectors</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="vectors2.html"><a href="vectors2.html#motivation"><i class="fa fa-check"></i><b>2.1</b> Motivation</a></li>
+<li class="chapter" data-level="2.2" data-path="vectors2.html"><a href="vectors2.html#vectors-are-atomic-objects"><i class="fa fa-check"></i><b>2.2</b> Vectors are Atomic Objects</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="vectors2.html"><a href="vectors2.html#complex-and-raw-types"><i class="fa fa-check"></i><b>2.2.1</b> Complex and Raw Types</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="vectors2.html"><a href="vectors2.html#types-and-modes"><i class="fa fa-check"></i><b>2.3</b> Types and Modes</a></li>
+<li class="chapter" data-level="2.4" data-path="vectors2.html"><a href="vectors2.html#special-values"><i class="fa fa-check"></i><b>2.4</b> Special Values</a></li>
+<li class="chapter" data-level="2.5" data-path="vectors2.html"><a href="vectors2.html#length-of-vectors"><i class="fa fa-check"></i><b>2.5</b> Length of Vectors</a></li>
+<li class="chapter" data-level="2.6" data-path="vectors2.html"><a href="vectors2.html#vector-elements-can-have-names"><i class="fa fa-check"></i><b>2.6</b> Vector elements can have names</a></li>
+<li class="chapter" data-level="2.7" data-path="vectors2.html"><a href="vectors2.html#exercises-1"><i class="fa fa-check"></i><b>2.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="vectors3.html"><a href="vectors3.html"><i class="fa fa-check"></i><b>3</b> Creating Vectors</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="vectors3.html"><a href="vectors3.html#creating-vectors-with-c"><i class="fa fa-check"></i><b>3.1</b> Creating vectors with <code>c()</code></a></li>
+<li class="chapter" data-level="3.2" data-path="vectors3.html"><a href="vectors3.html#default-vectors"><i class="fa fa-check"></i><b>3.2</b> Default Vectors</a></li>
+<li class="chapter" data-level="3.3" data-path="vectors3.html"><a href="vectors3.html#numeric-sequences"><i class="fa fa-check"></i><b>3.3</b> Numeric Sequences</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="vectors3.html"><a href="vectors3.html#sequences-with"><i class="fa fa-check"></i><b>3.3.1</b> Sequences with <code>:</code></a></li>
+<li class="chapter" data-level="3.3.2" data-path="vectors3.html"><a href="vectors3.html#sequences-with-seq"><i class="fa fa-check"></i><b>3.3.2</b> Sequences with <code>seq()</code></a></li>
+<li class="chapter" data-level="3.3.3" data-path="vectors3.html"><a href="vectors3.html#sequences-with-seq_len-and-seq_along"><i class="fa fa-check"></i><b>3.3.3</b> Sequences with <code>seq_len()</code> and <code>seq_along()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="vectors3.html"><a href="vectors3.html#replicated-vectors"><i class="fa fa-check"></i><b>3.4</b> Replicated Vectors</a></li>
+<li class="chapter" data-level="3.5" data-path="vectors3.html"><a href="vectors3.html#coercion"><i class="fa fa-check"></i><b>3.5</b> Coercion</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="vectors3.html"><a href="vectors3.html#implicit-coercion-rules"><i class="fa fa-check"></i><b>3.5.1</b> Implicit Coercion Rules</a></li>
+<li class="chapter" data-level="3.5.2" data-path="vectors3.html"><a href="vectors3.html#explicit-coercion-functions"><i class="fa fa-check"></i><b>3.5.2</b> Explicit Coercion Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="vectors3.html"><a href="vectors3.html#exercises-2"><i class="fa fa-check"></i><b>3.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="vectors4.html"><a href="vectors4.html"><i class="fa fa-check"></i><b>4</b> More About Vectors</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="vectors4.html"><a href="vectors4.html#motivation-future-value"><i class="fa fa-check"></i><b>4.1</b> Motivation: Future Value</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="vectors4.html"><a href="vectors4.html#future-value-formula"><i class="fa fa-check"></i><b>4.1.1</b> Future Value Formula</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="vectors4.html"><a href="vectors4.html#vectorization"><i class="fa fa-check"></i><b>4.2</b> Vectorization</a></li>
+<li class="chapter" data-level="4.3" data-path="vectors4.html"><a href="vectors4.html#recycling"><i class="fa fa-check"></i><b>4.3</b> Recycling</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="vectors4.html"><a href="vectors4.html#vectorization-and-recycling"><i class="fa fa-check"></i><b>4.3.1</b> Vectorization and Recycling</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="vectors4.html"><a href="vectors4.html#manipulating-vectors-subsetting"><i class="fa fa-check"></i><b>4.4</b> Manipulating Vectors: Subsetting</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="vectors4.html"><a href="vectors4.html#numeric-subsetting"><i class="fa fa-check"></i><b>4.4.1</b> Numeric Subsetting</a></li>
+<li class="chapter" data-level="4.4.2" data-path="vectors4.html"><a href="vectors4.html#character-subsetting"><i class="fa fa-check"></i><b>4.4.2</b> Character Subsetting</a></li>
+<li class="chapter" data-level="4.4.3" data-path="vectors4.html"><a href="vectors4.html#logical-subsetting"><i class="fa fa-check"></i><b>4.4.3</b> Logical Subsetting</a></li>
+<li class="chapter" data-level="4.4.4" data-path="vectors4.html"><a href="vectors4.html#summary-of-subsetting"><i class="fa fa-check"></i><b>4.4.4</b> Summary of Subsetting</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="vectors4.html"><a href="vectors4.html#exercises-3"><i class="fa fa-check"></i><b>4.5</b> Exercises</a></li>
+</ul></li>
+<li class="part"><span><b>II More Atomic Objects</b></span></li>
+<li class="chapter" data-level="5" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>5</b> Factors</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="factors.html"><a href="factors.html#creating-factors"><i class="fa fa-check"></i><b>5.1</b> Creating Factors</a></li>
+<li class="chapter" data-level="5.2" data-path="factors.html"><a href="factors.html#how-r-treats-factors"><i class="fa fa-check"></i><b>5.2</b> How R treats factors</a></li>
+<li class="chapter" data-level="5.3" data-path="factors.html"><a href="factors.html#a-closer-look-at-factor"><i class="fa fa-check"></i><b>5.3</b> A closer look at <code>factor()</code></a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="factors.html"><a href="factors.html#function-factor"><i class="fa fa-check"></i><b>5.3.1</b> Function <code>factor()</code></a></li>
+<li class="chapter" data-level="5.3.2" data-path="factors.html"><a href="factors.html#unclassing-factors"><i class="fa fa-check"></i><b>5.3.2</b> Unclassing factors</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="factors.html"><a href="factors.html#ordinal-factors"><i class="fa fa-check"></i><b>5.4</b> Ordinal Factors</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="matrices1.html"><a href="matrices1.html"><i class="fa fa-check"></i><b>6</b> Matrices and Arrays</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="matrices1.html"><a href="matrices1.html#motivation-1"><i class="fa fa-check"></i><b>6.1</b> Motivation</a></li>
+<li class="chapter" data-level="6.2" data-path="matrices1.html"><a href="matrices1.html#matrices"><i class="fa fa-check"></i><b>6.2</b> Matrices</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="matrices1.html"><a href="matrices1.html#what-kind-of-object-is-a-matrix"><i class="fa fa-check"></i><b>6.2.1</b> What kind of object is a matrix?</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="matrices1.html"><a href="matrices1.html#creating-matrices-with-matrix"><i class="fa fa-check"></i><b>6.3</b> Creating matrices with <code>matrix()</code></a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="matrices1.html"><a href="matrices1.html#column-major-matrices"><i class="fa fa-check"></i><b>6.3.1</b> Column-Major Matrices</a></li>
+<li class="chapter" data-level="6.3.2" data-path="matrices1.html"><a href="matrices1.html#giving-names-to-rows-and-columns"><i class="fa fa-check"></i><b>6.3.2</b> Giving names to rows and columns</a></li>
+<li class="chapter" data-level="6.3.3" data-path="matrices1.html"><a href="matrices1.html#more-matrices"><i class="fa fa-check"></i><b>6.3.3</b> More Matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="matrices1.html"><a href="matrices1.html#exercises-4"><i class="fa fa-check"></i><b>6.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="matrices2.html"><a href="matrices2.html"><i class="fa fa-check"></i><b>7</b> More About Matrices</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="matrices2.html"><a href="matrices2.html#basic-operations-with-matrices"><i class="fa fa-check"></i><b>7.1</b> Basic Operations with Matrices</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="matrices2.html"><a href="matrices2.html#selecting-elements"><i class="fa fa-check"></i><b>7.1.1</b> Selecting elements</a></li>
+<li class="chapter" data-level="7.1.2" data-path="matrices2.html"><a href="matrices2.html#adding-a-column"><i class="fa fa-check"></i><b>7.1.2</b> Adding a column</a></li>
+<li class="chapter" data-level="7.1.3" data-path="matrices2.html"><a href="matrices2.html#deleting-a-column"><i class="fa fa-check"></i><b>7.1.3</b> Deleting a column</a></li>
+<li class="chapter" data-level="7.1.4" data-path="matrices2.html"><a href="matrices2.html#moving-a-column"><i class="fa fa-check"></i><b>7.1.4</b> Moving a column</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>III Non-Atomic Objects</b></span></li>
+<li class="chapter" data-level="8" data-path="lists.html"><a href="lists.html"><i class="fa fa-check"></i><b>8</b> Lists</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="lists.html"><a href="lists.html#motivation-2"><i class="fa fa-check"></i><b>8.1</b> Motivation</a></li>
+<li class="chapter" data-level="8.2" data-path="lists.html"><a href="lists.html#lists-1"><i class="fa fa-check"></i><b>8.2</b> Lists</a></li>
+<li class="chapter" data-level="8.3" data-path="lists.html"><a href="lists.html#creating-lists"><i class="fa fa-check"></i><b>8.3</b> Creating Lists</a></li>
+<li class="chapter" data-level="8.4" data-path="lists.html"><a href="lists.html#manipulating-lists"><i class="fa fa-check"></i><b>8.4</b> Manipulating Lists</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="lists.html"><a href="lists.html#single-brackets"><i class="fa fa-check"></i><b>8.4.1</b> Single brackets</a></li>
+<li class="chapter" data-level="8.4.2" data-path="lists.html"><a href="lists.html#double-brackets"><i class="fa fa-check"></i><b>8.4.2</b> Double Brackets</a></li>
+<li class="chapter" data-level="8.4.3" data-path="lists.html"><a href="lists.html#dollar-signs"><i class="fa fa-check"></i><b>8.4.3</b> Dollar signs</a></li>
+<li class="chapter" data-level="8.4.4" data-path="lists.html"><a href="lists.html#adding-new-elements"><i class="fa fa-check"></i><b>8.4.4</b> Adding new elements</a></li>
+<li class="chapter" data-level="8.4.5" data-path="lists.html"><a href="lists.html#removing-elements"><i class="fa fa-check"></i><b>8.4.5</b> Removing elements</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="lists.html"><a href="lists.html#exercises-5"><i class="fa fa-check"></i><b>8.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="dataframes.html"><a href="dataframes.html"><i class="fa fa-check"></i><b>9</b> Data Frames</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="dataframes.html"><a href="dataframes.html#r-data-frames"><i class="fa fa-check"></i><b>9.1</b> R Data Frames</a></li>
+<li class="chapter" data-level="9.2" data-path="dataframes.html"><a href="dataframes.html#inspecting-data-frames"><i class="fa fa-check"></i><b>9.2</b> Inspecting data frames</a></li>
+<li class="chapter" data-level="9.3" data-path="dataframes.html"><a href="dataframes.html#creating-data-frames"><i class="fa fa-check"></i><b>9.3</b> Creating data frames</a></li>
+<li class="chapter" data-level="9.4" data-path="dataframes.html"><a href="dataframes.html#basic-operations-with-data-frames"><i class="fa fa-check"></i><b>9.4</b> Basic Operations with Data Frames</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="dataframes.html"><a href="dataframes.html#selecting-elements-1"><i class="fa fa-check"></i><b>9.4.1</b> Selecting elements</a></li>
+<li class="chapter" data-level="9.4.2" data-path="dataframes.html"><a href="dataframes.html#adding-a-column-1"><i class="fa fa-check"></i><b>9.4.2</b> Adding a column</a></li>
+<li class="chapter" data-level="9.4.3" data-path="dataframes.html"><a href="dataframes.html#deleting-a-column-1"><i class="fa fa-check"></i><b>9.4.3</b> Deleting a column</a></li>
+<li class="chapter" data-level="9.4.4" data-path="dataframes.html"><a href="dataframes.html#renaming-a-column"><i class="fa fa-check"></i><b>9.4.4</b> Renaming a column</a></li>
+<li class="chapter" data-level="9.4.5" data-path="dataframes.html"><a href="dataframes.html#moving-a-column-1"><i class="fa fa-check"></i><b>9.4.5</b> Moving a column</a></li>
+<li class="chapter" data-level="9.4.6" data-path="dataframes.html"><a href="dataframes.html#transforming-a-column"><i class="fa fa-check"></i><b>9.4.6</b> Transforming a column</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="dataframes.html"><a href="dataframes.html#exercises-6"><i class="fa fa-check"></i><b>9.5</b> Exercises</a></li>
+</ul></li>
+<li class="part"><span><b>IV Graphics</b></span></li>
+<li class="chapter" data-level="10" data-path="graphics1.html"><a href="graphics1.html"><i class="fa fa-check"></i><b>10</b> Base Graphics</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="graphics1.html"><a href="graphics1.html#basics-of-graphics-in-r"><i class="fa fa-check"></i><b>10.1</b> Basics of Graphics in R</a></li>
+<li class="chapter" data-level="10.2" data-path="graphics1.html"><a href="graphics1.html#the-plot-function"><i class="fa fa-check"></i><b>10.2</b> The <code>plot()</code> function</a></li>
+<li class="chapter" data-level="10.3" data-path="graphics1.html"><a href="graphics1.html#traditional-graphics-in-r"><i class="fa fa-check"></i><b>10.3</b> Traditional Graphics in R</a></li>
+<li class="chapter" data-level="10.4" data-path="graphics1.html"><a href="graphics1.html#low-level-functions"><i class="fa fa-check"></i><b>10.4</b> Low-Level Functions</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="graphics1.html"><a href="graphics1.html#low-level-functions-1"><i class="fa fa-check"></i><b>10.4.1</b> Low-level functions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="graphics2.html"><a href="graphics2.html"><i class="fa fa-check"></i><b>11</b> More Base Graphics</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="graphics2.html"><a href="graphics2.html#the-plot-function-1"><i class="fa fa-check"></i><b>11.1</b> The <code>plot()</code> function</a></li>
+<li class="chapter" data-level="11.2" data-path="graphics2.html"><a href="graphics2.html#one-variable-graphics"><i class="fa fa-check"></i><b>11.2</b> One variable graphics</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="graphics2.html"><a href="graphics2.html#more-high-level-graphics-of-a-single-variable"><i class="fa fa-check"></i><b>11.2.1</b> More high-level graphics of a single variable</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="graphics2.html"><a href="graphics2.html#plots-of-two-variables"><i class="fa fa-check"></i><b>11.3</b> Plots of Two Variables</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="graphics2.html"><a href="graphics2.html#example-plots-of-two-variables"><i class="fa fa-check"></i><b>11.3.1</b> Example: Plots of two variables</a></li>
+<li class="chapter" data-level="11.3.2" data-path="graphics2.html"><a href="graphics2.html#more-high-level-graphics-of-two-variables"><i class="fa fa-check"></i><b>11.3.2</b> More high-level graphics of two variables</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="graphics3.html"><a href="graphics3.html"><i class="fa fa-check"></i><b>12</b> Plots from Scratch</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="graphics3.html"><a href="graphics3.html#making-a-graphic-from-scratch"><i class="fa fa-check"></i><b>12.1</b> Making a graphic from scratch</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="graphics3.html"><a href="graphics3.html#how-does-it-work"><i class="fa fa-check"></i><b>12.1.1</b> How does it work</a></li>
+<li class="chapter" data-level="12.1.2" data-path="graphics3.html"><a href="graphics3.html#drawing-arrows"><i class="fa fa-check"></i><b>12.1.2</b> Drawing Arrows</a></li>
+<li class="chapter" data-level="12.1.3" data-path="graphics3.html"><a href="graphics3.html#drawing-rectangles"><i class="fa fa-check"></i><b>12.1.3</b> Drawing Rectangles</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>V Programming Basics</b></span></li>
+<li class="chapter" data-level="13" data-path="functions1.html"><a href="functions1.html"><i class="fa fa-check"></i><b>13</b> Intro to Functions</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="functions1.html"><a href="functions1.html#motivation-3"><i class="fa fa-check"></i><b>13.1</b> Motivation</a></li>
+<li class="chapter" data-level="13.2" data-path="functions1.html"><a href="functions1.html#writing-a-simple-function"><i class="fa fa-check"></i><b>13.2</b> Writing a Simple Function</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="functions1.html"><a href="functions1.html#arguments-with-default-values"><i class="fa fa-check"></i><b>13.2.1</b> Arguments with default values</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="functions1.html"><a href="functions1.html#writing-functions-for-humans"><i class="fa fa-check"></i><b>13.3</b> Writing Functions for Humans</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="functions1.html"><a href="functions1.html#naming-functions"><i class="fa fa-check"></i><b>13.3.1</b> Naming Functions</a></li>
+<li class="chapter" data-level="13.3.2" data-path="functions1.html"><a href="functions1.html#functions-documentation"><i class="fa fa-check"></i><b>13.3.2</b> Function’s Documentation</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="functions1.html"><a href="functions1.html#exercises-7"><i class="fa fa-check"></i><b>13.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="expressions.html"><a href="expressions.html"><i class="fa fa-check"></i><b>14</b> Expressions</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="expressions.html"><a href="expressions.html#r-expressions"><i class="fa fa-check"></i><b>14.1</b> R Expressions</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="expressions.html"><a href="expressions.html#simple-expressions"><i class="fa fa-check"></i><b>14.1.1</b> Simple Expressions</a></li>
+<li class="chapter" data-level="14.1.2" data-path="expressions.html"><a href="expressions.html#compound-expressions"><i class="fa fa-check"></i><b>14.1.2</b> Compound Expressions</a></li>
+<li class="chapter" data-level="14.1.3" data-path="expressions.html"><a href="expressions.html#every-expression-has-a-value"><i class="fa fa-check"></i><b>14.1.3</b> Every expression has a value</a></li>
+<li class="chapter" data-level="14.1.4" data-path="expressions.html"><a href="expressions.html#assignments-within-compound-expressions"><i class="fa fa-check"></i><b>14.1.4</b> Assignments within Compound Expressions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="conditionals.html"><a href="conditionals.html"><i class="fa fa-check"></i><b>15</b> Conditionals: If-Else</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="conditionals.html"><a href="conditionals.html#motivation-4"><i class="fa fa-check"></i><b>15.1</b> Motivation</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="conditionals.html"><a href="conditionals.html#future-value-of-ordinary-annuity"><i class="fa fa-check"></i><b>15.1.1</b> Future Value of Ordinary Annuity</a></li>
+<li class="chapter" data-level="15.1.2" data-path="conditionals.html"><a href="conditionals.html#future-value-of-annuity-due"><i class="fa fa-check"></i><b>15.1.2</b> Future Value of Annuity Due</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="conditionals.html"><a href="conditionals.html#conditionals-1"><i class="fa fa-check"></i><b>15.2</b> Conditionals</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="conditionals.html"><a href="conditionals.html#if-else-conditions"><i class="fa fa-check"></i><b>15.2.1</b> If-else conditions</a></li>
+<li class="chapter" data-level="15.2.2" data-path="conditionals.html"><a href="conditionals.html#anatomy-of-if-else-statements"><i class="fa fa-check"></i><b>15.2.2</b> Anatomy of if-else statements</a></li>
+<li class="chapter" data-level="15.2.3" data-path="conditionals.html"><a href="conditionals.html#minimalist-if-then-else"><i class="fa fa-check"></i><b>15.2.3</b> Minimalist If-then-else</a></li>
+<li class="chapter" data-level="15.2.4" data-path="conditionals.html"><a href="conditionals.html#simple-ifs"><i class="fa fa-check"></i><b>15.2.4</b> Simple If’s</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="conditionals.html"><a href="conditionals.html#multiple-ifs"><i class="fa fa-check"></i><b>15.3</b> Multiple If’s</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="conditionals.html"><a href="conditionals.html#switch-statements"><i class="fa fa-check"></i><b>15.3.1</b> Switch statements</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="conditionals.html"><a href="conditionals.html#derivation-of-fvoa"><i class="fa fa-check"></i><b>15.4</b> Derivation of FVOA</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="for-loop.html"><a href="for-loop.html"><i class="fa fa-check"></i><b>16</b> Iterations: For Loop</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="for-loop.html"><a href="for-loop.html#motivation-5"><i class="fa fa-check"></i><b>16.1</b> Motivation</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="for-loop.html"><a href="for-loop.html#us-stock-market-historical-annual-returns"><i class="fa fa-check"></i><b>16.1.1</b> US Stock Market Historical Annual Returns</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="for-loop.html"><a href="for-loop.html#simulating-normal-random-numbers"><i class="fa fa-check"></i><b>16.2</b> Simulating Normal Random Numbers</a>
+<ul>
+<li class="chapter" data-level="16.2.1" data-path="for-loop.html"><a href="for-loop.html#investing-in-the-us-stock-market-during-three-years"><i class="fa fa-check"></i><b>16.2.1</b> Investing in the US stock market during three years</a></li>
+<li class="chapter" data-level="16.2.2" data-path="for-loop.html"><a href="for-loop.html#investing-during-ten-years"><i class="fa fa-check"></i><b>16.2.2</b> Investing during ten years</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="for-loop.html"><a href="for-loop.html#iterations-to-the-rescue"><i class="fa fa-check"></i><b>16.3</b> Iterations to the Rescue</a></li>
+<li class="chapter" data-level="16.4" data-path="for-loop.html"><a href="for-loop.html#for-loop-example"><i class="fa fa-check"></i><b>16.4</b> For Loop Example</a></li>
+<li class="chapter" data-level="16.5" data-path="for-loop.html"><a href="for-loop.html#about-for-loops"><i class="fa fa-check"></i><b>16.5</b> About For Loops</a>
+<ul>
+<li class="chapter" data-level="16.5.1" data-path="for-loop.html"><a href="for-loop.html#anatomy-of-a-for-loop"><i class="fa fa-check"></i><b>16.5.1</b> Anatomy of a For Loop</a></li>
+<li class="chapter" data-level="16.5.2" data-path="for-loop.html"><a href="for-loop.html#for-loops-and-next-statement"><i class="fa fa-check"></i><b>16.5.2</b> For Loops and Next statement</a></li>
+<li class="chapter" data-level="16.5.3" data-path="for-loop.html"><a href="for-loop.html#for-loops-and-break-statement"><i class="fa fa-check"></i><b>16.5.3</b> For Loops and Break statement</a></li>
+<li class="chapter" data-level="16.5.4" data-path="for-loop.html"><a href="for-loop.html#nested-loops"><i class="fa fa-check"></i><b>16.5.4</b> Nested Loops</a></li>
+<li class="chapter" data-level="16.5.5" data-path="for-loop.html"><a href="for-loop.html#about-for-loops-and-vectorized-computations"><i class="fa fa-check"></i><b>16.5.5</b> About <code>for</code> Loops and Vectorized Computations</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="while-loop.html"><a href="while-loop.html"><i class="fa fa-check"></i><b>17</b> Iterations: While Loop</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="while-loop.html"><a href="while-loop.html#motivation-6"><i class="fa fa-check"></i><b>17.1</b> Motivation</a></li>
+<li class="chapter" data-level="17.2" data-path="while-loop.html"><a href="while-loop.html#anatomy-of-a-while-loop"><i class="fa fa-check"></i><b>17.2</b> Anatomy of a While Loop</a></li>
+<li class="chapter" data-level="17.3" data-path="while-loop.html"><a href="while-loop.html#another-example"><i class="fa fa-check"></i><b>17.3</b> Another Example</a>
+<ul>
+<li class="chapter" data-level="17.3.1" data-path="while-loop.html"><a href="while-loop.html#while-loops-and-next-statement"><i class="fa fa-check"></i><b>17.3.1</b> While Loops and Next statement</a></li>
+<li class="chapter" data-level="17.3.2" data-path="while-loop.html"><a href="while-loop.html#while-loops-and-break-statement"><i class="fa fa-check"></i><b>17.3.2</b> While Loops and Break statement</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="functions2.html"><a href="functions2.html"><i class="fa fa-check"></i><b>18</b> More About Functions</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="functions2.html"><a href="functions2.html#functions-recap"><i class="fa fa-check"></i><b>18.1</b> Functions Recap</a>
+<ul>
+<li class="chapter" data-level="18.1.1" data-path="functions2.html"><a href="functions2.html#simple-expressions-1"><i class="fa fa-check"></i><b>18.1.1</b> Simple Expressions</a></li>
+<li class="chapter" data-level="18.1.2" data-path="functions2.html"><a href="functions2.html#nested-functions"><i class="fa fa-check"></i><b>18.1.2</b> Nested Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="functions2.html"><a href="functions2.html#function-output"><i class="fa fa-check"></i><b>18.2</b> Function Output</a>
+<ul>
+<li class="chapter" data-level="18.2.1" data-path="functions2.html"><a href="functions2.html#the-return-command"><i class="fa fa-check"></i><b>18.2.1</b> The <code>return()</code> command</a></li>
+<li class="chapter" data-level="18.2.2" data-path="functions2.html"><a href="functions2.html#white-spaces"><i class="fa fa-check"></i><b>18.2.2</b> White Spaces</a></li>
+</ul></li>
+<li class="chapter" data-level="18.3" data-path="functions2.html"><a href="functions2.html#indentation"><i class="fa fa-check"></i><b>18.3</b> Indentation</a>
+<ul>
+<li class="chapter" data-level="18.3.1" data-path="functions2.html"><a href="functions2.html#meaningful-names"><i class="fa fa-check"></i><b>18.3.1</b> Meaningful Names</a></li>
+<li class="chapter" data-level="18.3.2" data-path="functions2.html"><a href="functions2.html#syntax-parentheses"><i class="fa fa-check"></i><b>18.3.2</b> Syntax: Parentheses</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="functions2.html"><a href="functions2.html#recommendations"><i class="fa fa-check"></i><b>18.4</b> Recommendations</a></li>
+</ul></li>
+<li class="part"><span><b>VI Import / Export</b></span></li>
+<li class="chapter" data-level="19" data-path="input-output.html"><a href="input-output.html"><i class="fa fa-check"></i><b>19</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="input-output.html"><a href="input-output.html#importing-and-exporting-resources"><i class="fa fa-check"></i><b>19.1</b> Importing and Exporting Resources</a>
+<ul>
+<li class="chapter" data-level="19.1.1" data-path="input-output.html"><a href="input-output.html#behind-importexport-functions"><i class="fa fa-check"></i><b>19.1.1</b> Behind import/export functions</a></li>
+</ul></li>
+<li class="chapter" data-level="19.2" data-path="input-output.html"><a href="input-output.html#connections"><i class="fa fa-check"></i><b>19.2</b> Connections</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="import-tables.html"><a href="import-tables.html"><i class="fa fa-check"></i><b>20</b> Importing Data Tables</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="import-tables.html"><a href="import-tables.html#motivation-7"><i class="fa fa-check"></i><b>20.1</b> Motivation</a>
+<ul>
+<li class="chapter" data-level="20.1.1" data-path="import-tables.html"><a href="import-tables.html#data-in-text-files"><i class="fa fa-check"></i><b>20.1.1</b> Data in Text Files</a></li>
+</ul></li>
+<li class="chapter" data-level="20.2" data-path="import-tables.html"><a href="import-tables.html#character-delimited-text-files"><i class="fa fa-check"></i><b>20.2</b> Character Delimited Text Files</a>
+<ul>
+<li class="chapter" data-level="20.2.1" data-path="import-tables.html"><a href="import-tables.html#common-delimiters"><i class="fa fa-check"></i><b>20.2.1</b> Common Delimiters</a></li>
+<li class="chapter" data-level="20.2.2" data-path="import-tables.html"><a href="import-tables.html#delimiters-in-data-values"><i class="fa fa-check"></i><b>20.2.2</b> Delimiters in Data Values</a></li>
+<li class="chapter" data-level="20.2.3" data-path="import-tables.html"><a href="import-tables.html#fixed-width-format-files"><i class="fa fa-check"></i><b>20.2.3</b> Fixed-Width Format Files</a></li>
+<li class="chapter" data-level="20.2.4" data-path="import-tables.html"><a href="import-tables.html#summary"><i class="fa fa-check"></i><b>20.2.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="20.3" data-path="import-tables.html"><a href="import-tables.html#importing-data-tables"><i class="fa fa-check"></i><b>20.3</b> Importing Data Tables</a>
+<ul>
+<li class="chapter" data-level="20.3.1" data-path="import-tables.html"><a href="import-tables.html#function-read.table-and-friends"><i class="fa fa-check"></i><b>20.3.1</b> Function <code>read.table()</code> and friends</a></li>
+<li class="chapter" data-level="20.3.2" data-path="import-tables.html"><a href="import-tables.html#reading-space-separated-files"><i class="fa fa-check"></i><b>20.3.2</b> Reading space-separated files</a></li>
+<li class="chapter" data-level="20.3.3" data-path="import-tables.html"><a href="import-tables.html#reading-comma-separated-files-with-read.csv"><i class="fa fa-check"></i><b>20.3.3</b> Reading comma-separated files with <code>read.csv()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="20.4" data-path="import-tables.html"><a href="import-tables.html#importing-with-scan"><i class="fa fa-check"></i><b>20.4</b> Importing with <code>scan()</code></a></li>
+<li class="chapter" data-level="20.5" data-path="import-tables.html"><a href="import-tables.html#in-summary-1"><i class="fa fa-check"></i><b>20.5</b> In Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="export-data.html"><a href="export-data.html"><i class="fa fa-check"></i><b>21</b> Exporting Data</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="export-data.html"><a href="export-data.html#exporting-tables"><i class="fa fa-check"></i><b>21.1</b> Exporting Tables</a></li>
+<li class="chapter" data-level="21.2" data-path="export-data.html"><a href="export-data.html#exporting-text"><i class="fa fa-check"></i><b>21.2</b> Exporting Text</a></li>
+<li class="chapter" data-level="21.3" data-path="export-data.html"><a href="export-data.html#sending-output-with-cat"><i class="fa fa-check"></i><b>21.3</b> Sending output with <code>cat()</code></a>
+<ul>
+<li class="chapter" data-level="21.3.1" data-path="export-data.html"><a href="export-data.html#sending-output-with-cat-1"><i class="fa fa-check"></i><b>21.3.1</b> Sending output with <code>cat()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="21.4" data-path="export-data.html"><a href="export-data.html#redirecting-output-with-sink"><i class="fa fa-check"></i><b>21.4</b> Redirecting output with <code>sink()</code></a></li>
+<li class="chapter" data-level="21.5" data-path="export-data.html"><a href="export-data.html#exporting-rs-binary-data"><i class="fa fa-check"></i><b>21.5</b> Exporting R’s Binary Data</a></li>
+<li class="chapter" data-level="21.6" data-path="export-data.html"><a href="export-data.html#exporting-images"><i class="fa fa-check"></i><b>21.6</b> Exporting Images</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://www.gastonsanchez.com" target="_blank">gastonsanchez.com</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Coding Basics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="graphics1" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">10</span> Base Graphics<a href="graphics1.html#graphics1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>R comes with many functions that let us produce a wide variety of graphics,
+plots, diagrams, charts, maps, … you name it.</p>
+<p>In this chapter we’ll describe the traditional system to produce plots using
+functions from the underlying package <code>"graphics"</code>.</p>
+<div id="basics-of-graphics-in-r" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> Basics of Graphics in R<a href="graphics1.html#basics-of-graphics-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The package <code>"graphics"</code> is the traditional system; it provides functions for
+complete plots, as well as low-level facilities.</p>
+<p>Many other graphics packages are built on top of <code>"graphics"</code> like <code>"maps"</code>,
+<code>"diagram"</code>, <code>"pixmap"</code>, and many more.</p>
+<p>Graphics functions can be divided into two main types:</p>
+<ul>
+<li><p><strong>high-level</strong> functions produce complete plots, for example</p>
+<ul>
+<li><code>barplot()</code></li>
+<li><code>hist()</code></li>
+<li><code>boxplot()</code></li>
+<li><code>dotchart()</code></li>
+</ul></li>
+<li><p><strong>low-level</strong> functions add further output to an existing plot</p>
+<ul>
+<li><code>text()</code></li>
+<li><code>points()</code></li>
+<li><code>lines()</code></li>
+<li><code>legend()</code></li>
+<li><em>etc</em></li>
+</ul></li>
+</ul>
+<p>About R graphics:</p>
+<ul>
+<li><p>R <code>"graphics"</code> follow a static, “painting on canvas” model.</p></li>
+<li><p>Graphics elements are drawn, and remain visible until painted over.</p></li>
+<li><p>For dynamic and/or interactive graphics, R is limited. However, several
+packages have been (and continue to be) developed in order to provide more
+flexibility and interactivity.</p></li>
+</ul>
+</div>
+<div id="the-plot-function" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> The <code>plot()</code> function<a href="graphics1.html#the-plot-function" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><code>plot()</code> is the most important high-level function in traditional graphics</p>
+<ul>
+<li><p>The first argument to <code>plot()</code> provides the data to plot</p></li>
+<li><p>The provided data can take different forms: e.g. vectors, factors, matrices,
+data frames.</p></li>
+<li><p>To be more precise, <code>plot()</code> is a generic function</p></li>
+<li><p>You can create your own <code>plot()</code> method function</p></li>
+</ul>
+<p>In its basic form, we can use <code>plot()</code> to make graphics of:</p>
+<ul>
+<li><p>one single variable</p></li>
+<li><p>two variables</p></li>
+<li><p>multiple variables</p></li>
+</ul>
+</div>
+<div id="traditional-graphics-in-r" class="section level2 hasAnchor" number="10.3">
+<h2><span class="header-section-number">10.3</span> Traditional Graphics in R<a href="graphics1.html#traditional-graphics-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In the traditional model, we create a plot by first calling a high-level
+function that creates a complete plot, and then we call low-level functions
+to add more output if necessary</p>
+<p>Consider the data set <code>mtcars</code> (a few rows shown below)</p>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="graphics1.html#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span>
+<span id="cb209-2"><a href="graphics1.html#cb209-2" aria-hidden="true" tabindex="-1"></a>                   mpg cyl disp  hp drat    wt</span>
+<span id="cb209-3"><a href="graphics1.html#cb209-3" aria-hidden="true" tabindex="-1"></a>Mazda RX4         <span class="fl">21.0</span>   <span class="dv">6</span>  <span class="dv">160</span> <span class="dv">110</span> <span class="fl">3.90</span> <span class="fl">2.620</span></span>
+<span id="cb209-4"><a href="graphics1.html#cb209-4" aria-hidden="true" tabindex="-1"></a>Mazda RX4 Wag     <span class="fl">21.0</span>   <span class="dv">6</span>  <span class="dv">160</span> <span class="dv">110</span> <span class="fl">3.90</span> <span class="fl">2.875</span></span>
+<span id="cb209-5"><a href="graphics1.html#cb209-5" aria-hidden="true" tabindex="-1"></a>Datsun <span class="dv">710</span>        <span class="fl">22.8</span>   <span class="dv">4</span>  <span class="dv">108</span>  <span class="dv">93</span> <span class="fl">3.85</span> <span class="fl">2.320</span></span>
+<span id="cb209-6"><a href="graphics1.html#cb209-6" aria-hidden="true" tabindex="-1"></a>Hornet <span class="dv">4</span> Drive    <span class="fl">21.4</span>   <span class="dv">6</span>  <span class="dv">258</span> <span class="dv">110</span> <span class="fl">3.08</span> <span class="fl">3.215</span></span>
+<span id="cb209-7"><a href="graphics1.html#cb209-7" aria-hidden="true" tabindex="-1"></a>Hornet Sportabout <span class="fl">18.7</span>   <span class="dv">8</span>  <span class="dv">360</span> <span class="dv">175</span> <span class="fl">3.15</span> <span class="fl">3.440</span></span>
+<span id="cb209-8"><a href="graphics1.html#cb209-8" aria-hidden="true" tabindex="-1"></a>Valiant           <span class="fl">18.1</span>   <span class="dv">6</span>  <span class="dv">225</span> <span class="dv">105</span> <span class="fl">2.76</span> <span class="fl">3.460</span></span>
+<span id="cb209-9"><a href="graphics1.html#cb209-9" aria-hidden="true" tabindex="-1"></a>                   qsec vs am gear carb</span>
+<span id="cb209-10"><a href="graphics1.html#cb209-10" aria-hidden="true" tabindex="-1"></a>Mazda RX4         <span class="fl">16.46</span>  <span class="dv">0</span>  <span class="dv">1</span>    <span class="dv">4</span>    <span class="dv">4</span></span>
+<span id="cb209-11"><a href="graphics1.html#cb209-11" aria-hidden="true" tabindex="-1"></a>Mazda RX4 Wag     <span class="fl">17.02</span>  <span class="dv">0</span>  <span class="dv">1</span>    <span class="dv">4</span>    <span class="dv">4</span></span>
+<span id="cb209-12"><a href="graphics1.html#cb209-12" aria-hidden="true" tabindex="-1"></a>Datsun <span class="dv">710</span>        <span class="fl">18.61</span>  <span class="dv">1</span>  <span class="dv">1</span>    <span class="dv">4</span>    <span class="dv">1</span></span>
+<span id="cb209-13"><a href="graphics1.html#cb209-13" aria-hidden="true" tabindex="-1"></a>Hornet <span class="dv">4</span> Drive    <span class="fl">19.44</span>  <span class="dv">1</span>  <span class="dv">0</span>    <span class="dv">3</span>    <span class="dv">1</span></span>
+<span id="cb209-14"><a href="graphics1.html#cb209-14" aria-hidden="true" tabindex="-1"></a>Hornet Sportabout <span class="fl">17.02</span>  <span class="dv">0</span>  <span class="dv">0</span>    <span class="dv">3</span>    <span class="dv">2</span></span>
+<span id="cb209-15"><a href="graphics1.html#cb209-15" aria-hidden="true" tabindex="-1"></a>Valiant           <span class="fl">20.22</span>  <span class="dv">1</span>  <span class="dv">0</span>    <span class="dv">3</span>    <span class="dv">1</span></span></code></pre></div>
+<p>Let’s start with a scatterplot of <code>hp</code> (horse power) and <code>mpg</code> (miles per
+gallon). Perhaps the most common way to get this graph is with the high-level
+function <code>plot()</code></p>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="graphics1.html#cb210-1" aria-hidden="true" tabindex="-1"></a><span class="co"># simple scatter-plot</span></span>
+<span id="cb210-2"><a href="graphics1.html#cb210-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp)</span></code></pre></div>
+<p><img src="R-coding-basics_files/figure-html/unnamed-chunk-203-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>We can specify values for its large number of arguments. For instance, we
+can set better axis names with <code>xlab</code> and <code>ylab</code></p>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="graphics1.html#cb211-1" aria-hidden="true" tabindex="-1"></a><span class="co"># x-axis and y-axis labels</span></span>
+<span id="cb211-2"><a href="graphics1.html#cb211-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp, </span>
+<span id="cb211-3"><a href="graphics1.html#cb211-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;miles per gallon&quot;</span>,</span>
+<span id="cb211-4"><a href="graphics1.html#cb211-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;horsepower&quot;</span>)</span></code></pre></div>
+<p><img src="R-coding-basics_files/figure-html/unnamed-chunk-204-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Likewise, we can add a title with the <code>main</code> argument:</p>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="graphics1.html#cb212-1" aria-hidden="true" tabindex="-1"></a><span class="co"># title and subtitle</span></span>
+<span id="cb212-2"><a href="graphics1.html#cb212-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp, </span>
+<span id="cb212-3"><a href="graphics1.html#cb212-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;miles per gallon&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;horsepower&quot;</span>, </span>
+<span id="cb212-4"><a href="graphics1.html#cb212-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Simple Scatterplot&quot;</span>, <span class="at">sub =</span> <span class="st">&#39;data matcars&#39;</span>)</span></code></pre></div>
+<p><img src="R-coding-basics_files/figure-html/unnamed-chunk-205-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Or we can change the range of x-axis as well as the range of the y-axis
+with <code>xlim</code> and <code>ylim</code>, respectively:</p>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="graphics1.html#cb213-1" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;xlim&#39; and &#39;ylim&#39;</span></span>
+<span id="cb213-2"><a href="graphics1.html#cb213-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp, </span>
+<span id="cb213-3"><a href="graphics1.html#cb213-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;miles per gallon&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;horsepower&quot;</span>, </span>
+<span id="cb213-4"><a href="graphics1.html#cb213-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Simple Scatterplot&quot;</span>, <span class="at">sub =</span> <span class="st">&#39;data matcars&#39;</span>,</span>
+<span id="cb213-5"><a href="graphics1.html#cb213-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">35</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">400</span>))</span></code></pre></div>
+<p><img src="R-coding-basics_files/figure-html/unnamed-chunk-206-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Here’s a more sophisticated example</p>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="graphics1.html#cb214-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using plot()</span></span>
+<span id="cb214-2"><a href="graphics1.html#cb214-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>mpg, </span>
+<span id="cb214-3"><a href="graphics1.html#cb214-3" aria-hidden="true" tabindex="-1"></a>     mtcars<span class="sc">$</span>hp, </span>
+<span id="cb214-4"><a href="graphics1.html#cb214-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">35</span>), </span>
+<span id="cb214-5"><a href="graphics1.html#cb214-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">400</span>),</span>
+<span id="cb214-6"><a href="graphics1.html#cb214-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;miles per gallon&quot;</span>,</span>
+<span id="cb214-7"><a href="graphics1.html#cb214-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;horsepower&quot;</span>, </span>
+<span id="cb214-8"><a href="graphics1.html#cb214-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Simple Scatterplot&quot;</span>,</span>
+<span id="cb214-9"><a href="graphics1.html#cb214-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">sub =</span> <span class="st">&quot;data matcars&quot;</span>, </span>
+<span id="cb214-10"><a href="graphics1.html#cb214-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>, </span>
+<span id="cb214-11"><a href="graphics1.html#cb214-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">1.2</span>, </span>
+<span id="cb214-12"><a href="graphics1.html#cb214-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<p><img src="R-coding-basics_files/figure-html/plot_mtcars-1.png" width="70%" height="85%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="low-level-functions" class="section level2 hasAnchor" number="10.4">
+<h2><span class="header-section-number">10.4</span> Low-Level Functions<a href="graphics1.html#low-level-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>High and Low level functions</p>
+<ul>
+<li><p>Usually we call a high-level function</p></li>
+<li><p>Most times we change the default arguments</p></li>
+<li><p>Then we call low-level functions</p></li>
+</ul>
+<p>Example:</p>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="graphics1.html#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="co"># simple scatter-plot</span></span>
+<span id="cb215-2"><a href="graphics1.html#cb215-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp)</span>
+<span id="cb215-3"><a href="graphics1.html#cb215-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb215-4"><a href="graphics1.html#cb215-4" aria-hidden="true" tabindex="-1"></a><span class="co"># adding text</span></span>
+<span id="cb215-5"><a href="graphics1.html#cb215-5" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp, <span class="at">labels =</span> <span class="fu">rownames</span>(mtcars))</span>
+<span id="cb215-6"><a href="graphics1.html#cb215-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb215-7"><a href="graphics1.html#cb215-7" aria-hidden="true" tabindex="-1"></a><span class="co"># dummy legend</span></span>
+<span id="cb215-8"><a href="graphics1.html#cb215-8" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="at">legend =</span> <span class="st">&quot;a legend&quot;</span>)</span>
+<span id="cb215-9"><a href="graphics1.html#cb215-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb215-10"><a href="graphics1.html#cb215-10" aria-hidden="true" tabindex="-1"></a><span class="co"># graphic title</span></span>
+<span id="cb215-11"><a href="graphics1.html#cb215-11" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;Miles Per Galon -vs- Horsepower&quot;</span>)</span></code></pre></div>
+<p><img src="R-coding-basics_files/figure-html/mtcars_plot1-1.png" width="70%" height="85%" style="display: block; margin: auto;" /></p>
+<p>Another example:</p>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="graphics1.html#cb216-1" aria-hidden="true" tabindex="-1"></a><span class="co"># simple scatter-plot</span></span>
+<span id="cb216-2"><a href="graphics1.html#cb216-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, </span>
+<span id="cb216-3"><a href="graphics1.html#cb216-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;miles per gallon&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;horsepower&quot;</span>)</span>
+<span id="cb216-4"><a href="graphics1.html#cb216-4" aria-hidden="true" tabindex="-1"></a><span class="co"># grid lines</span></span>
+<span id="cb216-5"><a href="graphics1.html#cb216-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">10</span>, <span class="at">to =</span> <span class="dv">30</span>, <span class="at">by =</span> <span class="dv">5</span>), <span class="at">col =</span> <span class="st">&#39;gray&#39;</span>)</span>
+<span id="cb216-6"><a href="graphics1.html#cb216-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">50</span>, <span class="at">to =</span> <span class="dv">300</span>, <span class="at">by =</span> <span class="dv">50</span>), <span class="at">col =</span> <span class="st">&#39; gray&#39;</span>)</span>
+<span id="cb216-7"><a href="graphics1.html#cb216-7" aria-hidden="true" tabindex="-1"></a><span class="co"># plot points</span></span>
+<span id="cb216-8"><a href="graphics1.html#cb216-8" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb216-9"><a href="graphics1.html#cb216-9" aria-hidden="true" tabindex="-1"></a><span class="co"># plot text</span></span>
+<span id="cb216-10"><a href="graphics1.html#cb216-10" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp, <span class="at">labels =</span> <span class="fu">rownames</span>(mtcars),</span>
+<span id="cb216-11"><a href="graphics1.html#cb216-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">pos =</span> <span class="dv">4</span>, <span class="at">col =</span> <span class="st">&quot;gray50&quot;</span>)</span>
+<span id="cb216-12"><a href="graphics1.html#cb216-12" aria-hidden="true" tabindex="-1"></a><span class="co"># graphic title</span></span>
+<span id="cb216-13"><a href="graphics1.html#cb216-13" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;Miles Per Galon -vs- Horsepower&quot;</span>)</span></code></pre></div>
+<p><img src="R-coding-basics_files/figure-html/mtcars_plot2-1.png" width="70%" height="85%" style="display: block; margin: auto;" /></p>
+<div id="low-level-functions-1" class="section level3 hasAnchor" number="10.4.1">
+<h3><span class="header-section-number">10.4.1</span> Low-level functions<a href="graphics1.html#low-level-functions-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>points()</code></td>
+<td align="left">points</td>
+</tr>
+<tr class="even">
+<td align="left"><code>lines()</code></td>
+<td align="left">connected line segments</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>abline()</code></td>
+<td align="left">straight lines across a plot</td>
+</tr>
+<tr class="even">
+<td align="left"><code>segments()</code></td>
+<td align="left">disconnected line segments</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>arrows()</code></td>
+<td align="left">arrows</td>
+</tr>
+<tr class="even">
+<td align="left"><code>rect()</code></td>
+<td align="left">rectangles</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>polygon()</code></td>
+<td align="left">polygons</td>
+</tr>
+<tr class="even">
+<td align="left"><code>text()</code></td>
+<td align="left">text</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>symbols()</code></td>
+<td align="left">various symbols</td>
+</tr>
+<tr class="even">
+<td align="left"><code>legend()</code></td>
+<td align="left">legends</td>
+</tr>
+</tbody>
+</table>
+<div id="lines" class="section level4 unnumbered hasAnchor">
+<h4>Lines<a href="graphics1.html#lines" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="graphics1.html#cb217-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2005</span><span class="sc">:</span><span class="dv">2015</span></span>
+<span id="cb217-2"><a href="graphics1.html#cb217-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb217-3"><a href="graphics1.html#cb217-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">81</span>, <span class="dv">83</span>, <span class="fl">84.3</span>, <span class="dv">85</span>, <span class="fl">85.4</span>, <span class="fl">86.5</span>, <span class="fl">88.3</span>, </span>
+<span id="cb217-4"><a href="graphics1.html#cb217-4" aria-hidden="true" tabindex="-1"></a>       <span class="fl">88.6</span>, <span class="fl">90.8</span>, <span class="fl">91.1</span>, <span class="fl">91.3</span>)</span>
+<span id="cb217-5"><a href="graphics1.html#cb217-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb217-6"><a href="graphics1.html#cb217-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">&#39;n&#39;</span>, <span class="at">xlab =</span> <span class="st">&quot;Time&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Values&quot;</span>)</span>
+<span id="cb217-7"><a href="graphics1.html#cb217-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, y, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb217-8"><a href="graphics1.html#cb217-8" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="at">main =</span> <span class="st">&quot;Line Graph Example&quot;</span>)</span></code></pre></div>
+<p><img src="R-coding-basics_files/figure-html/line_segs-1.png" width="70%" height="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="drawing-line-segments" class="section level4 hasAnchor" number="10.4.1.1">
+<h4><span class="header-section-number">10.4.1.1</span> Drawing Line Segments<a href="graphics1.html#drawing-line-segments" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="graphics1.html#cb218-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">11</span></span>
+<span id="cb218-2"><a href="graphics1.html#cb218-2" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">2</span> <span class="sc">*</span> pi, <span class="at">length =</span> n <span class="sc">+</span> <span class="dv">1</span>)[<span class="dv">1</span><span class="sc">:</span>n]</span>
+<span id="cb218-3"><a href="graphics1.html#cb218-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sin</span>(theta)</span>
+<span id="cb218-4"><a href="graphics1.html#cb218-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">cos</span>(theta)</span>
+<span id="cb218-5"><a href="graphics1.html#cb218-5" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>n, n)</span>
+<span id="cb218-6"><a href="graphics1.html#cb218-6" aria-hidden="true" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>n, <span class="fu">rep</span>(n, n))</span>
+<span id="cb218-7"><a href="graphics1.html#cb218-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb218-8"><a href="graphics1.html#cb218-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">&#39;n&#39;</span>)</span>
+<span id="cb218-9"><a href="graphics1.html#cb218-9" aria-hidden="true" tabindex="-1"></a><span class="fu">segments</span>(x[v1], y[v1], x[v2], y[v2])</span></code></pre></div>
+<p><img src="R-coding-basics_files/figure-html/segments-1.png" width="70%" height="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="drawing-polygons" class="section level4 unnumbered hasAnchor">
+<h4>Drawing Polygons<a href="graphics1.html#drawing-polygons" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="graphics1.html#cb219-1" aria-hidden="true" tabindex="-1"></a>mpg_dens <span class="ot">&lt;-</span> <span class="fu">density</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb219-2"><a href="graphics1.html#cb219-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb219-3"><a href="graphics1.html#cb219-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mpg_dens, <span class="at">main =</span> <span class="st">&quot;Kernel Density Curve&quot;</span>)</span>
+<span id="cb219-4"><a href="graphics1.html#cb219-4" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(mpg_dens, <span class="at">col =</span> <span class="st">&#39;gray&#39;</span>)</span></code></pre></div>
+<p><img src="R-coding-basics_files/figure-html/polygons-1.png" width="70%" height="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="drawing-text" class="section level4 unnumbered hasAnchor">
+<h4>Drawing Text<a href="graphics1.html#drawing-text" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="graphics1.html#cb220-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">type =</span> <span class="st">&#39;n&#39;</span>)</span>
+<span id="cb220-2"><a href="graphics1.html#cb220-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fu">c</span>(.<span class="dv">2</span>, .<span class="dv">5</span>, .<span class="dv">8</span>),</span>
+<span id="cb220-3"><a href="graphics1.html#cb220-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">v =</span> <span class="fu">c</span>(.<span class="dv">5</span>, .<span class="dv">2</span>, .<span class="dv">8</span>), <span class="at">col =</span> <span class="st">&quot;lightgrey&quot;</span>)</span>
+<span id="cb220-4"><a href="graphics1.html#cb220-4" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="st">&quot;srt = 45, adj = c(.5, .5)&quot;</span>,</span>
+<span id="cb220-5"><a href="graphics1.html#cb220-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">srt =</span> <span class="dv">45</span>, <span class="at">adj =</span> <span class="fu">c</span>(.<span class="dv">5</span>, .<span class="dv">5</span>))</span>
+<span id="cb220-6"><a href="graphics1.html#cb220-6" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fl">0.5</span>, <span class="fl">0.8</span>, <span class="st">&quot;adj = c(0, .5)&quot;</span>, <span class="at">adj =</span> <span class="fu">c</span>(<span class="dv">0</span>, .<span class="dv">5</span>))</span>
+<span id="cb220-7"><a href="graphics1.html#cb220-7" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fl">0.5</span>, <span class="fl">0.2</span>, <span class="st">&quot;adj = c(1, .5)&quot;</span>, <span class="at">adj =</span> <span class="fu">c</span>(<span class="dv">1</span>, .<span class="dv">5</span>))</span>
+<span id="cb220-8"><a href="graphics1.html#cb220-8" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fl">0.2</span>, <span class="fl">0.5</span>, <span class="st">&quot;adj = c(1, 1)&quot;</span>, <span class="at">adj =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb220-9"><a href="graphics1.html#cb220-9" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fl">0.8</span>, <span class="fl">0.5</span>, <span class="st">&quot;adj = c(0, 0)&quot;</span>, <span class="at">adj =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>))</span></code></pre></div>
+<p><img src="R-coding-basics_files/figure-html/draw_text-1.png" width="70%" height="80%" style="display: block; margin: auto;" /></p>
+
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="dataframes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="graphics2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["R-coding-basics.pdf", "R-coding-basics.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
