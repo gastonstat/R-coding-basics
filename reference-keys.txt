@@ -227,3 +227,7 @@ sending-output-with-cat-1
 redirecting-output-with-sink
 exporting-rs-binary-data
 exporting-images
+fig:unnamed-chunk-3
+fig:unnamed-chunk-5
+fig:unnamed-chunk-6
+fig:unnamed-chunk-11

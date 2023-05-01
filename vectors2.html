@@ -28,7 +28,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
-  
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
 <link rel="prev" href="vectors1.html"/>
 <link rel="next" href="vectors3.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -479,23 +479,23 @@ understanding of the properties and behavior of R vectors.</p>
 <h2><span class="header-section-number">2.1</span> Motivation<a href="vectors2.html#motivation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In the preceding chapter we ended up creating six main objects, which I’m
 bringing back for you in the following code chunk:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="vectors2.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inputs</span></span>
-<span id="cb13-2"><a href="vectors2.html#cb13-2" aria-hidden="true" tabindex="-1"></a>deposit <span class="ot">=</span> <span class="dv">1000</span></span>
-<span id="cb13-3"><a href="vectors2.html#cb13-3" aria-hidden="true" tabindex="-1"></a>rate <span class="ot">=</span> <span class="fl">0.02</span></span>
-<span id="cb13-4"><a href="vectors2.html#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="vectors2.html#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># amounts at the end of years 1, 2, and 3</span></span>
-<span id="cb13-6"><a href="vectors2.html#cb13-6" aria-hidden="true" tabindex="-1"></a>amount1 <span class="ot">=</span> deposit <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate)</span>
-<span id="cb13-7"><a href="vectors2.html#cb13-7" aria-hidden="true" tabindex="-1"></a>amount2 <span class="ot">=</span> amount1 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate)</span>
-<span id="cb13-8"><a href="vectors2.html#cb13-8" aria-hidden="true" tabindex="-1"></a>amount3 <span class="ot">=</span> amount2 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate)</span>
-<span id="cb13-9"><a href="vectors2.html#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-10"><a href="vectors2.html#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co"># combine in a single object</span></span>
-<span id="cb13-11"><a href="vectors2.html#cb13-11" aria-hidden="true" tabindex="-1"></a>amounts <span class="ot">=</span> <span class="fu">c</span>(amount1, amount2, amount3)</span>
-<span id="cb13-12"><a href="vectors2.html#cb13-12" aria-hidden="true" tabindex="-1"></a>amounts</span>
-<span id="cb13-13"><a href="vectors2.html#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">1020.000</span> <span class="fl">1040.400</span> <span class="fl">1061.208</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="vectors2.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inputs</span></span>
+<span id="cb1-2"><a href="vectors2.html#cb1-2" aria-hidden="true" tabindex="-1"></a>deposit <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb1-3"><a href="vectors2.html#cb1-3" aria-hidden="true" tabindex="-1"></a>rate <span class="ot">=</span> <span class="fl">0.02</span></span>
+<span id="cb1-4"><a href="vectors2.html#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="vectors2.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># amounts at the end of years 1, 2, and 3</span></span>
+<span id="cb1-6"><a href="vectors2.html#cb1-6" aria-hidden="true" tabindex="-1"></a>amount1 <span class="ot">=</span> deposit <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate)</span>
+<span id="cb1-7"><a href="vectors2.html#cb1-7" aria-hidden="true" tabindex="-1"></a>amount2 <span class="ot">=</span> amount1 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate)</span>
+<span id="cb1-8"><a href="vectors2.html#cb1-8" aria-hidden="true" tabindex="-1"></a>amount3 <span class="ot">=</span> amount2 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate)</span>
+<span id="cb1-9"><a href="vectors2.html#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="vectors2.html#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># combine in a single object</span></span>
+<span id="cb1-11"><a href="vectors2.html#cb1-11" aria-hidden="true" tabindex="-1"></a>amounts <span class="ot">=</span> <span class="fu">c</span>(amount1, amount2, amount3)</span>
+<span id="cb1-12"><a href="vectors2.html#cb1-12" aria-hidden="true" tabindex="-1"></a>amounts</span>
+<span id="cb1-13"><a href="vectors2.html#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">1020.000</span> <span class="fl">1040.400</span> <span class="fl">1061.208</span></span></code></pre></div>
 <p>As we said, all these objects are <strong>vectors</strong>.</p>
 <p>To give you a mental picture of what a vector could like, you can think of a
 vector as set of contiguous “cells” of data, like in the diagram below:</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-16"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-3"></span>
 <img src="images/objects/obj-vectors.png" alt="Think of vectors as contiguous cells of data." width="40%" />
 <p class="caption">
 Figure 2.1: Think of vectors as contiguous cells of data.
@@ -522,17 +522,17 @@ elements in a vector are of the <strong>same type</strong>.</p>
 <li><p><code>character</code></p></li>
 </ul>
 <p>Here are simple examples of the four common data types of vectors:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="vectors2.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># logical</span></span>
-<span id="cb14-2"><a href="vectors2.html#cb14-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="cn">TRUE</span></span>
-<span id="cb14-3"><a href="vectors2.html#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="vectors2.html#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># integer</span></span>
-<span id="cb14-5"><a href="vectors2.html#cb14-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> 1L</span>
-<span id="cb14-6"><a href="vectors2.html#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-7"><a href="vectors2.html#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># double (real)</span></span>
-<span id="cb14-8"><a href="vectors2.html#cb14-8" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="dv">5</span></span>
-<span id="cb14-9"><a href="vectors2.html#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-10"><a href="vectors2.html#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co"># character</span></span>
-<span id="cb14-11"><a href="vectors2.html#cb14-11" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="st">&quot;yosemite&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="vectors2.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># logical</span></span>
+<span id="cb2-2"><a href="vectors2.html#cb2-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="cn">TRUE</span></span>
+<span id="cb2-3"><a href="vectors2.html#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="vectors2.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># integer</span></span>
+<span id="cb2-5"><a href="vectors2.html#cb2-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> 1L</span>
+<span id="cb2-6"><a href="vectors2.html#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="vectors2.html#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># double (real)</span></span>
+<span id="cb2-8"><a href="vectors2.html#cb2-8" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="dv">5</span></span>
+<span id="cb2-9"><a href="vectors2.html#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="vectors2.html#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># character</span></span>
+<span id="cb2-11"><a href="vectors2.html#cb2-11" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="st">&quot;yosemite&quot;</span></span></code></pre></div>
 <p>Logical values, known as boolean values in other languages, are <code>TRUE</code> and
 <code>FALSE</code>. These values can be abbreviated by using their first letters <code>T</code> and
 <code>F</code>, although I discourage you from doing this because it can make code review
@@ -552,7 +552,7 @@ surrounding characters within quotes: either double quotes <code>"yosemite"</cod
 single quotes <code>'yosemite'</code>. The important thing is to have an opening and a
 closing quote of the same kind.</p>
 <p>The following diagram summarizes the four common data types of vectors.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-18"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-5"></span>
 <img src="images/objects/obj-vector-atomic-types.png" alt="Common data types of atomic vectors." width="55%" />
 <p class="caption">
 Figure 2.2: Common data types of atomic vectors.
@@ -562,7 +562,7 @@ Figure 2.2: Common data types of atomic vectors.
 <h3><span class="header-section-number">2.2.1</span> Complex and Raw Types<a href="vectors2.html#complex-and-raw-types" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>There are two additional types that are less commonly used: <code>complex</code>
 (for complex numbers), and <code>raw</code> (raw bytes) which is a binary format used by R.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-19"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-6"></span>
 <img src="images/objects/obj-vector-atomic-types2.png" alt="The 4 most common, and 2 less common, data types of atomic vectors." width="60%" />
 <p class="caption">
 Figure 2.3: The 4 most common, and 2 less common, data types of atomic vectors.
@@ -592,42 +592,42 @@ worse, there is a couple of functions that allow you to answer this question:</p
 to determine the data type of a vector is <code>typeof()</code>. The reason for this
 recommendation is because <code>typeof()</code> returns the data types previously listed
 which are what most other programming languages use:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="vectors2.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(deposit)</span>
-<span id="cb15-2"><a href="vectors2.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;double&quot;</span></span>
-<span id="cb15-3"><a href="vectors2.html#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="vectors2.html#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(rate)</span>
-<span id="cb15-5"><a href="vectors2.html#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;double&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="vectors2.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(deposit)</span>
+<span id="cb3-2"><a href="vectors2.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;double&quot;</span></span>
+<span id="cb3-3"><a href="vectors2.html#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="vectors2.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(rate)</span>
+<span id="cb3-5"><a href="vectors2.html#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;double&quot;</span></span></code></pre></div>
 <p>You should know that among the R community, many useRs don’t really talk about
 <em>types</em>. Instead, because of historical reasons related to the S language—on
 which R is based—you will often hear useRs talking about <em>modes</em>. To further
 complicate matters, there is not just one but two functions related to the
 concept of mode: <code>storage.mode()</code> and <code>mode()</code>.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="vectors2.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">storage.mode</span>(deposit)</span>
-<span id="cb16-2"><a href="vectors2.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;double&quot;</span></span>
-<span id="cb16-3"><a href="vectors2.html#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="vectors2.html#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mode</span>(deposit)</span>
-<span id="cb16-5"><a href="vectors2.html#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;numeric&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="vectors2.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">storage.mode</span>(deposit)</span>
+<span id="cb4-2"><a href="vectors2.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;double&quot;</span></span>
+<span id="cb4-3"><a href="vectors2.html#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="vectors2.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mode</span>(deposit)</span>
+<span id="cb4-5"><a href="vectors2.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;numeric&quot;</span></span></code></pre></div>
 <p>Both <code>storage.mode()</code> and <code>mode()</code> rely on the output of <code>typeof()</code>, and as
 their name indicate, provide information about the storage mode. So what is
 the difference between these functions?</p>
 <p>For practical purposes, <code>storage.mode()</code> is similar to <code>typeof()</code>, in the
 sense that they both return the same output:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="vectors2.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(deposit)</span>
-<span id="cb17-2"><a href="vectors2.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;double&quot;</span></span>
-<span id="cb17-3"><a href="vectors2.html#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="vectors2.html#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">storage.mode</span>(deposit)</span>
-<span id="cb17-5"><a href="vectors2.html#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;double&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="vectors2.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(deposit)</span>
+<span id="cb5-2"><a href="vectors2.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;double&quot;</span></span>
+<span id="cb5-3"><a href="vectors2.html#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="vectors2.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">storage.mode</span>(deposit)</span>
+<span id="cb5-5"><a href="vectors2.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;double&quot;</span></span></code></pre></div>
 <p>In turn, <code>mode()</code> behaves a bit different. <code>mode()</code> groups together types
 <code>"double"</code> and <code>"integer"</code> into a single mode called <code>"numeric"</code> because both
 data types are numeric values.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="vectors2.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(deposit)</span>
-<span id="cb18-2"><a href="vectors2.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;double&quot;</span></span>
-<span id="cb18-3"><a href="vectors2.html#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="vectors2.html#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mode</span>(deposit)</span>
-<span id="cb18-5"><a href="vectors2.html#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;numeric&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="vectors2.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(deposit)</span>
+<span id="cb6-2"><a href="vectors2.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;double&quot;</span></span>
+<span id="cb6-3"><a href="vectors2.html#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="vectors2.html#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mode</span>(deposit)</span>
+<span id="cb6-5"><a href="vectors2.html#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;numeric&quot;</span></span></code></pre></div>
 <p>The following diagram depicts the <code>numeric</code> mode of types <code>integer</code> and
 <code>double</code>:</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-24"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-11"></span>
 <img src="images/objects/obj-vector-atomic-modes.png" alt="Data types &quot;integer&quot; and &quot;double&quot; correspond to &quot;numeric&quot; mode." width="55%" />
 <p class="caption">
 Figure 2.4: Data types “integer” and “double” correspond to “numeric” mode.
@@ -721,11 +721,11 @@ can think of length as the “size” of a vector.</p>
 <p>The simplest kind of vectors are single values—i.e. vectors with just one
 element. For example, objects such as <code>deposit</code> and <code>rate</code> are one-element
 vectors. To find the length of a vector you use the function <code>length()</code></p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="vectors2.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(deposit)</span>
-<span id="cb19-2"><a href="vectors2.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span></span>
-<span id="cb19-3"><a href="vectors2.html#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="vectors2.html#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(amounts)</span>
-<span id="cb19-5"><a href="vectors2.html#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="vectors2.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(deposit)</span>
+<span id="cb7-2"><a href="vectors2.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span></span>
+<span id="cb7-3"><a href="vectors2.html#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="vectors2.html#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(amounts)</span>
+<span id="cb7-5"><a href="vectors2.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">3</span></span></code></pre></div>
 <p>By the way, vectors can be of any length, including 0. We talk more about
 these special vectors in the next chapter.</p>
 <div id="no-scalars-in-r" class="section level4 unnumbered hasAnchor">
@@ -741,14 +741,14 @@ that when you type <code>5</code> R handles this data with a vector of length on
 <p>Another feature of vectors is that their elements can have names. For example,
 we have the <code>amounts</code> vector that contains the savings amounts at the end of
 years 1, 2, and 3:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="vectors2.html#cb20-1" aria-hidden="true" tabindex="-1"></a>amounts</span>
-<span id="cb20-2"><a href="vectors2.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">1020.000</span> <span class="fl">1040.400</span> <span class="fl">1061.208</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="vectors2.html#cb8-1" aria-hidden="true" tabindex="-1"></a>amounts</span>
+<span id="cb8-2"><a href="vectors2.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">1020.000</span> <span class="fl">1040.400</span> <span class="fl">1061.208</span></span></code></pre></div>
 <p>We can give names to the elements in <code>amounts</code> by using the <code>names()</code> function.
 We apply <code>names()</code> to <code>amounts</code> and we assign a vector of names like so:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="vectors2.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(amounts) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;year1&quot;</span>, <span class="st">&quot;year2&quot;</span>, <span class="st">&quot;year3&quot;</span>)</span>
-<span id="cb21-2"><a href="vectors2.html#cb21-2" aria-hidden="true" tabindex="-1"></a>amounts</span>
-<span id="cb21-3"><a href="vectors2.html#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>    year1    year2    year3 </span>
-<span id="cb21-4"><a href="vectors2.html#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fl">1020.000</span> <span class="fl">1040.400</span> <span class="fl">1061.208</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="vectors2.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(amounts) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;year1&quot;</span>, <span class="st">&quot;year2&quot;</span>, <span class="st">&quot;year3&quot;</span>)</span>
+<span id="cb9-2"><a href="vectors2.html#cb9-2" aria-hidden="true" tabindex="-1"></a>amounts</span>
+<span id="cb9-3"><a href="vectors2.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>    year1    year2    year3 </span>
+<span id="cb9-4"><a href="vectors2.html#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fl">1020.000</span> <span class="fl">1040.400</span> <span class="fl">1061.208</span></span></code></pre></div>
 <hr />
 </div>
 <div id="exercises-1" class="section level2 hasAnchor" number="2.7">
@@ -773,21 +773,25 @@ such that when printed it displays the values shown below:</p>
 printed it displays the values shown below:</p>
 <pre><code>&gt; [1] 0.02 0.03 0.04</code></pre>
 <p><br></p>
-<p><strong>4)</strong> Use the <code>c()</code> function to create a vector <code>years</code> of <strong>integer</strong>
+<p><strong>4)</strong> Use the function <code>names()</code> to give names to the elements of your vector <code>rates</code>. When printing <code>rates</code> you should get following output:</p>
+<pre><code>&gt; savings  market  certif 
+&gt;    0.02    0.03    0.04</code></pre>
+<p><br></p>
+<p><strong>5)</strong> Use the <code>c()</code> function to create a vector <code>years</code> of <strong>integer</strong>
 values such that when printed it displays the values shown below. Recall
 that integer values are of the form <code>1L</code>.</p>
 <pre><code>&gt; [1] 2 3 4</code></pre>
 <p><br></p>
-<p><strong>5)</strong> Use the <code>typeof()</code> function to inspect the data type of <code>accounts</code>,
-<code>joint</code>, <code>rates</code>, and <code>years</code>. Confirm that their output is <code>character</code>,
-<code>logical</code>, <code>double</code> and <code>integer</code>, respectively.</p>
+<p><strong>6)</strong> Use the <code>typeof()</code> function to inspect the data type of <code>accounts</code>,
+<code>joint</code>, <code>rates</code>, and <code>years</code>. Confirm that their output is <code>"character"</code>,
+<code>"logical"</code>, <code>"double"</code> and <code>"integer"</code>, respectively.</p>
 <p><br></p>
-<p><strong>6)</strong> Use the <code>length()</code> function to inspect the length of <code>accounts</code>,
+<p><strong>7)</strong> Use the <code>length()</code> function to inspect the length of <code>accounts</code>,
 <code>joint</code>, <code>rates</code>, and <code>years</code>.</p>
 <p><br></p>
-<p><strong>7)</strong> Explain, with your own words, why vectors are said to be <strong>atomic</strong> objects.</p>
+<p><strong>8)</strong> Explain, in your own words, why vectors are said to be <strong>atomic</strong> objects.</p>
 <p><br></p>
-<p><strong>8)</strong> Explain, with your own words, the difference between the output of
+<p><strong>9)</strong> Explain, in your own words, the difference between the output of
 functions <code>typeof()</code> and <code>mode()</code>—when applied to vectors.</p>
 
 </div>
@@ -852,20 +856,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
