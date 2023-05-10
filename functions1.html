@@ -28,7 +28,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
-  
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
 <link rel="prev" href="graphics3.html"/>
 <link rel="next" href="expressions.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -497,7 +497,7 @@ an annual interest of 2%, how much will you have at the end of year 10?</p>
 future value.</p>
 <p>Wouldn’t it be nice to have a <code>future_value()</code> function—or an <code>fv()</code>
 function—that you could call in R? Perhaps something like:</p>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="functions1.html#cb240-1" aria-hidden="true" tabindex="-1"></a><span class="fu">future_value</span>(<span class="at">present =</span> <span class="dv">1000</span>, <span class="at">rate =</span> <span class="fl">0.02</span>, <span class="at">year =</span> <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="functions1.html#cb245-1" aria-hidden="true" tabindex="-1"></a><span class="fu">future_value</span>(<span class="at">present =</span> <span class="dv">1000</span>, <span class="at">rate =</span> <span class="fl">0.02</span>, <span class="at">year =</span> <span class="dv">10</span>)</span></code></pre></div>
 <p>Let’s create such a function!</p>
 </div>
 <div id="writing-a-simple-function" class="section level2 hasAnchor" number="13.2">
@@ -510,7 +510,7 @@ mathematical formula to work with (which makes things a lot easier):</p>
 <p>Like other programming languages that can be used for scientific computations,
 we can take advantage of the syntax in R to write an expression that is almost
 identical to the algebraic formulation:</p>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="functions1.html#cb241-1" aria-hidden="true" tabindex="-1"></a>fv <span class="ot">=</span> pv <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> r)<span class="sc">^</span>n</span></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="functions1.html#cb246-1" aria-hidden="true" tabindex="-1"></a>fv <span class="ot">=</span> pv <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> r)<span class="sc">^</span>n</span></code></pre></div>
 <p>We will use this simple line of code as our starting point for creating a
 future value function. Here is how to do it “logically” step by step.</p>
 <div id="step-1-start-with-a-concrete-example" class="section level4 unnumbered hasAnchor">
@@ -518,17 +518,17 @@ future value function. Here is how to do it “logically” step by step.</p>
 <p>You should always start with a <strong>small and concrete example</strong>, focusing
 on writing code that does the job. For example, we could write the following
 lines:</p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="functions1.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inputs</span></span>
-<span id="cb242-2"><a href="functions1.html#cb242-2" aria-hidden="true" tabindex="-1"></a>pv <span class="ot">=</span> <span class="dv">1000</span></span>
-<span id="cb242-3"><a href="functions1.html#cb242-3" aria-hidden="true" tabindex="-1"></a>r <span class="ot">=</span> <span class="fl">0.02</span></span>
-<span id="cb242-4"><a href="functions1.html#cb242-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">10</span></span>
-<span id="cb242-5"><a href="functions1.html#cb242-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb242-6"><a href="functions1.html#cb242-6" aria-hidden="true" tabindex="-1"></a><span class="co"># process</span></span>
-<span id="cb242-7"><a href="functions1.html#cb242-7" aria-hidden="true" tabindex="-1"></a>fv <span class="ot">=</span> pv <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> r)<span class="sc">^</span>n</span>
-<span id="cb242-8"><a href="functions1.html#cb242-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb242-9"><a href="functions1.html#cb242-9" aria-hidden="true" tabindex="-1"></a><span class="co"># output</span></span>
-<span id="cb242-10"><a href="functions1.html#cb242-10" aria-hidden="true" tabindex="-1"></a>fv</span>
-<span id="cb242-11"><a href="functions1.html#cb242-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">1218.994</span></span></code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="functions1.html#cb247-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inputs</span></span>
+<span id="cb247-2"><a href="functions1.html#cb247-2" aria-hidden="true" tabindex="-1"></a>pv <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb247-3"><a href="functions1.html#cb247-3" aria-hidden="true" tabindex="-1"></a>r <span class="ot">=</span> <span class="fl">0.02</span></span>
+<span id="cb247-4"><a href="functions1.html#cb247-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">10</span></span>
+<span id="cb247-5"><a href="functions1.html#cb247-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb247-6"><a href="functions1.html#cb247-6" aria-hidden="true" tabindex="-1"></a><span class="co"># process</span></span>
+<span id="cb247-7"><a href="functions1.html#cb247-7" aria-hidden="true" tabindex="-1"></a>fv <span class="ot">=</span> pv <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> r)<span class="sc">^</span>n</span>
+<span id="cb247-8"><a href="functions1.html#cb247-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb247-9"><a href="functions1.html#cb247-9" aria-hidden="true" tabindex="-1"></a><span class="co"># output</span></span>
+<span id="cb247-10"><a href="functions1.html#cb247-10" aria-hidden="true" tabindex="-1"></a>fv</span>
+<span id="cb247-11"><a href="functions1.html#cb247-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">1218.994</span></span></code></pre></div>
 <p>When I say “small example” I mean working with objects containing just a few
 values. Here, the objects <code>pv</code>, <code>r</code>, and <code>n</code> are super simple vectors of size 1.
 Sometimes, though, you may want to start with less simple—yet small—objects
@@ -566,16 +566,16 @@ least less concrete).</p>
 <p>Instead of working with specific values <code>pv</code>, <code>r</code>, and <code>n</code>, you can give them
 a more algebraic spirit. For instance, the code below considers “open-ended”
 inputs without assigning them any values</p>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="functions1.html#cb243-1" aria-hidden="true" tabindex="-1"></a><span class="co"># general inputs (could take &quot;any&quot; values)</span></span>
-<span id="cb243-2"><a href="functions1.html#cb243-2" aria-hidden="true" tabindex="-1"></a>pv</span>
-<span id="cb243-3"><a href="functions1.html#cb243-3" aria-hidden="true" tabindex="-1"></a>r</span>
-<span id="cb243-4"><a href="functions1.html#cb243-4" aria-hidden="true" tabindex="-1"></a>n</span>
-<span id="cb243-5"><a href="functions1.html#cb243-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb243-6"><a href="functions1.html#cb243-6" aria-hidden="true" tabindex="-1"></a><span class="co"># process</span></span>
-<span id="cb243-7"><a href="functions1.html#cb243-7" aria-hidden="true" tabindex="-1"></a>fv <span class="ot">=</span> pv <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> r)<span class="sc">^</span>n</span>
-<span id="cb243-8"><a href="functions1.html#cb243-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb243-9"><a href="functions1.html#cb243-9" aria-hidden="true" tabindex="-1"></a><span class="co"># output</span></span>
-<span id="cb243-10"><a href="functions1.html#cb243-10" aria-hidden="true" tabindex="-1"></a>fv</span></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="functions1.html#cb248-1" aria-hidden="true" tabindex="-1"></a><span class="co"># general inputs (could take &quot;any&quot; values)</span></span>
+<span id="cb248-2"><a href="functions1.html#cb248-2" aria-hidden="true" tabindex="-1"></a>pv</span>
+<span id="cb248-3"><a href="functions1.html#cb248-3" aria-hidden="true" tabindex="-1"></a>r</span>
+<span id="cb248-4"><a href="functions1.html#cb248-4" aria-hidden="true" tabindex="-1"></a>n</span>
+<span id="cb248-5"><a href="functions1.html#cb248-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb248-6"><a href="functions1.html#cb248-6" aria-hidden="true" tabindex="-1"></a><span class="co"># process</span></span>
+<span id="cb248-7"><a href="functions1.html#cb248-7" aria-hidden="true" tabindex="-1"></a>fv <span class="ot">=</span> pv <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> r)<span class="sc">^</span>n</span>
+<span id="cb248-8"><a href="functions1.html#cb248-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb248-9"><a href="functions1.html#cb248-9" aria-hidden="true" tabindex="-1"></a><span class="co"># output</span></span>
+<span id="cb248-10"><a href="functions1.html#cb248-10" aria-hidden="true" tabindex="-1"></a>fv</span></code></pre></div>
 <p>Obviously this piece of code is very abstract and not intended to be executed
 in R; this is just for the sake of conceptual illustration.</p>
 </div>
@@ -590,18 +590,18 @@ inputs of your functions are known as the <strong>arguments</strong> of the func
 <p>Likewise, the lines of code that correspond to the “process” and “output” are
 what will become the <strong>body</strong> of the function. Typically, you encapsulate the
 code of the body by surrounding it with curly braces <code>{ }</code></p>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="functions1.html#cb244-1" aria-hidden="true" tabindex="-1"></a><span class="co"># encapsulating code into a function</span></span>
-<span id="cb244-2"><a href="functions1.html#cb244-2" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span>(pv, r, n) {</span>
-<span id="cb244-3"><a href="functions1.html#cb244-3" aria-hidden="true" tabindex="-1"></a>  fv <span class="ot">=</span> pv <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> r)<span class="sc">^</span>n</span>
-<span id="cb244-4"><a href="functions1.html#cb244-4" aria-hidden="true" tabindex="-1"></a>  fv</span>
-<span id="cb244-5"><a href="functions1.html#cb244-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="functions1.html#cb249-1" aria-hidden="true" tabindex="-1"></a><span class="co"># encapsulating code into a function</span></span>
+<span id="cb249-2"><a href="functions1.html#cb249-2" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span>(pv, r, n) {</span>
+<span id="cb249-3"><a href="functions1.html#cb249-3" aria-hidden="true" tabindex="-1"></a>  fv <span class="ot">=</span> pv <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> r)<span class="sc">^</span>n</span>
+<span id="cb249-4"><a href="functions1.html#cb249-4" aria-hidden="true" tabindex="-1"></a>  fv</span>
+<span id="cb249-5"><a href="functions1.html#cb249-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>The other substep typically consists of <strong>assigning a name</strong> to the code of
 your function. For example, you can give it the name <code>FV</code>:</p>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="functions1.html#cb245-1" aria-hidden="true" tabindex="-1"></a><span class="co"># future value function</span></span>
-<span id="cb245-2"><a href="functions1.html#cb245-2" aria-hidden="true" tabindex="-1"></a>FV <span class="ot">=</span> <span class="cf">function</span>(pv, r, n) {</span>
-<span id="cb245-3"><a href="functions1.html#cb245-3" aria-hidden="true" tabindex="-1"></a>  fv <span class="ot">=</span> pv <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> r)<span class="sc">^</span>n</span>
-<span id="cb245-4"><a href="functions1.html#cb245-4" aria-hidden="true" tabindex="-1"></a>  fv</span>
-<span id="cb245-5"><a href="functions1.html#cb245-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="functions1.html#cb250-1" aria-hidden="true" tabindex="-1"></a><span class="co"># future value function</span></span>
+<span id="cb250-2"><a href="functions1.html#cb250-2" aria-hidden="true" tabindex="-1"></a>FV <span class="ot">=</span> <span class="cf">function</span>(pv, r, n) {</span>
+<span id="cb250-3"><a href="functions1.html#cb250-3" aria-hidden="true" tabindex="-1"></a>  fv <span class="ot">=</span> pv <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> r)<span class="sc">^</span>n</span>
+<span id="cb250-4"><a href="functions1.html#cb250-4" aria-hidden="true" tabindex="-1"></a>  fv</span>
+<span id="cb250-5"><a href="functions1.html#cb250-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>In summary:</p>
 <ul>
 <li><p>the inputs go inside <code>function()</code>, separating each input with a comma</p></li>
@@ -613,22 +613,22 @@ your function. For example, you can give it the name <code>FV</code>:</p>
 <h4>Step 4: Test that the function works<a href="functions1.html#step-4-test-that-the-function-works" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Once the function is created, you test it to make sure that everything works.
 Very likely you will test your function with the small and concrete example:</p>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="functions1.html#cb246-1" aria-hidden="true" tabindex="-1"></a><span class="co"># test it</span></span>
-<span id="cb246-2"><a href="functions1.html#cb246-2" aria-hidden="true" tabindex="-1"></a><span class="fu">FV</span>(<span class="dv">1000</span>, <span class="fl">0.02</span>, <span class="dv">10</span>)</span>
-<span id="cb246-3"><a href="functions1.html#cb246-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">1218.994</span></span></code></pre></div>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="functions1.html#cb251-1" aria-hidden="true" tabindex="-1"></a><span class="co"># test it</span></span>
+<span id="cb251-2"><a href="functions1.html#cb251-2" aria-hidden="true" tabindex="-1"></a><span class="fu">FV</span>(<span class="dv">1000</span>, <span class="fl">0.02</span>, <span class="dv">10</span>)</span>
+<span id="cb251-3"><a href="functions1.html#cb251-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">1218.994</span></span></code></pre></div>
 <p>And then you’ll keep testing your function with other less simple examples.
 In this case, because the code we are working with is based on vectors,
 and uses common functions for vectors, we can further inspect the behavior of
 the function by providing vectors of various sizes for all the arguments:</p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="functions1.html#cb247-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vectorized years</span></span>
-<span id="cb247-2"><a href="functions1.html#cb247-2" aria-hidden="true" tabindex="-1"></a><span class="fu">FV</span>(<span class="dv">1000</span>, <span class="fl">0.02</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
-<span id="cb247-3"><a href="functions1.html#cb247-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">1020.000</span> <span class="fl">1040.400</span> <span class="fl">1061.208</span> <span class="fl">1082.432</span> <span class="fl">1104.081</span></span></code></pre></div>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="functions1.html#cb248-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vectorized rates</span></span>
-<span id="cb248-2"><a href="functions1.html#cb248-2" aria-hidden="true" tabindex="-1"></a><span class="fu">FV</span>(<span class="dv">1000</span>, <span class="fu">seq</span>(<span class="fl">0.01</span>, <span class="fl">0.02</span>, <span class="at">by =</span> <span class="fl">0.005</span>), <span class="dv">1</span>)</span>
-<span id="cb248-3"><a href="functions1.html#cb248-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1010</span> <span class="dv">1015</span> <span class="dv">1020</span></span></code></pre></div>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="functions1.html#cb249-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vectorized present values</span></span>
-<span id="cb249-2"><a href="functions1.html#cb249-2" aria-hidden="true" tabindex="-1"></a><span class="fu">FV</span>(<span class="fu">c</span>(<span class="dv">1000</span>, <span class="dv">2000</span>, <span class="dv">3000</span>), <span class="fl">0.02</span>, <span class="dv">1</span>)</span>
-<span id="cb249-3"><a href="functions1.html#cb249-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1020</span> <span class="dv">2040</span> <span class="dv">3060</span></span></code></pre></div>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="functions1.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vectorized years</span></span>
+<span id="cb252-2"><a href="functions1.html#cb252-2" aria-hidden="true" tabindex="-1"></a><span class="fu">FV</span>(<span class="dv">1000</span>, <span class="fl">0.02</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb252-3"><a href="functions1.html#cb252-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">1020.000</span> <span class="fl">1040.400</span> <span class="fl">1061.208</span> <span class="fl">1082.432</span> <span class="fl">1104.081</span></span></code></pre></div>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="functions1.html#cb253-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vectorized rates</span></span>
+<span id="cb253-2"><a href="functions1.html#cb253-2" aria-hidden="true" tabindex="-1"></a><span class="fu">FV</span>(<span class="dv">1000</span>, <span class="fu">seq</span>(<span class="fl">0.01</span>, <span class="fl">0.02</span>, <span class="at">by =</span> <span class="fl">0.005</span>), <span class="dv">1</span>)</span>
+<span id="cb253-3"><a href="functions1.html#cb253-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1010</span> <span class="dv">1015</span> <span class="dv">1020</span></span></code></pre></div>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="functions1.html#cb254-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vectorized present values</span></span>
+<span id="cb254-2"><a href="functions1.html#cb254-2" aria-hidden="true" tabindex="-1"></a><span class="fu">FV</span>(<span class="fu">c</span>(<span class="dv">1000</span>, <span class="dv">2000</span>, <span class="dv">3000</span>), <span class="fl">0.02</span>, <span class="dv">1</span>)</span>
+<span id="cb254-3"><a href="functions1.html#cb254-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1020</span> <span class="dv">2040</span> <span class="dv">3060</span></span></code></pre></div>
 <p>Notice that the function is vectorized, this is because we are using arithmetic
 operators (e.g. multiplication, subtraction, division) which are in turn
 vectorized.</p>
@@ -651,20 +651,20 @@ arguments. For example, we could give default values to the arguments in such
 a way that when the user executes the function without any input, <code>FV()</code>
 returns the value of 100 monetary units invested at a rate of return of
 1% for 1 year:</p>
-<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="functions1.html#cb250-1" aria-hidden="true" tabindex="-1"></a><span class="co"># future value function with default arguments</span></span>
-<span id="cb250-2"><a href="functions1.html#cb250-2" aria-hidden="true" tabindex="-1"></a>FV <span class="ot">=</span> <span class="cf">function</span>(<span class="at">pv =</span> <span class="dv">100</span>, <span class="at">r =</span> <span class="fl">0.01</span>, <span class="at">n =</span> <span class="dv">1</span>) {</span>
-<span id="cb250-3"><a href="functions1.html#cb250-3" aria-hidden="true" tabindex="-1"></a>  fv <span class="ot">=</span> pv <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> r)<span class="sc">^</span>n</span>
-<span id="cb250-4"><a href="functions1.html#cb250-4" aria-hidden="true" tabindex="-1"></a>  fv</span>
-<span id="cb250-5"><a href="functions1.html#cb250-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb250-6"><a href="functions1.html#cb250-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb250-7"><a href="functions1.html#cb250-7" aria-hidden="true" tabindex="-1"></a><span class="co"># default execution</span></span>
-<span id="cb250-8"><a href="functions1.html#cb250-8" aria-hidden="true" tabindex="-1"></a><span class="fu">FV</span>()</span>
-<span id="cb250-9"><a href="functions1.html#cb250-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">101</span></span></code></pre></div>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="functions1.html#cb255-1" aria-hidden="true" tabindex="-1"></a><span class="co"># future value function with default arguments</span></span>
+<span id="cb255-2"><a href="functions1.html#cb255-2" aria-hidden="true" tabindex="-1"></a>FV <span class="ot">=</span> <span class="cf">function</span>(<span class="at">pv =</span> <span class="dv">100</span>, <span class="at">r =</span> <span class="fl">0.01</span>, <span class="at">n =</span> <span class="dv">1</span>) {</span>
+<span id="cb255-3"><a href="functions1.html#cb255-3" aria-hidden="true" tabindex="-1"></a>  fv <span class="ot">=</span> pv <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> r)<span class="sc">^</span>n</span>
+<span id="cb255-4"><a href="functions1.html#cb255-4" aria-hidden="true" tabindex="-1"></a>  fv</span>
+<span id="cb255-5"><a href="functions1.html#cb255-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb255-6"><a href="functions1.html#cb255-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb255-7"><a href="functions1.html#cb255-7" aria-hidden="true" tabindex="-1"></a><span class="co"># default execution</span></span>
+<span id="cb255-8"><a href="functions1.html#cb255-8" aria-hidden="true" tabindex="-1"></a><span class="fu">FV</span>()</span>
+<span id="cb255-9"><a href="functions1.html#cb255-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">101</span></span></code></pre></div>
 <p>An interesting side effect of giving default values to the arguments of
 a function is that you can also call it by specifying arguments in an order
 different from the order in which the function was created:</p>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="functions1.html#cb251-1" aria-hidden="true" tabindex="-1"></a><span class="fu">FV</span>(<span class="at">r =</span> <span class="fl">0.02</span>, <span class="at">n =</span> <span class="dv">3</span>, <span class="at">pv =</span> <span class="dv">1000</span>)</span>
-<span id="cb251-2"><a href="functions1.html#cb251-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">1061.208</span></span></code></pre></div>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="functions1.html#cb256-1" aria-hidden="true" tabindex="-1"></a><span class="fu">FV</span>(<span class="at">r =</span> <span class="fl">0.02</span>, <span class="at">n =</span> <span class="dv">3</span>, <span class="at">pv =</span> <span class="dv">1000</span>)</span>
+<span id="cb256-2"><a href="functions1.html#cb256-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">1061.208</span></span></code></pre></div>
 </div>
 </div>
 <div id="writing-functions-for-humans" class="section level2 hasAnchor" number="13.3">
@@ -678,25 +678,25 @@ to take a look at the code.</p>
 function a more descriptive name such as <code>future_value()</code>. Likewise, we can
 use more descriptive names for the arguments: e.g. <code>present</code>, <code>rate</code>, and
 <code>years</code>.</p>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="functions1.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="co"># future value function</span></span>
-<span id="cb252-2"><a href="functions1.html#cb252-2" aria-hidden="true" tabindex="-1"></a>future_value <span class="ot">=</span> <span class="cf">function</span>(present, rate, years) {</span>
-<span id="cb252-3"><a href="functions1.html#cb252-3" aria-hidden="true" tabindex="-1"></a>  future <span class="ot">=</span> present <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years</span>
-<span id="cb252-4"><a href="functions1.html#cb252-4" aria-hidden="true" tabindex="-1"></a>  future</span>
-<span id="cb252-5"><a href="functions1.html#cb252-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb252-6"><a href="functions1.html#cb252-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb252-7"><a href="functions1.html#cb252-7" aria-hidden="true" tabindex="-1"></a><span class="co"># test it</span></span>
-<span id="cb252-8"><a href="functions1.html#cb252-8" aria-hidden="true" tabindex="-1"></a><span class="fu">future_value</span>(<span class="at">present =</span> <span class="dv">1000</span>, <span class="at">rate =</span> <span class="fl">0.02</span>, <span class="at">years =</span> <span class="dv">10</span>)</span>
-<span id="cb252-9"><a href="functions1.html#cb252-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">1218.994</span></span></code></pre></div>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="functions1.html#cb257-1" aria-hidden="true" tabindex="-1"></a><span class="co"># future value function</span></span>
+<span id="cb257-2"><a href="functions1.html#cb257-2" aria-hidden="true" tabindex="-1"></a>future_value <span class="ot">=</span> <span class="cf">function</span>(present, rate, years) {</span>
+<span id="cb257-3"><a href="functions1.html#cb257-3" aria-hidden="true" tabindex="-1"></a>  future <span class="ot">=</span> present <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years</span>
+<span id="cb257-4"><a href="functions1.html#cb257-4" aria-hidden="true" tabindex="-1"></a>  future</span>
+<span id="cb257-5"><a href="functions1.html#cb257-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb257-6"><a href="functions1.html#cb257-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb257-7"><a href="functions1.html#cb257-7" aria-hidden="true" tabindex="-1"></a><span class="co"># test it</span></span>
+<span id="cb257-8"><a href="functions1.html#cb257-8" aria-hidden="true" tabindex="-1"></a><span class="fu">future_value</span>(<span class="at">present =</span> <span class="dv">1000</span>, <span class="at">rate =</span> <span class="fl">0.02</span>, <span class="at">years =</span> <span class="dv">10</span>)</span>
+<span id="cb257-9"><a href="functions1.html#cb257-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">1218.994</span></span></code></pre></div>
 <p>Even better: whenever possible, as we just said, it’s a good idea to give
 default values to the arguments (i.e. inputs) of the function:</p>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="functions1.html#cb253-1" aria-hidden="true" tabindex="-1"></a><span class="co"># future value function</span></span>
-<span id="cb253-2"><a href="functions1.html#cb253-2" aria-hidden="true" tabindex="-1"></a>future_value <span class="ot">=</span> <span class="cf">function</span>(<span class="at">present =</span> <span class="dv">100</span>, <span class="at">rate =</span> <span class="fl">0.01</span>, <span class="at">years =</span> <span class="dv">1</span>) {</span>
-<span id="cb253-3"><a href="functions1.html#cb253-3" aria-hidden="true" tabindex="-1"></a>  future <span class="ot">=</span> present <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years</span>
-<span id="cb253-4"><a href="functions1.html#cb253-4" aria-hidden="true" tabindex="-1"></a>  future</span>
-<span id="cb253-5"><a href="functions1.html#cb253-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb253-6"><a href="functions1.html#cb253-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb253-7"><a href="functions1.html#cb253-7" aria-hidden="true" tabindex="-1"></a><span class="fu">future_value</span>()</span>
-<span id="cb253-8"><a href="functions1.html#cb253-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">101</span></span></code></pre></div>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="functions1.html#cb258-1" aria-hidden="true" tabindex="-1"></a><span class="co"># future value function</span></span>
+<span id="cb258-2"><a href="functions1.html#cb258-2" aria-hidden="true" tabindex="-1"></a>future_value <span class="ot">=</span> <span class="cf">function</span>(<span class="at">present =</span> <span class="dv">100</span>, <span class="at">rate =</span> <span class="fl">0.01</span>, <span class="at">years =</span> <span class="dv">1</span>) {</span>
+<span id="cb258-3"><a href="functions1.html#cb258-3" aria-hidden="true" tabindex="-1"></a>  future <span class="ot">=</span> present <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years</span>
+<span id="cb258-4"><a href="functions1.html#cb258-4" aria-hidden="true" tabindex="-1"></a>  future</span>
+<span id="cb258-5"><a href="functions1.html#cb258-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb258-6"><a href="functions1.html#cb258-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb258-7"><a href="functions1.html#cb258-7" aria-hidden="true" tabindex="-1"></a><span class="fu">future_value</span>()</span>
+<span id="cb258-8"><a href="functions1.html#cb258-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">101</span></span></code></pre></div>
 <div id="naming-functions" class="section level3 hasAnchor" number="13.3.1">
 <h3><span class="header-section-number">13.3.1</span> Naming Functions<a href="functions1.html#naming-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Since we just change the name of the function from <code>fv()</code> to <code>future_value()</code>,
@@ -740,18 +740,18 @@ function will be a <em>hidden</em> function.</p></li>
 </ul>
 <p>Once you are happy with the status of your function, include comments for its
 documentation, for example:</p>
-<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="functions1.html#cb254-1" aria-hidden="true" tabindex="-1"></a><span class="co"># title: future value function</span></span>
-<span id="cb254-2"><a href="functions1.html#cb254-2" aria-hidden="true" tabindex="-1"></a><span class="co"># description: computes future value using compounding interest</span></span>
-<span id="cb254-3"><a href="functions1.html#cb254-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inputs:</span></span>
-<span id="cb254-4"><a href="functions1.html#cb254-4" aria-hidden="true" tabindex="-1"></a><span class="co"># - present: amount for present value</span></span>
-<span id="cb254-5"><a href="functions1.html#cb254-5" aria-hidden="true" tabindex="-1"></a><span class="co"># - rate: annual rate of return (in decimal)</span></span>
-<span id="cb254-6"><a href="functions1.html#cb254-6" aria-hidden="true" tabindex="-1"></a><span class="co"># - years: number of years</span></span>
-<span id="cb254-7"><a href="functions1.html#cb254-7" aria-hidden="true" tabindex="-1"></a><span class="co"># output:</span></span>
-<span id="cb254-8"><a href="functions1.html#cb254-8" aria-hidden="true" tabindex="-1"></a><span class="co"># - computed future value</span></span>
-<span id="cb254-9"><a href="functions1.html#cb254-9" aria-hidden="true" tabindex="-1"></a>future_value <span class="ot">=</span> <span class="cf">function</span>(<span class="at">present =</span> <span class="dv">100</span>, <span class="at">rate =</span> <span class="fl">0.01</span>, <span class="at">years =</span> <span class="dv">1</span>) {</span>
-<span id="cb254-10"><a href="functions1.html#cb254-10" aria-hidden="true" tabindex="-1"></a>  future <span class="ot">=</span> present <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years</span>
-<span id="cb254-11"><a href="functions1.html#cb254-11" aria-hidden="true" tabindex="-1"></a>  future</span>
-<span id="cb254-12"><a href="functions1.html#cb254-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="functions1.html#cb259-1" aria-hidden="true" tabindex="-1"></a><span class="co"># title: future value function</span></span>
+<span id="cb259-2"><a href="functions1.html#cb259-2" aria-hidden="true" tabindex="-1"></a><span class="co"># description: computes future value using compounding interest</span></span>
+<span id="cb259-3"><a href="functions1.html#cb259-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inputs:</span></span>
+<span id="cb259-4"><a href="functions1.html#cb259-4" aria-hidden="true" tabindex="-1"></a><span class="co"># - present: amount for present value</span></span>
+<span id="cb259-5"><a href="functions1.html#cb259-5" aria-hidden="true" tabindex="-1"></a><span class="co"># - rate: annual rate of return (in decimal)</span></span>
+<span id="cb259-6"><a href="functions1.html#cb259-6" aria-hidden="true" tabindex="-1"></a><span class="co"># - years: number of years</span></span>
+<span id="cb259-7"><a href="functions1.html#cb259-7" aria-hidden="true" tabindex="-1"></a><span class="co"># output:</span></span>
+<span id="cb259-8"><a href="functions1.html#cb259-8" aria-hidden="true" tabindex="-1"></a><span class="co"># - computed future value</span></span>
+<span id="cb259-9"><a href="functions1.html#cb259-9" aria-hidden="true" tabindex="-1"></a>future_value <span class="ot">=</span> <span class="cf">function</span>(<span class="at">present =</span> <span class="dv">100</span>, <span class="at">rate =</span> <span class="fl">0.01</span>, <span class="at">years =</span> <span class="dv">1</span>) {</span>
+<span id="cb259-10"><a href="functions1.html#cb259-10" aria-hidden="true" tabindex="-1"></a>  future <span class="ot">=</span> present <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years</span>
+<span id="cb259-11"><a href="functions1.html#cb259-11" aria-hidden="true" tabindex="-1"></a>  future</span>
+<span id="cb259-12"><a href="functions1.html#cb259-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Writing documentation for a function seems like a waste of time and energy.
 Shouldn’t a function (with its arguments, body, and output) be
 self-descriptive? In an ideal world that would be the case, but this rarely
@@ -780,16 +780,17 @@ future sum of money or stream of cash flows given a specified rate of return.</p
 <p>Consider the simplest version of the formula to calculate the
 <strong>Present Value</strong> given by:</p>
 <p><span class="math display">\[
-\text{PV} = \frac{\text{FV}}{(1 + r)^t}
+\text{PV} = \frac{\text{FV}}{(1 + r)^n}
 \]</span></p>
 <ul>
 <li><p><span class="math inline">\(\text{PV}\)</span> = present value (the initial deposit)</p></li>
 <li><p><span class="math inline">\(\text{FV}\)</span> = future value (how much you’ll have)</p></li>
 <li><p><span class="math inline">\(r\)</span> = rate of return (e.g. annual rate of return)</p></li>
-<li><p><span class="math inline">\(t\)</span> = number of periods (e.g. number of years)</p></li>
+<li><p><span class="math inline">\(n\)</span> = number of periods (e.g. number of years)</p></li>
 </ul>
 <p>Write a function <code>present_value()</code> to compute the Present Value based on
 the above formula.</p>
+<p><br></p>
 <p><strong>2)</strong> Write another function to compute the <strong>Future Value</strong>, but this time
 the output should be a <strong>list</strong> with two elements:</p>
 <ul>
@@ -798,21 +799,22 @@ the output should be a <strong>list</strong> with two elements:</p>
 provided year</p></li>
 </ul>
 <p>For example, something like this:</p>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="functions1.html#cb255-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fv_list</span>(<span class="at">present =</span> <span class="dv">1000</span>, <span class="at">rate =</span> <span class="fl">0.02</span>, <span class="at">year =</span> <span class="dv">3</span>)</span>
-<span id="cb255-2"><a href="functions1.html#cb255-2" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>year</span>
-<span id="cb255-3"><a href="functions1.html#cb255-3" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">0</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></span>
-<span id="cb255-4"><a href="functions1.html#cb255-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb255-5"><a href="functions1.html#cb255-5" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>amount</span>
-<span id="cb255-6"><a href="functions1.html#cb255-6" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">1000.000</span> <span class="fl">1020.000</span> <span class="fl">1040.400</span> <span class="fl">1061.208</span></span></code></pre></div>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="functions1.html#cb260-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fv_list</span>(<span class="at">present =</span> <span class="dv">1000</span>, <span class="at">rate =</span> <span class="fl">0.02</span>, <span class="at">year =</span> <span class="dv">3</span>)</span>
+<span id="cb260-2"><a href="functions1.html#cb260-2" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>year</span>
+<span id="cb260-3"><a href="functions1.html#cb260-3" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">0</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></span>
+<span id="cb260-4"><a href="functions1.html#cb260-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb260-5"><a href="functions1.html#cb260-5" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>amount</span>
+<span id="cb260-6"><a href="functions1.html#cb260-6" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">1000.000</span> <span class="fl">1020.000</span> <span class="fl">1040.400</span> <span class="fl">1061.208</span></span></code></pre></div>
+<p><br></p>
 <p><strong>3)</strong> Write another function to compute the <strong>Future Value</strong>, but this time
 the output should be a <strong>“table”</strong> with two columns: <code>year</code> and <code>amount</code>. For
 example, something like this:</p>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="functions1.html#cb256-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fv_table</span>(<span class="at">present =</span> <span class="dv">1000</span>, <span class="at">rate =</span> <span class="fl">0.02</span>, <span class="at">year =</span> <span class="dv">3</span>)</span>
-<span id="cb256-2"><a href="functions1.html#cb256-2" aria-hidden="true" tabindex="-1"></a>  year   amount</span>
-<span id="cb256-3"><a href="functions1.html#cb256-3" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>    <span class="dv">0</span> <span class="fl">1000.000</span></span>
-<span id="cb256-4"><a href="functions1.html#cb256-4" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>    <span class="dv">1</span> <span class="fl">1020.000</span></span>
-<span id="cb256-5"><a href="functions1.html#cb256-5" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>    <span class="dv">2</span> <span class="fl">1040.400</span></span>
-<span id="cb256-6"><a href="functions1.html#cb256-6" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>    <span class="dv">3</span> <span class="fl">1061.208</span></span></code></pre></div>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="functions1.html#cb261-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fv_table</span>(<span class="at">present =</span> <span class="dv">1000</span>, <span class="at">rate =</span> <span class="fl">0.02</span>, <span class="at">year =</span> <span class="dv">3</span>)</span>
+<span id="cb261-2"><a href="functions1.html#cb261-2" aria-hidden="true" tabindex="-1"></a>  year   amount</span>
+<span id="cb261-3"><a href="functions1.html#cb261-3" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>    <span class="dv">0</span> <span class="fl">1000.000</span></span>
+<span id="cb261-4"><a href="functions1.html#cb261-4" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>    <span class="dv">1</span> <span class="fl">1020.000</span></span>
+<span id="cb261-5"><a href="functions1.html#cb261-5" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>    <span class="dv">2</span> <span class="fl">1040.400</span></span>
+<span id="cb261-6"><a href="functions1.html#cb261-6" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>    <span class="dv">3</span> <span class="fl">1061.208</span></span></code></pre></div>
 <p><em>Note</em>: by “table” you can use either a <code>matrix</code> or a <code>data.frame</code>. Even better,
 try to create two separate functions: 1) <code>fv_matrix()</code> that returns a matrix,
 and 2) <code>fv_df()</code> that returns a data frame.</p>

@@ -28,7 +28,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
-  
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
 <link rel="prev" href="dataframes.html"/>
 <link rel="next" href="graphics2.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -529,61 +529,61 @@ data frames.</p></li>
 function that creates a complete plot, and then we call low-level functions
 to add more output if necessary</p>
 <p>Consider the data set <code>mtcars</code> (a few rows shown below)</p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="graphics1.html#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span>
-<span id="cb209-2"><a href="graphics1.html#cb209-2" aria-hidden="true" tabindex="-1"></a>                   mpg cyl disp  hp drat    wt</span>
-<span id="cb209-3"><a href="graphics1.html#cb209-3" aria-hidden="true" tabindex="-1"></a>Mazda RX4         <span class="fl">21.0</span>   <span class="dv">6</span>  <span class="dv">160</span> <span class="dv">110</span> <span class="fl">3.90</span> <span class="fl">2.620</span></span>
-<span id="cb209-4"><a href="graphics1.html#cb209-4" aria-hidden="true" tabindex="-1"></a>Mazda RX4 Wag     <span class="fl">21.0</span>   <span class="dv">6</span>  <span class="dv">160</span> <span class="dv">110</span> <span class="fl">3.90</span> <span class="fl">2.875</span></span>
-<span id="cb209-5"><a href="graphics1.html#cb209-5" aria-hidden="true" tabindex="-1"></a>Datsun <span class="dv">710</span>        <span class="fl">22.8</span>   <span class="dv">4</span>  <span class="dv">108</span>  <span class="dv">93</span> <span class="fl">3.85</span> <span class="fl">2.320</span></span>
-<span id="cb209-6"><a href="graphics1.html#cb209-6" aria-hidden="true" tabindex="-1"></a>Hornet <span class="dv">4</span> Drive    <span class="fl">21.4</span>   <span class="dv">6</span>  <span class="dv">258</span> <span class="dv">110</span> <span class="fl">3.08</span> <span class="fl">3.215</span></span>
-<span id="cb209-7"><a href="graphics1.html#cb209-7" aria-hidden="true" tabindex="-1"></a>Hornet Sportabout <span class="fl">18.7</span>   <span class="dv">8</span>  <span class="dv">360</span> <span class="dv">175</span> <span class="fl">3.15</span> <span class="fl">3.440</span></span>
-<span id="cb209-8"><a href="graphics1.html#cb209-8" aria-hidden="true" tabindex="-1"></a>Valiant           <span class="fl">18.1</span>   <span class="dv">6</span>  <span class="dv">225</span> <span class="dv">105</span> <span class="fl">2.76</span> <span class="fl">3.460</span></span>
-<span id="cb209-9"><a href="graphics1.html#cb209-9" aria-hidden="true" tabindex="-1"></a>                   qsec vs am gear carb</span>
-<span id="cb209-10"><a href="graphics1.html#cb209-10" aria-hidden="true" tabindex="-1"></a>Mazda RX4         <span class="fl">16.46</span>  <span class="dv">0</span>  <span class="dv">1</span>    <span class="dv">4</span>    <span class="dv">4</span></span>
-<span id="cb209-11"><a href="graphics1.html#cb209-11" aria-hidden="true" tabindex="-1"></a>Mazda RX4 Wag     <span class="fl">17.02</span>  <span class="dv">0</span>  <span class="dv">1</span>    <span class="dv">4</span>    <span class="dv">4</span></span>
-<span id="cb209-12"><a href="graphics1.html#cb209-12" aria-hidden="true" tabindex="-1"></a>Datsun <span class="dv">710</span>        <span class="fl">18.61</span>  <span class="dv">1</span>  <span class="dv">1</span>    <span class="dv">4</span>    <span class="dv">1</span></span>
-<span id="cb209-13"><a href="graphics1.html#cb209-13" aria-hidden="true" tabindex="-1"></a>Hornet <span class="dv">4</span> Drive    <span class="fl">19.44</span>  <span class="dv">1</span>  <span class="dv">0</span>    <span class="dv">3</span>    <span class="dv">1</span></span>
-<span id="cb209-14"><a href="graphics1.html#cb209-14" aria-hidden="true" tabindex="-1"></a>Hornet Sportabout <span class="fl">17.02</span>  <span class="dv">0</span>  <span class="dv">0</span>    <span class="dv">3</span>    <span class="dv">2</span></span>
-<span id="cb209-15"><a href="graphics1.html#cb209-15" aria-hidden="true" tabindex="-1"></a>Valiant           <span class="fl">20.22</span>  <span class="dv">1</span>  <span class="dv">0</span>    <span class="dv">3</span>    <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="graphics1.html#cb214-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span>
+<span id="cb214-2"><a href="graphics1.html#cb214-2" aria-hidden="true" tabindex="-1"></a>                   mpg cyl disp  hp drat    wt</span>
+<span id="cb214-3"><a href="graphics1.html#cb214-3" aria-hidden="true" tabindex="-1"></a>Mazda RX4         <span class="fl">21.0</span>   <span class="dv">6</span>  <span class="dv">160</span> <span class="dv">110</span> <span class="fl">3.90</span> <span class="fl">2.620</span></span>
+<span id="cb214-4"><a href="graphics1.html#cb214-4" aria-hidden="true" tabindex="-1"></a>Mazda RX4 Wag     <span class="fl">21.0</span>   <span class="dv">6</span>  <span class="dv">160</span> <span class="dv">110</span> <span class="fl">3.90</span> <span class="fl">2.875</span></span>
+<span id="cb214-5"><a href="graphics1.html#cb214-5" aria-hidden="true" tabindex="-1"></a>Datsun <span class="dv">710</span>        <span class="fl">22.8</span>   <span class="dv">4</span>  <span class="dv">108</span>  <span class="dv">93</span> <span class="fl">3.85</span> <span class="fl">2.320</span></span>
+<span id="cb214-6"><a href="graphics1.html#cb214-6" aria-hidden="true" tabindex="-1"></a>Hornet <span class="dv">4</span> Drive    <span class="fl">21.4</span>   <span class="dv">6</span>  <span class="dv">258</span> <span class="dv">110</span> <span class="fl">3.08</span> <span class="fl">3.215</span></span>
+<span id="cb214-7"><a href="graphics1.html#cb214-7" aria-hidden="true" tabindex="-1"></a>Hornet Sportabout <span class="fl">18.7</span>   <span class="dv">8</span>  <span class="dv">360</span> <span class="dv">175</span> <span class="fl">3.15</span> <span class="fl">3.440</span></span>
+<span id="cb214-8"><a href="graphics1.html#cb214-8" aria-hidden="true" tabindex="-1"></a>Valiant           <span class="fl">18.1</span>   <span class="dv">6</span>  <span class="dv">225</span> <span class="dv">105</span> <span class="fl">2.76</span> <span class="fl">3.460</span></span>
+<span id="cb214-9"><a href="graphics1.html#cb214-9" aria-hidden="true" tabindex="-1"></a>                   qsec vs am gear carb</span>
+<span id="cb214-10"><a href="graphics1.html#cb214-10" aria-hidden="true" tabindex="-1"></a>Mazda RX4         <span class="fl">16.46</span>  <span class="dv">0</span>  <span class="dv">1</span>    <span class="dv">4</span>    <span class="dv">4</span></span>
+<span id="cb214-11"><a href="graphics1.html#cb214-11" aria-hidden="true" tabindex="-1"></a>Mazda RX4 Wag     <span class="fl">17.02</span>  <span class="dv">0</span>  <span class="dv">1</span>    <span class="dv">4</span>    <span class="dv">4</span></span>
+<span id="cb214-12"><a href="graphics1.html#cb214-12" aria-hidden="true" tabindex="-1"></a>Datsun <span class="dv">710</span>        <span class="fl">18.61</span>  <span class="dv">1</span>  <span class="dv">1</span>    <span class="dv">4</span>    <span class="dv">1</span></span>
+<span id="cb214-13"><a href="graphics1.html#cb214-13" aria-hidden="true" tabindex="-1"></a>Hornet <span class="dv">4</span> Drive    <span class="fl">19.44</span>  <span class="dv">1</span>  <span class="dv">0</span>    <span class="dv">3</span>    <span class="dv">1</span></span>
+<span id="cb214-14"><a href="graphics1.html#cb214-14" aria-hidden="true" tabindex="-1"></a>Hornet Sportabout <span class="fl">17.02</span>  <span class="dv">0</span>  <span class="dv">0</span>    <span class="dv">3</span>    <span class="dv">2</span></span>
+<span id="cb214-15"><a href="graphics1.html#cb214-15" aria-hidden="true" tabindex="-1"></a>Valiant           <span class="fl">20.22</span>  <span class="dv">1</span>  <span class="dv">0</span>    <span class="dv">3</span>    <span class="dv">1</span></span></code></pre></div>
 <p>Let’s start with a scatterplot of <code>hp</code> (horse power) and <code>mpg</code> (miles per
 gallon). Perhaps the most common way to get this graph is with the high-level
 function <code>plot()</code></p>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="graphics1.html#cb210-1" aria-hidden="true" tabindex="-1"></a><span class="co"># simple scatter-plot</span></span>
-<span id="cb210-2"><a href="graphics1.html#cb210-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp)</span></code></pre></div>
-<p><img src="R-coding-basics_files/figure-html/unnamed-chunk-203-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="graphics1.html#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="co"># simple scatter-plot</span></span>
+<span id="cb215-2"><a href="graphics1.html#cb215-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp)</span></code></pre></div>
+<p><img src="R-coding-basics_files/figure-html/unnamed-chunk-207-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>We can specify values for its large number of arguments. For instance, we
 can set better axis names with <code>xlab</code> and <code>ylab</code></p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="graphics1.html#cb211-1" aria-hidden="true" tabindex="-1"></a><span class="co"># x-axis and y-axis labels</span></span>
-<span id="cb211-2"><a href="graphics1.html#cb211-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp, </span>
-<span id="cb211-3"><a href="graphics1.html#cb211-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;miles per gallon&quot;</span>,</span>
-<span id="cb211-4"><a href="graphics1.html#cb211-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;horsepower&quot;</span>)</span></code></pre></div>
-<p><img src="R-coding-basics_files/figure-html/unnamed-chunk-204-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="graphics1.html#cb216-1" aria-hidden="true" tabindex="-1"></a><span class="co"># x-axis and y-axis labels</span></span>
+<span id="cb216-2"><a href="graphics1.html#cb216-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp, </span>
+<span id="cb216-3"><a href="graphics1.html#cb216-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;miles per gallon&quot;</span>,</span>
+<span id="cb216-4"><a href="graphics1.html#cb216-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;horsepower&quot;</span>)</span></code></pre></div>
+<p><img src="R-coding-basics_files/figure-html/unnamed-chunk-208-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Likewise, we can add a title with the <code>main</code> argument:</p>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="graphics1.html#cb212-1" aria-hidden="true" tabindex="-1"></a><span class="co"># title and subtitle</span></span>
-<span id="cb212-2"><a href="graphics1.html#cb212-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp, </span>
-<span id="cb212-3"><a href="graphics1.html#cb212-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;miles per gallon&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;horsepower&quot;</span>, </span>
-<span id="cb212-4"><a href="graphics1.html#cb212-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Simple Scatterplot&quot;</span>, <span class="at">sub =</span> <span class="st">&#39;data matcars&#39;</span>)</span></code></pre></div>
-<p><img src="R-coding-basics_files/figure-html/unnamed-chunk-205-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="graphics1.html#cb217-1" aria-hidden="true" tabindex="-1"></a><span class="co"># title and subtitle</span></span>
+<span id="cb217-2"><a href="graphics1.html#cb217-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp, </span>
+<span id="cb217-3"><a href="graphics1.html#cb217-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;miles per gallon&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;horsepower&quot;</span>, </span>
+<span id="cb217-4"><a href="graphics1.html#cb217-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Simple Scatterplot&quot;</span>, <span class="at">sub =</span> <span class="st">&#39;data matcars&#39;</span>)</span></code></pre></div>
+<p><img src="R-coding-basics_files/figure-html/unnamed-chunk-209-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Or we can change the range of x-axis as well as the range of the y-axis
 with <code>xlim</code> and <code>ylim</code>, respectively:</p>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="graphics1.html#cb213-1" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;xlim&#39; and &#39;ylim&#39;</span></span>
-<span id="cb213-2"><a href="graphics1.html#cb213-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp, </span>
-<span id="cb213-3"><a href="graphics1.html#cb213-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;miles per gallon&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;horsepower&quot;</span>, </span>
-<span id="cb213-4"><a href="graphics1.html#cb213-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Simple Scatterplot&quot;</span>, <span class="at">sub =</span> <span class="st">&#39;data matcars&#39;</span>,</span>
-<span id="cb213-5"><a href="graphics1.html#cb213-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">35</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">400</span>))</span></code></pre></div>
-<p><img src="R-coding-basics_files/figure-html/unnamed-chunk-206-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="graphics1.html#cb218-1" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;xlim&#39; and &#39;ylim&#39;</span></span>
+<span id="cb218-2"><a href="graphics1.html#cb218-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp, </span>
+<span id="cb218-3"><a href="graphics1.html#cb218-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;miles per gallon&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;horsepower&quot;</span>, </span>
+<span id="cb218-4"><a href="graphics1.html#cb218-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Simple Scatterplot&quot;</span>, <span class="at">sub =</span> <span class="st">&#39;data matcars&#39;</span>,</span>
+<span id="cb218-5"><a href="graphics1.html#cb218-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">35</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">400</span>))</span></code></pre></div>
+<p><img src="R-coding-basics_files/figure-html/unnamed-chunk-210-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Here’s a more sophisticated example</p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="graphics1.html#cb214-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using plot()</span></span>
-<span id="cb214-2"><a href="graphics1.html#cb214-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>mpg, </span>
-<span id="cb214-3"><a href="graphics1.html#cb214-3" aria-hidden="true" tabindex="-1"></a>     mtcars<span class="sc">$</span>hp, </span>
-<span id="cb214-4"><a href="graphics1.html#cb214-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">35</span>), </span>
-<span id="cb214-5"><a href="graphics1.html#cb214-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">400</span>),</span>
-<span id="cb214-6"><a href="graphics1.html#cb214-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;miles per gallon&quot;</span>,</span>
-<span id="cb214-7"><a href="graphics1.html#cb214-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;horsepower&quot;</span>, </span>
-<span id="cb214-8"><a href="graphics1.html#cb214-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Simple Scatterplot&quot;</span>,</span>
-<span id="cb214-9"><a href="graphics1.html#cb214-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">sub =</span> <span class="st">&quot;data matcars&quot;</span>, </span>
-<span id="cb214-10"><a href="graphics1.html#cb214-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>, </span>
-<span id="cb214-11"><a href="graphics1.html#cb214-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">1.2</span>, </span>
-<span id="cb214-12"><a href="graphics1.html#cb214-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="graphics1.html#cb219-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using plot()</span></span>
+<span id="cb219-2"><a href="graphics1.html#cb219-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>mpg, </span>
+<span id="cb219-3"><a href="graphics1.html#cb219-3" aria-hidden="true" tabindex="-1"></a>     mtcars<span class="sc">$</span>hp, </span>
+<span id="cb219-4"><a href="graphics1.html#cb219-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">35</span>), </span>
+<span id="cb219-5"><a href="graphics1.html#cb219-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">400</span>),</span>
+<span id="cb219-6"><a href="graphics1.html#cb219-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;miles per gallon&quot;</span>,</span>
+<span id="cb219-7"><a href="graphics1.html#cb219-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;horsepower&quot;</span>, </span>
+<span id="cb219-8"><a href="graphics1.html#cb219-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Simple Scatterplot&quot;</span>,</span>
+<span id="cb219-9"><a href="graphics1.html#cb219-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">sub =</span> <span class="st">&quot;data matcars&quot;</span>, </span>
+<span id="cb219-10"><a href="graphics1.html#cb219-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>, </span>
+<span id="cb219-11"><a href="graphics1.html#cb219-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">1.2</span>, </span>
+<span id="cb219-12"><a href="graphics1.html#cb219-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
 <p><img src="R-coding-basics_files/figure-html/plot_mtcars-1.png" width="70%" height="85%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="low-level-functions" class="section level2 hasAnchor" number="10.4">
@@ -595,32 +595,32 @@ with <code>xlim</code> and <code>ylim</code>, respectively:</p>
 <li><p>Then we call low-level functions</p></li>
 </ul>
 <p>Example:</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="graphics1.html#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="co"># simple scatter-plot</span></span>
-<span id="cb215-2"><a href="graphics1.html#cb215-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp)</span>
-<span id="cb215-3"><a href="graphics1.html#cb215-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb215-4"><a href="graphics1.html#cb215-4" aria-hidden="true" tabindex="-1"></a><span class="co"># adding text</span></span>
-<span id="cb215-5"><a href="graphics1.html#cb215-5" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp, <span class="at">labels =</span> <span class="fu">rownames</span>(mtcars))</span>
-<span id="cb215-6"><a href="graphics1.html#cb215-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb215-7"><a href="graphics1.html#cb215-7" aria-hidden="true" tabindex="-1"></a><span class="co"># dummy legend</span></span>
-<span id="cb215-8"><a href="graphics1.html#cb215-8" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="at">legend =</span> <span class="st">&quot;a legend&quot;</span>)</span>
-<span id="cb215-9"><a href="graphics1.html#cb215-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb215-10"><a href="graphics1.html#cb215-10" aria-hidden="true" tabindex="-1"></a><span class="co"># graphic title</span></span>
-<span id="cb215-11"><a href="graphics1.html#cb215-11" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;Miles Per Galon -vs- Horsepower&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="graphics1.html#cb220-1" aria-hidden="true" tabindex="-1"></a><span class="co"># simple scatter-plot</span></span>
+<span id="cb220-2"><a href="graphics1.html#cb220-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp)</span>
+<span id="cb220-3"><a href="graphics1.html#cb220-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb220-4"><a href="graphics1.html#cb220-4" aria-hidden="true" tabindex="-1"></a><span class="co"># adding text</span></span>
+<span id="cb220-5"><a href="graphics1.html#cb220-5" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp, <span class="at">labels =</span> <span class="fu">rownames</span>(mtcars))</span>
+<span id="cb220-6"><a href="graphics1.html#cb220-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb220-7"><a href="graphics1.html#cb220-7" aria-hidden="true" tabindex="-1"></a><span class="co"># dummy legend</span></span>
+<span id="cb220-8"><a href="graphics1.html#cb220-8" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="at">legend =</span> <span class="st">&quot;a legend&quot;</span>)</span>
+<span id="cb220-9"><a href="graphics1.html#cb220-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb220-10"><a href="graphics1.html#cb220-10" aria-hidden="true" tabindex="-1"></a><span class="co"># graphic title</span></span>
+<span id="cb220-11"><a href="graphics1.html#cb220-11" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;Miles Per Galon -vs- Horsepower&quot;</span>)</span></code></pre></div>
 <p><img src="R-coding-basics_files/figure-html/mtcars_plot1-1.png" width="70%" height="85%" style="display: block; margin: auto;" /></p>
 <p>Another example:</p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="graphics1.html#cb216-1" aria-hidden="true" tabindex="-1"></a><span class="co"># simple scatter-plot</span></span>
-<span id="cb216-2"><a href="graphics1.html#cb216-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, </span>
-<span id="cb216-3"><a href="graphics1.html#cb216-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;miles per gallon&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;horsepower&quot;</span>)</span>
-<span id="cb216-4"><a href="graphics1.html#cb216-4" aria-hidden="true" tabindex="-1"></a><span class="co"># grid lines</span></span>
-<span id="cb216-5"><a href="graphics1.html#cb216-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">10</span>, <span class="at">to =</span> <span class="dv">30</span>, <span class="at">by =</span> <span class="dv">5</span>), <span class="at">col =</span> <span class="st">&#39;gray&#39;</span>)</span>
-<span id="cb216-6"><a href="graphics1.html#cb216-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">50</span>, <span class="at">to =</span> <span class="dv">300</span>, <span class="at">by =</span> <span class="dv">50</span>), <span class="at">col =</span> <span class="st">&#39; gray&#39;</span>)</span>
-<span id="cb216-7"><a href="graphics1.html#cb216-7" aria-hidden="true" tabindex="-1"></a><span class="co"># plot points</span></span>
-<span id="cb216-8"><a href="graphics1.html#cb216-8" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb216-9"><a href="graphics1.html#cb216-9" aria-hidden="true" tabindex="-1"></a><span class="co"># plot text</span></span>
-<span id="cb216-10"><a href="graphics1.html#cb216-10" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp, <span class="at">labels =</span> <span class="fu">rownames</span>(mtcars),</span>
-<span id="cb216-11"><a href="graphics1.html#cb216-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">pos =</span> <span class="dv">4</span>, <span class="at">col =</span> <span class="st">&quot;gray50&quot;</span>)</span>
-<span id="cb216-12"><a href="graphics1.html#cb216-12" aria-hidden="true" tabindex="-1"></a><span class="co"># graphic title</span></span>
-<span id="cb216-13"><a href="graphics1.html#cb216-13" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;Miles Per Galon -vs- Horsepower&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="graphics1.html#cb221-1" aria-hidden="true" tabindex="-1"></a><span class="co"># simple scatter-plot</span></span>
+<span id="cb221-2"><a href="graphics1.html#cb221-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, </span>
+<span id="cb221-3"><a href="graphics1.html#cb221-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;miles per gallon&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;horsepower&quot;</span>)</span>
+<span id="cb221-4"><a href="graphics1.html#cb221-4" aria-hidden="true" tabindex="-1"></a><span class="co"># grid lines</span></span>
+<span id="cb221-5"><a href="graphics1.html#cb221-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">10</span>, <span class="at">to =</span> <span class="dv">30</span>, <span class="at">by =</span> <span class="dv">5</span>), <span class="at">col =</span> <span class="st">&#39;gray&#39;</span>)</span>
+<span id="cb221-6"><a href="graphics1.html#cb221-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">50</span>, <span class="at">to =</span> <span class="dv">300</span>, <span class="at">by =</span> <span class="dv">50</span>), <span class="at">col =</span> <span class="st">&#39; gray&#39;</span>)</span>
+<span id="cb221-7"><a href="graphics1.html#cb221-7" aria-hidden="true" tabindex="-1"></a><span class="co"># plot points</span></span>
+<span id="cb221-8"><a href="graphics1.html#cb221-8" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb221-9"><a href="graphics1.html#cb221-9" aria-hidden="true" tabindex="-1"></a><span class="co"># plot text</span></span>
+<span id="cb221-10"><a href="graphics1.html#cb221-10" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp, <span class="at">labels =</span> <span class="fu">rownames</span>(mtcars),</span>
+<span id="cb221-11"><a href="graphics1.html#cb221-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">pos =</span> <span class="dv">4</span>, <span class="at">col =</span> <span class="st">&quot;gray50&quot;</span>)</span>
+<span id="cb221-12"><a href="graphics1.html#cb221-12" aria-hidden="true" tabindex="-1"></a><span class="co"># graphic title</span></span>
+<span id="cb221-13"><a href="graphics1.html#cb221-13" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;Miles Per Galon -vs- Horsepower&quot;</span>)</span></code></pre></div>
 <p><img src="R-coding-basics_files/figure-html/mtcars_plot2-1.png" width="70%" height="85%" style="display: block; margin: auto;" /></p>
 <div id="low-level-functions-1" class="section level3 hasAnchor" number="10.4.1">
 <h3><span class="header-section-number">10.4.1</span> Low-level functions<a href="graphics1.html#low-level-functions-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -676,48 +676,48 @@ with <code>xlim</code> and <code>ylim</code>, respectively:</p>
 </table>
 <div id="lines" class="section level4 unnumbered hasAnchor">
 <h4>Lines<a href="graphics1.html#lines" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="graphics1.html#cb217-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2005</span><span class="sc">:</span><span class="dv">2015</span></span>
-<span id="cb217-2"><a href="graphics1.html#cb217-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb217-3"><a href="graphics1.html#cb217-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">81</span>, <span class="dv">83</span>, <span class="fl">84.3</span>, <span class="dv">85</span>, <span class="fl">85.4</span>, <span class="fl">86.5</span>, <span class="fl">88.3</span>, </span>
-<span id="cb217-4"><a href="graphics1.html#cb217-4" aria-hidden="true" tabindex="-1"></a>       <span class="fl">88.6</span>, <span class="fl">90.8</span>, <span class="fl">91.1</span>, <span class="fl">91.3</span>)</span>
-<span id="cb217-5"><a href="graphics1.html#cb217-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb217-6"><a href="graphics1.html#cb217-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">&#39;n&#39;</span>, <span class="at">xlab =</span> <span class="st">&quot;Time&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Values&quot;</span>)</span>
-<span id="cb217-7"><a href="graphics1.html#cb217-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, y, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb217-8"><a href="graphics1.html#cb217-8" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="at">main =</span> <span class="st">&quot;Line Graph Example&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="graphics1.html#cb222-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2005</span><span class="sc">:</span><span class="dv">2015</span></span>
+<span id="cb222-2"><a href="graphics1.html#cb222-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb222-3"><a href="graphics1.html#cb222-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">81</span>, <span class="dv">83</span>, <span class="fl">84.3</span>, <span class="dv">85</span>, <span class="fl">85.4</span>, <span class="fl">86.5</span>, <span class="fl">88.3</span>, </span>
+<span id="cb222-4"><a href="graphics1.html#cb222-4" aria-hidden="true" tabindex="-1"></a>       <span class="fl">88.6</span>, <span class="fl">90.8</span>, <span class="fl">91.1</span>, <span class="fl">91.3</span>)</span>
+<span id="cb222-5"><a href="graphics1.html#cb222-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb222-6"><a href="graphics1.html#cb222-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">&#39;n&#39;</span>, <span class="at">xlab =</span> <span class="st">&quot;Time&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Values&quot;</span>)</span>
+<span id="cb222-7"><a href="graphics1.html#cb222-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, y, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb222-8"><a href="graphics1.html#cb222-8" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="at">main =</span> <span class="st">&quot;Line Graph Example&quot;</span>)</span></code></pre></div>
 <p><img src="R-coding-basics_files/figure-html/line_segs-1.png" width="70%" height="80%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="drawing-line-segments" class="section level4 hasAnchor" number="10.4.1.1">
 <h4><span class="header-section-number">10.4.1.1</span> Drawing Line Segments<a href="graphics1.html#drawing-line-segments" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="graphics1.html#cb218-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">11</span></span>
-<span id="cb218-2"><a href="graphics1.html#cb218-2" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">2</span> <span class="sc">*</span> pi, <span class="at">length =</span> n <span class="sc">+</span> <span class="dv">1</span>)[<span class="dv">1</span><span class="sc">:</span>n]</span>
-<span id="cb218-3"><a href="graphics1.html#cb218-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sin</span>(theta)</span>
-<span id="cb218-4"><a href="graphics1.html#cb218-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">cos</span>(theta)</span>
-<span id="cb218-5"><a href="graphics1.html#cb218-5" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>n, n)</span>
-<span id="cb218-6"><a href="graphics1.html#cb218-6" aria-hidden="true" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>n, <span class="fu">rep</span>(n, n))</span>
-<span id="cb218-7"><a href="graphics1.html#cb218-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb218-8"><a href="graphics1.html#cb218-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">&#39;n&#39;</span>)</span>
-<span id="cb218-9"><a href="graphics1.html#cb218-9" aria-hidden="true" tabindex="-1"></a><span class="fu">segments</span>(x[v1], y[v1], x[v2], y[v2])</span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="graphics1.html#cb223-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">11</span></span>
+<span id="cb223-2"><a href="graphics1.html#cb223-2" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">2</span> <span class="sc">*</span> pi, <span class="at">length =</span> n <span class="sc">+</span> <span class="dv">1</span>)[<span class="dv">1</span><span class="sc">:</span>n]</span>
+<span id="cb223-3"><a href="graphics1.html#cb223-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sin</span>(theta)</span>
+<span id="cb223-4"><a href="graphics1.html#cb223-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">cos</span>(theta)</span>
+<span id="cb223-5"><a href="graphics1.html#cb223-5" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>n, n)</span>
+<span id="cb223-6"><a href="graphics1.html#cb223-6" aria-hidden="true" tabindex="-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>n, <span class="fu">rep</span>(n, n))</span>
+<span id="cb223-7"><a href="graphics1.html#cb223-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb223-8"><a href="graphics1.html#cb223-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">&#39;n&#39;</span>)</span>
+<span id="cb223-9"><a href="graphics1.html#cb223-9" aria-hidden="true" tabindex="-1"></a><span class="fu">segments</span>(x[v1], y[v1], x[v2], y[v2])</span></code></pre></div>
 <p><img src="R-coding-basics_files/figure-html/segments-1.png" width="70%" height="80%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="drawing-polygons" class="section level4 unnumbered hasAnchor">
 <h4>Drawing Polygons<a href="graphics1.html#drawing-polygons" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="graphics1.html#cb219-1" aria-hidden="true" tabindex="-1"></a>mpg_dens <span class="ot">&lt;-</span> <span class="fu">density</span>(mtcars<span class="sc">$</span>mpg)</span>
-<span id="cb219-2"><a href="graphics1.html#cb219-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb219-3"><a href="graphics1.html#cb219-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mpg_dens, <span class="at">main =</span> <span class="st">&quot;Kernel Density Curve&quot;</span>)</span>
-<span id="cb219-4"><a href="graphics1.html#cb219-4" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(mpg_dens, <span class="at">col =</span> <span class="st">&#39;gray&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="graphics1.html#cb224-1" aria-hidden="true" tabindex="-1"></a>mpg_dens <span class="ot">&lt;-</span> <span class="fu">density</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb224-2"><a href="graphics1.html#cb224-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb224-3"><a href="graphics1.html#cb224-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mpg_dens, <span class="at">main =</span> <span class="st">&quot;Kernel Density Curve&quot;</span>)</span>
+<span id="cb224-4"><a href="graphics1.html#cb224-4" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(mpg_dens, <span class="at">col =</span> <span class="st">&#39;gray&#39;</span>)</span></code></pre></div>
 <p><img src="R-coding-basics_files/figure-html/polygons-1.png" width="70%" height="80%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="drawing-text" class="section level4 unnumbered hasAnchor">
 <h4>Drawing Text<a href="graphics1.html#drawing-text" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="graphics1.html#cb220-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">type =</span> <span class="st">&#39;n&#39;</span>)</span>
-<span id="cb220-2"><a href="graphics1.html#cb220-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fu">c</span>(.<span class="dv">2</span>, .<span class="dv">5</span>, .<span class="dv">8</span>),</span>
-<span id="cb220-3"><a href="graphics1.html#cb220-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">v =</span> <span class="fu">c</span>(.<span class="dv">5</span>, .<span class="dv">2</span>, .<span class="dv">8</span>), <span class="at">col =</span> <span class="st">&quot;lightgrey&quot;</span>)</span>
-<span id="cb220-4"><a href="graphics1.html#cb220-4" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="st">&quot;srt = 45, adj = c(.5, .5)&quot;</span>,</span>
-<span id="cb220-5"><a href="graphics1.html#cb220-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">srt =</span> <span class="dv">45</span>, <span class="at">adj =</span> <span class="fu">c</span>(.<span class="dv">5</span>, .<span class="dv">5</span>))</span>
-<span id="cb220-6"><a href="graphics1.html#cb220-6" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fl">0.5</span>, <span class="fl">0.8</span>, <span class="st">&quot;adj = c(0, .5)&quot;</span>, <span class="at">adj =</span> <span class="fu">c</span>(<span class="dv">0</span>, .<span class="dv">5</span>))</span>
-<span id="cb220-7"><a href="graphics1.html#cb220-7" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fl">0.5</span>, <span class="fl">0.2</span>, <span class="st">&quot;adj = c(1, .5)&quot;</span>, <span class="at">adj =</span> <span class="fu">c</span>(<span class="dv">1</span>, .<span class="dv">5</span>))</span>
-<span id="cb220-8"><a href="graphics1.html#cb220-8" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fl">0.2</span>, <span class="fl">0.5</span>, <span class="st">&quot;adj = c(1, 1)&quot;</span>, <span class="at">adj =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb220-9"><a href="graphics1.html#cb220-9" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fl">0.8</span>, <span class="fl">0.5</span>, <span class="st">&quot;adj = c(0, 0)&quot;</span>, <span class="at">adj =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="graphics1.html#cb225-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">type =</span> <span class="st">&#39;n&#39;</span>)</span>
+<span id="cb225-2"><a href="graphics1.html#cb225-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fu">c</span>(.<span class="dv">2</span>, .<span class="dv">5</span>, .<span class="dv">8</span>),</span>
+<span id="cb225-3"><a href="graphics1.html#cb225-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">v =</span> <span class="fu">c</span>(.<span class="dv">5</span>, .<span class="dv">2</span>, .<span class="dv">8</span>), <span class="at">col =</span> <span class="st">&quot;lightgrey&quot;</span>)</span>
+<span id="cb225-4"><a href="graphics1.html#cb225-4" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="st">&quot;srt = 45, adj = c(.5, .5)&quot;</span>,</span>
+<span id="cb225-5"><a href="graphics1.html#cb225-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">srt =</span> <span class="dv">45</span>, <span class="at">adj =</span> <span class="fu">c</span>(.<span class="dv">5</span>, .<span class="dv">5</span>))</span>
+<span id="cb225-6"><a href="graphics1.html#cb225-6" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fl">0.5</span>, <span class="fl">0.8</span>, <span class="st">&quot;adj = c(0, .5)&quot;</span>, <span class="at">adj =</span> <span class="fu">c</span>(<span class="dv">0</span>, .<span class="dv">5</span>))</span>
+<span id="cb225-7"><a href="graphics1.html#cb225-7" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fl">0.5</span>, <span class="fl">0.2</span>, <span class="st">&quot;adj = c(1, .5)&quot;</span>, <span class="at">adj =</span> <span class="fu">c</span>(<span class="dv">1</span>, .<span class="dv">5</span>))</span>
+<span id="cb225-8"><a href="graphics1.html#cb225-8" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fl">0.2</span>, <span class="fl">0.5</span>, <span class="st">&quot;adj = c(1, 1)&quot;</span>, <span class="at">adj =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb225-9"><a href="graphics1.html#cb225-9" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fl">0.8</span>, <span class="fl">0.5</span>, <span class="st">&quot;adj = c(0, 0)&quot;</span>, <span class="at">adj =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>))</span></code></pre></div>
 <p><img src="R-coding-basics_files/figure-html/draw_text-1.png" width="70%" height="80%" style="display: block; margin: auto;" /></p>
 
 </div>

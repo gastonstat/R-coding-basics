@@ -28,7 +28,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
-  
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
 <link rel="prev" href="expressions.html"/>
 <link rel="next" href="for-loop.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -505,7 +505,7 @@ add to your savings account at the very end of year 2. The same thing happens
 during your third year of work: you save $1000 and contribute this amount to
 your savings account at the end of year 3. This is illustrated in the
 diagram below, with a generic rate of return:</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-255"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-259"></span>
 <img src="images/conditionals/timeline-ord-annuity.png" alt="Timeline of an ordinary annuity: contributions made at the end of each year." width="95%" />
 <p class="caption">
 Figure 15.1: Timeline of an ordinary annuity: contributions made at the end of each year.
@@ -516,8 +516,8 @@ Figure 15.1: Timeline of an ordinary annuity: contributions made at the end of e
 \underbrace{1000 (1 + 0.02)^2}_{\text{1st contribution}} + \underbrace{1000 (1 + 0.02)}_{\text{2nd contrib.}} + \underbrace{1000}_{\text{3rd contrib.}} = 3060.4
 \]</span></p>
 <p>which in R we can quickly calculate as:</p>
-<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="conditionals.html#cb268-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1000</span> <span class="sc">*</span> (<span class="fl">1.02</span>)<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">1000</span> <span class="sc">*</span> (<span class="fl">1.02</span>) <span class="sc">+</span> <span class="dv">1000</span></span>
-<span id="cb268-2"><a href="conditionals.html#cb268-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">3060.4</span></span></code></pre></div>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="conditionals.html#cb273-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1000</span> <span class="sc">*</span> (<span class="fl">1.02</span>)<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">1000</span> <span class="sc">*</span> (<span class="fl">1.02</span>) <span class="sc">+</span> <span class="dv">1000</span></span>
+<span id="cb273-2"><a href="conditionals.html#cb273-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">3060.4</span></span></code></pre></div>
 <p>This example corresponds to what is formally called an <strong>ordinary annuity</strong>.
 It is an annuity because the same amount of money is contributed every year.
 It is ordinary because the contributions are made at the
@@ -533,14 +533,14 @@ It is ordinary because the contributions are made at the
 <li><p><span class="math inline">\(t\)</span> = number of periods (e.g. number of years)</p></li>
 </ul>
 <p>Writing code in a less quick and dirty way, we may type the following commands:</p>
-<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="conditionals.html#cb269-1" aria-hidden="true" tabindex="-1"></a><span class="co"># at the end of year 3</span></span>
-<span id="cb269-2"><a href="conditionals.html#cb269-2" aria-hidden="true" tabindex="-1"></a>contrib <span class="ot">=</span> <span class="dv">1000</span></span>
-<span id="cb269-3"><a href="conditionals.html#cb269-3" aria-hidden="true" tabindex="-1"></a>year <span class="ot">=</span> <span class="dv">3</span></span>
-<span id="cb269-4"><a href="conditionals.html#cb269-4" aria-hidden="true" tabindex="-1"></a>rate <span class="ot">=</span> <span class="fl">0.02</span></span>
-<span id="cb269-5"><a href="conditionals.html#cb269-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb269-6"><a href="conditionals.html#cb269-6" aria-hidden="true" tabindex="-1"></a><span class="co"># FV of ordinary annuity</span></span>
-<span id="cb269-7"><a href="conditionals.html#cb269-7" aria-hidden="true" tabindex="-1"></a>contrib <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>year <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> rate</span>
-<span id="cb269-8"><a href="conditionals.html#cb269-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">3060.4</span></span></code></pre></div>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="conditionals.html#cb274-1" aria-hidden="true" tabindex="-1"></a><span class="co"># at the end of year 3</span></span>
+<span id="cb274-2"><a href="conditionals.html#cb274-2" aria-hidden="true" tabindex="-1"></a>contrib <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb274-3"><a href="conditionals.html#cb274-3" aria-hidden="true" tabindex="-1"></a>year <span class="ot">=</span> <span class="dv">3</span></span>
+<span id="cb274-4"><a href="conditionals.html#cb274-4" aria-hidden="true" tabindex="-1"></a>rate <span class="ot">=</span> <span class="fl">0.02</span></span>
+<span id="cb274-5"><a href="conditionals.html#cb274-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb274-6"><a href="conditionals.html#cb274-6" aria-hidden="true" tabindex="-1"></a><span class="co"># FV of ordinary annuity</span></span>
+<span id="cb274-7"><a href="conditionals.html#cb274-7" aria-hidden="true" tabindex="-1"></a>contrib <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>year <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> rate</span>
+<span id="cb274-8"><a href="conditionals.html#cb274-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">3060.4</span></span></code></pre></div>
 </div>
 <div id="future-value-of-annuity-due" class="section level3 hasAnchor" number="15.1.2">
 <h3><span class="header-section-number">15.1.2</span> Future Value of Annuity Due<a href="conditionals.html#future-value-of-annuity-due" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -558,7 +558,7 @@ you make this contribution to your savings account. During your second year of
 work, you manage again to save $1000, which you add to your savings account at
 the beginning of year 3. This is illustrated in the diagram below, with a
 generic rate of return:</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-258"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-262"></span>
 <img src="images/conditionals/timeline-due-annuity.png" alt="Timeline of an annuity due: contributions made at the beginning of each year." width="95%" />
 <p class="caption">
 Figure 15.2: Timeline of an annuity due: contributions made at the beginning of each year.
@@ -569,8 +569,8 @@ Figure 15.2: Timeline of an annuity due: contributions made at the beginning of 
 \underbrace{1000 (1 + 0.02)^3}_{\text{1st contribution}} + \underbrace{1000 (1 + 0.02)^2}_{\text{2nd contrib.}} + \underbrace{1000 (1 + 0.02)}_{\text{3rd contrib.}} = 3121.608
 \]</span></p>
 <p>which in R we can quickly calculate as:</p>
-<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="conditionals.html#cb270-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1000</span> <span class="sc">*</span> (<span class="fl">1.02</span>)<span class="sc">^</span><span class="dv">3</span> <span class="sc">+</span> <span class="dv">1000</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fl">0.02</span>)<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">1000</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fl">0.02</span>)</span>
-<span id="cb270-2"><a href="conditionals.html#cb270-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">3121.608</span></span></code></pre></div>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="conditionals.html#cb275-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1000</span> <span class="sc">*</span> (<span class="fl">1.02</span>)<span class="sc">^</span><span class="dv">3</span> <span class="sc">+</span> <span class="dv">1000</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fl">0.02</span>)<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">1000</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fl">0.02</span>)</span>
+<span id="cb275-2"><a href="conditionals.html#cb275-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">3121.608</span></span></code></pre></div>
 <p>The formula to calculate the <strong>future value of an annuity due</strong> is given by:</p>
 <p><span class="math display">\[
 \text{FV} = \text{C} \times \left [ \frac{(1 + r)^t - 1}{r} \right] \times (1 + r)
@@ -582,24 +582,24 @@ Figure 15.2: Timeline of an annuity due: contributions made at the beginning of 
 <li><p><span class="math inline">\(t\)</span> = number of periods (e.g. number of years)</p></li>
 </ul>
 <p>In a less informal way, we can write the following lines of code:</p>
-<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="conditionals.html#cb271-1" aria-hidden="true" tabindex="-1"></a><span class="co"># at the end of year 3</span></span>
-<span id="cb271-2"><a href="conditionals.html#cb271-2" aria-hidden="true" tabindex="-1"></a>contrib <span class="ot">=</span> <span class="dv">1000</span></span>
-<span id="cb271-3"><a href="conditionals.html#cb271-3" aria-hidden="true" tabindex="-1"></a>year <span class="ot">=</span> <span class="dv">3</span></span>
-<span id="cb271-4"><a href="conditionals.html#cb271-4" aria-hidden="true" tabindex="-1"></a>rate <span class="ot">=</span> <span class="fl">0.02</span></span>
-<span id="cb271-5"><a href="conditionals.html#cb271-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb271-6"><a href="conditionals.html#cb271-6" aria-hidden="true" tabindex="-1"></a><span class="co"># FV of annuity due</span></span>
-<span id="cb271-7"><a href="conditionals.html#cb271-7" aria-hidden="true" tabindex="-1"></a>contrib <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate) <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>year <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> rate</span>
-<span id="cb271-8"><a href="conditionals.html#cb271-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">3121.608</span></span></code></pre></div>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="conditionals.html#cb276-1" aria-hidden="true" tabindex="-1"></a><span class="co"># at the end of year 3</span></span>
+<span id="cb276-2"><a href="conditionals.html#cb276-2" aria-hidden="true" tabindex="-1"></a>contrib <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb276-3"><a href="conditionals.html#cb276-3" aria-hidden="true" tabindex="-1"></a>year <span class="ot">=</span> <span class="dv">3</span></span>
+<span id="cb276-4"><a href="conditionals.html#cb276-4" aria-hidden="true" tabindex="-1"></a>rate <span class="ot">=</span> <span class="fl">0.02</span></span>
+<span id="cb276-5"><a href="conditionals.html#cb276-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb276-6"><a href="conditionals.html#cb276-6" aria-hidden="true" tabindex="-1"></a><span class="co"># FV of annuity due</span></span>
+<span id="cb276-7"><a href="conditionals.html#cb276-7" aria-hidden="true" tabindex="-1"></a>contrib <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate) <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>year <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> rate</span>
+<span id="cb276-8"><a href="conditionals.html#cb276-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">3121.608</span></span></code></pre></div>
 <p>As you know, we can also consider a vectorized option to obtain the
 amounts at the end of every year:</p>
-<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="conditionals.html#cb272-1" aria-hidden="true" tabindex="-1"></a><span class="co"># over a 3 year period</span></span>
-<span id="cb272-2"><a href="conditionals.html#cb272-2" aria-hidden="true" tabindex="-1"></a>contrib <span class="ot">=</span> <span class="dv">1000</span></span>
-<span id="cb272-3"><a href="conditionals.html#cb272-3" aria-hidden="true" tabindex="-1"></a>years <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
-<span id="cb272-4"><a href="conditionals.html#cb272-4" aria-hidden="true" tabindex="-1"></a>rate <span class="ot">=</span> <span class="fl">0.02</span></span>
-<span id="cb272-5"><a href="conditionals.html#cb272-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb272-6"><a href="conditionals.html#cb272-6" aria-hidden="true" tabindex="-1"></a><span class="co"># FV of annuity due</span></span>
-<span id="cb272-7"><a href="conditionals.html#cb272-7" aria-hidden="true" tabindex="-1"></a>contrib <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate) <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> rate</span>
-<span id="cb272-8"><a href="conditionals.html#cb272-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">1020.000</span> <span class="fl">2060.400</span> <span class="fl">3121.608</span></span></code></pre></div>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="conditionals.html#cb277-1" aria-hidden="true" tabindex="-1"></a><span class="co"># over a 3 year period</span></span>
+<span id="cb277-2"><a href="conditionals.html#cb277-2" aria-hidden="true" tabindex="-1"></a>contrib <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb277-3"><a href="conditionals.html#cb277-3" aria-hidden="true" tabindex="-1"></a>years <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
+<span id="cb277-4"><a href="conditionals.html#cb277-4" aria-hidden="true" tabindex="-1"></a>rate <span class="ot">=</span> <span class="fl">0.02</span></span>
+<span id="cb277-5"><a href="conditionals.html#cb277-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb277-6"><a href="conditionals.html#cb277-6" aria-hidden="true" tabindex="-1"></a><span class="co"># FV of annuity due</span></span>
+<span id="cb277-7"><a href="conditionals.html#cb277-7" aria-hidden="true" tabindex="-1"></a>contrib <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate) <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> rate</span>
+<span id="cb277-8"><a href="conditionals.html#cb277-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">1020.000</span> <span class="fl">2060.400</span> <span class="fl">3121.608</span></span></code></pre></div>
 </div>
 </div>
 <div id="conditionals-1" class="section level2 hasAnchor" number="15.2">
@@ -627,56 +627,56 @@ amounts at the end of every year:</p>
 <code>type = "ordinary"</code> or <code>type = "due"</code>. Depending on the value of
 <code>type</code>, we could write code to compute the appropriate kind
 of annuity, something more or less like the code below:</p>
-<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="conditionals.html#cb273-1" aria-hidden="true" tabindex="-1"></a><span class="co"># in 3 years</span></span>
-<span id="cb273-2"><a href="conditionals.html#cb273-2" aria-hidden="true" tabindex="-1"></a>contrib <span class="ot">=</span> <span class="dv">1000</span></span>
-<span id="cb273-3"><a href="conditionals.html#cb273-3" aria-hidden="true" tabindex="-1"></a>years <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
-<span id="cb273-4"><a href="conditionals.html#cb273-4" aria-hidden="true" tabindex="-1"></a>rate <span class="ot">=</span> <span class="fl">0.02</span></span></code></pre></div>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="conditionals.html#cb278-1" aria-hidden="true" tabindex="-1"></a><span class="co"># in 3 years</span></span>
+<span id="cb278-2"><a href="conditionals.html#cb278-2" aria-hidden="true" tabindex="-1"></a>contrib <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb278-3"><a href="conditionals.html#cb278-3" aria-hidden="true" tabindex="-1"></a>years <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
+<span id="cb278-4"><a href="conditionals.html#cb278-4" aria-hidden="true" tabindex="-1"></a>rate <span class="ot">=</span> <span class="fl">0.02</span></span></code></pre></div>
 <p>Ordinary annuity:</p>
-<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="conditionals.html#cb274-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if type == &quot;ordinary&quot;</span></span>
-<span id="cb274-2"><a href="conditionals.html#cb274-2" aria-hidden="true" tabindex="-1"></a>contrib <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> rate</span>
-<span id="cb274-3"><a href="conditionals.html#cb274-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">1000.0</span> <span class="fl">2020.0</span> <span class="fl">3060.4</span></span></code></pre></div>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="conditionals.html#cb279-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if type == &quot;ordinary&quot;</span></span>
+<span id="cb279-2"><a href="conditionals.html#cb279-2" aria-hidden="true" tabindex="-1"></a>contrib <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> rate</span>
+<span id="cb279-3"><a href="conditionals.html#cb279-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">1000.0</span> <span class="fl">2020.0</span> <span class="fl">3060.4</span></span></code></pre></div>
 <p>Annuity due:</p>
-<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="conditionals.html#cb275-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if type == &quot;due&quot;</span></span>
-<span id="cb275-2"><a href="conditionals.html#cb275-2" aria-hidden="true" tabindex="-1"></a>contrib <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate) <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> rate</span>
-<span id="cb275-3"><a href="conditionals.html#cb275-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">1020.000</span> <span class="fl">2060.400</span> <span class="fl">3121.608</span></span></code></pre></div>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="conditionals.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if type == &quot;due&quot;</span></span>
+<span id="cb280-2"><a href="conditionals.html#cb280-2" aria-hidden="true" tabindex="-1"></a>contrib <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate) <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> rate</span>
+<span id="cb280-3"><a href="conditionals.html#cb280-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">1020.000</span> <span class="fl">2060.400</span> <span class="fl">3121.608</span></span></code></pre></div>
 <div id="if-else-conditions" class="section level3 hasAnchor" number="15.2.1">
 <h3><span class="header-section-number">15.2.1</span> If-else conditions<a href="conditionals.html#if-else-conditions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Perhaps the best way for you to get introduced to <code>if-else</code> statements is to
 see one for yourself, so here it is:</p>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="conditionals.html#cb276-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ordinary annuity</span></span>
-<span id="cb276-2"><a href="conditionals.html#cb276-2" aria-hidden="true" tabindex="-1"></a>contrib <span class="ot">=</span> <span class="dv">1000</span></span>
-<span id="cb276-3"><a href="conditionals.html#cb276-3" aria-hidden="true" tabindex="-1"></a>years <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
-<span id="cb276-4"><a href="conditionals.html#cb276-4" aria-hidden="true" tabindex="-1"></a>rate <span class="ot">=</span> <span class="fl">0.02</span></span>
-<span id="cb276-5"><a href="conditionals.html#cb276-5" aria-hidden="true" tabindex="-1"></a>type <span class="ot">=</span> <span class="st">&quot;ordinary&quot;</span></span>
-<span id="cb276-6"><a href="conditionals.html#cb276-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb276-7"><a href="conditionals.html#cb276-7" aria-hidden="true" tabindex="-1"></a><span class="co"># if-else statement</span></span>
-<span id="cb276-8"><a href="conditionals.html#cb276-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (type <span class="sc">==</span> <span class="st">&quot;ordinary&quot;</span>) {</span>
-<span id="cb276-9"><a href="conditionals.html#cb276-9" aria-hidden="true" tabindex="-1"></a>  fv <span class="ot">=</span> contrib <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> rate</span>
-<span id="cb276-10"><a href="conditionals.html#cb276-10" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb276-11"><a href="conditionals.html#cb276-11" aria-hidden="true" tabindex="-1"></a>  fv <span class="ot">=</span> contrib <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate) <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> rate</span>
-<span id="cb276-12"><a href="conditionals.html#cb276-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb276-13"><a href="conditionals.html#cb276-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb276-14"><a href="conditionals.html#cb276-14" aria-hidden="true" tabindex="-1"></a>fv</span>
-<span id="cb276-15"><a href="conditionals.html#cb276-15" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">1000.0</span> <span class="fl">2020.0</span> <span class="fl">3060.4</span></span></code></pre></div>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="conditionals.html#cb281-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ordinary annuity</span></span>
+<span id="cb281-2"><a href="conditionals.html#cb281-2" aria-hidden="true" tabindex="-1"></a>contrib <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb281-3"><a href="conditionals.html#cb281-3" aria-hidden="true" tabindex="-1"></a>years <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
+<span id="cb281-4"><a href="conditionals.html#cb281-4" aria-hidden="true" tabindex="-1"></a>rate <span class="ot">=</span> <span class="fl">0.02</span></span>
+<span id="cb281-5"><a href="conditionals.html#cb281-5" aria-hidden="true" tabindex="-1"></a>type <span class="ot">=</span> <span class="st">&quot;ordinary&quot;</span></span>
+<span id="cb281-6"><a href="conditionals.html#cb281-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb281-7"><a href="conditionals.html#cb281-7" aria-hidden="true" tabindex="-1"></a><span class="co"># if-else statement</span></span>
+<span id="cb281-8"><a href="conditionals.html#cb281-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (type <span class="sc">==</span> <span class="st">&quot;ordinary&quot;</span>) {</span>
+<span id="cb281-9"><a href="conditionals.html#cb281-9" aria-hidden="true" tabindex="-1"></a>  fv <span class="ot">=</span> contrib <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> rate</span>
+<span id="cb281-10"><a href="conditionals.html#cb281-10" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb281-11"><a href="conditionals.html#cb281-11" aria-hidden="true" tabindex="-1"></a>  fv <span class="ot">=</span> contrib <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate) <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> rate</span>
+<span id="cb281-12"><a href="conditionals.html#cb281-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb281-13"><a href="conditionals.html#cb281-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb281-14"><a href="conditionals.html#cb281-14" aria-hidden="true" tabindex="-1"></a>fv</span>
+<span id="cb281-15"><a href="conditionals.html#cb281-15" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">1000.0</span> <span class="fl">2020.0</span> <span class="fl">3060.4</span></span></code></pre></div>
 <p>I hope that just by looking at the precending conditional statement you get
 the gist of what is going on. If the type of annuity is the ordinary one
 (<code>type == "ordinary"</code>) then we apply the formula of the FV of ordinary annuity.
 Otherwise (<code>else</code>) we apply the formula of the FV of annuity due.</p>
 <p>The same piece of code can be implemented with the other type of annuity</p>
-<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="conditionals.html#cb277-1" aria-hidden="true" tabindex="-1"></a><span class="co"># annuity due</span></span>
-<span id="cb277-2"><a href="conditionals.html#cb277-2" aria-hidden="true" tabindex="-1"></a>contrib <span class="ot">=</span> <span class="dv">1000</span></span>
-<span id="cb277-3"><a href="conditionals.html#cb277-3" aria-hidden="true" tabindex="-1"></a>years <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
-<span id="cb277-4"><a href="conditionals.html#cb277-4" aria-hidden="true" tabindex="-1"></a>rate <span class="ot">=</span> <span class="fl">0.02</span></span>
-<span id="cb277-5"><a href="conditionals.html#cb277-5" aria-hidden="true" tabindex="-1"></a>type <span class="ot">=</span> <span class="st">&quot;due&quot;</span></span>
-<span id="cb277-6"><a href="conditionals.html#cb277-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb277-7"><a href="conditionals.html#cb277-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (type <span class="sc">==</span> <span class="st">&quot;ordinary&quot;</span>) {</span>
-<span id="cb277-8"><a href="conditionals.html#cb277-8" aria-hidden="true" tabindex="-1"></a>  fv <span class="ot">=</span> contrib <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> rate</span>
-<span id="cb277-9"><a href="conditionals.html#cb277-9" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb277-10"><a href="conditionals.html#cb277-10" aria-hidden="true" tabindex="-1"></a>  fv <span class="ot">=</span> contrib <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate) <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> rate</span>
-<span id="cb277-11"><a href="conditionals.html#cb277-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb277-12"><a href="conditionals.html#cb277-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb277-13"><a href="conditionals.html#cb277-13" aria-hidden="true" tabindex="-1"></a>fv</span>
-<span id="cb277-14"><a href="conditionals.html#cb277-14" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">1020.000</span> <span class="fl">2060.400</span> <span class="fl">3121.608</span></span></code></pre></div>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="conditionals.html#cb282-1" aria-hidden="true" tabindex="-1"></a><span class="co"># annuity due</span></span>
+<span id="cb282-2"><a href="conditionals.html#cb282-2" aria-hidden="true" tabindex="-1"></a>contrib <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb282-3"><a href="conditionals.html#cb282-3" aria-hidden="true" tabindex="-1"></a>years <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
+<span id="cb282-4"><a href="conditionals.html#cb282-4" aria-hidden="true" tabindex="-1"></a>rate <span class="ot">=</span> <span class="fl">0.02</span></span>
+<span id="cb282-5"><a href="conditionals.html#cb282-5" aria-hidden="true" tabindex="-1"></a>type <span class="ot">=</span> <span class="st">&quot;due&quot;</span></span>
+<span id="cb282-6"><a href="conditionals.html#cb282-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb282-7"><a href="conditionals.html#cb282-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (type <span class="sc">==</span> <span class="st">&quot;ordinary&quot;</span>) {</span>
+<span id="cb282-8"><a href="conditionals.html#cb282-8" aria-hidden="true" tabindex="-1"></a>  fv <span class="ot">=</span> contrib <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> rate</span>
+<span id="cb282-9"><a href="conditionals.html#cb282-9" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb282-10"><a href="conditionals.html#cb282-10" aria-hidden="true" tabindex="-1"></a>  fv <span class="ot">=</span> contrib <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate) <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> rate</span>
+<span id="cb282-11"><a href="conditionals.html#cb282-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb282-12"><a href="conditionals.html#cb282-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb282-13"><a href="conditionals.html#cb282-13" aria-hidden="true" tabindex="-1"></a>fv</span>
+<span id="cb282-14"><a href="conditionals.html#cb282-14" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">1020.000</span> <span class="fl">2060.400</span> <span class="fl">3121.608</span></span></code></pre></div>
 </div>
 <div id="anatomy-of-if-else-statements" class="section level3 hasAnchor" number="15.2.2">
 <h3><span class="header-section-number">15.2.2</span> Anatomy of if-else statements<a href="conditionals.html#anatomy-of-if-else-statements" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -684,18 +684,18 @@ Otherwise (<code>else</code>) we apply the formula of the FV of annuity due.</p>
 (possibly compound) expressions depending on the value of a (logical) condition.</p>
 <p>In R (as in many other languages) the if-then-else statement has the following
 structure:</p>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="conditionals.html#cb278-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (condition) {</span>
-<span id="cb278-2"><a href="conditionals.html#cb278-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># do something</span></span>
-<span id="cb278-3"><a href="conditionals.html#cb278-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb278-4"><a href="conditionals.html#cb278-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># do something else</span></span>
-<span id="cb278-5"><a href="conditionals.html#cb278-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="conditionals.html#cb283-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (condition) {</span>
+<span id="cb283-2"><a href="conditionals.html#cb283-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># do something</span></span>
+<span id="cb283-3"><a href="conditionals.html#cb283-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb283-4"><a href="conditionals.html#cb283-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># do something else</span></span>
+<span id="cb283-5"><a href="conditionals.html#cb283-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>In our working example with the two types of annuities, the condition that
 we are evaluating depends on the value of <code>type</code>:</p>
-<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="conditionals.html#cb279-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (type <span class="sc">==</span> <span class="st">&quot;ordinary&quot;</span>) {</span>
-<span id="cb279-2"><a href="conditionals.html#cb279-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># compute ordinary annuity</span></span>
-<span id="cb279-3"><a href="conditionals.html#cb279-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb279-4"><a href="conditionals.html#cb279-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># compute annuity due</span></span>
-<span id="cb279-5"><a href="conditionals.html#cb279-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="conditionals.html#cb284-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (type <span class="sc">==</span> <span class="st">&quot;ordinary&quot;</span>) {</span>
+<span id="cb284-2"><a href="conditionals.html#cb284-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># compute ordinary annuity</span></span>
+<span id="cb284-3"><a href="conditionals.html#cb284-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb284-4"><a href="conditionals.html#cb284-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># compute annuity due</span></span>
+<span id="cb284-5"><a href="conditionals.html#cb284-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>If <code>type == "ordinary"</code>,
 then we should compute the future value of annuity using its ordinary version.
 Otherwise, we should compute the future value using the annuity due formula.</p>
@@ -737,174 +737,174 @@ condition is true; the second one for what to do when the condition is false.</p
 of expressions that are evaluated. If the expressions of both the <code>if</code> clause
 and the <code>else</code> clause are <strong>simple</strong> expressions, the syntax of the <code>if-else</code>
 code can be simplified into one line of code:</p>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="conditionals.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (condition) expression_1 <span class="cf">else</span> expression_2</span></code></pre></div>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="conditionals.html#cb285-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (condition) expression_1 <span class="cf">else</span> expression_2</span></code></pre></div>
 <p>Consider the following example that uses a conditional statement to decide
 between calculating the square root of the input <em>if</em> the input value is
 positive, or computing the negative square root of the negative input <em>if</em> the
 input value is negative:</p>
-<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="conditionals.html#cb281-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb281-2"><a href="conditionals.html#cb281-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb281-3"><a href="conditionals.html#cb281-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb281-4"><a href="conditionals.html#cb281-4" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(x) </span>
-<span id="cb281-5"><a href="conditionals.html#cb281-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb281-6"><a href="conditionals.html#cb281-6" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">sqrt</span>(<span class="sc">-</span>x)</span>
-<span id="cb281-7"><a href="conditionals.html#cb281-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb281-8"><a href="conditionals.html#cb281-8" aria-hidden="true" tabindex="-1"></a>y</span>
-<span id="cb281-9"><a href="conditionals.html#cb281-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">3.162278</span></span></code></pre></div>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="conditionals.html#cb286-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb286-2"><a href="conditionals.html#cb286-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb286-3"><a href="conditionals.html#cb286-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb286-4"><a href="conditionals.html#cb286-4" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(x) </span>
+<span id="cb286-5"><a href="conditionals.html#cb286-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb286-6"><a href="conditionals.html#cb286-6" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">sqrt</span>(<span class="sc">-</span>x)</span>
+<span id="cb286-7"><a href="conditionals.html#cb286-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb286-8"><a href="conditionals.html#cb286-8" aria-hidden="true" tabindex="-1"></a>y</span>
+<span id="cb286-9"><a href="conditionals.html#cb286-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">3.162278</span></span></code></pre></div>
 <p>Because the code in both clauses consists of simple expressions, the use of
 braces is not mandatory. In fact, you can write the conditional statement in
 a single line of code, as follows:</p>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="conditionals.html#cb282-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb282-2"><a href="conditionals.html#cb282-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb282-3"><a href="conditionals.html#cb282-3" aria-hidden="true" tabindex="-1"></a><span class="co"># with simple expressions, braces are optional</span></span>
-<span id="cb282-4"><a href="conditionals.html#cb282-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) y <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(x) <span class="cf">else</span> y <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">sqrt</span>(<span class="sc">-</span>x)</span>
-<span id="cb282-5"><a href="conditionals.html#cb282-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb282-6"><a href="conditionals.html#cb282-6" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="conditionals.html#cb287-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb287-2"><a href="conditionals.html#cb287-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb287-3"><a href="conditionals.html#cb287-3" aria-hidden="true" tabindex="-1"></a><span class="co"># with simple expressions, braces are optional</span></span>
+<span id="cb287-4"><a href="conditionals.html#cb287-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) y <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(x) <span class="cf">else</span> y <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">sqrt</span>(<span class="sc">-</span>x)</span>
+<span id="cb287-5"><a href="conditionals.html#cb287-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb287-6"><a href="conditionals.html#cb287-6" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div>
 <p>Interestingly, the previous statement can be written more succinctly in R as:</p>
-<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="conditionals.html#cb283-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb283-2"><a href="conditionals.html#cb283-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb283-3"><a href="conditionals.html#cb283-3" aria-hidden="true" tabindex="-1"></a><span class="co"># you can assign the output of an if-else statement</span></span>
-<span id="cb283-4"><a href="conditionals.html#cb283-4" aria-hidden="true" tabindex="-1"></a><span class="co"># to an object</span></span>
-<span id="cb283-5"><a href="conditionals.html#cb283-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="fu">sqrt</span>(x) <span class="cf">else</span> <span class="sc">-</span><span class="fu">sqrt</span>(<span class="sc">-</span>x)</span>
-<span id="cb283-6"><a href="conditionals.html#cb283-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb283-7"><a href="conditionals.html#cb283-7" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="conditionals.html#cb288-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb288-2"><a href="conditionals.html#cb288-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb288-3"><a href="conditionals.html#cb288-3" aria-hidden="true" tabindex="-1"></a><span class="co"># you can assign the output of an if-else statement</span></span>
+<span id="cb288-4"><a href="conditionals.html#cb288-4" aria-hidden="true" tabindex="-1"></a><span class="co"># to an object</span></span>
+<span id="cb288-5"><a href="conditionals.html#cb288-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="fu">sqrt</span>(x) <span class="cf">else</span> <span class="sc">-</span><span class="fu">sqrt</span>(<span class="sc">-</span>x)</span>
+<span id="cb288-6"><a href="conditionals.html#cb288-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb288-7"><a href="conditionals.html#cb288-7" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div>
 <p>Again, even though the previous commands are perfectly okay, I prefer to
 use braces when working with conditional structures. This is a good practice
 that improves readability:</p>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="conditionals.html#cb284-1" aria-hidden="true" tabindex="-1"></a><span class="co"># embrace braces: use them as much as possible!</span></span>
-<span id="cb284-2"><a href="conditionals.html#cb284-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb284-3"><a href="conditionals.html#cb284-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb284-4"><a href="conditionals.html#cb284-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb284-5"><a href="conditionals.html#cb284-5" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(x) </span>
-<span id="cb284-6"><a href="conditionals.html#cb284-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb284-7"><a href="conditionals.html#cb284-7" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">sqrt</span>(<span class="sc">-</span>x)</span>
-<span id="cb284-8"><a href="conditionals.html#cb284-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="conditionals.html#cb289-1" aria-hidden="true" tabindex="-1"></a><span class="co"># embrace braces: use them as much as possible!</span></span>
+<span id="cb289-2"><a href="conditionals.html#cb289-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb289-3"><a href="conditionals.html#cb289-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb289-4"><a href="conditionals.html#cb289-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb289-5"><a href="conditionals.html#cb289-5" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(x) </span>
+<span id="cb289-6"><a href="conditionals.html#cb289-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb289-7"><a href="conditionals.html#cb289-7" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">sqrt</span>(<span class="sc">-</span>x)</span>
+<span id="cb289-8"><a href="conditionals.html#cb289-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div id="simple-ifs" class="section level3 hasAnchor" number="15.2.4">
 <h3><span class="header-section-number">15.2.4</span> Simple If’s<a href="conditionals.html#simple-ifs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>There is a simplified form of if-else statement which is available when
 there is no expression in the <code>else</code> clause. In its simplest version this
 statement has the general form:</p>
-<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="conditionals.html#cb285-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (condition) expression</span></code></pre></div>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="conditionals.html#cb290-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (condition) expression</span></code></pre></div>
 <p>and it is equivalent to:</p>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="conditionals.html#cb286-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (condition) expression <span class="cf">else</span> <span class="cn">NULL</span></span></code></pre></div>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="conditionals.html#cb291-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (condition) expression <span class="cf">else</span> <span class="cn">NULL</span></span></code></pre></div>
 <p>Here’s an example in which we have two numbers, <code>x</code> and <code>y</code>, and we are
 interested in knowing if <code>x</code> is greater than <code>y</code>. If yes, we print the message
 <code>"x is greater than y"</code>. If not, then we don’t really care, and we do nothing.</p>
-<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="conditionals.html#cb287-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">4</span></span>
-<span id="cb287-2"><a href="conditionals.html#cb287-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb287-3"><a href="conditionals.html#cb287-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb287-4"><a href="conditionals.html#cb287-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> y) {</span>
-<span id="cb287-5"><a href="conditionals.html#cb287-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;x is greater than y&quot;</span>)</span>
-<span id="cb287-6"><a href="conditionals.html#cb287-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb287-7"><a href="conditionals.html#cb287-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;x is greater than y&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="conditionals.html#cb292-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb292-2"><a href="conditionals.html#cb292-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb292-3"><a href="conditionals.html#cb292-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb292-4"><a href="conditionals.html#cb292-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> y) {</span>
+<span id="cb292-5"><a href="conditionals.html#cb292-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;x is greater than y&quot;</span>)</span>
+<span id="cb292-6"><a href="conditionals.html#cb292-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb292-7"><a href="conditionals.html#cb292-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;x is greater than y&quot;</span></span></code></pre></div>
 </div>
 </div>
 <div id="multiple-ifs" class="section level2 hasAnchor" number="15.3">
 <h2><span class="header-section-number">15.3</span> Multiple If’s<a href="conditionals.html#multiple-ifs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A common situation involves working with multiple conditions at the same time.
 You can chain multiple if-else statements like so:</p>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="conditionals.html#cb288-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># Change this value!</span></span>
-<span id="cb288-2"><a href="conditionals.html#cb288-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb288-3"><a href="conditionals.html#cb288-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (y <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb288-4"><a href="conditionals.html#cb288-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;positive&quot;</span>)</span>
-<span id="cb288-5"><a href="conditionals.html#cb288-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (y <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
-<span id="cb288-6"><a href="conditionals.html#cb288-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;negative&quot;</span>)</span>
-<span id="cb288-7"><a href="conditionals.html#cb288-7" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb288-8"><a href="conditionals.html#cb288-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;zero?&quot;</span>)</span>
-<span id="cb288-9"><a href="conditionals.html#cb288-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb288-10"><a href="conditionals.html#cb288-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;positive&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="conditionals.html#cb293-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># Change this value!</span></span>
+<span id="cb293-2"><a href="conditionals.html#cb293-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb293-3"><a href="conditionals.html#cb293-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (y <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb293-4"><a href="conditionals.html#cb293-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;positive&quot;</span>)</span>
+<span id="cb293-5"><a href="conditionals.html#cb293-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (y <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
+<span id="cb293-6"><a href="conditionals.html#cb293-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;negative&quot;</span>)</span>
+<span id="cb293-7"><a href="conditionals.html#cb293-7" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb293-8"><a href="conditionals.html#cb293-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;zero?&quot;</span>)</span>
+<span id="cb293-9"><a href="conditionals.html#cb293-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb293-10"><a href="conditionals.html#cb293-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;positive&quot;</span></span></code></pre></div>
 <p>Working with multiple chained if’s becomes cumbersome. Consider the following
 example that uses several if’s to convert a day of the week into a number:</p>
-<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="conditionals.html#cb289-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the day of the week into a number.</span></span>
-<span id="cb289-2"><a href="conditionals.html#cb289-2" aria-hidden="true" tabindex="-1"></a>day <span class="ot">&lt;-</span> <span class="st">&quot;Tuesday&quot;</span> <span class="co"># Change this value!</span></span>
-<span id="cb289-3"><a href="conditionals.html#cb289-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb289-4"><a href="conditionals.html#cb289-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&#39;Sunday&#39;</span>) {</span>
-<span id="cb289-5"><a href="conditionals.html#cb289-5" aria-hidden="true" tabindex="-1"></a>  num_day <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb289-6"><a href="conditionals.html#cb289-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb289-7"><a href="conditionals.html#cb289-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&quot;Monday&quot;</span>) {</span>
-<span id="cb289-8"><a href="conditionals.html#cb289-8" aria-hidden="true" tabindex="-1"></a>    num_day <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb289-9"><a href="conditionals.html#cb289-9" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb289-10"><a href="conditionals.html#cb289-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&quot;Tuesday&quot;</span>) {</span>
-<span id="cb289-11"><a href="conditionals.html#cb289-11" aria-hidden="true" tabindex="-1"></a>      num_day <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb289-12"><a href="conditionals.html#cb289-12" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
-<span id="cb289-13"><a href="conditionals.html#cb289-13" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&quot;Wednesday&quot;</span>) {</span>
-<span id="cb289-14"><a href="conditionals.html#cb289-14" aria-hidden="true" tabindex="-1"></a>        num_day <span class="ot">&lt;-</span> <span class="dv">4</span></span>
-<span id="cb289-15"><a href="conditionals.html#cb289-15" aria-hidden="true" tabindex="-1"></a>      } <span class="cf">else</span> {</span>
-<span id="cb289-16"><a href="conditionals.html#cb289-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&quot;Thursday&quot;</span>) {</span>
-<span id="cb289-17"><a href="conditionals.html#cb289-17" aria-hidden="true" tabindex="-1"></a>          num_day <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb289-18"><a href="conditionals.html#cb289-18" aria-hidden="true" tabindex="-1"></a>        } <span class="cf">else</span> {</span>
-<span id="cb289-19"><a href="conditionals.html#cb289-19" aria-hidden="true" tabindex="-1"></a>          <span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&quot;Friday&quot;</span>) {</span>
-<span id="cb289-20"><a href="conditionals.html#cb289-20" aria-hidden="true" tabindex="-1"></a>            num_day <span class="ot">&lt;-</span> <span class="dv">6</span></span>
-<span id="cb289-21"><a href="conditionals.html#cb289-21" aria-hidden="true" tabindex="-1"></a>          } <span class="cf">else</span> {</span>
-<span id="cb289-22"><a href="conditionals.html#cb289-22" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&quot;Saturday&quot;</span>) {</span>
-<span id="cb289-23"><a href="conditionals.html#cb289-23" aria-hidden="true" tabindex="-1"></a>              num_day <span class="ot">&lt;-</span> <span class="dv">7</span></span>
-<span id="cb289-24"><a href="conditionals.html#cb289-24" aria-hidden="true" tabindex="-1"></a>            }</span>
-<span id="cb289-25"><a href="conditionals.html#cb289-25" aria-hidden="true" tabindex="-1"></a>          }</span>
-<span id="cb289-26"><a href="conditionals.html#cb289-26" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb289-27"><a href="conditionals.html#cb289-27" aria-hidden="true" tabindex="-1"></a>      }</span>
-<span id="cb289-28"><a href="conditionals.html#cb289-28" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb289-29"><a href="conditionals.html#cb289-29" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb289-30"><a href="conditionals.html#cb289-30" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb289-31"><a href="conditionals.html#cb289-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb289-32"><a href="conditionals.html#cb289-32" aria-hidden="true" tabindex="-1"></a>num_day</span>
-<span id="cb289-33"><a href="conditionals.html#cb289-33" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="conditionals.html#cb294-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the day of the week into a number.</span></span>
+<span id="cb294-2"><a href="conditionals.html#cb294-2" aria-hidden="true" tabindex="-1"></a>day <span class="ot">&lt;-</span> <span class="st">&quot;Tuesday&quot;</span> <span class="co"># Change this value!</span></span>
+<span id="cb294-3"><a href="conditionals.html#cb294-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb294-4"><a href="conditionals.html#cb294-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&#39;Sunday&#39;</span>) {</span>
+<span id="cb294-5"><a href="conditionals.html#cb294-5" aria-hidden="true" tabindex="-1"></a>  num_day <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb294-6"><a href="conditionals.html#cb294-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb294-7"><a href="conditionals.html#cb294-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&quot;Monday&quot;</span>) {</span>
+<span id="cb294-8"><a href="conditionals.html#cb294-8" aria-hidden="true" tabindex="-1"></a>    num_day <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb294-9"><a href="conditionals.html#cb294-9" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb294-10"><a href="conditionals.html#cb294-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&quot;Tuesday&quot;</span>) {</span>
+<span id="cb294-11"><a href="conditionals.html#cb294-11" aria-hidden="true" tabindex="-1"></a>      num_day <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb294-12"><a href="conditionals.html#cb294-12" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb294-13"><a href="conditionals.html#cb294-13" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&quot;Wednesday&quot;</span>) {</span>
+<span id="cb294-14"><a href="conditionals.html#cb294-14" aria-hidden="true" tabindex="-1"></a>        num_day <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb294-15"><a href="conditionals.html#cb294-15" aria-hidden="true" tabindex="-1"></a>      } <span class="cf">else</span> {</span>
+<span id="cb294-16"><a href="conditionals.html#cb294-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&quot;Thursday&quot;</span>) {</span>
+<span id="cb294-17"><a href="conditionals.html#cb294-17" aria-hidden="true" tabindex="-1"></a>          num_day <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb294-18"><a href="conditionals.html#cb294-18" aria-hidden="true" tabindex="-1"></a>        } <span class="cf">else</span> {</span>
+<span id="cb294-19"><a href="conditionals.html#cb294-19" aria-hidden="true" tabindex="-1"></a>          <span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&quot;Friday&quot;</span>) {</span>
+<span id="cb294-20"><a href="conditionals.html#cb294-20" aria-hidden="true" tabindex="-1"></a>            num_day <span class="ot">&lt;-</span> <span class="dv">6</span></span>
+<span id="cb294-21"><a href="conditionals.html#cb294-21" aria-hidden="true" tabindex="-1"></a>          } <span class="cf">else</span> {</span>
+<span id="cb294-22"><a href="conditionals.html#cb294-22" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&quot;Saturday&quot;</span>) {</span>
+<span id="cb294-23"><a href="conditionals.html#cb294-23" aria-hidden="true" tabindex="-1"></a>              num_day <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb294-24"><a href="conditionals.html#cb294-24" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb294-25"><a href="conditionals.html#cb294-25" aria-hidden="true" tabindex="-1"></a>          }</span>
+<span id="cb294-26"><a href="conditionals.html#cb294-26" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb294-27"><a href="conditionals.html#cb294-27" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb294-28"><a href="conditionals.html#cb294-28" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb294-29"><a href="conditionals.html#cb294-29" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb294-30"><a href="conditionals.html#cb294-30" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb294-31"><a href="conditionals.html#cb294-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb294-32"><a href="conditionals.html#cb294-32" aria-hidden="true" tabindex="-1"></a>num_day</span>
+<span id="cb294-33"><a href="conditionals.html#cb294-33" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">3</span></span></code></pre></div>
 <p>Working with several nested if’s like in the example above can be a nightmare.</p>
 <p>In R, you can get rid of many of the braces like this:</p>
-<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="conditionals.html#cb290-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the day of the week into a number.</span></span>
-<span id="cb290-2"><a href="conditionals.html#cb290-2" aria-hidden="true" tabindex="-1"></a>day <span class="ot">&lt;-</span> <span class="st">&quot;Tuesday&quot;</span> <span class="co"># Change this value!</span></span>
-<span id="cb290-3"><a href="conditionals.html#cb290-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb290-4"><a href="conditionals.html#cb290-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&#39;Sunday&#39;</span>) {</span>
-<span id="cb290-5"><a href="conditionals.html#cb290-5" aria-hidden="true" tabindex="-1"></a>  num_day <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb290-6"><a href="conditionals.html#cb290-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&quot;Monday&quot;</span>) {</span>
-<span id="cb290-7"><a href="conditionals.html#cb290-7" aria-hidden="true" tabindex="-1"></a>  num_day <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb290-8"><a href="conditionals.html#cb290-8" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&quot;Tuesday&quot;</span>) {</span>
-<span id="cb290-9"><a href="conditionals.html#cb290-9" aria-hidden="true" tabindex="-1"></a>  num_day <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb290-10"><a href="conditionals.html#cb290-10" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&quot;Wednesday&quot;</span>) {</span>
-<span id="cb290-11"><a href="conditionals.html#cb290-11" aria-hidden="true" tabindex="-1"></a>  num_day <span class="ot">&lt;-</span> <span class="dv">4</span></span>
-<span id="cb290-12"><a href="conditionals.html#cb290-12" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&quot;Thursday&quot;</span>) {</span>
-<span id="cb290-13"><a href="conditionals.html#cb290-13" aria-hidden="true" tabindex="-1"></a>  num_day <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb290-14"><a href="conditionals.html#cb290-14" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&quot;Friday&quot;</span>) {</span>
-<span id="cb290-15"><a href="conditionals.html#cb290-15" aria-hidden="true" tabindex="-1"></a>  num_day <span class="ot">&lt;-</span> <span class="dv">6</span></span>
-<span id="cb290-16"><a href="conditionals.html#cb290-16" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&quot;Saturday&quot;</span>) {</span>
-<span id="cb290-17"><a href="conditionals.html#cb290-17" aria-hidden="true" tabindex="-1"></a>  num_day <span class="ot">&lt;-</span> <span class="dv">7</span></span>
-<span id="cb290-18"><a href="conditionals.html#cb290-18" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb290-19"><a href="conditionals.html#cb290-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb290-20"><a href="conditionals.html#cb290-20" aria-hidden="true" tabindex="-1"></a>num_day</span>
-<span id="cb290-21"><a href="conditionals.html#cb290-21" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="conditionals.html#cb295-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the day of the week into a number.</span></span>
+<span id="cb295-2"><a href="conditionals.html#cb295-2" aria-hidden="true" tabindex="-1"></a>day <span class="ot">&lt;-</span> <span class="st">&quot;Tuesday&quot;</span> <span class="co"># Change this value!</span></span>
+<span id="cb295-3"><a href="conditionals.html#cb295-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb295-4"><a href="conditionals.html#cb295-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&#39;Sunday&#39;</span>) {</span>
+<span id="cb295-5"><a href="conditionals.html#cb295-5" aria-hidden="true" tabindex="-1"></a>  num_day <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb295-6"><a href="conditionals.html#cb295-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&quot;Monday&quot;</span>) {</span>
+<span id="cb295-7"><a href="conditionals.html#cb295-7" aria-hidden="true" tabindex="-1"></a>  num_day <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb295-8"><a href="conditionals.html#cb295-8" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&quot;Tuesday&quot;</span>) {</span>
+<span id="cb295-9"><a href="conditionals.html#cb295-9" aria-hidden="true" tabindex="-1"></a>  num_day <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb295-10"><a href="conditionals.html#cb295-10" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&quot;Wednesday&quot;</span>) {</span>
+<span id="cb295-11"><a href="conditionals.html#cb295-11" aria-hidden="true" tabindex="-1"></a>  num_day <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb295-12"><a href="conditionals.html#cb295-12" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&quot;Thursday&quot;</span>) {</span>
+<span id="cb295-13"><a href="conditionals.html#cb295-13" aria-hidden="true" tabindex="-1"></a>  num_day <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb295-14"><a href="conditionals.html#cb295-14" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&quot;Friday&quot;</span>) {</span>
+<span id="cb295-15"><a href="conditionals.html#cb295-15" aria-hidden="true" tabindex="-1"></a>  num_day <span class="ot">&lt;-</span> <span class="dv">6</span></span>
+<span id="cb295-16"><a href="conditionals.html#cb295-16" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (day <span class="sc">==</span> <span class="st">&quot;Saturday&quot;</span>) {</span>
+<span id="cb295-17"><a href="conditionals.html#cb295-17" aria-hidden="true" tabindex="-1"></a>  num_day <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb295-18"><a href="conditionals.html#cb295-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb295-19"><a href="conditionals.html#cb295-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb295-20"><a href="conditionals.html#cb295-20" aria-hidden="true" tabindex="-1"></a>num_day</span>
+<span id="cb295-21"><a href="conditionals.html#cb295-21" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">3</span></span></code></pre></div>
 <div id="switch-statements" class="section level3 hasAnchor" number="15.3.1">
 <h3><span class="header-section-number">15.3.1</span> Switch statements<a href="conditionals.html#switch-statements" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>But still we have too many if’s, and there’s a lot of repetition in the code.
 If you find yourself using many if-else statements with identical structure for
 slightly different cases, you may want to consider a <strong>switch</strong> statement
 instead:</p>
-<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="conditionals.html#cb291-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the day of the week into a number.</span></span>
-<span id="cb291-2"><a href="conditionals.html#cb291-2" aria-hidden="true" tabindex="-1"></a>day <span class="ot">&lt;-</span> <span class="st">&quot;Tuesday&quot;</span> <span class="co"># Change this value!</span></span>
-<span id="cb291-3"><a href="conditionals.html#cb291-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb291-4"><a href="conditionals.html#cb291-4" aria-hidden="true" tabindex="-1"></a><span class="cf">switch</span>(day, <span class="co"># The expression to be evaluated.</span></span>
-<span id="cb291-5"><a href="conditionals.html#cb291-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Sunday =</span> <span class="dv">1</span>,</span>
-<span id="cb291-6"><a href="conditionals.html#cb291-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Monday =</span> <span class="dv">2</span>,</span>
-<span id="cb291-7"><a href="conditionals.html#cb291-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">Tuesday =</span> <span class="dv">3</span>,</span>
-<span id="cb291-8"><a href="conditionals.html#cb291-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Wednesday =</span> <span class="dv">4</span>,</span>
-<span id="cb291-9"><a href="conditionals.html#cb291-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">Thursday =</span> <span class="dv">5</span>,</span>
-<span id="cb291-10"><a href="conditionals.html#cb291-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">Friday =</span> <span class="dv">6</span>,</span>
-<span id="cb291-11"><a href="conditionals.html#cb291-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">Saturday =</span> <span class="dv">7</span>,</span>
-<span id="cb291-12"><a href="conditionals.html#cb291-12" aria-hidden="true" tabindex="-1"></a>  <span class="cn">NA</span>) <span class="co"># an (optional) default value if there are no matches</span></span>
-<span id="cb291-13"><a href="conditionals.html#cb291-13" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="conditionals.html#cb296-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the day of the week into a number.</span></span>
+<span id="cb296-2"><a href="conditionals.html#cb296-2" aria-hidden="true" tabindex="-1"></a>day <span class="ot">&lt;-</span> <span class="st">&quot;Tuesday&quot;</span> <span class="co"># Change this value!</span></span>
+<span id="cb296-3"><a href="conditionals.html#cb296-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb296-4"><a href="conditionals.html#cb296-4" aria-hidden="true" tabindex="-1"></a><span class="cf">switch</span>(day, <span class="co"># The expression to be evaluated.</span></span>
+<span id="cb296-5"><a href="conditionals.html#cb296-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Sunday =</span> <span class="dv">1</span>,</span>
+<span id="cb296-6"><a href="conditionals.html#cb296-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Monday =</span> <span class="dv">2</span>,</span>
+<span id="cb296-7"><a href="conditionals.html#cb296-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">Tuesday =</span> <span class="dv">3</span>,</span>
+<span id="cb296-8"><a href="conditionals.html#cb296-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Wednesday =</span> <span class="dv">4</span>,</span>
+<span id="cb296-9"><a href="conditionals.html#cb296-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">Thursday =</span> <span class="dv">5</span>,</span>
+<span id="cb296-10"><a href="conditionals.html#cb296-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">Friday =</span> <span class="dv">6</span>,</span>
+<span id="cb296-11"><a href="conditionals.html#cb296-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">Saturday =</span> <span class="dv">7</span>,</span>
+<span id="cb296-12"><a href="conditionals.html#cb296-12" aria-hidden="true" tabindex="-1"></a>  <span class="cn">NA</span>) <span class="co"># an (optional) default value if there are no matches</span></span>
+<span id="cb296-13"><a href="conditionals.html#cb296-13" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">3</span></span></code></pre></div>
 <p>Switch statements can also accept integer arguments, which will act as indices
 to choose a corresponding element:</p>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="conditionals.html#cb292-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert a number into a day of the week.</span></span>
-<span id="cb292-2"><a href="conditionals.html#cb292-2" aria-hidden="true" tabindex="-1"></a>day_num <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="co"># Change this value!</span></span>
-<span id="cb292-3"><a href="conditionals.html#cb292-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb292-4"><a href="conditionals.html#cb292-4" aria-hidden="true" tabindex="-1"></a><span class="cf">switch</span>(day_num,</span>
-<span id="cb292-5"><a href="conditionals.html#cb292-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Sunday&quot;</span>,</span>
-<span id="cb292-6"><a href="conditionals.html#cb292-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Monday&quot;</span>,</span>
-<span id="cb292-7"><a href="conditionals.html#cb292-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Tuesday&quot;</span>,</span>
-<span id="cb292-8"><a href="conditionals.html#cb292-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Wednesday&quot;</span>,</span>
-<span id="cb292-9"><a href="conditionals.html#cb292-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Thursday&quot;</span>,</span>
-<span id="cb292-10"><a href="conditionals.html#cb292-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Friday&quot;</span>,</span>
-<span id="cb292-11"><a href="conditionals.html#cb292-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Saturday&quot;</span>)</span>
-<span id="cb292-12"><a href="conditionals.html#cb292-12" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;Tuesday&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="conditionals.html#cb297-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert a number into a day of the week.</span></span>
+<span id="cb297-2"><a href="conditionals.html#cb297-2" aria-hidden="true" tabindex="-1"></a>day_num <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="co"># Change this value!</span></span>
+<span id="cb297-3"><a href="conditionals.html#cb297-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb297-4"><a href="conditionals.html#cb297-4" aria-hidden="true" tabindex="-1"></a><span class="cf">switch</span>(day_num,</span>
+<span id="cb297-5"><a href="conditionals.html#cb297-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Sunday&quot;</span>,</span>
+<span id="cb297-6"><a href="conditionals.html#cb297-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Monday&quot;</span>,</span>
+<span id="cb297-7"><a href="conditionals.html#cb297-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Tuesday&quot;</span>,</span>
+<span id="cb297-8"><a href="conditionals.html#cb297-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Wednesday&quot;</span>,</span>
+<span id="cb297-9"><a href="conditionals.html#cb297-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Thursday&quot;</span>,</span>
+<span id="cb297-10"><a href="conditionals.html#cb297-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Friday&quot;</span>,</span>
+<span id="cb297-11"><a href="conditionals.html#cb297-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Saturday&quot;</span>)</span>
+<span id="cb297-12"><a href="conditionals.html#cb297-12" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;Tuesday&quot;</span></span></code></pre></div>
 </div>
 </div>
 <div id="derivation-of-fvoa" class="section level2 hasAnchor" number="15.4">
@@ -913,7 +913,7 @@ to choose a corresponding element:</p>
 Future Value of an Ordinary Annuity.</p>
 <p>For the sake of illustration, we’ll consider a time period of three years,
 but the formula can be easily generalized to any number of years.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-278"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-282"></span>
 <img src="images/conditionals/timeline-ord-annuity-2.png" alt="Timeline of an ordinary annuity" width="95%" />
 <p class="caption">
 Figure 15.3: Timeline of an ordinary annuity

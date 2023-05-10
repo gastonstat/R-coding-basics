@@ -28,7 +28,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
-  
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
 <link rel="prev" href="graphics2.html"/>
 <link rel="next" href="functions1.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -487,36 +487,36 @@ follows:</p>
 <li><p>then <code>title()</code> (title, subtitle)</p></li>
 <li><p>after that call other function: e.g. <code>points()</code>, <code>lines()</code>, etc</p></li>
 </ul>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="graphics3.html#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.new</span>()</span>
-<span id="cb232-2"><a href="graphics3.html#cb232-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.window</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">4</span>), <span class="at">xaxs =</span> <span class="st">&quot;i&quot;</span>)</span>
-<span id="cb232-3"><a href="graphics3.html#cb232-3" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">1</span>, <span class="at">col.axis =</span> <span class="st">&quot;grey30&quot;</span>)</span>
-<span id="cb232-4"><a href="graphics3.html#cb232-4" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">2</span>, <span class="at">col.axis =</span> <span class="st">&quot;grey30&quot;</span>, <span class="at">las =</span> <span class="dv">1</span>)</span>
-<span id="cb232-5"><a href="graphics3.html#cb232-5" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="at">main =</span> <span class="st">&quot;Main Title&quot;</span>,</span>
-<span id="cb232-6"><a href="graphics3.html#cb232-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.main =</span> <span class="st">&quot;tomato&quot;</span>,</span>
-<span id="cb232-7"><a href="graphics3.html#cb232-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">sub =</span> <span class="st">&quot;Plot Subtitle&quot;</span>,</span>
-<span id="cb232-8"><a href="graphics3.html#cb232-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.sub =</span> <span class="st">&quot;orange&quot;</span>,</span>
-<span id="cb232-9"><a href="graphics3.html#cb232-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">xlab =</span> <span class="st">&quot;x-axis&quot;</span>, </span>
-<span id="cb232-10"><a href="graphics3.html#cb232-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylab =</span> <span class="st">&quot;y-axis&quot;</span>,</span>
-<span id="cb232-11"><a href="graphics3.html#cb232-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.lab =</span> <span class="st">&quot;blue&quot;</span>, </span>
-<span id="cb232-12"><a href="graphics3.html#cb232-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">font.lab =</span> <span class="dv">3</span>)</span>
-<span id="cb232-13"><a href="graphics3.html#cb232-13" aria-hidden="true" tabindex="-1"></a><span class="fu">box</span>(<span class="st">&quot;figure&quot;</span>, <span class="at">col =</span> <span class="st">&quot;grey90&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="graphics3.html#cb237-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.new</span>()</span>
+<span id="cb237-2"><a href="graphics3.html#cb237-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.window</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">4</span>), <span class="at">xaxs =</span> <span class="st">&quot;i&quot;</span>)</span>
+<span id="cb237-3"><a href="graphics3.html#cb237-3" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">1</span>, <span class="at">col.axis =</span> <span class="st">&quot;grey30&quot;</span>)</span>
+<span id="cb237-4"><a href="graphics3.html#cb237-4" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">2</span>, <span class="at">col.axis =</span> <span class="st">&quot;grey30&quot;</span>, <span class="at">las =</span> <span class="dv">1</span>)</span>
+<span id="cb237-5"><a href="graphics3.html#cb237-5" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="at">main =</span> <span class="st">&quot;Main Title&quot;</span>,</span>
+<span id="cb237-6"><a href="graphics3.html#cb237-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.main =</span> <span class="st">&quot;tomato&quot;</span>,</span>
+<span id="cb237-7"><a href="graphics3.html#cb237-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">sub =</span> <span class="st">&quot;Plot Subtitle&quot;</span>,</span>
+<span id="cb237-8"><a href="graphics3.html#cb237-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.sub =</span> <span class="st">&quot;orange&quot;</span>,</span>
+<span id="cb237-9"><a href="graphics3.html#cb237-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">xlab =</span> <span class="st">&quot;x-axis&quot;</span>, </span>
+<span id="cb237-10"><a href="graphics3.html#cb237-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylab =</span> <span class="st">&quot;y-axis&quot;</span>,</span>
+<span id="cb237-11"><a href="graphics3.html#cb237-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.lab =</span> <span class="st">&quot;blue&quot;</span>, </span>
+<span id="cb237-12"><a href="graphics3.html#cb237-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">font.lab =</span> <span class="dv">3</span>)</span>
+<span id="cb237-13"><a href="graphics3.html#cb237-13" aria-hidden="true" tabindex="-1"></a><span class="fu">box</span>(<span class="st">&quot;figure&quot;</span>, <span class="at">col =</span> <span class="st">&quot;grey90&quot;</span>)</span></code></pre></div>
 <p><img src="R-coding-basics_files/figure-html/bare_plot-1.png" width="70%" height="80%" style="display: block; margin: auto;" /></p>
 <p>Here’s another example:</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="graphics3.html#cb233-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">5</span>)</span>
-<span id="cb233-2"><a href="graphics3.html#cb233-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">200</span>)</span>
-<span id="cb233-3"><a href="graphics3.html#cb233-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">200</span>)</span>
-<span id="cb233-4"><a href="graphics3.html#cb233-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb233-5"><a href="graphics3.html#cb233-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.new</span>()</span>
-<span id="cb233-6"><a href="graphics3.html#cb233-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.window</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">4.5</span>, <span class="fl">4.5</span>), <span class="at">xaxs =</span> <span class="st">&quot;i&quot;</span>, </span>
-<span id="cb233-7"><a href="graphics3.html#cb233-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">4.5</span>, <span class="fl">4.5</span>), <span class="at">yaxs =</span> <span class="st">&quot;i&quot;</span>)</span>
-<span id="cb233-8"><a href="graphics3.html#cb233-8" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)</span>
-<span id="cb233-9"><a href="graphics3.html#cb233-9" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="sc">-</span><span class="dv">4</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">v =</span> <span class="sc">-</span><span class="dv">4</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">col =</span> <span class="st">&quot;lightgrey&quot;</span>)</span>
-<span id="cb233-10"><a href="graphics3.html#cb233-10" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a =</span> <span class="fu">coef</span>(z)[<span class="dv">1</span>], <span class="at">b =</span> <span class="fu">coef</span>(z)[<span class="dv">2</span>], <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
-<span id="cb233-11"><a href="graphics3.html#cb233-11" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(x, y)</span>
-<span id="cb233-12"><a href="graphics3.html#cb233-12" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">1</span>)</span>
-<span id="cb233-13"><a href="graphics3.html#cb233-13" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">2</span>, <span class="at">las =</span> <span class="dv">1</span>)</span>
-<span id="cb233-14"><a href="graphics3.html#cb233-14" aria-hidden="true" tabindex="-1"></a><span class="fu">box</span>()</span>
-<span id="cb233-15"><a href="graphics3.html#cb233-15" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="at">main =</span> <span class="st">&quot;A Fitted Regression Line&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="graphics3.html#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">5</span>)</span>
+<span id="cb238-2"><a href="graphics3.html#cb238-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">200</span>)</span>
+<span id="cb238-3"><a href="graphics3.html#cb238-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">200</span>)</span>
+<span id="cb238-4"><a href="graphics3.html#cb238-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb238-5"><a href="graphics3.html#cb238-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.new</span>()</span>
+<span id="cb238-6"><a href="graphics3.html#cb238-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.window</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">4.5</span>, <span class="fl">4.5</span>), <span class="at">xaxs =</span> <span class="st">&quot;i&quot;</span>, </span>
+<span id="cb238-7"><a href="graphics3.html#cb238-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">4.5</span>, <span class="fl">4.5</span>), <span class="at">yaxs =</span> <span class="st">&quot;i&quot;</span>)</span>
+<span id="cb238-8"><a href="graphics3.html#cb238-8" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)</span>
+<span id="cb238-9"><a href="graphics3.html#cb238-9" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="sc">-</span><span class="dv">4</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">v =</span> <span class="sc">-</span><span class="dv">4</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">col =</span> <span class="st">&quot;lightgrey&quot;</span>)</span>
+<span id="cb238-10"><a href="graphics3.html#cb238-10" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a =</span> <span class="fu">coef</span>(z)[<span class="dv">1</span>], <span class="at">b =</span> <span class="fu">coef</span>(z)[<span class="dv">2</span>], <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb238-11"><a href="graphics3.html#cb238-11" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(x, y)</span>
+<span id="cb238-12"><a href="graphics3.html#cb238-12" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">1</span>)</span>
+<span id="cb238-13"><a href="graphics3.html#cb238-13" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">2</span>, <span class="at">las =</span> <span class="dv">1</span>)</span>
+<span id="cb238-14"><a href="graphics3.html#cb238-14" aria-hidden="true" tabindex="-1"></a><span class="fu">box</span>()</span>
+<span id="cb238-15"><a href="graphics3.html#cb238-15" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="at">main =</span> <span class="st">&quot;A Fitted Regression Line&quot;</span>)</span></code></pre></div>
 <p><img src="R-coding-basics_files/figure-html/ablines-1.png" width="70%" height="80%" style="display: block; margin: auto;" /></p>
 <div id="how-does-it-work" class="section level3 hasAnchor" number="12.1.1">
 <h3><span class="header-section-number">12.1.1</span> How does it work<a href="graphics3.html#how-does-it-work" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -527,18 +527,18 @@ follows:</p>
 </ul>
 <p>After starting with <code>plot.new()</code>, use <code>plot.window()</code> to set up the coordinate
 system for the plotting frame</p>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="graphics3.html#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="co"># axis limits (0,1)x(0,1)</span></span>
-<span id="cb234-2"><a href="graphics3.html#cb234-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.window</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="graphics3.html#cb239-1" aria-hidden="true" tabindex="-1"></a><span class="co"># axis limits (0,1)x(0,1)</span></span>
+<span id="cb239-2"><a href="graphics3.html#cb239-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.window</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span></code></pre></div>
 <p>By default <code>plot.window()</code> produces axis limits which are expanded by 6%
 over those actually specified.</p>
 <p>The default limits expansion can be turned-off by specifying <code>xaxs = "i"</code>
 and/or <code>yaxs = "i"</code></p>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="graphics3.html#cb235-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.window</span>(xlim, ylim, <span class="at">xaxs =</span> <span class="st">&quot;i&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="graphics3.html#cb240-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.window</span>(xlim, ylim, <span class="at">xaxs =</span> <span class="st">&quot;i&quot;</span>)</span></code></pre></div>
 <div id="aspect-ratio-control" class="section level4 unnumbered hasAnchor">
 <h4>Aspect Ratio Control<a href="graphics3.html#aspect-ratio-control" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Another important argument is <code>asp</code>, which allows us to specify the
 <strong>aspect ratio</strong></p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="graphics3.html#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.window</span>(xlim, ylim, <span class="at">xaxs =</span> <span class="st">&quot;i&quot;</span>, <span class="at">asp =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="graphics3.html#cb241-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.window</span>(xlim, ylim, <span class="at">xaxs =</span> <span class="st">&quot;i&quot;</span>, <span class="at">asp =</span> <span class="dv">1</span>)</span></code></pre></div>
 <p><code>asp = 1</code> means that unit steps in the <code>x</code> and <code>y</code> directions produce equal
 distances in the <code>x</code> and <code>y</code> directions on the plot.</p>
 <p>(Important for avoiding distortion of circles that look like ellipses)</p>
@@ -582,14 +582,14 @@ colors, and size (expansion)</p>
 </div>
 <div id="drawing-arrows" class="section level3 hasAnchor" number="12.1.2">
 <h3><span class="header-section-number">12.1.2</span> Drawing Arrows<a href="graphics3.html#drawing-arrows" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="graphics3.html#cb237-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.new</span>()</span>
-<span id="cb237-2"><a href="graphics3.html#cb237-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.window</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span>
-<span id="cb237-3"><a href="graphics3.html#cb237-3" aria-hidden="true" tabindex="-1"></a><span class="fu">arrows</span>(<span class="fl">0.05</span>, <span class="fl">0.075</span>, <span class="fl">0.45</span>, <span class="fl">0.9</span>, <span class="at">code =</span> <span class="dv">1</span>)</span>
-<span id="cb237-4"><a href="graphics3.html#cb237-4" aria-hidden="true" tabindex="-1"></a><span class="fu">arrows</span>(<span class="fl">0.55</span>, <span class="fl">0.9</span>, <span class="fl">0.95</span>, <span class="fl">0.075</span>, <span class="at">code =</span> <span class="dv">2</span>)</span>
-<span id="cb237-5"><a href="graphics3.html#cb237-5" aria-hidden="true" tabindex="-1"></a><span class="fu">arrows</span>(<span class="fl">0.1</span>, <span class="dv">0</span>, <span class="fl">0.9</span>, <span class="dv">0</span>, <span class="at">code =</span> <span class="dv">3</span>)</span>
-<span id="cb237-6"><a href="graphics3.html#cb237-6" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="st">&quot;A&quot;</span>, <span class="at">cex =</span> <span class="fl">1.5</span>)</span>
-<span id="cb237-7"><a href="graphics3.html#cb237-7" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="st">&quot;B&quot;</span>, <span class="at">cex =</span> <span class="fl">1.5</span>)</span>
-<span id="cb237-8"><a href="graphics3.html#cb237-8" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="st">&quot;C&quot;</span>, <span class="at">cex =</span> <span class="fl">1.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="graphics3.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.new</span>()</span>
+<span id="cb242-2"><a href="graphics3.html#cb242-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.window</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span>
+<span id="cb242-3"><a href="graphics3.html#cb242-3" aria-hidden="true" tabindex="-1"></a><span class="fu">arrows</span>(<span class="fl">0.05</span>, <span class="fl">0.075</span>, <span class="fl">0.45</span>, <span class="fl">0.9</span>, <span class="at">code =</span> <span class="dv">1</span>)</span>
+<span id="cb242-4"><a href="graphics3.html#cb242-4" aria-hidden="true" tabindex="-1"></a><span class="fu">arrows</span>(<span class="fl">0.55</span>, <span class="fl">0.9</span>, <span class="fl">0.95</span>, <span class="fl">0.075</span>, <span class="at">code =</span> <span class="dv">2</span>)</span>
+<span id="cb242-5"><a href="graphics3.html#cb242-5" aria-hidden="true" tabindex="-1"></a><span class="fu">arrows</span>(<span class="fl">0.1</span>, <span class="dv">0</span>, <span class="fl">0.9</span>, <span class="dv">0</span>, <span class="at">code =</span> <span class="dv">3</span>)</span>
+<span id="cb242-6"><a href="graphics3.html#cb242-6" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="st">&quot;A&quot;</span>, <span class="at">cex =</span> <span class="fl">1.5</span>)</span>
+<span id="cb242-7"><a href="graphics3.html#cb242-7" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="st">&quot;B&quot;</span>, <span class="at">cex =</span> <span class="fl">1.5</span>)</span>
+<span id="cb242-8"><a href="graphics3.html#cb242-8" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="st">&quot;C&quot;</span>, <span class="at">cex =</span> <span class="fl">1.5</span>)</span></code></pre></div>
 <p><img src="R-coding-basics_files/figure-html/arrows-1.png" width="70%" height="70%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="drawing-rectangles" class="section level3 hasAnchor" number="12.1.3">
@@ -602,14 +602,14 @@ rectangles/</p></li>
 <li><p><code>col</code> specifies the color of the interior.</p></li>
 <li><p><code>border</code> specifies the color of the border/</p></li>
 </ul>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="graphics3.html#cb239-1" aria-hidden="true" tabindex="-1"></a><span class="co"># barplot &quot;manually&quot; constructed</span></span>
-<span id="cb239-2"><a href="graphics3.html#cb239-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.new</span>()</span>
-<span id="cb239-3"><a href="graphics3.html#cb239-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.window</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>))</span>
-<span id="cb239-4"><a href="graphics3.html#cb239-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">4</span>, <span class="dv">3</span>), </span>
-<span id="cb239-5"><a href="graphics3.html#cb239-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;turquoise&quot;</span>,</span>
-<span id="cb239-6"><a href="graphics3.html#cb239-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;white&quot;</span>)</span>
-<span id="cb239-7"><a href="graphics3.html#cb239-7" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>)</span>
-<span id="cb239-8"><a href="graphics3.html#cb239-8" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">las =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="graphics3.html#cb244-1" aria-hidden="true" tabindex="-1"></a><span class="co"># barplot &quot;manually&quot; constructed</span></span>
+<span id="cb244-2"><a href="graphics3.html#cb244-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.new</span>()</span>
+<span id="cb244-3"><a href="graphics3.html#cb244-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.window</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>))</span>
+<span id="cb244-4"><a href="graphics3.html#cb244-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">4</span>, <span class="dv">3</span>), </span>
+<span id="cb244-5"><a href="graphics3.html#cb244-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;turquoise&quot;</span>,</span>
+<span id="cb244-6"><a href="graphics3.html#cb244-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;white&quot;</span>)</span>
+<span id="cb244-7"><a href="graphics3.html#cb244-7" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>)</span>
+<span id="cb244-8"><a href="graphics3.html#cb244-8" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">las =</span> <span class="dv">1</span>)</span></code></pre></div>
 <p><img src="R-coding-basics_files/figure-html/rectangles-1.png" width="60%" height="70%" style="display: block; margin: auto;" /></p>
 
 </div>

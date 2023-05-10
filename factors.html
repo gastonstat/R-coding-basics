@@ -28,7 +28,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
-  
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
 <link rel="prev" href="vectors4.html"/>
 <link rel="next" href="matrices1.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -491,45 +491,45 @@ need it, here’s a short mantra to remember:</p>
 <p>To create a factor in R you use the homonym function <code>factor()</code>, which takes a
 vector as input. The vector can be either numeric, character or logical. Let’s
 see our first example:</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="factors.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numeric vector</span></span>
-<span id="cb91-2"><a href="factors.html#cb91-2" aria-hidden="true" tabindex="-1"></a>num_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>)</span>
-<span id="cb91-3"><a href="factors.html#cb91-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb91-4"><a href="factors.html#cb91-4" aria-hidden="true" tabindex="-1"></a><span class="co"># creating a factor from num_vector</span></span>
-<span id="cb91-5"><a href="factors.html#cb91-5" aria-hidden="true" tabindex="-1"></a>first_factor <span class="ot">&lt;-</span> <span class="fu">factor</span>(num_vector)</span>
-<span id="cb91-6"><a href="factors.html#cb91-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb91-7"><a href="factors.html#cb91-7" aria-hidden="true" tabindex="-1"></a>first_factor</span>
-<span id="cb91-8"><a href="factors.html#cb91-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">2</span></span>
-<span id="cb91-9"><a href="factors.html#cb91-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="factors.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numeric vector</span></span>
+<span id="cb95-2"><a href="factors.html#cb95-2" aria-hidden="true" tabindex="-1"></a>num_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb95-3"><a href="factors.html#cb95-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb95-4"><a href="factors.html#cb95-4" aria-hidden="true" tabindex="-1"></a><span class="co"># creating a factor from num_vector</span></span>
+<span id="cb95-5"><a href="factors.html#cb95-5" aria-hidden="true" tabindex="-1"></a>first_factor <span class="ot">&lt;-</span> <span class="fu">factor</span>(num_vector)</span>
+<span id="cb95-6"><a href="factors.html#cb95-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb95-7"><a href="factors.html#cb95-7" aria-hidden="true" tabindex="-1"></a>first_factor</span>
+<span id="cb95-8"><a href="factors.html#cb95-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">2</span></span>
+<span id="cb95-9"><a href="factors.html#cb95-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></span></code></pre></div>
 <p>As you can tell from the previous code snippet, <code>factor()</code> converts the numeric
 vector <code>num_vector</code> into a factor (i.e. a categorical variable) with 3
 categories—the so called <code>levels</code>.</p>
 <p>You can also obtain a factor from a string vector:</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="factors.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co"># string vector</span></span>
-<span id="cb92-2"><a href="factors.html#cb92-2" aria-hidden="true" tabindex="-1"></a>str_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;a&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;b&#39;</span>)</span>
-<span id="cb92-3"><a href="factors.html#cb92-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb92-4"><a href="factors.html#cb92-4" aria-hidden="true" tabindex="-1"></a>str_vector</span>
-<span id="cb92-5"><a href="factors.html#cb92-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;a&quot;</span> <span class="st">&quot;b&quot;</span> <span class="st">&quot;c&quot;</span> <span class="st">&quot;b&quot;</span> <span class="st">&quot;c&quot;</span> <span class="st">&quot;a&quot;</span> <span class="st">&quot;c&quot;</span> <span class="st">&quot;b&quot;</span></span>
-<span id="cb92-6"><a href="factors.html#cb92-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb92-7"><a href="factors.html#cb92-7" aria-hidden="true" tabindex="-1"></a><span class="co"># creating a factor from str_vector</span></span>
-<span id="cb92-8"><a href="factors.html#cb92-8" aria-hidden="true" tabindex="-1"></a>second_factor <span class="ot">&lt;-</span> <span class="fu">factor</span>(str_vector)</span>
-<span id="cb92-9"><a href="factors.html#cb92-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb92-10"><a href="factors.html#cb92-10" aria-hidden="true" tabindex="-1"></a>second_factor</span>
-<span id="cb92-11"><a href="factors.html#cb92-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] a b c b c a c b</span>
-<span id="cb92-12"><a href="factors.html#cb92-12" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> a b c</span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="factors.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co"># string vector</span></span>
+<span id="cb96-2"><a href="factors.html#cb96-2" aria-hidden="true" tabindex="-1"></a>str_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;a&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;b&#39;</span>)</span>
+<span id="cb96-3"><a href="factors.html#cb96-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-4"><a href="factors.html#cb96-4" aria-hidden="true" tabindex="-1"></a>str_vector</span>
+<span id="cb96-5"><a href="factors.html#cb96-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;a&quot;</span> <span class="st">&quot;b&quot;</span> <span class="st">&quot;c&quot;</span> <span class="st">&quot;b&quot;</span> <span class="st">&quot;c&quot;</span> <span class="st">&quot;a&quot;</span> <span class="st">&quot;c&quot;</span> <span class="st">&quot;b&quot;</span></span>
+<span id="cb96-6"><a href="factors.html#cb96-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-7"><a href="factors.html#cb96-7" aria-hidden="true" tabindex="-1"></a><span class="co"># creating a factor from str_vector</span></span>
+<span id="cb96-8"><a href="factors.html#cb96-8" aria-hidden="true" tabindex="-1"></a>second_factor <span class="ot">&lt;-</span> <span class="fu">factor</span>(str_vector)</span>
+<span id="cb96-9"><a href="factors.html#cb96-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-10"><a href="factors.html#cb96-10" aria-hidden="true" tabindex="-1"></a>second_factor</span>
+<span id="cb96-11"><a href="factors.html#cb96-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] a b c b c a c b</span>
+<span id="cb96-12"><a href="factors.html#cb96-12" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> a b c</span></code></pre></div>
 <p>Notice how <code>str_vector</code> and <code>second_factor</code> are displayed. Even though the
 elements are the same in both the vector and the factor, they are printed in
 different formats. The letters in the string vector are displayed with quotes,
 while the letters in the factor are printed without quotes.</p>
 <p>And of course, you can use a logical vector to generate a factor as well:</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="factors.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co"># logical vector</span></span>
-<span id="cb93-2"><a href="factors.html#cb93-2" aria-hidden="true" tabindex="-1"></a>log_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)</span>
-<span id="cb93-3"><a href="factors.html#cb93-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb93-4"><a href="factors.html#cb93-4" aria-hidden="true" tabindex="-1"></a><span class="co"># creating a factor from log_vector</span></span>
-<span id="cb93-5"><a href="factors.html#cb93-5" aria-hidden="true" tabindex="-1"></a>third_factor <span class="ot">&lt;-</span> <span class="fu">factor</span>(log_vector)</span>
-<span id="cb93-6"><a href="factors.html#cb93-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb93-7"><a href="factors.html#cb93-7" aria-hidden="true" tabindex="-1"></a>third_factor</span>
-<span id="cb93-8"><a href="factors.html#cb93-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="cn">TRUE</span>  <span class="cn">FALSE</span> <span class="cn">TRUE</span>  <span class="cn">TRUE</span>  <span class="cn">FALSE</span></span>
-<span id="cb93-9"><a href="factors.html#cb93-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> <span class="cn">FALSE</span> <span class="cn">TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="factors.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># logical vector</span></span>
+<span id="cb97-2"><a href="factors.html#cb97-2" aria-hidden="true" tabindex="-1"></a>log_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)</span>
+<span id="cb97-3"><a href="factors.html#cb97-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-4"><a href="factors.html#cb97-4" aria-hidden="true" tabindex="-1"></a><span class="co"># creating a factor from log_vector</span></span>
+<span id="cb97-5"><a href="factors.html#cb97-5" aria-hidden="true" tabindex="-1"></a>third_factor <span class="ot">&lt;-</span> <span class="fu">factor</span>(log_vector)</span>
+<span id="cb97-6"><a href="factors.html#cb97-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-7"><a href="factors.html#cb97-7" aria-hidden="true" tabindex="-1"></a>third_factor</span>
+<span id="cb97-8"><a href="factors.html#cb97-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="cn">TRUE</span>  <span class="cn">FALSE</span> <span class="cn">TRUE</span>  <span class="cn">TRUE</span>  <span class="cn">FALSE</span></span>
+<span id="cb97-9"><a href="factors.html#cb97-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> <span class="cn">FALSE</span> <span class="cn">TRUE</span></span></code></pre></div>
 </div>
 <div id="how-r-treats-factors" class="section level2 hasAnchor" number="5.2">
 <h2><span class="header-section-number">5.2</span> How R treats factors<a href="factors.html#how-r-treats-factors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -545,72 +545,72 @@ integer vector containing the values of categories, the other is a vector with
 the “levels” which has the names of categories which are mapped to the integers.</p>
 <p>Under the hood, the way R stores factors is as vectors of integer values.
 One way to confirm this is using the function <code>storage.mode()</code></p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="factors.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="co"># storage of factor</span></span>
-<span id="cb94-2"><a href="factors.html#cb94-2" aria-hidden="true" tabindex="-1"></a><span class="fu">storage.mode</span>(first_factor)</span>
-<span id="cb94-3"><a href="factors.html#cb94-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;integer&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="factors.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="co"># storage of factor</span></span>
+<span id="cb98-2"><a href="factors.html#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="fu">storage.mode</span>(first_factor)</span>
+<span id="cb98-3"><a href="factors.html#cb98-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;integer&quot;</span></span></code></pre></div>
 <p>This means that we can manipulate factors just like we manipulate vectors. In
 addition, many functions for vectors can be applied to factors. For instance,
 we can use the function <code>length()</code> to get the number of elements in a factor:</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="factors.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co"># factors have length</span></span>
-<span id="cb95-2"><a href="factors.html#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(first_factor)</span>
-<span id="cb95-3"><a href="factors.html#cb95-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">7</span></span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="factors.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="co"># factors have length</span></span>
+<span id="cb99-2"><a href="factors.html#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(first_factor)</span>
+<span id="cb99-3"><a href="factors.html#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">7</span></span></code></pre></div>
 <p>We can also use the square brackets <code>[ ]</code> to extract or select elements of a
 factor. Inside the brackets we specify vectors of indices such as numeric
 vectors, logical vectors, and sometimes even character vectors.</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="factors.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co"># first element</span></span>
-<span id="cb96-2"><a href="factors.html#cb96-2" aria-hidden="true" tabindex="-1"></a>first_factor[<span class="dv">1</span>]</span>
-<span id="cb96-3"><a href="factors.html#cb96-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-4"><a href="factors.html#cb96-4" aria-hidden="true" tabindex="-1"></a><span class="co"># third element</span></span>
-<span id="cb96-5"><a href="factors.html#cb96-5" aria-hidden="true" tabindex="-1"></a>first_factor[<span class="dv">3</span>]</span>
-<span id="cb96-6"><a href="factors.html#cb96-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-7"><a href="factors.html#cb96-7" aria-hidden="true" tabindex="-1"></a><span class="co"># second to fourth elements</span></span>
-<span id="cb96-8"><a href="factors.html#cb96-8" aria-hidden="true" tabindex="-1"></a>first_factor[<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>]</span>
-<span id="cb96-9"><a href="factors.html#cb96-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-10"><a href="factors.html#cb96-10" aria-hidden="true" tabindex="-1"></a><span class="co"># last element</span></span>
-<span id="cb96-11"><a href="factors.html#cb96-11" aria-hidden="true" tabindex="-1"></a>first_factor[<span class="fu">length</span>(first_factor)]</span>
-<span id="cb96-12"><a href="factors.html#cb96-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-13"><a href="factors.html#cb96-13" aria-hidden="true" tabindex="-1"></a><span class="co"># logical subsetting</span></span>
-<span id="cb96-14"><a href="factors.html#cb96-14" aria-hidden="true" tabindex="-1"></a>first_factor[<span class="fu">rep</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>), <span class="at">length.out =</span> <span class="dv">7</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="factors.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="co"># first element</span></span>
+<span id="cb100-2"><a href="factors.html#cb100-2" aria-hidden="true" tabindex="-1"></a>first_factor[<span class="dv">1</span>]</span>
+<span id="cb100-3"><a href="factors.html#cb100-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-4"><a href="factors.html#cb100-4" aria-hidden="true" tabindex="-1"></a><span class="co"># third element</span></span>
+<span id="cb100-5"><a href="factors.html#cb100-5" aria-hidden="true" tabindex="-1"></a>first_factor[<span class="dv">3</span>]</span>
+<span id="cb100-6"><a href="factors.html#cb100-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-7"><a href="factors.html#cb100-7" aria-hidden="true" tabindex="-1"></a><span class="co"># second to fourth elements</span></span>
+<span id="cb100-8"><a href="factors.html#cb100-8" aria-hidden="true" tabindex="-1"></a>first_factor[<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>]</span>
+<span id="cb100-9"><a href="factors.html#cb100-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-10"><a href="factors.html#cb100-10" aria-hidden="true" tabindex="-1"></a><span class="co"># last element</span></span>
+<span id="cb100-11"><a href="factors.html#cb100-11" aria-hidden="true" tabindex="-1"></a>first_factor[<span class="fu">length</span>(first_factor)]</span>
+<span id="cb100-12"><a href="factors.html#cb100-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-13"><a href="factors.html#cb100-13" aria-hidden="true" tabindex="-1"></a><span class="co"># logical subsetting</span></span>
+<span id="cb100-14"><a href="factors.html#cb100-14" aria-hidden="true" tabindex="-1"></a>first_factor[<span class="fu">rep</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>), <span class="at">length.out =</span> <span class="dv">7</span>)]</span></code></pre></div>
 <p>If you have a factor with named elements, you can also specify the names of
 the elements within the brackets:</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="factors.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(first_factor) <span class="ot">&lt;-</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(first_factor)]</span>
-<span id="cb97-2"><a href="factors.html#cb97-2" aria-hidden="true" tabindex="-1"></a>first_factor</span>
-<span id="cb97-3"><a href="factors.html#cb97-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> a b c d e f g </span>
-<span id="cb97-4"><a href="factors.html#cb97-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">2</span> </span>
-<span id="cb97-5"><a href="factors.html#cb97-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></span>
-<span id="cb97-6"><a href="factors.html#cb97-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-7"><a href="factors.html#cb97-7" aria-hidden="true" tabindex="-1"></a>first_factor[<span class="fu">c</span>(<span class="st">&#39;b&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;f&#39;</span>)]</span>
-<span id="cb97-8"><a href="factors.html#cb97-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> b d f </span>
-<span id="cb97-9"><a href="factors.html#cb97-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">3</span> </span>
-<span id="cb97-10"><a href="factors.html#cb97-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="factors.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(first_factor) <span class="ot">&lt;-</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(first_factor)]</span>
+<span id="cb101-2"><a href="factors.html#cb101-2" aria-hidden="true" tabindex="-1"></a>first_factor</span>
+<span id="cb101-3"><a href="factors.html#cb101-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> a b c d e f g </span>
+<span id="cb101-4"><a href="factors.html#cb101-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">2</span> </span>
+<span id="cb101-5"><a href="factors.html#cb101-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></span>
+<span id="cb101-6"><a href="factors.html#cb101-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-7"><a href="factors.html#cb101-7" aria-hidden="true" tabindex="-1"></a>first_factor[<span class="fu">c</span>(<span class="st">&#39;b&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;f&#39;</span>)]</span>
+<span id="cb101-8"><a href="factors.html#cb101-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> b d f </span>
+<span id="cb101-9"><a href="factors.html#cb101-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">3</span> </span>
+<span id="cb101-10"><a href="factors.html#cb101-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></span></code></pre></div>
 <p>However, you should know that factors are NOT really vectors. To see this you
 can check the behavior of the functions <code>is.factor()</code> and <code>is.vector()</code> on a
 factor:</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="factors.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="co"># factors are not vectors</span></span>
-<span id="cb98-2"><a href="factors.html#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.vector</span>(first_factor)</span>
-<span id="cb98-3"><a href="factors.html#cb98-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="cn">FALSE</span></span>
-<span id="cb98-4"><a href="factors.html#cb98-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb98-5"><a href="factors.html#cb98-5" aria-hidden="true" tabindex="-1"></a><span class="co"># factors are factors</span></span>
-<span id="cb98-6"><a href="factors.html#cb98-6" aria-hidden="true" tabindex="-1"></a><span class="fu">is.factor</span>(first_factor)</span>
-<span id="cb98-7"><a href="factors.html#cb98-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="cn">TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="factors.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co"># factors are not vectors</span></span>
+<span id="cb102-2"><a href="factors.html#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.vector</span>(first_factor)</span>
+<span id="cb102-3"><a href="factors.html#cb102-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="cn">FALSE</span></span>
+<span id="cb102-4"><a href="factors.html#cb102-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-5"><a href="factors.html#cb102-5" aria-hidden="true" tabindex="-1"></a><span class="co"># factors are factors</span></span>
+<span id="cb102-6"><a href="factors.html#cb102-6" aria-hidden="true" tabindex="-1"></a><span class="fu">is.factor</span>(first_factor)</span>
+<span id="cb102-7"><a href="factors.html#cb102-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="cn">TRUE</span></span></code></pre></div>
 <p>Even a single element of a factor is also a factor:</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="factors.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(first_factor[<span class="dv">1</span>])</span>
-<span id="cb99-2"><a href="factors.html#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;factor&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="factors.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(first_factor[<span class="dv">1</span>])</span>
+<span id="cb103-2"><a href="factors.html#cb103-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;factor&quot;</span></span></code></pre></div>
 <div id="so-what-makes-a-factor-different-from-a-vector" class="section level4 unnumbered hasAnchor">
 <h4>So what makes a factor different from a vector?<a href="factors.html#so-what-makes-a-factor-different-from-a-vector" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Well, it turns out that factors have an additional attribute that vectors don’t:
 <code>levels</code>. And as you can expect, the class of a factor is indeed <code>"factor"</code>
 (not <code>"vector"</code>).</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="factors.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="co"># attributes of a factor</span></span>
-<span id="cb100-2"><a href="factors.html#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(first_factor)</span>
-<span id="cb100-3"><a href="factors.html#cb100-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="er">$</span>levels</span>
-<span id="cb100-4"><a href="factors.html#cb100-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;1&quot;</span> <span class="st">&quot;2&quot;</span> <span class="st">&quot;3&quot;</span></span>
-<span id="cb100-5"><a href="factors.html#cb100-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb100-6"><a href="factors.html#cb100-6" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="er">$</span>class</span>
-<span id="cb100-7"><a href="factors.html#cb100-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;factor&quot;</span></span>
-<span id="cb100-8"><a href="factors.html#cb100-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb100-9"><a href="factors.html#cb100-9" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="er">$</span>names</span>
-<span id="cb100-10"><a href="factors.html#cb100-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;a&quot;</span> <span class="st">&quot;b&quot;</span> <span class="st">&quot;c&quot;</span> <span class="st">&quot;d&quot;</span> <span class="st">&quot;e&quot;</span> <span class="st">&quot;f&quot;</span> <span class="st">&quot;g&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="factors.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co"># attributes of a factor</span></span>
+<span id="cb104-2"><a href="factors.html#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(first_factor)</span>
+<span id="cb104-3"><a href="factors.html#cb104-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="er">$</span>levels</span>
+<span id="cb104-4"><a href="factors.html#cb104-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;1&quot;</span> <span class="st">&quot;2&quot;</span> <span class="st">&quot;3&quot;</span></span>
+<span id="cb104-5"><a href="factors.html#cb104-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb104-6"><a href="factors.html#cb104-6" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="er">$</span>class</span>
+<span id="cb104-7"><a href="factors.html#cb104-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;factor&quot;</span></span>
+<span id="cb104-8"><a href="factors.html#cb104-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb104-9"><a href="factors.html#cb104-9" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="er">$</span>names</span>
+<span id="cb104-10"><a href="factors.html#cb104-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;a&quot;</span> <span class="st">&quot;b&quot;</span> <span class="st">&quot;c&quot;</span> <span class="st">&quot;d&quot;</span> <span class="st">&quot;e&quot;</span> <span class="st">&quot;f&quot;</span> <span class="st">&quot;g&quot;</span></span></code></pre></div>
 <p>Another feature that makes factors so special is that their values (the levels)
 are mapped to a set of character values for displaying purposes. This might
 seem like a minor feature but it has two important consequences. On the one
@@ -648,14 +648,14 @@ ordinal variable? We can use a character vector to store the values. But a
 character vector does not allow us to store the ranking of categories. The
 solution in R comes via factors. We can use factors to define ordinal variables,
 like the following example:</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="factors.html#cb101-1" aria-hidden="true" tabindex="-1"></a>sizes <span class="ot">&lt;-</span> <span class="fu">factor</span>(</span>
-<span id="cb101-2"><a href="factors.html#cb101-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">c</span>(<span class="st">&#39;sm&#39;</span>, <span class="st">&#39;md&#39;</span>, <span class="st">&#39;lg&#39;</span>, <span class="st">&#39;sm&#39;</span>, <span class="st">&#39;md&#39;</span>),</span>
-<span id="cb101-3"><a href="factors.html#cb101-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&#39;sm&#39;</span>, <span class="st">&#39;md&#39;</span>, <span class="st">&#39;lg&#39;</span>),</span>
-<span id="cb101-4"><a href="factors.html#cb101-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb101-5"><a href="factors.html#cb101-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-6"><a href="factors.html#cb101-6" aria-hidden="true" tabindex="-1"></a>sizes</span>
-<span id="cb101-7"><a href="factors.html#cb101-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] sm md lg sm md</span>
-<span id="cb101-8"><a href="factors.html#cb101-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> sm <span class="sc">&lt;</span> md <span class="sc">&lt;</span> lg</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="factors.html#cb105-1" aria-hidden="true" tabindex="-1"></a>sizes <span class="ot">&lt;-</span> <span class="fu">factor</span>(</span>
+<span id="cb105-2"><a href="factors.html#cb105-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">c</span>(<span class="st">&#39;sm&#39;</span>, <span class="st">&#39;md&#39;</span>, <span class="st">&#39;lg&#39;</span>, <span class="st">&#39;sm&#39;</span>, <span class="st">&#39;md&#39;</span>),</span>
+<span id="cb105-3"><a href="factors.html#cb105-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&#39;sm&#39;</span>, <span class="st">&#39;md&#39;</span>, <span class="st">&#39;lg&#39;</span>),</span>
+<span id="cb105-4"><a href="factors.html#cb105-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb105-5"><a href="factors.html#cb105-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-6"><a href="factors.html#cb105-6" aria-hidden="true" tabindex="-1"></a>sizes</span>
+<span id="cb105-7"><a href="factors.html#cb105-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] sm md lg sm md</span>
+<span id="cb105-8"><a href="factors.html#cb105-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> sm <span class="sc">&lt;</span> md <span class="sc">&lt;</span> lg</span></code></pre></div>
 <p>As you can tell, <code>sizes</code> has ordered levels, clearly identifying the first
 category <code>"sm"</code>, the second one <code>"md"</code>, and the third one <code>"lg"</code>.</p>
 </div>
@@ -692,45 +692,45 @@ to understand how R handles these arguments by default.</p>
 assigns the unique values in <code>x</code> as the category levels.</p>
 <p>For example, consider our numeric vector from the first example: <code>num_vector</code>
 contains unique values 1, 2, and 3.</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="factors.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numeric vector</span></span>
-<span id="cb103-2"><a href="factors.html#cb103-2" aria-hidden="true" tabindex="-1"></a>num_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>)</span>
-<span id="cb103-3"><a href="factors.html#cb103-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-4"><a href="factors.html#cb103-4" aria-hidden="true" tabindex="-1"></a><span class="co"># creating a factor from num_vector</span></span>
-<span id="cb103-5"><a href="factors.html#cb103-5" aria-hidden="true" tabindex="-1"></a>first_factor <span class="ot">&lt;-</span> <span class="fu">factor</span>(num_vector)</span>
-<span id="cb103-6"><a href="factors.html#cb103-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-7"><a href="factors.html#cb103-7" aria-hidden="true" tabindex="-1"></a>first_factor</span>
-<span id="cb103-8"><a href="factors.html#cb103-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">2</span></span>
-<span id="cb103-9"><a href="factors.html#cb103-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="factors.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numeric vector</span></span>
+<span id="cb107-2"><a href="factors.html#cb107-2" aria-hidden="true" tabindex="-1"></a>num_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb107-3"><a href="factors.html#cb107-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-4"><a href="factors.html#cb107-4" aria-hidden="true" tabindex="-1"></a><span class="co"># creating a factor from num_vector</span></span>
+<span id="cb107-5"><a href="factors.html#cb107-5" aria-hidden="true" tabindex="-1"></a>first_factor <span class="ot">&lt;-</span> <span class="fu">factor</span>(num_vector)</span>
+<span id="cb107-6"><a href="factors.html#cb107-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-7"><a href="factors.html#cb107-7" aria-hidden="true" tabindex="-1"></a>first_factor</span>
+<span id="cb107-8"><a href="factors.html#cb107-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">2</span></span>
+<span id="cb107-9"><a href="factors.html#cb107-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></span></code></pre></div>
 <p>Now imagine we want to have <code>levels</code> 1, 2, 3, 4, and 5. This is how you can
 define the factor with an extended set of levels:</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="factors.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numeric vector</span></span>
-<span id="cb104-2"><a href="factors.html#cb104-2" aria-hidden="true" tabindex="-1"></a>num_vector</span>
-<span id="cb104-3"><a href="factors.html#cb104-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">2</span></span>
-<span id="cb104-4"><a href="factors.html#cb104-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb104-5"><a href="factors.html#cb104-5" aria-hidden="true" tabindex="-1"></a><span class="co"># defining levels</span></span>
-<span id="cb104-6"><a href="factors.html#cb104-6" aria-hidden="true" tabindex="-1"></a>one_factor <span class="ot">&lt;-</span> <span class="fu">factor</span>(num_vector, <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
-<span id="cb104-7"><a href="factors.html#cb104-7" aria-hidden="true" tabindex="-1"></a>one_factor</span>
-<span id="cb104-8"><a href="factors.html#cb104-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">2</span></span>
-<span id="cb104-9"><a href="factors.html#cb104-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span></span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="factors.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="co"># numeric vector</span></span>
+<span id="cb108-2"><a href="factors.html#cb108-2" aria-hidden="true" tabindex="-1"></a>num_vector</span>
+<span id="cb108-3"><a href="factors.html#cb108-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">2</span></span>
+<span id="cb108-4"><a href="factors.html#cb108-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb108-5"><a href="factors.html#cb108-5" aria-hidden="true" tabindex="-1"></a><span class="co"># defining levels</span></span>
+<span id="cb108-6"><a href="factors.html#cb108-6" aria-hidden="true" tabindex="-1"></a>one_factor <span class="ot">&lt;-</span> <span class="fu">factor</span>(num_vector, <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb108-7"><a href="factors.html#cb108-7" aria-hidden="true" tabindex="-1"></a>one_factor</span>
+<span id="cb108-8"><a href="factors.html#cb108-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">2</span></span>
+<span id="cb108-9"><a href="factors.html#cb108-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span></span></code></pre></div>
 <p>Although the created factor only has values between 1 and 3, the <code>levels</code> range
 from 1 to 5. This can be useful if we plan to add elements whose values are not
 in the input vector <code>num_vector</code>. For instance, you can append two more elements
 to <code>one_factor</code> with values <code>4</code> and <code>5</code> like this:</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="factors.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="co"># adding values 4 and 5</span></span>
-<span id="cb105-2"><a href="factors.html#cb105-2" aria-hidden="true" tabindex="-1"></a>one_factor[<span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">9</span>)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>)</span>
-<span id="cb105-3"><a href="factors.html#cb105-3" aria-hidden="true" tabindex="-1"></a>one_factor</span>
-<span id="cb105-4"><a href="factors.html#cb105-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">5</span></span>
-<span id="cb105-5"><a href="factors.html#cb105-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span></span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="factors.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="co"># adding values 4 and 5</span></span>
+<span id="cb109-2"><a href="factors.html#cb109-2" aria-hidden="true" tabindex="-1"></a>one_factor[<span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">9</span>)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb109-3"><a href="factors.html#cb109-3" aria-hidden="true" tabindex="-1"></a>one_factor</span>
+<span id="cb109-4"><a href="factors.html#cb109-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">5</span></span>
+<span id="cb109-5"><a href="factors.html#cb109-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span></span></code></pre></div>
 <p>If you attempt to insert an element having a value that is not in the
 predefined set of levels, R will insert a missing value (<code>&lt;NA&gt;</code>) instead, and
 you’ll get a warning message like the one below:</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="factors.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="co"># attempting to add value 6 (not in levels)</span></span>
-<span id="cb106-2"><a href="factors.html#cb106-2" aria-hidden="true" tabindex="-1"></a>one_factor[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">6</span></span>
-<span id="cb106-3"><a href="factors.html#cb106-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Warning <span class="cf">in</span> <span class="st">`</span><span class="at">[&lt;-.factor</span><span class="st">`</span>(<span class="st">`</span><span class="at">*tmp*</span><span class="st">`</span>, <span class="dv">1</span>, <span class="at">value =</span> <span class="dv">6</span>)<span class="sc">:</span> invalid factor level, <span class="cn">NA</span></span>
-<span id="cb106-4"><a href="factors.html#cb106-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> generated</span>
-<span id="cb106-5"><a href="factors.html#cb106-5" aria-hidden="true" tabindex="-1"></a>one_factor</span>
-<span id="cb106-6"><a href="factors.html#cb106-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span> <span class="dv">2</span>    <span class="dv">3</span>    <span class="dv">1</span>    <span class="dv">2</span>    <span class="dv">3</span>    <span class="dv">2</span>    <span class="dv">4</span>    <span class="dv">5</span>   </span>
-<span id="cb106-7"><a href="factors.html#cb106-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span></span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="factors.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="co"># attempting to add value 6 (not in levels)</span></span>
+<span id="cb110-2"><a href="factors.html#cb110-2" aria-hidden="true" tabindex="-1"></a>one_factor[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">6</span></span>
+<span id="cb110-3"><a href="factors.html#cb110-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Warning <span class="cf">in</span> <span class="st">`</span><span class="at">[&lt;-.factor</span><span class="st">`</span>(<span class="st">`</span><span class="at">*tmp*</span><span class="st">`</span>, <span class="dv">1</span>, <span class="at">value =</span> <span class="dv">6</span>)<span class="sc">:</span> invalid factor level, <span class="cn">NA</span></span>
+<span id="cb110-4"><a href="factors.html#cb110-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> generated</span>
+<span id="cb110-5"><a href="factors.html#cb110-5" aria-hidden="true" tabindex="-1"></a>one_factor</span>
+<span id="cb110-6"><a href="factors.html#cb110-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span> <span class="dv">2</span>    <span class="dv">3</span>    <span class="dv">1</span>    <span class="dv">2</span>    <span class="dv">3</span>    <span class="dv">2</span>    <span class="dv">4</span>    <span class="dv">5</span>   </span>
+<span id="cb110-7"><a href="factors.html#cb110-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span></span></code></pre></div>
 </div>
 <div id="argument-labels" class="section level4 unnumbered hasAnchor">
 <h4>Argument <code>labels</code><a href="factors.html#argument-labels" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -739,41 +739,41 @@ vector for naming the <code>levels</code> in a different way from the values in 
 take the numeric vector <code>num_vector</code> again, and say we want to use words as
 labels instead of numeric values. Here’s how you can create a factor with
 predefined <code>labels</code>:</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="factors.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="co"># defining labels</span></span>
-<span id="cb107-2"><a href="factors.html#cb107-2" aria-hidden="true" tabindex="-1"></a>num_word_vector <span class="ot">&lt;-</span> <span class="fu">factor</span>(num_vector, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;one&quot;</span>, <span class="st">&quot;two&quot;</span>, <span class="st">&quot;three&quot;</span>))</span>
-<span id="cb107-3"><a href="factors.html#cb107-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb107-4"><a href="factors.html#cb107-4" aria-hidden="true" tabindex="-1"></a>num_word_vector</span>
-<span id="cb107-5"><a href="factors.html#cb107-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] one   two   three one   two   three two  </span>
-<span id="cb107-6"><a href="factors.html#cb107-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> one two three</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="factors.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="co"># defining labels</span></span>
+<span id="cb111-2"><a href="factors.html#cb111-2" aria-hidden="true" tabindex="-1"></a>num_word_vector <span class="ot">&lt;-</span> <span class="fu">factor</span>(num_vector, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;one&quot;</span>, <span class="st">&quot;two&quot;</span>, <span class="st">&quot;three&quot;</span>))</span>
+<span id="cb111-3"><a href="factors.html#cb111-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-4"><a href="factors.html#cb111-4" aria-hidden="true" tabindex="-1"></a>num_word_vector</span>
+<span id="cb111-5"><a href="factors.html#cb111-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] one   two   three one   two   three two  </span>
+<span id="cb111-6"><a href="factors.html#cb111-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> one two three</span></code></pre></div>
 </div>
 <div id="argument-exclude" class="section level4 unnumbered hasAnchor">
 <h4>Argument <code>exclude</code><a href="factors.html#argument-exclude" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>If you want to ignore some values of the input vector <code>x</code>, you can use the
 <code>exclude</code> argument. You just need to provide those values which will be removed
 from the set of <code>levels</code>.</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="factors.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="co"># excluding level 3</span></span>
-<span id="cb108-2"><a href="factors.html#cb108-2" aria-hidden="true" tabindex="-1"></a><span class="fu">factor</span>(num_vector, <span class="at">exclude =</span> <span class="dv">3</span>)</span>
-<span id="cb108-3"><a href="factors.html#cb108-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span>    <span class="dv">2</span>    <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span> <span class="dv">1</span>    <span class="dv">2</span>    <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span> <span class="dv">2</span>   </span>
-<span id="cb108-4"><a href="factors.html#cb108-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> <span class="dv">1</span> <span class="dv">2</span></span>
-<span id="cb108-5"><a href="factors.html#cb108-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb108-6"><a href="factors.html#cb108-6" aria-hidden="true" tabindex="-1"></a><span class="co"># excluding levels 1 and 3</span></span>
-<span id="cb108-7"><a href="factors.html#cb108-7" aria-hidden="true" tabindex="-1"></a><span class="fu">factor</span>(num_vector, <span class="at">exclude =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
-<span id="cb108-8"><a href="factors.html#cb108-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span> <span class="dv">2</span>    <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span> <span class="er">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span> <span class="dv">2</span>    <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span> <span class="dv">2</span>   </span>
-<span id="cb108-9"><a href="factors.html#cb108-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> <span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="factors.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="co"># excluding level 3</span></span>
+<span id="cb112-2"><a href="factors.html#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="fu">factor</span>(num_vector, <span class="at">exclude =</span> <span class="dv">3</span>)</span>
+<span id="cb112-3"><a href="factors.html#cb112-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span>    <span class="dv">2</span>    <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span> <span class="dv">1</span>    <span class="dv">2</span>    <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span> <span class="dv">2</span>   </span>
+<span id="cb112-4"><a href="factors.html#cb112-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> <span class="dv">1</span> <span class="dv">2</span></span>
+<span id="cb112-5"><a href="factors.html#cb112-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb112-6"><a href="factors.html#cb112-6" aria-hidden="true" tabindex="-1"></a><span class="co"># excluding levels 1 and 3</span></span>
+<span id="cb112-7"><a href="factors.html#cb112-7" aria-hidden="true" tabindex="-1"></a><span class="fu">factor</span>(num_vector, <span class="at">exclude =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
+<span id="cb112-8"><a href="factors.html#cb112-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span> <span class="dv">2</span>    <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span> <span class="er">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span> <span class="dv">2</span>    <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span> <span class="dv">2</span>   </span>
+<span id="cb112-9"><a href="factors.html#cb112-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> <span class="dv">2</span></span></code></pre></div>
 <p>The side effect of <code>exclude</code> is that it returns a missing value (<code>&lt;NA&gt;</code>) for
 each element that was excluded, which is not always what we want. Here’s one
 way to remove the missing values when excluding 3:</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="factors.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="co"># excluding level 3</span></span>
-<span id="cb109-2"><a href="factors.html#cb109-2" aria-hidden="true" tabindex="-1"></a>num_fac12 <span class="ot">&lt;-</span> <span class="fu">factor</span>(num_vector, <span class="at">exclude =</span> <span class="dv">3</span>)</span>
-<span id="cb109-3"><a href="factors.html#cb109-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-4"><a href="factors.html#cb109-4" aria-hidden="true" tabindex="-1"></a><span class="co"># oops, we have some missing values</span></span>
-<span id="cb109-5"><a href="factors.html#cb109-5" aria-hidden="true" tabindex="-1"></a>num_fac12</span>
-<span id="cb109-6"><a href="factors.html#cb109-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span>    <span class="dv">2</span>    <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span> <span class="dv">1</span>    <span class="dv">2</span>    <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span> <span class="dv">2</span>   </span>
-<span id="cb109-7"><a href="factors.html#cb109-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> <span class="dv">1</span> <span class="dv">2</span></span>
-<span id="cb109-8"><a href="factors.html#cb109-8" aria-hidden="true" tabindex="-1"></a><span class="co"># removing missing values</span></span>
-<span id="cb109-9"><a href="factors.html#cb109-9" aria-hidden="true" tabindex="-1"></a>num_fac12[<span class="sc">!</span><span class="fu">is.na</span>(num_fac12)]</span>
-<span id="cb109-10"><a href="factors.html#cb109-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">2</span></span>
-<span id="cb109-11"><a href="factors.html#cb109-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> <span class="dv">1</span> <span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="factors.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="co"># excluding level 3</span></span>
+<span id="cb113-2"><a href="factors.html#cb113-2" aria-hidden="true" tabindex="-1"></a>num_fac12 <span class="ot">&lt;-</span> <span class="fu">factor</span>(num_vector, <span class="at">exclude =</span> <span class="dv">3</span>)</span>
+<span id="cb113-3"><a href="factors.html#cb113-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb113-4"><a href="factors.html#cb113-4" aria-hidden="true" tabindex="-1"></a><span class="co"># oops, we have some missing values</span></span>
+<span id="cb113-5"><a href="factors.html#cb113-5" aria-hidden="true" tabindex="-1"></a>num_fac12</span>
+<span id="cb113-6"><a href="factors.html#cb113-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span>    <span class="dv">2</span>    <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span> <span class="dv">1</span>    <span class="dv">2</span>    <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span> <span class="dv">2</span>   </span>
+<span id="cb113-7"><a href="factors.html#cb113-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> <span class="dv">1</span> <span class="dv">2</span></span>
+<span id="cb113-8"><a href="factors.html#cb113-8" aria-hidden="true" tabindex="-1"></a><span class="co"># removing missing values</span></span>
+<span id="cb113-9"><a href="factors.html#cb113-9" aria-hidden="true" tabindex="-1"></a>num_fac12[<span class="sc">!</span><span class="fu">is.na</span>(num_fac12)]</span>
+<span id="cb113-10"><a href="factors.html#cb113-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">2</span></span>
+<span id="cb113-11"><a href="factors.html#cb113-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> <span class="dv">1</span> <span class="dv">2</span></span></code></pre></div>
 </div>
 </div>
 <div id="unclassing-factors" class="section level3 hasAnchor" number="5.3.2">
@@ -785,36 +785,36 @@ integers. Why is this important to know? Because there will be occasions in
 which you’ll need to know exactly what numbers are associated to each level
 values.</p>
 <p>Imagine you have a factor with <code>levels</code> 11, 22, 33, 44.</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="factors.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="co"># factor</span></span>
-<span id="cb110-2"><a href="factors.html#cb110-2" aria-hidden="true" tabindex="-1"></a>xfactor <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="dv">22</span>, <span class="dv">11</span>, <span class="dv">44</span>, <span class="dv">33</span>, <span class="dv">11</span>, <span class="dv">22</span>, <span class="dv">44</span>))</span>
-<span id="cb110-3"><a href="factors.html#cb110-3" aria-hidden="true" tabindex="-1"></a>xfactor</span>
-<span id="cb110-4"><a href="factors.html#cb110-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">22</span> <span class="dv">11</span> <span class="dv">44</span> <span class="dv">33</span> <span class="dv">11</span> <span class="dv">22</span> <span class="dv">44</span></span>
-<span id="cb110-5"><a href="factors.html#cb110-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> <span class="dv">11</span> <span class="dv">22</span> <span class="dv">33</span> <span class="dv">44</span></span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="factors.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="co"># factor</span></span>
+<span id="cb114-2"><a href="factors.html#cb114-2" aria-hidden="true" tabindex="-1"></a>xfactor <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="dv">22</span>, <span class="dv">11</span>, <span class="dv">44</span>, <span class="dv">33</span>, <span class="dv">11</span>, <span class="dv">22</span>, <span class="dv">44</span>))</span>
+<span id="cb114-3"><a href="factors.html#cb114-3" aria-hidden="true" tabindex="-1"></a>xfactor</span>
+<span id="cb114-4"><a href="factors.html#cb114-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">22</span> <span class="dv">11</span> <span class="dv">44</span> <span class="dv">33</span> <span class="dv">11</span> <span class="dv">22</span> <span class="dv">44</span></span>
+<span id="cb114-5"><a href="factors.html#cb114-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> <span class="dv">11</span> <span class="dv">22</span> <span class="dv">33</span> <span class="dv">44</span></span></code></pre></div>
 <p>To obtain the integer vector associated to <code>xfactor</code> you can use the function
 <code>unclass()</code>:</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="factors.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="co"># unclassing a factor</span></span>
-<span id="cb111-2"><a href="factors.html#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unclass</span>(xfactor)</span>
-<span id="cb111-3"><a href="factors.html#cb111-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">2</span> <span class="dv">1</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">4</span></span>
-<span id="cb111-4"><a href="factors.html#cb111-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">attr</span>(,<span class="st">&quot;levels&quot;</span>)</span>
-<span id="cb111-5"><a href="factors.html#cb111-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;11&quot;</span> <span class="st">&quot;22&quot;</span> <span class="st">&quot;33&quot;</span> <span class="st">&quot;44&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="factors.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co"># unclassing a factor</span></span>
+<span id="cb115-2"><a href="factors.html#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unclass</span>(xfactor)</span>
+<span id="cb115-3"><a href="factors.html#cb115-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">2</span> <span class="dv">1</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">4</span></span>
+<span id="cb115-4"><a href="factors.html#cb115-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">attr</span>(,<span class="st">&quot;levels&quot;</span>)</span>
+<span id="cb115-5"><a href="factors.html#cb115-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;11&quot;</span> <span class="st">&quot;22&quot;</span> <span class="st">&quot;33&quot;</span> <span class="st">&quot;44&quot;</span></span></code></pre></div>
 <p>As you can see, the levels <code>"11"</code>, <code>"22"</code>, <code>"33"</code>, <code>"44"</code> were mapped to the
 vector of integers <code>(1 2 3 4)</code>.</p>
 <p>An alternative option is to simply apply <code>as.numeric()</code> or <code>as.integer()</code>
 instead of using <code>unclass()</code>:</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="factors.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="co"># equivalent to unclass</span></span>
-<span id="cb112-2"><a href="factors.html#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.integer</span>(xfactor)</span>
-<span id="cb112-3"><a href="factors.html#cb112-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">2</span> <span class="dv">1</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">4</span></span>
-<span id="cb112-4"><a href="factors.html#cb112-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb112-5"><a href="factors.html#cb112-5" aria-hidden="true" tabindex="-1"></a><span class="co"># equivalent to unclass</span></span>
-<span id="cb112-6"><a href="factors.html#cb112-6" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(xfactor)</span>
-<span id="cb112-7"><a href="factors.html#cb112-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">2</span> <span class="dv">1</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">4</span></span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="factors.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="co"># equivalent to unclass</span></span>
+<span id="cb116-2"><a href="factors.html#cb116-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.integer</span>(xfactor)</span>
+<span id="cb116-3"><a href="factors.html#cb116-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">2</span> <span class="dv">1</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">4</span></span>
+<span id="cb116-4"><a href="factors.html#cb116-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-5"><a href="factors.html#cb116-5" aria-hidden="true" tabindex="-1"></a><span class="co"># equivalent to unclass</span></span>
+<span id="cb116-6"><a href="factors.html#cb116-6" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(xfactor)</span>
+<span id="cb116-7"><a href="factors.html#cb116-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">2</span> <span class="dv">1</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">4</span></span></code></pre></div>
 <p>Although rarely used, there can be some cases in which what you need to do is
 revert the integer values in order to get the original factor levels. This is
 only possible when the levels of the factor are themselves numeric. To accomplish
 this use the following command:</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="factors.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="co"># recovering numeric levels</span></span>
-<span id="cb113-2"><a href="factors.html#cb113-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="fu">levels</span>(xfactor))[xfactor]</span>
-<span id="cb113-3"><a href="factors.html#cb113-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">22</span> <span class="dv">11</span> <span class="dv">44</span> <span class="dv">33</span> <span class="dv">11</span> <span class="dv">22</span> <span class="dv">44</span></span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="factors.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co"># recovering numeric levels</span></span>
+<span id="cb117-2"><a href="factors.html#cb117-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="fu">levels</span>(xfactor))[xfactor]</span>
+<span id="cb117-3"><a href="factors.html#cb117-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">22</span> <span class="dv">11</span> <span class="dv">44</span> <span class="dv">33</span> <span class="dv">11</span> <span class="dv">22</span> <span class="dv">44</span></span></code></pre></div>
 </div>
 </div>
 <div id="ordinal-factors" class="section level2 hasAnchor" number="5.4">
@@ -822,48 +822,48 @@ this use the following command:</p>
 <p>By default, <code>factor()</code> creates a <em>nominal</em> categorical variable, not an ordinal.
 One way to check that you have a nominal factor is to use the function
 <code>is.ordered()</code>, which returns <code>TRUE</code> if its argument is an ordinal factor.</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="factors.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ordinal factor?</span></span>
-<span id="cb114-2"><a href="factors.html#cb114-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.ordered</span>(num_vector)</span>
-<span id="cb114-3"><a href="factors.html#cb114-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="cn">FALSE</span></span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="factors.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ordinal factor?</span></span>
+<span id="cb118-2"><a href="factors.html#cb118-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.ordered</span>(num_vector)</span>
+<span id="cb118-3"><a href="factors.html#cb118-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="cn">FALSE</span></span></code></pre></div>
 <p>If you want to specify an ordinal factor you must use the <code>ordered</code> argument of
 <code>factor()</code>. This is how you can generate an ordinal value from <code>num_vector</code>:</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="factors.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ordinal factor from numeric vector</span></span>
-<span id="cb115-2"><a href="factors.html#cb115-2" aria-hidden="true" tabindex="-1"></a>ordinal_num <span class="ot">&lt;-</span> <span class="fu">factor</span>(num_vector, <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb115-3"><a href="factors.html#cb115-3" aria-hidden="true" tabindex="-1"></a>ordinal_num</span>
-<span id="cb115-4"><a href="factors.html#cb115-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">2</span></span>
-<span id="cb115-5"><a href="factors.html#cb115-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> <span class="dv">1</span> <span class="sc">&lt;</span> <span class="dv">2</span> <span class="sc">&lt;</span> <span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="factors.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ordinal factor from numeric vector</span></span>
+<span id="cb119-2"><a href="factors.html#cb119-2" aria-hidden="true" tabindex="-1"></a>ordinal_num <span class="ot">&lt;-</span> <span class="fu">factor</span>(num_vector, <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb119-3"><a href="factors.html#cb119-3" aria-hidden="true" tabindex="-1"></a>ordinal_num</span>
+<span id="cb119-4"><a href="factors.html#cb119-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">2</span></span>
+<span id="cb119-5"><a href="factors.html#cb119-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> <span class="dv">1</span> <span class="sc">&lt;</span> <span class="dv">2</span> <span class="sc">&lt;</span> <span class="dv">3</span></span></code></pre></div>
 <p>As you can tell from the snippet above, the levels of <code>ordinal_factor</code> are
 displayed with less-than symbols `‘&lt;’}, which means that the levels have an
 increasing order. We can also get an ordinal factor from our string vector:</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="factors.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ordinal factor from character vector</span></span>
-<span id="cb116-2"><a href="factors.html#cb116-2" aria-hidden="true" tabindex="-1"></a>ordinal_str <span class="ot">&lt;-</span> <span class="fu">factor</span>(str_vector, <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb116-3"><a href="factors.html#cb116-3" aria-hidden="true" tabindex="-1"></a>ordinal_str</span>
-<span id="cb116-4"><a href="factors.html#cb116-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] a b c b c a c b</span>
-<span id="cb116-5"><a href="factors.html#cb116-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> a <span class="sc">&lt;</span> b <span class="sc">&lt;</span> c</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="factors.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ordinal factor from character vector</span></span>
+<span id="cb120-2"><a href="factors.html#cb120-2" aria-hidden="true" tabindex="-1"></a>ordinal_str <span class="ot">&lt;-</span> <span class="fu">factor</span>(str_vector, <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb120-3"><a href="factors.html#cb120-3" aria-hidden="true" tabindex="-1"></a>ordinal_str</span>
+<span id="cb120-4"><a href="factors.html#cb120-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] a b c b c a c b</span>
+<span id="cb120-5"><a href="factors.html#cb120-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> a <span class="sc">&lt;</span> b <span class="sc">&lt;</span> c</span></code></pre></div>
 <p>In fact, when you set <code>ordered = TRUE</code>, R sorts the provided values in
 alphanumeric order. If you have the following alphanumeric vector
 <code>("a1", "1a", "1b", "b1")</code>, what do you think will be the generated ordered
 factor? Let’s check the answer:</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="factors.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co"># alphanumeric vector</span></span>
-<span id="cb117-2"><a href="factors.html#cb117-2" aria-hidden="true" tabindex="-1"></a>alphanum <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;a1&quot;</span>, <span class="st">&quot;1a&quot;</span>, <span class="st">&quot;1b&quot;</span>, <span class="st">&quot;b1&quot;</span>)</span>
-<span id="cb117-3"><a href="factors.html#cb117-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb117-4"><a href="factors.html#cb117-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ordinal factor from character vector</span></span>
-<span id="cb117-5"><a href="factors.html#cb117-5" aria-hidden="true" tabindex="-1"></a>ordinal_alphanum <span class="ot">&lt;-</span> <span class="fu">factor</span>(alphanum, <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb117-6"><a href="factors.html#cb117-6" aria-hidden="true" tabindex="-1"></a>ordinal_alphanum</span>
-<span id="cb117-7"><a href="factors.html#cb117-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] a1 1a 1b b1</span>
-<span id="cb117-8"><a href="factors.html#cb117-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> 1a <span class="sc">&lt;</span> 1b <span class="sc">&lt;</span> a1 <span class="sc">&lt;</span> b1</span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="factors.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="co"># alphanumeric vector</span></span>
+<span id="cb121-2"><a href="factors.html#cb121-2" aria-hidden="true" tabindex="-1"></a>alphanum <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;a1&quot;</span>, <span class="st">&quot;1a&quot;</span>, <span class="st">&quot;1b&quot;</span>, <span class="st">&quot;b1&quot;</span>)</span>
+<span id="cb121-3"><a href="factors.html#cb121-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-4"><a href="factors.html#cb121-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ordinal factor from character vector</span></span>
+<span id="cb121-5"><a href="factors.html#cb121-5" aria-hidden="true" tabindex="-1"></a>ordinal_alphanum <span class="ot">&lt;-</span> <span class="fu">factor</span>(alphanum, <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb121-6"><a href="factors.html#cb121-6" aria-hidden="true" tabindex="-1"></a>ordinal_alphanum</span>
+<span id="cb121-7"><a href="factors.html#cb121-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] a1 1a 1b b1</span>
+<span id="cb121-8"><a href="factors.html#cb121-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> 1a <span class="sc">&lt;</span> 1b <span class="sc">&lt;</span> a1 <span class="sc">&lt;</span> b1</span></code></pre></div>
 <p>An alternative way to specify an ordinal variable is by using the function
 <code>ordered()</code>, which is just a convenient wrapper for
 <code>factor(x, ..., ordered = TRUE)</code>:</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="factors.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ordinal factor with ordered()</span></span>
-<span id="cb118-2"><a href="factors.html#cb118-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ordered</span>(num_vector)</span>
-<span id="cb118-3"><a href="factors.html#cb118-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">2</span></span>
-<span id="cb118-4"><a href="factors.html#cb118-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> <span class="dv">1</span> <span class="sc">&lt;</span> <span class="dv">2</span> <span class="sc">&lt;</span> <span class="dv">3</span></span>
-<span id="cb118-5"><a href="factors.html#cb118-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-6"><a href="factors.html#cb118-6" aria-hidden="true" tabindex="-1"></a><span class="co"># same as using &#39;ordered&#39; argument</span></span>
-<span id="cb118-7"><a href="factors.html#cb118-7" aria-hidden="true" tabindex="-1"></a><span class="fu">factor</span>(num_vector, <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb118-8"><a href="factors.html#cb118-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">2</span></span>
-<span id="cb118-9"><a href="factors.html#cb118-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> <span class="dv">1</span> <span class="sc">&lt;</span> <span class="dv">2</span> <span class="sc">&lt;</span> <span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="factors.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ordinal factor with ordered()</span></span>
+<span id="cb122-2"><a href="factors.html#cb122-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ordered</span>(num_vector)</span>
+<span id="cb122-3"><a href="factors.html#cb122-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">2</span></span>
+<span id="cb122-4"><a href="factors.html#cb122-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> <span class="dv">1</span> <span class="sc">&lt;</span> <span class="dv">2</span> <span class="sc">&lt;</span> <span class="dv">3</span></span>
+<span id="cb122-5"><a href="factors.html#cb122-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-6"><a href="factors.html#cb122-6" aria-hidden="true" tabindex="-1"></a><span class="co"># same as using &#39;ordered&#39; argument</span></span>
+<span id="cb122-7"><a href="factors.html#cb122-7" aria-hidden="true" tabindex="-1"></a><span class="fu">factor</span>(num_vector, <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb122-8"><a href="factors.html#cb122-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">2</span></span>
+<span id="cb122-9"><a href="factors.html#cb122-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> <span class="dv">1</span> <span class="sc">&lt;</span> <span class="dv">2</span> <span class="sc">&lt;</span> <span class="dv">3</span></span></code></pre></div>
 <p>A word of caution. Don’t confuse the function <code>ordered()</code> with <code>order()</code>. They
 are not equivalent. <code>order()</code> arranges a vector into ascending or descending
 order, and returns the sorted vector. <code>ordered()</code>, as we’ve seen, is used to
@@ -875,44 +875,44 @@ determine categories according to a different order.</p>
 want them in descending order, that is, <code>c &lt; b &lt; a</code>. How can you do that? Easy,
 you just need to specify the <code>levels</code> in the order you want them and set
 <code>ordered = TRUE</code> (or use <code>ordered()</code>):</p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="factors.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># setting levels with specified order</span></span>
-<span id="cb119-2"><a href="factors.html#cb119-2" aria-hidden="true" tabindex="-1"></a><span class="fu">factor</span>(str_vector, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;c&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;a&quot;</span>), <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb119-3"><a href="factors.html#cb119-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] a b c b c a c b</span>
-<span id="cb119-4"><a href="factors.html#cb119-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> c <span class="sc">&lt;</span> b <span class="sc">&lt;</span> a</span>
-<span id="cb119-5"><a href="factors.html#cb119-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb119-6"><a href="factors.html#cb119-6" aria-hidden="true" tabindex="-1"></a><span class="co"># equivalently</span></span>
-<span id="cb119-7"><a href="factors.html#cb119-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ordered</span>(str_vector, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;c&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;a&quot;</span>))</span>
-<span id="cb119-8"><a href="factors.html#cb119-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] a b c b c a c b</span>
-<span id="cb119-9"><a href="factors.html#cb119-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> c <span class="sc">&lt;</span> b <span class="sc">&lt;</span> a</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="factors.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="co"># setting levels with specified order</span></span>
+<span id="cb123-2"><a href="factors.html#cb123-2" aria-hidden="true" tabindex="-1"></a><span class="fu">factor</span>(str_vector, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;c&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;a&quot;</span>), <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb123-3"><a href="factors.html#cb123-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] a b c b c a c b</span>
+<span id="cb123-4"><a href="factors.html#cb123-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> c <span class="sc">&lt;</span> b <span class="sc">&lt;</span> a</span>
+<span id="cb123-5"><a href="factors.html#cb123-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-6"><a href="factors.html#cb123-6" aria-hidden="true" tabindex="-1"></a><span class="co"># equivalently</span></span>
+<span id="cb123-7"><a href="factors.html#cb123-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ordered</span>(str_vector, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;c&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;a&quot;</span>))</span>
+<span id="cb123-8"><a href="factors.html#cb123-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] a b c b c a c b</span>
+<span id="cb123-9"><a href="factors.html#cb123-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> c <span class="sc">&lt;</span> b <span class="sc">&lt;</span> a</span></code></pre></div>
 <p>Here’s another example. Consider a set of size values <code>"xs"</code> extra-small, <code>"sm"</code>
 small, <code>"md"</code> medium, <code>"lg"</code> large, and <code>"xl"</code> extra-large. If you have a
 vector with size values you can create an ordinal variable as follows:</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="factors.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vector of sizes</span></span>
-<span id="cb120-2"><a href="factors.html#cb120-2" aria-hidden="true" tabindex="-1"></a>sizes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;sm&quot;</span>, <span class="st">&quot;xs&quot;</span>, <span class="st">&quot;xl&quot;</span>, <span class="st">&quot;lg&quot;</span>, <span class="st">&quot;xs&quot;</span>, <span class="st">&quot;lg&quot;</span>)</span>
-<span id="cb120-3"><a href="factors.html#cb120-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-4"><a href="factors.html#cb120-4" aria-hidden="true" tabindex="-1"></a><span class="co"># setting levels with specified order</span></span>
-<span id="cb120-5"><a href="factors.html#cb120-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ordered</span>(sizes, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;xs&quot;</span>, <span class="st">&quot;sm&quot;</span>, <span class="st">&quot;md&quot;</span>, <span class="st">&quot;lg&quot;</span>, <span class="st">&quot;xl&quot;</span>))</span>
-<span id="cb120-6"><a href="factors.html#cb120-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] sm xs xl lg xs lg</span>
-<span id="cb120-7"><a href="factors.html#cb120-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> xs <span class="sc">&lt;</span> sm <span class="sc">&lt;</span> md <span class="sc">&lt;</span> lg <span class="sc">&lt;</span> xl</span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="factors.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vector of sizes</span></span>
+<span id="cb124-2"><a href="factors.html#cb124-2" aria-hidden="true" tabindex="-1"></a>sizes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;sm&quot;</span>, <span class="st">&quot;xs&quot;</span>, <span class="st">&quot;xl&quot;</span>, <span class="st">&quot;lg&quot;</span>, <span class="st">&quot;xs&quot;</span>, <span class="st">&quot;lg&quot;</span>)</span>
+<span id="cb124-3"><a href="factors.html#cb124-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-4"><a href="factors.html#cb124-4" aria-hidden="true" tabindex="-1"></a><span class="co"># setting levels with specified order</span></span>
+<span id="cb124-5"><a href="factors.html#cb124-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ordered</span>(sizes, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;xs&quot;</span>, <span class="st">&quot;sm&quot;</span>, <span class="st">&quot;md&quot;</span>, <span class="st">&quot;lg&quot;</span>, <span class="st">&quot;xl&quot;</span>))</span>
+<span id="cb124-6"><a href="factors.html#cb124-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] sm xs xl lg xs lg</span>
+<span id="cb124-7"><a href="factors.html#cb124-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> xs <span class="sc">&lt;</span> sm <span class="sc">&lt;</span> md <span class="sc">&lt;</span> lg <span class="sc">&lt;</span> xl</span></code></pre></div>
 <p>Notice that when you create an ordinal factor, the given <code>levels</code> will always
 be considered in an increasing order. This means that the first value of <code>levels</code>
 will be the smallest one, then the second one, and so on. The last category,
 in turn, is taken as the one at the top of the scale.</p>
 <p>Now that we have several nominal and ordinal factors, we can compare the
 behavior of <code>is.ordered()</code> on two factors:</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="factors.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="co"># is.ordered() on an ordinal factor</span></span>
-<span id="cb121-2"><a href="factors.html#cb121-2" aria-hidden="true" tabindex="-1"></a>ordinal_str</span>
-<span id="cb121-3"><a href="factors.html#cb121-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] a b c b c a c b</span>
-<span id="cb121-4"><a href="factors.html#cb121-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> a <span class="sc">&lt;</span> b <span class="sc">&lt;</span> c</span>
-<span id="cb121-5"><a href="factors.html#cb121-5" aria-hidden="true" tabindex="-1"></a><span class="fu">is.ordered</span>(ordinal_str)</span>
-<span id="cb121-6"><a href="factors.html#cb121-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="cn">TRUE</span></span>
-<span id="cb121-7"><a href="factors.html#cb121-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb121-8"><a href="factors.html#cb121-8" aria-hidden="true" tabindex="-1"></a><span class="co"># is.ordered() on a nominal factor</span></span>
-<span id="cb121-9"><a href="factors.html#cb121-9" aria-hidden="true" tabindex="-1"></a>second_factor</span>
-<span id="cb121-10"><a href="factors.html#cb121-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] a b c b c a c b</span>
-<span id="cb121-11"><a href="factors.html#cb121-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> a b c</span>
-<span id="cb121-12"><a href="factors.html#cb121-12" aria-hidden="true" tabindex="-1"></a><span class="fu">is.ordered</span>(second_factor)</span>
-<span id="cb121-13"><a href="factors.html#cb121-13" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="cn">FALSE</span></span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="factors.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="co"># is.ordered() on an ordinal factor</span></span>
+<span id="cb125-2"><a href="factors.html#cb125-2" aria-hidden="true" tabindex="-1"></a>ordinal_str</span>
+<span id="cb125-3"><a href="factors.html#cb125-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] a b c b c a c b</span>
+<span id="cb125-4"><a href="factors.html#cb125-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> a <span class="sc">&lt;</span> b <span class="sc">&lt;</span> c</span>
+<span id="cb125-5"><a href="factors.html#cb125-5" aria-hidden="true" tabindex="-1"></a><span class="fu">is.ordered</span>(ordinal_str)</span>
+<span id="cb125-6"><a href="factors.html#cb125-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="cn">TRUE</span></span>
+<span id="cb125-7"><a href="factors.html#cb125-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-8"><a href="factors.html#cb125-8" aria-hidden="true" tabindex="-1"></a><span class="co"># is.ordered() on a nominal factor</span></span>
+<span id="cb125-9"><a href="factors.html#cb125-9" aria-hidden="true" tabindex="-1"></a>second_factor</span>
+<span id="cb125-10"><a href="factors.html#cb125-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] a b c b c a c b</span>
+<span id="cb125-11"><a href="factors.html#cb125-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> a b c</span>
+<span id="cb125-12"><a href="factors.html#cb125-12" aria-hidden="true" tabindex="-1"></a><span class="fu">is.ordered</span>(second_factor)</span>
+<span id="cb125-13"><a href="factors.html#cb125-13" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="cn">FALSE</span></span></code></pre></div>
 
 </div>
 </div>

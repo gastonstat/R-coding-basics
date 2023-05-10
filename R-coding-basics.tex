@@ -206,10 +206,10 @@ and Data Analysis in R:
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Web Technologies in R: A Short Introduction to Web Data Technologies in R}
+  \textbf{Web Technologies in R: A Short Introduction to Web Technologies in R}
 \end{itemize}
 
-\url{https://www.gastonsanchez.com/R-web-tech}
+\url{https://www.gastonsanchez.com/R-web-technologies}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -1048,7 +1048,14 @@ printed it displays the values shown below:
 > [1] 0.02 0.03 0.04
 \end{verbatim}
 
-\textbf{4)} Use the \texttt{c()} function to create a vector \texttt{years} of \textbf{integer}
+\textbf{4)} Use the function \texttt{names()} to give names to the elements of your vector \texttt{rates}. When printing \texttt{rates} you should get following output:
+
+\begin{verbatim}
+> savings  market  certif 
+>    0.02    0.03    0.04
+\end{verbatim}
+
+\textbf{5)} Use the \texttt{c()} function to create a vector \texttt{years} of \textbf{integer}
 values such that when printed it displays the values shown below. Recall
 that integer values are of the form \texttt{1L}.
 
@@ -1056,16 +1063,16 @@ that integer values are of the form \texttt{1L}.
 > [1] 2 3 4
 \end{verbatim}
 
-\textbf{5)} Use the \texttt{typeof()} function to inspect the data type of \texttt{accounts},
-\texttt{joint}, \texttt{rates}, and \texttt{years}. Confirm that their output is \texttt{character},
-\texttt{logical}, \texttt{double} and \texttt{integer}, respectively.
+\textbf{6)} Use the \texttt{typeof()} function to inspect the data type of \texttt{accounts},
+\texttt{joint}, \texttt{rates}, and \texttt{years}. Confirm that their output is \texttt{"character"},
+\texttt{"logical"}, \texttt{"double"} and \texttt{"integer"}, respectively.
 
-\textbf{6)} Use the \texttt{length()} function to inspect the length of \texttt{accounts},
+\textbf{7)} Use the \texttt{length()} function to inspect the length of \texttt{accounts},
 \texttt{joint}, \texttt{rates}, and \texttt{years}.
 
-\textbf{7)} Explain, with your own words, why vectors are said to be \textbf{atomic} objects.
+\textbf{8)} Explain, in your own words, why vectors are said to be \textbf{atomic} objects.
 
-\textbf{8)} Explain, with your own words, the difference between the output of
+\textbf{9)} Explain, in your own words, the difference between the output of
 functions \texttt{typeof()} and \texttt{mode()}---when applied to vectors.
 
 \hypertarget{vectors3}{%
@@ -1796,21 +1803,33 @@ following:
  [1] 1000  900  800  700  600  500  400  300  200  100
 \end{verbatim}
 
-\textbf{7)} Find out how to use the function \texttt{rep()} and the input vector \texttt{1:3} to
+\textbf{7)} Figure out how to use the colon operator \texttt{:} to create the following vector
+
+\begin{verbatim}
+ [1]  5  4  3  2  1  0 -1 -2 -3 -4 -5
+\end{verbatim}
+
+\textbf{8)} Figure out how to use the colon operator \texttt{:} to create the following vector
+
+\begin{verbatim}
+[1] 9.25 8.25 7.25 6.25 5.25 4.25 3.25 2.25 1.25
+\end{verbatim}
+
+\textbf{9)} Find out how to use the function \texttt{rep()} and the input vector \texttt{1:3} to
 create the following vector:
 
 \begin{verbatim}
 [1] 1 1 2 2 3 3
 \end{verbatim}
 
-\textbf{8)} Find out how to use the function \texttt{rep()} and the input vector \texttt{1:3} to
+\textbf{10)} Find out how to use the function \texttt{rep()} and the input vector \texttt{1:3} to
 create the following vector:
 
 \begin{verbatim}
 [1] 1 2 3 1 2 3
 \end{verbatim}
 
-\textbf{9)} Find out how to use the function \texttt{rep()} and the input vector \texttt{1:4} to
+\textbf{11)} Find out how to use the function \texttt{rep()} and the input vector \texttt{1:4} to
 create the following vector:
 
 \begin{verbatim}
@@ -2011,8 +2030,29 @@ root of all the amounts:
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{sqrt}\NormalTok{(amounts)}
+\SpecialCharTok{\textgreater{}}\NormalTok{  [}\DecValTok{1}\NormalTok{] }\FloatTok{31.93744} \FloatTok{32.25523} \FloatTok{32.57619} \FloatTok{32.90034} \FloatTok{33.22771} \FloatTok{33.55834} \FloatTok{33.89227} \FloatTok{34.22951}
+\SpecialCharTok{\textgreater{}}\NormalTok{  [}\DecValTok{9}\NormalTok{] }\FloatTok{34.57011} \FloatTok{34.91410}
 \end{Highlighting}
 \end{Shaded}
+
+Be careful. Not every function that takes in a vector is necessarily \emph{vectorized}.
+An example of a function that does not perform vectorization is the \texttt{mean()}
+function:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mean}\NormalTok{(amounts)}
+\SpecialCharTok{\textgreater{}}\NormalTok{ [}\DecValTok{1}\NormalTok{] }\FloatTok{1116.872}
+\end{Highlighting}
+\end{Shaded}
+
+As expected, \texttt{mean()} returns the average or mean value of all the numeric
+values in the vector \texttt{amounts}. It is not vectorized because it does compute
+the mean of every element of the input vector.
+
+So be careful, just because a function does a computation with an input vector,
+it does not mean that its vectorized. Vectorization happens when the same
+function or action is applied to every element of a vector.
 
 \hypertarget{why-should-you-care-about-vectorization}{%
 \subsubsection*{Why should you care about vectorization?}\label{why-should-you-care-about-vectorization}}
@@ -2072,9 +2112,9 @@ The conversion from dollars to thousands-of-dollars requires this operation:
 vectors of different length: \texttt{amounts} has 10 elements, whereas \texttt{1000} is a
 one-element vector. So how does R know what to do in this case?
 
-Well, R uses the \textbf{recycling rule}, which takes the shorter vector (in this
-case \texttt{1000}) and recycles its content to form a temporary vector that matches
-the length of the longer vector (i.e.~\texttt{amounts}).
+Well, R uses its \textbf{recycling principle}, which takes the shorter vector (in
+this case \texttt{1000}) and recycles its content to form a temporary vector that
+matches the length of the longer vector (i.e.~\texttt{amounts}).
 
 \hypertarget{another-recycling-example}{%
 \subsubsection*{Another recycling example}\label{another-recycling-example}}
@@ -2137,7 +2177,7 @@ In pictures, we have the following diagram:
 
 }
 
-\caption{Diagram depicting vectors of different lengths.}\label{fig:unnamed-chunk-74}
+\caption{Diagram depicting vectors of different lengths.}\label{fig:unnamed-chunk-77}
 \end{figure}
 
 How does R take care of this?
@@ -2157,15 +2197,24 @@ As you can tell, this is an example of vectorization \& recycling rules in R.
 
 In addition to creating vectors, you should also learn how to do some basic
 manipulation of vectors. The most common type of manipulation is called
-\emph{subsetting}, also known as \emph{indexing} or \emph{subscripting}, which refers to
-extracting elements of a vector (or another R object). To do so, you use what
-I like to call \textbf{bracket notation}. This implies using (square) brackets \texttt{{[}\ {]}}
-to get access to the elements of a vector.
+\emph{subsetting}, also known as \emph{indexing} or \emph{subscripting}, which we use to
+extract and also replace elements of a vector (or another R object). To do so,
+you use what I like to call \textbf{bracket notation}. This implies using (square)
+brackets \texttt{{[}\ {]}} to get access to the elements of a vector.
 
 To subset a vector, you type the name of the vector, followed by an opening
 and a closing bracket. Inside the brackets you specify an indexing vector
 which could be a numeric vector, a logical vector, and sometimes a character
 vector. Let's see these options in more detail in the following subsections.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.45\linewidth]{images/vectors/obj-vector-brackets1} 
+
+}
+
+\caption{Use of brackets for subscripting vectors.}\label{fig:unnamed-chunk-79}
+\end{figure}
 
 \hypertarget{numeric-subsetting}{%
 \subsection{Numeric Subsetting}\label{numeric-subsetting}}
@@ -2423,10 +2472,10 @@ vectors are:
 \hypertarget{exercises-3}{%
 \section{Exercises}\label{exercises-3}}
 
-\textbf{1)} Explain, with your own words, the concept of \emph{vectorization} a.k.a.
+\textbf{1)} Explain, in your own words, the concept of \emph{vectorization} a.k.a.
 vectorized operations in R.
 
-\textbf{2)} Explain, with your own words, the \emph{recycling principle} in R.
+\textbf{2)} Explain, in your own words, the \emph{recycling principle} in R.
 
 \textbf{3)} Write 2 different R commands to return the first five elements of a
 vector \texttt{x} (assume \texttt{x} has more than 5 elements).
@@ -2452,7 +2501,24 @@ the vector \texttt{y}.
   \texttt{x(1:5)}
 \end{enumerate}
 
-\textbf{6)} Consider the following code to obtain vectors \texttt{name} and \texttt{mpg} from the
+\textbf{6)} For each the following parts, state whether the given function or
+operator is vectorized, and provide a code example to support your claim.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  \texttt{length()}
+\item
+  \texttt{*}
+\item
+  \texttt{log()}
+\item
+  \texttt{max()}
+\item
+  \texttt{trunc()}
+\end{enumerate}
+
+\textbf{7)} Consider the following code to obtain vectors \texttt{name} and \texttt{mpg} from the
 data set \texttt{mtcars} that contains data about 32 automobiles (1973--74 models).
 
 \begin{Shaded}
@@ -2479,7 +2545,7 @@ Use \texttt{seq()}, and bracket notation, to subset (extract):
   \texttt{rev()} function is your friend.
 \end{enumerate}
 
-\textbf{7)} Consider the following code to obtain vectors \texttt{name}, \texttt{mpg} and \texttt{cyl}
+\textbf{8)} Consider the following code to obtain vectors \texttt{name}, \texttt{mpg} and \texttt{cyl}
 from the data set \texttt{mtcars} that contains data about 32 automobiles (1973--74
 models).
 
@@ -3357,7 +3423,7 @@ diagram in terms of their number of dimensions.
 
 }
 
-\caption{Triad of atomic data objects in R.}\label{fig:unnamed-chunk-101}
+\caption{Triad of atomic data objects in R.}\label{fig:unnamed-chunk-105}
 \end{figure}
 
 Personally, I prefer to reserve the term \texttt{array} for three or more dimensional
@@ -3742,29 +3808,29 @@ vector \texttt{x\ =\ letters{[}1:15{]}}:
 "c"  "f"  "i"  "l"  "o"
 \end{verbatim}
 
-\textbf{2)} Find out how to use the functions \texttt{rownames()} and \texttt{colnames()} to give
-names to the rows and the columns of matrix \texttt{mat1}. Choose any names you want,
-and display matrix \texttt{mat1}
-
-\textbf{3)} Use \texttt{matrix()} to create a matrix \texttt{mat2} (see below) from the input
-vector \texttt{y\ =\ month.name}:
+\textbf{2)} Look at the documentation of \texttt{matrix()} and find how to use it for
+obtaining the matrix \texttt{mat2} (see below) from the input vector \texttt{x\ =\ letters{[}1:15{]}}:
 
 \begin{verbatim}
 # mat2
+"a"  "b"  "c"  "d"  "e" 
+"f"  "g"  "h"  "i"  "j" 
+"k"  "l"  "m"  "n"  "o" 
+\end{verbatim}
+
+\textbf{3)} Find out how to use the functions \texttt{rownames()} and \texttt{colnames()} to give
+names to the rows and the columns of matrix \texttt{mat1}. Choose any names you want,
+and display matrix \texttt{mat1}.
+
+\textbf{4)} Use \texttt{matrix()} to create a matrix \texttt{mat3} (see below) from the input
+vector \texttt{y\ =\ month.name}:
+
+\begin{verbatim}
+# mat3
 "January" "February" "March"    
 "April"   "May"      "June"     
 "July"    "August"   "September"
 "October" "November" "December" 
-\end{verbatim}
-
-\textbf{4)} Use \texttt{matrix()}---and its recycling principle---to create a matrix \texttt{mat3}
-(see below) from the input vector \texttt{a\ =\ c(3,\ 6,\ 9)}:
-
-\begin{verbatim}
-# mat3
-3    3    3
-6    6    6
-9    9    9
 \end{verbatim}
 
 \textbf{5)} Use \texttt{matrix()}---and its recycling principle---to create a matrix \texttt{mat4}
@@ -3775,12 +3841,22 @@ vector \texttt{y\ =\ month.name}:
 3    3    3
 6    6    6
 9    9    9
+\end{verbatim}
+
+\textbf{6)} Use \texttt{matrix()}---and its recycling principle---to create a matrix \texttt{mat5}
+(see below) from the input vector \texttt{a\ =\ c(3,\ 6,\ 9)}:
+
+\begin{verbatim}
+# mat5
+3    3    3
+6    6    6
+9    9    9
 3    3    3
 6    6    6
 9    9    9
 \end{verbatim}
 
-\textbf{6)} Consider the following vectors \texttt{a} and \texttt{b}
+\textbf{7)} Consider the following vectors \texttt{a} and \texttt{b}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3789,16 +3865,19 @@ vector \texttt{y\ =\ month.name}:
 \end{Highlighting}
 \end{Shaded}
 
-Use the row-binding function \texttt{rbind()}, with inputs \texttt{a} and \texttt{b}, to create the
-matrix displayed below:
+Use the row-binding function \texttt{rbind()}, with inputs \texttt{a} and \texttt{b}, to create a
+matrix \texttt{mat6} displayed below:
 
-\begin{verbatim}
->      [,1] [,2] [,3]
-> [1,]    1    3    5
-> [2,]    2    4    6
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\# mat6}
+\NormalTok{\textgreater{}      [,1] [,2] [,3]}
+\NormalTok{\textgreater{} [1,]    1    3    5}
+\NormalTok{\textgreater{} [2,]    2    4    6}
+\end{Highlighting}
+\end{Shaded}
 
-\textbf{7)} Consider the following vectors \texttt{u} and \texttt{v}
+\textbf{8)} Consider the following vectors \texttt{u} and \texttt{v}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3808,17 +3887,20 @@ matrix displayed below:
 \end{Shaded}
 
 Use the column-binding function \texttt{cbind()}, with inputs \texttt{u} and \texttt{v}, to create
-the matrix displayed below:
+a matrix \texttt{mat7} displayed below:
 
-\begin{verbatim}
->      [,1] [,2] [,3]
-> [1,]    2    1    2
-> [2,]    4    3    4
-> [3,]    6    5    6
-> [4,]    8    7    8
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\# mat7}
+\NormalTok{\textgreater{}      [,1] [,2] [,3]}
+\NormalTok{\textgreater{} [1,]    2    1    2}
+\NormalTok{\textgreater{} [2,]    4    3    4}
+\NormalTok{\textgreater{} [3,]    6    5    6}
+\NormalTok{\textgreater{} [4,]    8    7    8}
+\end{Highlighting}
+\end{Shaded}
 
-\textbf{8)} Find out how to use the \texttt{diag()} function to create an \textbf{identity matrix}
+\textbf{9)} Find out how to use the \texttt{diag()} function to create an \textbf{identity matrix}
 of dimensions 4 rows and 4 columns (see below). BTW: An identity matrix is a
 matrix with the same number of rows and columns, has ones in the diagonal,
 and zeroes off-diagonal.
@@ -3829,6 +3911,10 @@ and zeroes off-diagonal.
 0    0    1    0
 0    0    0    1
 \end{verbatim}
+
+\textbf{10)} Refer to matrices \texttt{mat4} and \texttt{mat7}. Use both \texttt{cbind()} and \texttt{rbind()}
+to attempt binding these two matrices. If one of the binding operations fails,
+explain why.
 
 \hypertarget{matrices2}{%
 \chapter{More About Matrices}\label{matrices2}}
@@ -3923,7 +4009,7 @@ working with data frames in this form: \texttt{mat{[}\ ,\ {]}}.
 
 }
 
-\caption{Bracket notation in matrices}\label{fig:unnamed-chunk-121}
+\caption{Bracket notation in matrices}\label{fig:unnamed-chunk-125}
 \end{figure}
 
 In other words, you have to specify values inside the
@@ -3939,7 +4025,7 @@ brackets for the 1st index, and the 2nd index: \texttt{mat{[}index1,\ index2{]}}
 
 }
 
-\caption{Several ways to select cells}\label{fig:unnamed-chunk-122}
+\caption{Several ways to select cells}\label{fig:unnamed-chunk-126}
 \end{figure}
 
 \begin{Shaded}
@@ -3969,7 +4055,7 @@ numeric indices:
 
 }
 
-\caption{Several ways to exclude cells}\label{fig:unnamed-chunk-124}
+\caption{Several ways to exclude cells}\label{fig:unnamed-chunk-128}
 \end{figure}
 
 \hypertarget{selecting-rows}{%
@@ -3982,7 +4068,7 @@ numeric indices:
 
 }
 
-\caption{Several ways to select rows}\label{fig:unnamed-chunk-125}
+\caption{Several ways to select rows}\label{fig:unnamed-chunk-129}
 \end{figure}
 
 If no value is specified for \texttt{index1} then all rows are included. Likewise,
@@ -4008,7 +4094,7 @@ if no value is specified for \texttt{index2} then all columns are included.
 
 }
 
-\caption{Several ways to exclude rows}\label{fig:unnamed-chunk-127}
+\caption{Several ways to exclude rows}\label{fig:unnamed-chunk-131}
 \end{figure}
 
 \hypertarget{selecting-columns}{%
@@ -4021,7 +4107,7 @@ if no value is specified for \texttt{index2} then all columns are included.
 
 }
 
-\caption{Several ways to select columns}\label{fig:unnamed-chunk-128}
+\caption{Several ways to select columns}\label{fig:unnamed-chunk-132}
 \end{figure}
 
 \begin{Shaded}
@@ -4051,7 +4137,7 @@ if no value is specified for \texttt{index2} then all columns are included.
 
 }
 
-\caption{Several ways to exclude columns}\label{fig:unnamed-chunk-130}
+\caption{Several ways to exclude columns}\label{fig:unnamed-chunk-134}
 \end{figure}
 
 \hypertarget{adding-a-column}{%
@@ -4346,7 +4432,7 @@ list with the following conceptual diagram.
 
 }
 
-\caption{A list containing three unnamed elements (numeric vectors of length 3)}\label{fig:unnamed-chunk-141}
+\caption{A list containing three unnamed elements (numeric vectors of length 3)}\label{fig:unnamed-chunk-145}
 \end{figure}
 
 Our intention with the depicted list as a set of discontinuous cells is to
@@ -4407,7 +4493,7 @@ The conceptual diagram in this case could look like this:
 
 }
 
-\caption{A list with named elements (numeric vectors of length 3)}\label{fig:unnamed-chunk-144}
+\caption{A list with named elements (numeric vectors of length 3)}\label{fig:unnamed-chunk-148}
 \end{figure}
 
 As we just said, the elements of a list can be any kind of R object. For
@@ -4478,7 +4564,7 @@ double brackets (e.g.~\texttt{lis{[}{[}1{]}{]}}).
 
 }
 
-\caption{Bracket notation with lists}\label{fig:unnamed-chunk-147}
+\caption{Bracket notation with lists}\label{fig:unnamed-chunk-151}
 \end{figure}
 
 \hypertarget{single-brackets}{%
@@ -4515,7 +4601,7 @@ a vector, but this vector is still \emph{inside} its ``box''.
 
 }
 
-\caption{Use single brackets to select an element}\label{fig:unnamed-chunk-149}
+\caption{Use single brackets to select an element}\label{fig:unnamed-chunk-153}
 \end{figure}
 
 \hypertarget{double-brackets}{%
@@ -4557,7 +4643,7 @@ double brackets followed by single brackets
 
 }
 
-\caption{Use double brackets to extract an element}\label{fig:unnamed-chunk-152}
+\caption{Use double brackets to extract an element}\label{fig:unnamed-chunk-156}
 \end{figure}
 
 \hypertarget{dollar-signs}{%
@@ -4572,7 +4658,7 @@ extracting \textbf{named elements} using the dollar sign \textbf{\texttt{\$}}
 
 }
 
-\caption{Dollar notation with lists}\label{fig:unnamed-chunk-153}
+\caption{Dollar notation with lists}\label{fig:unnamed-chunk-157}
 \end{figure}
 
 Let's use the named version of \texttt{lis}:
@@ -4935,7 +5021,7 @@ that does not make much sense.
 
 }
 
-\caption{Abstract view of a data.frame}\label{fig:unnamed-chunk-166}
+\caption{Abstract view of a data.frame}\label{fig:unnamed-chunk-170}
 \end{figure}
 
 From the data manipulation point of view, data frames behave like a hybrid
@@ -5240,7 +5326,7 @@ working with data frames in this form: \texttt{dat{[}\ ,\ {]}}.
 
 }
 
-\caption{Bracket notation in data frames}\label{fig:unnamed-chunk-173}
+\caption{Bracket notation in data frames}\label{fig:unnamed-chunk-177}
 \end{figure}
 
 In other words, you have to specify values inside the
@@ -5256,7 +5342,7 @@ brackets for the 1st index, and the 2nd index: \texttt{dat{[}index1,\ index2{]}}
 
 }
 
-\caption{Several ways to select cells}\label{fig:unnamed-chunk-174}
+\caption{Several ways to select cells}\label{fig:unnamed-chunk-178}
 \end{figure}
 
 \begin{Shaded}
@@ -5286,7 +5372,7 @@ numeric indices:
 
 }
 
-\caption{Several ways to exclude cells}\label{fig:unnamed-chunk-176}
+\caption{Several ways to exclude cells}\label{fig:unnamed-chunk-180}
 \end{figure}
 
 \hypertarget{selecting-rows-1}{%
@@ -5299,7 +5385,7 @@ numeric indices:
 
 }
 
-\caption{Several ways to select rows}\label{fig:unnamed-chunk-177}
+\caption{Several ways to select rows}\label{fig:unnamed-chunk-181}
 \end{figure}
 
 If no value is specified for \texttt{index1} then all rows are included. Likewise,
@@ -5325,7 +5411,7 @@ if no value is specified for \texttt{index2} then all columns are included.
 
 }
 
-\caption{Several ways to exclude rows}\label{fig:unnamed-chunk-179}
+\caption{Several ways to exclude rows}\label{fig:unnamed-chunk-183}
 \end{figure}
 
 \hypertarget{selecting-columns-1}{%
@@ -5338,7 +5424,7 @@ if no value is specified for \texttt{index2} then all columns are included.
 
 }
 
-\caption{Several ways to select columns}\label{fig:unnamed-chunk-180}
+\caption{Several ways to select columns}\label{fig:unnamed-chunk-184}
 \end{figure}
 
 \begin{Shaded}
@@ -5362,7 +5448,7 @@ if no value is specified for \texttt{index2} then all columns are included.
 
 }
 
-\caption{Several ways to exclude columns}\label{fig:unnamed-chunk-182}
+\caption{Several ways to exclude columns}\label{fig:unnamed-chunk-186}
 \end{figure}
 
 \hypertarget{more-options-to-access-columns}{%
@@ -5375,7 +5461,7 @@ if no value is specified for \texttt{index2} then all columns are included.
 
 }
 
-\caption{Other options to select columns of a data frame}\label{fig:unnamed-chunk-183}
+\caption{Other options to select columns of a data frame}\label{fig:unnamed-chunk-187}
 \end{figure}
 
 The dollar sign also works for selecting a column of a data frame
@@ -5863,7 +5949,7 @@ function \texttt{plot()}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.7\linewidth]{R-coding-basics_files/figure-latex/unnamed-chunk-203-1} \end{center}
+\begin{center}\includegraphics[width=0.7\linewidth]{R-coding-basics_files/figure-latex/unnamed-chunk-207-1} \end{center}
 
 We can specify values for its large number of arguments. For instance, we
 can set better axis names with \texttt{xlab} and \texttt{ylab}
@@ -5877,7 +5963,7 @@ can set better axis names with \texttt{xlab} and \texttt{ylab}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.7\linewidth]{R-coding-basics_files/figure-latex/unnamed-chunk-204-1} \end{center}
+\begin{center}\includegraphics[width=0.7\linewidth]{R-coding-basics_files/figure-latex/unnamed-chunk-208-1} \end{center}
 
 Likewise, we can add a title with the \texttt{main} argument:
 
@@ -5890,7 +5976,7 @@ Likewise, we can add a title with the \texttt{main} argument:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.7\linewidth]{R-coding-basics_files/figure-latex/unnamed-chunk-205-1} \end{center}
+\begin{center}\includegraphics[width=0.7\linewidth]{R-coding-basics_files/figure-latex/unnamed-chunk-209-1} \end{center}
 
 Or we can change the range of x-axis as well as the range of the y-axis
 with \texttt{xlim} and \texttt{ylim}, respectively:
@@ -5905,7 +5991,7 @@ with \texttt{xlim} and \texttt{ylim}, respectively:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.7\linewidth]{R-coding-basics_files/figure-latex/unnamed-chunk-206-1} \end{center}
+\begin{center}\includegraphics[width=0.7\linewidth]{R-coding-basics_files/figure-latex/unnamed-chunk-210-1} \end{center}
 
 Here's a more sophisticated example
 
@@ -6140,7 +6226,7 @@ from a matrix)
 
 }
 
-\caption{One-variable objects can take multiple forms.}\label{fig:unnamed-chunk-208}
+\caption{One-variable objects can take multiple forms.}\label{fig:unnamed-chunk-212}
 \end{figure}
 
 Here's an example:
@@ -6244,7 +6330,7 @@ from a matrix)
 
 }
 
-\caption{One-variable objects can take multiple forms.}\label{fig:unnamed-chunk-209}
+\caption{One-variable objects can take multiple forms.}\label{fig:unnamed-chunk-213}
 \end{figure}
 
 Here's an example:
@@ -6265,9 +6351,9 @@ Here's an example:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.85\linewidth]{R-coding-basics_files/figure-latex/unnamed-chunk-210-1} \end{center}
+\begin{center}\includegraphics[width=0.85\linewidth]{R-coding-basics_files/figure-latex/unnamed-chunk-214-1} \end{center}
 
-\begin{center}\includegraphics[width=0.85\linewidth]{R-coding-basics_files/figure-latex/unnamed-chunk-211-1} \end{center}
+\begin{center}\includegraphics[width=0.85\linewidth]{R-coding-basics_files/figure-latex/unnamed-chunk-215-1} \end{center}
 
 \hypertarget{example-plots-of-two-variables}{%
 \subsection{Example: Plots of two variables}\label{example-plots-of-two-variables}}
@@ -6294,7 +6380,7 @@ Here's an example:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.8\linewidth]{R-coding-basics_files/figure-latex/unnamed-chunk-213-1} \end{center}
+\begin{center}\includegraphics[width=0.8\linewidth]{R-coding-basics_files/figure-latex/unnamed-chunk-217-1} \end{center}
 
 \hypertarget{more-high-level-graphics-of-two-variables}{%
 \subsection{More high-level graphics of two variables}\label{more-high-level-graphics-of-two-variables}}
@@ -6329,7 +6415,7 @@ Function & Data & Graphic \\
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.75\linewidth]{R-coding-basics_files/figure-latex/unnamed-chunk-214-1} \end{center}
+\begin{center}\includegraphics[width=0.75\linewidth]{R-coding-basics_files/figure-latex/unnamed-chunk-218-1} \end{center}
 
 \hypertarget{smooth-scatter-plot}{%
 \subsubsection*{Smooth scatter plot}\label{smooth-scatter-plot}}
@@ -6342,7 +6428,7 @@ Function & Data & Graphic \\
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.75\linewidth]{R-coding-basics_files/figure-latex/unnamed-chunk-215-1} \end{center}
+\begin{center}\includegraphics[width=0.75\linewidth]{R-coding-basics_files/figure-latex/unnamed-chunk-219-1} \end{center}
 
 \hypertarget{boxplots}{%
 \subsubsection*{Boxplots}\label{boxplots}}
@@ -6355,7 +6441,7 @@ Function & Data & Graphic \\
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.75\linewidth]{R-coding-basics_files/figure-latex/unnamed-chunk-216-1} \end{center}
+\begin{center}\includegraphics[width=0.75\linewidth]{R-coding-basics_files/figure-latex/unnamed-chunk-220-1} \end{center}
 
 \hypertarget{barplot}{%
 \subsubsection*{Barplot}\label{barplot}}
@@ -6369,7 +6455,7 @@ Function & Data & Graphic \\
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.75\linewidth]{R-coding-basics_files/figure-latex/unnamed-chunk-217-1} \end{center}
+\begin{center}\includegraphics[width=0.75\linewidth]{R-coding-basics_files/figure-latex/unnamed-chunk-221-1} \end{center}
 
 \hypertarget{conditional-density-plot}{%
 \subsubsection*{Conditional Density Plot}\label{conditional-density-plot}}
@@ -6382,7 +6468,7 @@ Function & Data & Graphic \\
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.75\linewidth]{R-coding-basics_files/figure-latex/unnamed-chunk-218-1} \end{center}
+\begin{center}\includegraphics[width=0.75\linewidth]{R-coding-basics_files/figure-latex/unnamed-chunk-222-1} \end{center}
 
 \hypertarget{graphics3}{%
 \chapter{Plots from Scratch}\label{graphics3}}
@@ -7118,7 +7204,7 @@ Consider the simplest version of the formula to calculate the
 \textbf{Present Value} given by:
 
 \[
-\text{PV} = \frac{\text{FV}}{(1 + r)^t}
+\text{PV} = \frac{\text{FV}}{(1 + r)^n}
 \]
 
 \begin{itemize}
@@ -7129,7 +7215,7 @@ Consider the simplest version of the formula to calculate the
 \item
   \(r\) = rate of return (e.g.~annual rate of return)
 \item
-  \(t\) = number of periods (e.g.~number of years)
+  \(n\) = number of periods (e.g.~number of years)
 \end{itemize}
 
 Write a function \texttt{present\_value()} to compute the Present Value based on
@@ -7476,7 +7562,7 @@ diagram below, with a generic rate of return:
 
 }
 
-\caption{Timeline of an ordinary annuity: contributions made at the end of each year.}\label{fig:unnamed-chunk-255}
+\caption{Timeline of an ordinary annuity: contributions made at the end of each year.}\label{fig:unnamed-chunk-259}
 \end{figure}
 
 The balance in your savings account at the end of year 3 is given by:
@@ -7557,7 +7643,7 @@ generic rate of return:
 
 }
 
-\caption{Timeline of an annuity due: contributions made at the beginning of each year.}\label{fig:unnamed-chunk-258}
+\caption{Timeline of an annuity due: contributions made at the beginning of each year.}\label{fig:unnamed-chunk-262}
 \end{figure}
 
 The balance in your savings account at the end of year 3 is given by:
@@ -8091,7 +8177,7 @@ but the formula can be easily generalized to any number of years.
 
 }
 
-\caption{Timeline of an ordinary annuity}\label{fig:unnamed-chunk-278}
+\caption{Timeline of an ordinary annuity}\label{fig:unnamed-chunk-282}
 \end{figure}
 
 The starting point is the following equation:
@@ -8201,7 +8287,7 @@ comes from amateur investor Joachim Klement
 
 }
 
-\caption{Distribution of Annual Returns (by Joachim Klement)}\label{fig:unnamed-chunk-280}
+\caption{Distribution of Annual Returns (by Joachim Klement)}\label{fig:unnamed-chunk-284}
 \end{figure}
 
 As you can tell, on an annual scale, market returns are basically random and
@@ -8247,7 +8333,7 @@ annual returns, versus a plausible scenario with variable returns in each year.
 
 }
 
-\caption{Rates of Return: Fixed -vs- Variable}\label{fig:unnamed-chunk-281}
+\caption{Rates of Return: Fixed -vs- Variable}\label{fig:unnamed-chunk-285}
 \end{figure}
 
 \hypertarget{simulating-normal-random-numbers}{%
@@ -8289,7 +8375,7 @@ year horizon. For each yar, we need a random rate of return \(r_t\) (\(t\) = 1, 
 
 }
 
-\caption{Random rates of return following a normal distribution}\label{fig:unnamed-chunk-284}
+\caption{Random rates of return following a normal distribution}\label{fig:unnamed-chunk-288}
 \end{figure}
 
 As we mentioned, we can use \texttt{rnorm()} to generate three random rates of return
@@ -9993,7 +10079,7 @@ of common examples for importing and exporting some resources.
 
 }
 
-\caption{Conceptual diagram illustrating some importing and exporting resources.}\label{fig:unnamed-chunk-354}
+\caption{Conceptual diagram illustrating some importing and exporting resources.}\label{fig:unnamed-chunk-358}
 \end{figure}
 
 Perhaps the most common type of importing operation is when we have some data
@@ -10066,7 +10152,7 @@ data-export functions.
 
 }
 
-\caption{Conceptual diagram illustrating generic import and export tasks.}\label{fig:unnamed-chunk-358}
+\caption{Conceptual diagram illustrating generic import and export tasks.}\label{fig:unnamed-chunk-362}
 \end{figure}
 
 As I said, the primary argument to the import and export functions is the
@@ -10226,7 +10312,7 @@ done? How can a data table be stored in a text file?
 
 }
 
-\caption{How are data tables stored in text files?}\label{fig:unnamed-chunk-360}
+\caption{How are data tables stored in text files?}\label{fig:unnamed-chunk-364}
 \end{figure}
 
 You may not have thought about this before. This was certainly the case for
@@ -10900,7 +10986,7 @@ external files.
 
 }
 
-\caption{Conceptual diagram illustrating some exporting resources}\label{fig:unnamed-chunk-381}
+\caption{Conceptual diagram illustrating some exporting resources}\label{fig:unnamed-chunk-385}
 \end{figure}
 
 \hypertarget{exporting-tables}{%
@@ -11200,7 +11286,7 @@ For example, say you have a plot like the following one:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.7\linewidth]{R-coding-basics_files/figure-latex/unnamed-chunk-392-1} \end{center}
+\begin{center}\includegraphics[width=0.7\linewidth]{R-coding-basics_files/figure-latex/unnamed-chunk-396-1} \end{center}
 
 To export the graphic into a PNG image file, we use \texttt{png()} and \texttt{dev.off()}
 

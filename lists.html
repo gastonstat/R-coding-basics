@@ -28,7 +28,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
-  
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
 <link rel="prev" href="matrices2.html"/>
 <link rel="next" href="dataframes.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -500,12 +500,12 @@ that is, I would like to have an R object with four elements</p>
 </ul>
 <p>What kind of object could I use? With all the things we’ve discussed so far,
 a natural decision would be to store these values in a vector:</p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="lists.html#cb155-1" aria-hidden="true" tabindex="-1"></a>investment1_specs <span class="ot">=</span> <span class="fu">c</span>(</span>
-<span id="cb155-2"><a href="lists.html#cb155-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;deposit&quot;</span> <span class="ot">=</span> <span class="dv">1000</span>,      <span class="co"># double</span></span>
-<span id="cb155-3"><a href="lists.html#cb155-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;rate&quot;</span> <span class="ot">=</span> <span class="fl">0.02</span>,         <span class="co"># double</span></span>
-<span id="cb155-4"><a href="lists.html#cb155-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;years&quot;</span> <span class="ot">=</span> 4L,          <span class="co"># integer</span></span>
-<span id="cb155-5"><a href="lists.html#cb155-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;account&quot;</span> <span class="ot">=</span> <span class="st">&quot;savings&quot;</span>  <span class="co"># character</span></span>
-<span id="cb155-6"><a href="lists.html#cb155-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="lists.html#cb160-1" aria-hidden="true" tabindex="-1"></a>investment1_specs <span class="ot">=</span> <span class="fu">c</span>(</span>
+<span id="cb160-2"><a href="lists.html#cb160-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;deposit&quot;</span> <span class="ot">=</span> <span class="dv">1000</span>,      <span class="co"># double</span></span>
+<span id="cb160-3"><a href="lists.html#cb160-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;rate&quot;</span> <span class="ot">=</span> <span class="fl">0.02</span>,         <span class="co"># double</span></span>
+<span id="cb160-4"><a href="lists.html#cb160-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;years&quot;</span> <span class="ot">=</span> 4L,          <span class="co"># integer</span></span>
+<span id="cb160-5"><a href="lists.html#cb160-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;account&quot;</span> <span class="ot">=</span> <span class="st">&quot;savings&quot;</span>  <span class="co"># character</span></span>
+<span id="cb160-6"><a href="lists.html#cb160-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>Notice that I’m creating <code>investment1_specs</code> by mixing elements of different
 data types: a couple of double types, an integer type, and a character type.
 Thus, a very pertinent question is: What kind of vector is <code>investment1_specs</code>?
@@ -515,9 +515,9 @@ trouble. If that is not the case then go back to chapter
 <a href="vectors3.html#vectors3">Creating Vectors</a> and reread the section on <a href="vectors3.html#coercion">Coercion</a>.</p>
 <p>One simple way to confirm that <code>investment1_specs</code> is indeed of <code>"character"</code>
 type is by simply inspecting its contents:</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="lists.html#cb156-1" aria-hidden="true" tabindex="-1"></a>investment1_specs</span>
-<span id="cb156-2"><a href="lists.html#cb156-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>   deposit      rate     years   account </span>
-<span id="cb156-3"><a href="lists.html#cb156-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>    <span class="st">&quot;1000&quot;</span>    <span class="st">&quot;0.02&quot;</span>       <span class="st">&quot;4&quot;</span> <span class="st">&quot;savings&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="lists.html#cb161-1" aria-hidden="true" tabindex="-1"></a>investment1_specs</span>
+<span id="cb161-2"><a href="lists.html#cb161-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>   deposit      rate     years   account </span>
+<span id="cb161-3"><a href="lists.html#cb161-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>    <span class="st">&quot;1000&quot;</span>    <span class="st">&quot;0.02&quot;</span>       <span class="st">&quot;4&quot;</span> <span class="st">&quot;savings&quot;</span></span></code></pre></div>
 <p>While the <code>investment1_specs</code> object “technically” is storing the specifications
 of the savings account, all the initial numeric values have been coerced into
 characters, which may not be the best way to store this information. The
@@ -539,25 +539,25 @@ of the first investment</p>
 </ul>
 <p>Instead of using a vector, we can create a list to store these values. All we
 have to do is use <code>list()</code> instead of <code>c()</code>:</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="lists.html#cb157-1" aria-hidden="true" tabindex="-1"></a>specs1 <span class="ot">=</span> <span class="fu">list</span>(</span>
-<span id="cb157-2"><a href="lists.html#cb157-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;deposit&quot;</span> <span class="ot">=</span> <span class="dv">1000</span>,      <span class="co"># double</span></span>
-<span id="cb157-3"><a href="lists.html#cb157-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;rate&quot;</span> <span class="ot">=</span> <span class="fl">0.02</span>,         <span class="co"># double</span></span>
-<span id="cb157-4"><a href="lists.html#cb157-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;years&quot;</span> <span class="ot">=</span> 4L,          <span class="co"># integer</span></span>
-<span id="cb157-5"><a href="lists.html#cb157-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;account&quot;</span> <span class="ot">=</span> <span class="st">&quot;savings&quot;</span>  <span class="co"># character</span></span>
-<span id="cb157-6"><a href="lists.html#cb157-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb157-7"><a href="lists.html#cb157-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb157-8"><a href="lists.html#cb157-8" aria-hidden="true" tabindex="-1"></a>specs1</span>
-<span id="cb157-9"><a href="lists.html#cb157-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="er">$</span>deposit</span>
-<span id="cb157-10"><a href="lists.html#cb157-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1000</span></span>
-<span id="cb157-11"><a href="lists.html#cb157-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb157-12"><a href="lists.html#cb157-12" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="er">$</span>rate</span>
-<span id="cb157-13"><a href="lists.html#cb157-13" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">0.02</span></span>
-<span id="cb157-14"><a href="lists.html#cb157-14" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb157-15"><a href="lists.html#cb157-15" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="er">$</span>years</span>
-<span id="cb157-16"><a href="lists.html#cb157-16" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">4</span></span>
-<span id="cb157-17"><a href="lists.html#cb157-17" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb157-18"><a href="lists.html#cb157-18" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="er">$</span>account</span>
-<span id="cb157-19"><a href="lists.html#cb157-19" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;savings&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="lists.html#cb162-1" aria-hidden="true" tabindex="-1"></a>specs1 <span class="ot">=</span> <span class="fu">list</span>(</span>
+<span id="cb162-2"><a href="lists.html#cb162-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;deposit&quot;</span> <span class="ot">=</span> <span class="dv">1000</span>,      <span class="co"># double</span></span>
+<span id="cb162-3"><a href="lists.html#cb162-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;rate&quot;</span> <span class="ot">=</span> <span class="fl">0.02</span>,         <span class="co"># double</span></span>
+<span id="cb162-4"><a href="lists.html#cb162-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;years&quot;</span> <span class="ot">=</span> 4L,          <span class="co"># integer</span></span>
+<span id="cb162-5"><a href="lists.html#cb162-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;account&quot;</span> <span class="ot">=</span> <span class="st">&quot;savings&quot;</span>  <span class="co"># character</span></span>
+<span id="cb162-6"><a href="lists.html#cb162-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb162-7"><a href="lists.html#cb162-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb162-8"><a href="lists.html#cb162-8" aria-hidden="true" tabindex="-1"></a>specs1</span>
+<span id="cb162-9"><a href="lists.html#cb162-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="er">$</span>deposit</span>
+<span id="cb162-10"><a href="lists.html#cb162-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1000</span></span>
+<span id="cb162-11"><a href="lists.html#cb162-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb162-12"><a href="lists.html#cb162-12" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="er">$</span>rate</span>
+<span id="cb162-13"><a href="lists.html#cb162-13" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">0.02</span></span>
+<span id="cb162-14"><a href="lists.html#cb162-14" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb162-15"><a href="lists.html#cb162-15" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="er">$</span>years</span>
+<span id="cb162-16"><a href="lists.html#cb162-16" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">4</span></span>
+<span id="cb162-17"><a href="lists.html#cb162-17" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb162-18"><a href="lists.html#cb162-18" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="er">$</span>account</span>
+<span id="cb162-19"><a href="lists.html#cb162-19" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;savings&quot;</span></span></code></pre></div>
 <p>Observe the way R prints a list with named elements. In contrast to the way
 elements of a vector are displayed—in a contiguous form—the elements of a
 list are displayed in a noncontiguous manner. Also, note how the names of the
@@ -569,16 +569,16 @@ being coerced into strings. Which is what we were looking for. We were intereste
 in obtaining an object in which each of its elements gets to keep its data type.</p>
 <p>If you try to use <code>typeof()</code> on a list in an attempt to get the data types of
 its elements, I’m afraid this won’t work the way you expect it:</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="lists.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(specs1)</span>
-<span id="cb158-2"><a href="lists.html#cb158-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;list&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="lists.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(specs1)</span>
+<span id="cb163-2"><a href="lists.html#cb163-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;list&quot;</span></span></code></pre></div>
 <p>Applying <code>typeof()</code> on a list results in a not very interesting output <code>"list"</code>.</p>
 <p>Getting ahead of myself momentarily, let me show you how to use the dollar
 operator <code>$</code> to refer to an named element of a list and check its data type:</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="lists.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(specs1<span class="sc">$</span>deposit)</span>
-<span id="cb159-2"><a href="lists.html#cb159-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;double&quot;</span></span>
-<span id="cb159-3"><a href="lists.html#cb159-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-4"><a href="lists.html#cb159-4" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(specs1<span class="sc">$</span>account)</span>
-<span id="cb159-5"><a href="lists.html#cb159-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;character&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="lists.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(specs1<span class="sc">$</span>deposit)</span>
+<span id="cb164-2"><a href="lists.html#cb164-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;double&quot;</span></span>
+<span id="cb164-3"><a href="lists.html#cb164-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb164-4"><a href="lists.html#cb164-4" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(specs1<span class="sc">$</span>account)</span>
+<span id="cb164-5"><a href="lists.html#cb164-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;character&quot;</span></span></code></pre></div>
 <p>We’ll discuss the different ways in which you can subset elements of a list
 later in this chapter.</p>
 </div>
@@ -588,27 +588,27 @@ later in this chapter.</p>
 creates a list the same way <code>c()</code> creates a vector. Let’s start with a simple
 example creating three numeric vectors of same length, that we then use to
 store them in a list:</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="lists.html#cb160-1" aria-hidden="true" tabindex="-1"></a>vec1 <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
-<span id="cb160-2"><a href="lists.html#cb160-2" aria-hidden="true" tabindex="-1"></a>vec2 <span class="ot">&lt;-</span> <span class="dv">4</span><span class="sc">:</span><span class="dv">6</span></span>
-<span id="cb160-3"><a href="lists.html#cb160-3" aria-hidden="true" tabindex="-1"></a>vec3 <span class="ot">&lt;-</span> <span class="dv">7</span><span class="sc">:</span><span class="dv">9</span></span>
-<span id="cb160-4"><a href="lists.html#cb160-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb160-5"><a href="lists.html#cb160-5" aria-hidden="true" tabindex="-1"></a><span class="co"># list with unnamed elements</span></span>
-<span id="cb160-6"><a href="lists.html#cb160-6" aria-hidden="true" tabindex="-1"></a>lis <span class="ot">&lt;-</span> <span class="fu">list</span>(vec1, vec2, vec3)</span>
-<span id="cb160-7"><a href="lists.html#cb160-7" aria-hidden="true" tabindex="-1"></a>lis</span>
-<span id="cb160-8"><a href="lists.html#cb160-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [[<span class="dv">1</span>]]</span>
-<span id="cb160-9"><a href="lists.html#cb160-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></span>
-<span id="cb160-10"><a href="lists.html#cb160-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb160-11"><a href="lists.html#cb160-11" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> [[<span class="dv">2</span>]]</span>
-<span id="cb160-12"><a href="lists.html#cb160-12" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">4</span> <span class="dv">5</span> <span class="dv">6</span></span>
-<span id="cb160-13"><a href="lists.html#cb160-13" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb160-14"><a href="lists.html#cb160-14" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> [[<span class="dv">3</span>]]</span>
-<span id="cb160-15"><a href="lists.html#cb160-15" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">7</span> <span class="dv">8</span> <span class="dv">9</span></span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="lists.html#cb165-1" aria-hidden="true" tabindex="-1"></a>vec1 <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
+<span id="cb165-2"><a href="lists.html#cb165-2" aria-hidden="true" tabindex="-1"></a>vec2 <span class="ot">&lt;-</span> <span class="dv">4</span><span class="sc">:</span><span class="dv">6</span></span>
+<span id="cb165-3"><a href="lists.html#cb165-3" aria-hidden="true" tabindex="-1"></a>vec3 <span class="ot">&lt;-</span> <span class="dv">7</span><span class="sc">:</span><span class="dv">9</span></span>
+<span id="cb165-4"><a href="lists.html#cb165-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb165-5"><a href="lists.html#cb165-5" aria-hidden="true" tabindex="-1"></a><span class="co"># list with unnamed elements</span></span>
+<span id="cb165-6"><a href="lists.html#cb165-6" aria-hidden="true" tabindex="-1"></a>lis <span class="ot">&lt;-</span> <span class="fu">list</span>(vec1, vec2, vec3)</span>
+<span id="cb165-7"><a href="lists.html#cb165-7" aria-hidden="true" tabindex="-1"></a>lis</span>
+<span id="cb165-8"><a href="lists.html#cb165-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [[<span class="dv">1</span>]]</span>
+<span id="cb165-9"><a href="lists.html#cb165-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></span>
+<span id="cb165-10"><a href="lists.html#cb165-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb165-11"><a href="lists.html#cb165-11" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> [[<span class="dv">2</span>]]</span>
+<span id="cb165-12"><a href="lists.html#cb165-12" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">4</span> <span class="dv">5</span> <span class="dv">6</span></span>
+<span id="cb165-13"><a href="lists.html#cb165-13" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb165-14"><a href="lists.html#cb165-14" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> [[<span class="dv">3</span>]]</span>
+<span id="cb165-15"><a href="lists.html#cb165-15" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">7</span> <span class="dv">8</span> <span class="dv">9</span></span></code></pre></div>
 <p>Note how the contents of a list with unnamed elements are displayed: there is a
 set of double brackets with an index indicating the position of each element,
 and below each double bracket the corresponding vector is printed.</p>
 <p>For illustration purposes, we could visualize the three input vectors and the
 list with the following conceptual diagram.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-141"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-145"></span>
 <img src="images/objects/obj-list-vectors1.png" alt="A list containing three unnamed elements (numeric vectors of length 3)" width="60%" />
 <p class="caption">
 Figure 8.1: A list containing three unnamed elements (numeric vectors of length 3)
@@ -620,38 +620,38 @@ special type of vector: a <strong>non-atomic vector</strong>. This means that ea
 of a list can be any kind of object.</p>
 <p>In the same way you can give names to elements of a vector, you can also give
 names to elements of a list:</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="lists.html#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="co"># list with named elements</span></span>
-<span id="cb161-2"><a href="lists.html#cb161-2" aria-hidden="true" tabindex="-1"></a>lis <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">&quot;vec1&quot;</span> <span class="ot">=</span> vec1, <span class="st">&quot;vec2&quot;</span> <span class="ot">=</span> vec2, <span class="st">&quot;vec3&quot;</span> <span class="ot">=</span> vec3)</span>
-<span id="cb161-3"><a href="lists.html#cb161-3" aria-hidden="true" tabindex="-1"></a>lis</span>
-<span id="cb161-4"><a href="lists.html#cb161-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="er">$</span>vec1</span>
-<span id="cb161-5"><a href="lists.html#cb161-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></span>
-<span id="cb161-6"><a href="lists.html#cb161-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb161-7"><a href="lists.html#cb161-7" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="er">$</span>vec2</span>
-<span id="cb161-8"><a href="lists.html#cb161-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">4</span> <span class="dv">5</span> <span class="dv">6</span></span>
-<span id="cb161-9"><a href="lists.html#cb161-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb161-10"><a href="lists.html#cb161-10" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="er">$</span>vec3</span>
-<span id="cb161-11"><a href="lists.html#cb161-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">7</span> <span class="dv">8</span> <span class="dv">9</span></span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="lists.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="co"># list with named elements</span></span>
+<span id="cb166-2"><a href="lists.html#cb166-2" aria-hidden="true" tabindex="-1"></a>lis <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">&quot;vec1&quot;</span> <span class="ot">=</span> vec1, <span class="st">&quot;vec2&quot;</span> <span class="ot">=</span> vec2, <span class="st">&quot;vec3&quot;</span> <span class="ot">=</span> vec3)</span>
+<span id="cb166-3"><a href="lists.html#cb166-3" aria-hidden="true" tabindex="-1"></a>lis</span>
+<span id="cb166-4"><a href="lists.html#cb166-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="er">$</span>vec1</span>
+<span id="cb166-5"><a href="lists.html#cb166-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></span>
+<span id="cb166-6"><a href="lists.html#cb166-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb166-7"><a href="lists.html#cb166-7" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="er">$</span>vec2</span>
+<span id="cb166-8"><a href="lists.html#cb166-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">4</span> <span class="dv">5</span> <span class="dv">6</span></span>
+<span id="cb166-9"><a href="lists.html#cb166-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb166-10"><a href="lists.html#cb166-10" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="er">$</span>vec3</span>
+<span id="cb166-11"><a href="lists.html#cb166-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">7</span> <span class="dv">8</span> <span class="dv">9</span></span></code></pre></div>
 <p>When you create a list in this form, you can actually omit the quotes of
 the given names. While this option of naming elements may create a bit of
 confusion for beginners and inexperienced users in R, we believe it’s not a big
 deal (based on our experience):</p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="lists.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="co"># another option for giving names to elements in a list</span></span>
-<span id="cb162-2"><a href="lists.html#cb162-2" aria-hidden="true" tabindex="-1"></a>lis <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">vec1 =</span> vec1, <span class="at">vec2 =</span> vec2, <span class="at">vec3 =</span> vec3)</span>
-<span id="cb162-3"><a href="lists.html#cb162-3" aria-hidden="true" tabindex="-1"></a>lis</span>
-<span id="cb162-4"><a href="lists.html#cb162-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="er">$</span>vec1</span>
-<span id="cb162-5"><a href="lists.html#cb162-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></span>
-<span id="cb162-6"><a href="lists.html#cb162-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb162-7"><a href="lists.html#cb162-7" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="er">$</span>vec2</span>
-<span id="cb162-8"><a href="lists.html#cb162-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">4</span> <span class="dv">5</span> <span class="dv">6</span></span>
-<span id="cb162-9"><a href="lists.html#cb162-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb162-10"><a href="lists.html#cb162-10" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="er">$</span>vec3</span>
-<span id="cb162-11"><a href="lists.html#cb162-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">7</span> <span class="dv">8</span> <span class="dv">9</span></span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="lists.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="co"># another option for giving names to elements in a list</span></span>
+<span id="cb167-2"><a href="lists.html#cb167-2" aria-hidden="true" tabindex="-1"></a>lis <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">vec1 =</span> vec1, <span class="at">vec2 =</span> vec2, <span class="at">vec3 =</span> vec3)</span>
+<span id="cb167-3"><a href="lists.html#cb167-3" aria-hidden="true" tabindex="-1"></a>lis</span>
+<span id="cb167-4"><a href="lists.html#cb167-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="er">$</span>vec1</span>
+<span id="cb167-5"><a href="lists.html#cb167-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></span>
+<span id="cb167-6"><a href="lists.html#cb167-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb167-7"><a href="lists.html#cb167-7" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="er">$</span>vec2</span>
+<span id="cb167-8"><a href="lists.html#cb167-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">4</span> <span class="dv">5</span> <span class="dv">6</span></span>
+<span id="cb167-9"><a href="lists.html#cb167-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb167-10"><a href="lists.html#cb167-10" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="er">$</span>vec3</span>
+<span id="cb167-11"><a href="lists.html#cb167-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">7</span> <span class="dv">8</span> <span class="dv">9</span></span></code></pre></div>
 <p>Observe how the contents of a list with named elements are displayed: this time,
 instead of the set of double brackets, there is a dollar sign followed by the
 name of the element, e.g. <code>$vec1</code>. Below each name, the corresponding vector is
 printed.</p>
 <p>The conceptual diagram in this case could look like this:</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-144"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-148"></span>
 <img src="images/objects/obj-list-vectors2.png" alt="A list with named elements (numeric vectors of length 3)" width="60%" />
 <p class="caption">
 Figure 8.2: A list with named elements (numeric vectors of length 3)
@@ -660,53 +660,53 @@ Figure 8.2: A list with named elements (numeric vectors of length 3)
 <p>As we just said, the elements of a list can be any kind of R object. For
 example, here’s a list called <code>lst</code> that contains a character vector, a
 numeric matrix, a factor, and another list:</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="lists.html#cb163-1" aria-hidden="true" tabindex="-1"></a>lst <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb163-2"><a href="lists.html#cb163-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;savings&quot;</span>, <span class="st">&quot;money_mkt&quot;</span>, <span class="st">&quot;certificate&quot;</span>),</span>
-<span id="cb163-3"><a href="lists.html#cb163-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>),</span>
-<span id="cb163-4"><a href="lists.html#cb163-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;yes&quot;</span>, <span class="st">&quot;no&quot;</span>, <span class="st">&quot;no&quot;</span>, <span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>)),</span>
-<span id="cb163-5"><a href="lists.html#cb163-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="dv">1000</span>, <span class="dv">2000</span>, <span class="dv">5000</span>)</span>
-<span id="cb163-6"><a href="lists.html#cb163-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb163-7"><a href="lists.html#cb163-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb163-8"><a href="lists.html#cb163-8" aria-hidden="true" tabindex="-1"></a>lst</span>
-<span id="cb163-9"><a href="lists.html#cb163-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [[<span class="dv">1</span>]]</span>
-<span id="cb163-10"><a href="lists.html#cb163-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;savings&quot;</span>     <span class="st">&quot;money_mkt&quot;</span>   <span class="st">&quot;certificate&quot;</span></span>
-<span id="cb163-11"><a href="lists.html#cb163-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb163-12"><a href="lists.html#cb163-12" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> [[<span class="dv">2</span>]]</span>
-<span id="cb163-13"><a href="lists.html#cb163-13" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>      [,<span class="dv">1</span>] [,<span class="dv">2</span>] [,<span class="dv">3</span>]</span>
-<span id="cb163-14"><a href="lists.html#cb163-14" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>,]    <span class="dv">1</span>    <span class="dv">3</span>    <span class="dv">5</span></span>
-<span id="cb163-15"><a href="lists.html#cb163-15" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">2</span>,]    <span class="dv">2</span>    <span class="dv">4</span>    <span class="dv">6</span></span>
-<span id="cb163-16"><a href="lists.html#cb163-16" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb163-17"><a href="lists.html#cb163-17" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> [[<span class="dv">3</span>]]</span>
-<span id="cb163-18"><a href="lists.html#cb163-18" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] yes no  no  no  yes</span>
-<span id="cb163-19"><a href="lists.html#cb163-19" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> no yes</span>
-<span id="cb163-20"><a href="lists.html#cb163-20" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb163-21"><a href="lists.html#cb163-21" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> [[<span class="dv">4</span>]]</span>
-<span id="cb163-22"><a href="lists.html#cb163-22" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [[<span class="dv">4</span>]][[<span class="dv">1</span>]]</span>
-<span id="cb163-23"><a href="lists.html#cb163-23" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1000</span></span>
-<span id="cb163-24"><a href="lists.html#cb163-24" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb163-25"><a href="lists.html#cb163-25" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> [[<span class="dv">4</span>]][[<span class="dv">2</span>]]</span>
-<span id="cb163-26"><a href="lists.html#cb163-26" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">2000</span></span>
-<span id="cb163-27"><a href="lists.html#cb163-27" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb163-28"><a href="lists.html#cb163-28" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> [[<span class="dv">4</span>]][[<span class="dv">3</span>]]</span>
-<span id="cb163-29"><a href="lists.html#cb163-29" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">5000</span></span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="lists.html#cb168-1" aria-hidden="true" tabindex="-1"></a>lst <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb168-2"><a href="lists.html#cb168-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;savings&quot;</span>, <span class="st">&quot;money_mkt&quot;</span>, <span class="st">&quot;certificate&quot;</span>),</span>
+<span id="cb168-3"><a href="lists.html#cb168-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>),</span>
+<span id="cb168-4"><a href="lists.html#cb168-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;yes&quot;</span>, <span class="st">&quot;no&quot;</span>, <span class="st">&quot;no&quot;</span>, <span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>)),</span>
+<span id="cb168-5"><a href="lists.html#cb168-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="dv">1000</span>, <span class="dv">2000</span>, <span class="dv">5000</span>)</span>
+<span id="cb168-6"><a href="lists.html#cb168-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb168-7"><a href="lists.html#cb168-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-8"><a href="lists.html#cb168-8" aria-hidden="true" tabindex="-1"></a>lst</span>
+<span id="cb168-9"><a href="lists.html#cb168-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [[<span class="dv">1</span>]]</span>
+<span id="cb168-10"><a href="lists.html#cb168-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;savings&quot;</span>     <span class="st">&quot;money_mkt&quot;</span>   <span class="st">&quot;certificate&quot;</span></span>
+<span id="cb168-11"><a href="lists.html#cb168-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb168-12"><a href="lists.html#cb168-12" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> [[<span class="dv">2</span>]]</span>
+<span id="cb168-13"><a href="lists.html#cb168-13" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>      [,<span class="dv">1</span>] [,<span class="dv">2</span>] [,<span class="dv">3</span>]</span>
+<span id="cb168-14"><a href="lists.html#cb168-14" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>,]    <span class="dv">1</span>    <span class="dv">3</span>    <span class="dv">5</span></span>
+<span id="cb168-15"><a href="lists.html#cb168-15" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">2</span>,]    <span class="dv">2</span>    <span class="dv">4</span>    <span class="dv">6</span></span>
+<span id="cb168-16"><a href="lists.html#cb168-16" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb168-17"><a href="lists.html#cb168-17" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> [[<span class="dv">3</span>]]</span>
+<span id="cb168-18"><a href="lists.html#cb168-18" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] yes no  no  no  yes</span>
+<span id="cb168-19"><a href="lists.html#cb168-19" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> Levels<span class="sc">:</span> no yes</span>
+<span id="cb168-20"><a href="lists.html#cb168-20" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb168-21"><a href="lists.html#cb168-21" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> [[<span class="dv">4</span>]]</span>
+<span id="cb168-22"><a href="lists.html#cb168-22" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [[<span class="dv">4</span>]][[<span class="dv">1</span>]]</span>
+<span id="cb168-23"><a href="lists.html#cb168-23" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1000</span></span>
+<span id="cb168-24"><a href="lists.html#cb168-24" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb168-25"><a href="lists.html#cb168-25" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> [[<span class="dv">4</span>]][[<span class="dv">2</span>]]</span>
+<span id="cb168-26"><a href="lists.html#cb168-26" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">2000</span></span>
+<span id="cb168-27"><a href="lists.html#cb168-27" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb168-28"><a href="lists.html#cb168-28" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> [[<span class="dv">4</span>]][[<span class="dv">3</span>]]</span>
+<span id="cb168-29"><a href="lists.html#cb168-29" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">5000</span></span></code></pre></div>
 <p>Whenever possible, I strongly recommend giving names to the elements of a list.
 Not only this makes it easy to identify one element from the others, but it also
 gives you more flexibility to rearrange the contents of the list without having
 to worry about the exact order or position they occupy.</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="lists.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="co"># whenever possible, give names to elements in a list</span></span>
-<span id="cb164-2"><a href="lists.html#cb164-2" aria-hidden="true" tabindex="-1"></a>lst <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb164-3"><a href="lists.html#cb164-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">first =</span> <span class="fu">c</span>(<span class="st">&quot;savings&quot;</span>, <span class="st">&quot;money_mkt&quot;</span>, <span class="st">&quot;certificate&quot;</span>),</span>
-<span id="cb164-4"><a href="lists.html#cb164-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">second =</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>),</span>
-<span id="cb164-5"><a href="lists.html#cb164-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">third =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;yes&quot;</span>, <span class="st">&quot;no&quot;</span>, <span class="st">&quot;no&quot;</span>, <span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>)),</span>
-<span id="cb164-6"><a href="lists.html#cb164-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">fourth =</span> <span class="fu">list</span>(<span class="dv">1000</span>, <span class="dv">2000</span>, <span class="dv">5000</span>)</span>
-<span id="cb164-7"><a href="lists.html#cb164-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="lists.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="co"># whenever possible, give names to elements in a list</span></span>
+<span id="cb169-2"><a href="lists.html#cb169-2" aria-hidden="true" tabindex="-1"></a>lst <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb169-3"><a href="lists.html#cb169-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">first =</span> <span class="fu">c</span>(<span class="st">&quot;savings&quot;</span>, <span class="st">&quot;money_mkt&quot;</span>, <span class="st">&quot;certificate&quot;</span>),</span>
+<span id="cb169-4"><a href="lists.html#cb169-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">second =</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>),</span>
+<span id="cb169-5"><a href="lists.html#cb169-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">third =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;yes&quot;</span>, <span class="st">&quot;no&quot;</span>, <span class="st">&quot;no&quot;</span>, <span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>)),</span>
+<span id="cb169-6"><a href="lists.html#cb169-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">fourth =</span> <span class="fu">list</span>(<span class="dv">1000</span>, <span class="dv">2000</span>, <span class="dv">5000</span>)</span>
+<span id="cb169-7"><a href="lists.html#cb169-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 </div>
 <div id="manipulating-lists" class="section level2 hasAnchor" number="8.4">
 <h2><span class="header-section-number">8.4</span> Manipulating Lists<a href="lists.html#manipulating-lists" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To manipulate the elements of a list you can use bracket notation. Because a
 list is a vector, you can use single brackets (e.g. <code>lis[1]</code>) as well as
 double brackets (e.g. <code>lis[[1]]</code>).</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-147"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-151"></span>
 <img src="images/objects/obj-list-brackets1.png" alt="Bracket notation with lists" width="75%" />
 <p class="caption">
 Figure 8.3: Bracket notation with lists
@@ -717,12 +717,12 @@ Figure 8.3: Bracket notation with lists
 <p>Just like any other vector, and any other data object in R, you can use single
 brackets on a list. For example, consider the unnamed version of a list, and
 the use of single brackets with index <code>1</code> inside them:</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="lists.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="co"># list with unnamed elements</span></span>
-<span id="cb165-2"><a href="lists.html#cb165-2" aria-hidden="true" tabindex="-1"></a>lis <span class="ot">&lt;-</span> <span class="fu">list</span>(vec1, vec2, vec3)</span>
-<span id="cb165-3"><a href="lists.html#cb165-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb165-4"><a href="lists.html#cb165-4" aria-hidden="true" tabindex="-1"></a>lis[<span class="dv">1</span>]</span>
-<span id="cb165-5"><a href="lists.html#cb165-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [[<span class="dv">1</span>]]</span>
-<span id="cb165-6"><a href="lists.html#cb165-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="lists.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="co"># list with unnamed elements</span></span>
+<span id="cb170-2"><a href="lists.html#cb170-2" aria-hidden="true" tabindex="-1"></a>lis <span class="ot">&lt;-</span> <span class="fu">list</span>(vec1, vec2, vec3)</span>
+<span id="cb170-3"><a href="lists.html#cb170-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb170-4"><a href="lists.html#cb170-4" aria-hidden="true" tabindex="-1"></a>lis[<span class="dv">1</span>]</span>
+<span id="cb170-5"><a href="lists.html#cb170-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [[<span class="dv">1</span>]]</span>
+<span id="cb170-6"><a href="lists.html#cb170-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></span></code></pre></div>
 <p>What a single bracket does, is give you access to the “container” of the
 specified element but without “unboxing” its contents. This is reflected by
 the way in which the output is displayed: note the double bracket <code>[[1]]</code> in
@@ -731,7 +731,7 @@ the first line, and then <code>[1] 1 2 3</code> in the second line.</p>
 contains a vector, but it does not give you direct access to the vector itself.
 Put another way, <code>lis[1]</code> lets you see that the first element of the list is
 a vector, but this vector is still <em>inside</em> its “box”.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-149"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-153"></span>
 <img src="images/objects/obj-list-brackets2.png" alt="Use single brackets to select an element" width="75%" />
 <p class="caption">
 Figure 8.4: Use single brackets to select an element
@@ -742,22 +742,22 @@ Figure 8.4: Use single brackets to select an element
 <h3><span class="header-section-number">8.4.2</span> Double Brackets<a href="lists.html#double-brackets" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In addition to single brackets, lists also accept double brackets: e.g. 
 <code>lis[[1]]</code></p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="lists.html#cb166-1" aria-hidden="true" tabindex="-1"></a>lis[[<span class="dv">1</span>]]</span>
-<span id="cb166-2"><a href="lists.html#cb166-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="lists.html#cb171-1" aria-hidden="true" tabindex="-1"></a>lis[[<span class="dv">1</span>]]</span>
+<span id="cb171-2"><a href="lists.html#cb171-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></span></code></pre></div>
 <p>Double brackets are used when you want to get access to the content of the
 list’s elements. Notice the output of the previous command: now there are no
 double brackets, just the output of the vector in the first position. Think
 of this command as “unboxing” the object of the first element in <code>lis</code>.</p>
 <p>What if you want to manipulate the elements of vector <code>vec1</code> or <code>vec2</code>? Use
 double brackets followed by single brackets</p>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="lists.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="co"># second index of first list&#39;s element</span></span>
-<span id="cb167-2"><a href="lists.html#cb167-2" aria-hidden="true" tabindex="-1"></a>lis[[<span class="dv">1</span>]][<span class="dv">2</span>]</span>
-<span id="cb167-3"><a href="lists.html#cb167-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">2</span></span>
-<span id="cb167-4"><a href="lists.html#cb167-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb167-5"><a href="lists.html#cb167-5" aria-hidden="true" tabindex="-1"></a><span class="co"># first index of second list&#39;s element</span></span>
-<span id="cb167-6"><a href="lists.html#cb167-6" aria-hidden="true" tabindex="-1"></a>lis[[<span class="dv">2</span>]][<span class="dv">1</span>]</span>
-<span id="cb167-7"><a href="lists.html#cb167-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">4</span></span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-152"></span>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="lists.html#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="co"># second index of first list&#39;s element</span></span>
+<span id="cb172-2"><a href="lists.html#cb172-2" aria-hidden="true" tabindex="-1"></a>lis[[<span class="dv">1</span>]][<span class="dv">2</span>]</span>
+<span id="cb172-3"><a href="lists.html#cb172-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">2</span></span>
+<span id="cb172-4"><a href="lists.html#cb172-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb172-5"><a href="lists.html#cb172-5" aria-hidden="true" tabindex="-1"></a><span class="co"># first index of second list&#39;s element</span></span>
+<span id="cb172-6"><a href="lists.html#cb172-6" aria-hidden="true" tabindex="-1"></a>lis[[<span class="dv">2</span>]][<span class="dv">1</span>]</span>
+<span id="cb172-7"><a href="lists.html#cb172-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">4</span></span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-156"></span>
 <img src="images/objects/obj-list-brackets3.png" alt="Use double brackets to extract an element" width="75%" />
 <p class="caption">
 Figure 8.5: Use double brackets to extract an element
@@ -768,18 +768,18 @@ Figure 8.5: Use double brackets to extract an element
 <h3><span class="header-section-number">8.4.3</span> Dollar signs<a href="lists.html#dollar-signs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>R lists—and data frames—follow an optional second system of notation for
 extracting <strong>named elements</strong> using the dollar sign <strong><code>$</code></strong></p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-153"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-157"></span>
 <img src="images/objects/obj-list-dollars1.png" alt="Dollar notation with lists" width="60%" />
 <p class="caption">
 Figure 8.6: Dollar notation with lists
 </p>
 </div>
 <p>Let’s use the named version of <code>lis</code>:</p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="lists.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="co"># list with named elements</span></span>
-<span id="cb168-2"><a href="lists.html#cb168-2" aria-hidden="true" tabindex="-1"></a>lis <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">&quot;vec1&quot;</span> <span class="ot">=</span> vec1, <span class="st">&quot;vec2&quot;</span> <span class="ot">=</span> vec2, <span class="st">&quot;vec3&quot;</span> <span class="ot">=</span> vec3)</span>
-<span id="cb168-3"><a href="lists.html#cb168-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb168-4"><a href="lists.html#cb168-4" aria-hidden="true" tabindex="-1"></a>lis<span class="sc">$</span>vec1</span>
-<span id="cb168-5"><a href="lists.html#cb168-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="lists.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="co"># list with named elements</span></span>
+<span id="cb173-2"><a href="lists.html#cb173-2" aria-hidden="true" tabindex="-1"></a>lis <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">&quot;vec1&quot;</span> <span class="ot">=</span> vec1, <span class="st">&quot;vec2&quot;</span> <span class="ot">=</span> vec2, <span class="st">&quot;vec3&quot;</span> <span class="ot">=</span> vec3)</span>
+<span id="cb173-3"><a href="lists.html#cb173-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb173-4"><a href="lists.html#cb173-4" aria-hidden="true" tabindex="-1"></a>lis<span class="sc">$</span>vec1</span>
+<span id="cb173-5"><a href="lists.html#cb173-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></span></code></pre></div>
 <p>The dollar sign <strong><code>$</code></strong> notation works for selecting <strong>named elements</strong> in a
 list. Notice the output of the above command: <code>lis$vec1</code> gives you vector
 <code>1 2 3</code>. In other words, dollar notation “unboxes” the object that is associated
@@ -789,45 +789,45 @@ to the specified name.</p>
 <h3><span class="header-section-number">8.4.4</span> Adding new elements<a href="lists.html#adding-new-elements" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>From time to time, you will want to add one or more elements to an existing
 list. For instance, consider a list <code>lst</code> with two elements:</p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="lists.html#cb169-1" aria-hidden="true" tabindex="-1"></a>lst <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="fu">c</span>(<span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;C&#39;</span>))</span>
-<span id="cb169-2"><a href="lists.html#cb169-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb169-3"><a href="lists.html#cb169-3" aria-hidden="true" tabindex="-1"></a>lst</span>
-<span id="cb169-4"><a href="lists.html#cb169-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [[<span class="dv">1</span>]]</span>
-<span id="cb169-5"><a href="lists.html#cb169-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></span>
-<span id="cb169-6"><a href="lists.html#cb169-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb169-7"><a href="lists.html#cb169-7" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> [[<span class="dv">2</span>]]</span>
-<span id="cb169-8"><a href="lists.html#cb169-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;A&quot;</span> <span class="st">&quot;B&quot;</span> <span class="st">&quot;C&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="lists.html#cb174-1" aria-hidden="true" tabindex="-1"></a>lst <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="fu">c</span>(<span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;C&#39;</span>))</span>
+<span id="cb174-2"><a href="lists.html#cb174-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb174-3"><a href="lists.html#cb174-3" aria-hidden="true" tabindex="-1"></a>lst</span>
+<span id="cb174-4"><a href="lists.html#cb174-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [[<span class="dv">1</span>]]</span>
+<span id="cb174-5"><a href="lists.html#cb174-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></span>
+<span id="cb174-6"><a href="lists.html#cb174-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb174-7"><a href="lists.html#cb174-7" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> [[<span class="dv">2</span>]]</span>
+<span id="cb174-8"><a href="lists.html#cb174-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;A&quot;</span> <span class="st">&quot;B&quot;</span> <span class="st">&quot;C&quot;</span></span></code></pre></div>
 <p>Say you want to add a logical vector as a third element to <code>lst</code>. One option to
 do this is with double brackets, specifying a new index position to which you
 assign the new element:</p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="lists.html#cb170-1" aria-hidden="true" tabindex="-1"></a>lst[[<span class="dv">3</span>]] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)</span>
-<span id="cb170-2"><a href="lists.html#cb170-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb170-3"><a href="lists.html#cb170-3" aria-hidden="true" tabindex="-1"></a>lst</span>
-<span id="cb170-4"><a href="lists.html#cb170-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [[<span class="dv">1</span>]]</span>
-<span id="cb170-5"><a href="lists.html#cb170-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></span>
-<span id="cb170-6"><a href="lists.html#cb170-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb170-7"><a href="lists.html#cb170-7" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> [[<span class="dv">2</span>]]</span>
-<span id="cb170-8"><a href="lists.html#cb170-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;A&quot;</span> <span class="st">&quot;B&quot;</span> <span class="st">&quot;C&quot;</span></span>
-<span id="cb170-9"><a href="lists.html#cb170-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb170-10"><a href="lists.html#cb170-10" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> [[<span class="dv">3</span>]]</span>
-<span id="cb170-11"><a href="lists.html#cb170-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>]  <span class="cn">TRUE</span> <span class="cn">FALSE</span>  <span class="cn">TRUE</span> <span class="cn">FALSE</span></span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="lists.html#cb175-1" aria-hidden="true" tabindex="-1"></a>lst[[<span class="dv">3</span>]] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)</span>
+<span id="cb175-2"><a href="lists.html#cb175-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb175-3"><a href="lists.html#cb175-3" aria-hidden="true" tabindex="-1"></a>lst</span>
+<span id="cb175-4"><a href="lists.html#cb175-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [[<span class="dv">1</span>]]</span>
+<span id="cb175-5"><a href="lists.html#cb175-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></span>
+<span id="cb175-6"><a href="lists.html#cb175-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb175-7"><a href="lists.html#cb175-7" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> [[<span class="dv">2</span>]]</span>
+<span id="cb175-8"><a href="lists.html#cb175-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;A&quot;</span> <span class="st">&quot;B&quot;</span> <span class="st">&quot;C&quot;</span></span>
+<span id="cb175-9"><a href="lists.html#cb175-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb175-10"><a href="lists.html#cb175-10" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> [[<span class="dv">3</span>]]</span>
+<span id="cb175-11"><a href="lists.html#cb175-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>]  <span class="cn">TRUE</span> <span class="cn">FALSE</span>  <span class="cn">TRUE</span> <span class="cn">FALSE</span></span></code></pre></div>
 <p>Another option is to use the dollar operator by giving a new name to which you
 assign the new element. Even though the previous elements in <code>lst</code>are unnamed,
 the new added element will have an associated label:</p>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="lists.html#cb171-1" aria-hidden="true" tabindex="-1"></a>lst<span class="sc">$</span>new_elem <span class="ot">&lt;-</span> <span class="st">&#39;nuevo&#39;</span></span>
-<span id="cb171-2"><a href="lists.html#cb171-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb171-3"><a href="lists.html#cb171-3" aria-hidden="true" tabindex="-1"></a>lst</span>
-<span id="cb171-4"><a href="lists.html#cb171-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [[<span class="dv">1</span>]]</span>
-<span id="cb171-5"><a href="lists.html#cb171-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></span>
-<span id="cb171-6"><a href="lists.html#cb171-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb171-7"><a href="lists.html#cb171-7" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> [[<span class="dv">2</span>]]</span>
-<span id="cb171-8"><a href="lists.html#cb171-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;A&quot;</span> <span class="st">&quot;B&quot;</span> <span class="st">&quot;C&quot;</span></span>
-<span id="cb171-9"><a href="lists.html#cb171-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb171-10"><a href="lists.html#cb171-10" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> [[<span class="dv">3</span>]]</span>
-<span id="cb171-11"><a href="lists.html#cb171-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>]  <span class="cn">TRUE</span> <span class="cn">FALSE</span>  <span class="cn">TRUE</span> <span class="cn">FALSE</span></span>
-<span id="cb171-12"><a href="lists.html#cb171-12" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb171-13"><a href="lists.html#cb171-13" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="er">$</span>new_elem</span>
-<span id="cb171-14"><a href="lists.html#cb171-14" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;nuevo&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="lists.html#cb176-1" aria-hidden="true" tabindex="-1"></a>lst<span class="sc">$</span>new_elem <span class="ot">&lt;-</span> <span class="st">&#39;nuevo&#39;</span></span>
+<span id="cb176-2"><a href="lists.html#cb176-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb176-3"><a href="lists.html#cb176-3" aria-hidden="true" tabindex="-1"></a>lst</span>
+<span id="cb176-4"><a href="lists.html#cb176-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [[<span class="dv">1</span>]]</span>
+<span id="cb176-5"><a href="lists.html#cb176-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></span>
+<span id="cb176-6"><a href="lists.html#cb176-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb176-7"><a href="lists.html#cb176-7" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> [[<span class="dv">2</span>]]</span>
+<span id="cb176-8"><a href="lists.html#cb176-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;A&quot;</span> <span class="st">&quot;B&quot;</span> <span class="st">&quot;C&quot;</span></span>
+<span id="cb176-9"><a href="lists.html#cb176-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb176-10"><a href="lists.html#cb176-10" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> [[<span class="dv">3</span>]]</span>
+<span id="cb176-11"><a href="lists.html#cb176-11" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>]  <span class="cn">TRUE</span> <span class="cn">FALSE</span>  <span class="cn">TRUE</span> <span class="cn">FALSE</span></span>
+<span id="cb176-12"><a href="lists.html#cb176-12" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb176-13"><a href="lists.html#cb176-13" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="er">$</span>new_elem</span>
+<span id="cb176-14"><a href="lists.html#cb176-14" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;nuevo&quot;</span></span></code></pre></div>
 </div>
 <div id="removing-elements" class="section level3 hasAnchor" number="8.4.5">
 <h3><span class="header-section-number">8.4.5</span> Removing elements<a href="lists.html#removing-elements" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -835,39 +835,39 @@ the new added element will have an associated label:</p>
 occasions in which you need to remove one or more elements. Take the previous
 list <code>lst</code> with four elements, and say you want to remove the third element
 (containing the logical vector)</p>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="lists.html#cb172-1" aria-hidden="true" tabindex="-1"></a>lst</span>
-<span id="cb172-2"><a href="lists.html#cb172-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [[<span class="dv">1</span>]]</span>
-<span id="cb172-3"><a href="lists.html#cb172-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></span>
-<span id="cb172-4"><a href="lists.html#cb172-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb172-5"><a href="lists.html#cb172-5" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> [[<span class="dv">2</span>]]</span>
-<span id="cb172-6"><a href="lists.html#cb172-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;A&quot;</span> <span class="st">&quot;B&quot;</span> <span class="st">&quot;C&quot;</span></span>
-<span id="cb172-7"><a href="lists.html#cb172-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb172-8"><a href="lists.html#cb172-8" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> [[<span class="dv">3</span>]]</span>
-<span id="cb172-9"><a href="lists.html#cb172-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>]  <span class="cn">TRUE</span> <span class="cn">FALSE</span>  <span class="cn">TRUE</span> <span class="cn">FALSE</span></span>
-<span id="cb172-10"><a href="lists.html#cb172-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb172-11"><a href="lists.html#cb172-11" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="er">$</span>new_elem</span>
-<span id="cb172-12"><a href="lists.html#cb172-12" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;nuevo&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="lists.html#cb177-1" aria-hidden="true" tabindex="-1"></a>lst</span>
+<span id="cb177-2"><a href="lists.html#cb177-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [[<span class="dv">1</span>]]</span>
+<span id="cb177-3"><a href="lists.html#cb177-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></span>
+<span id="cb177-4"><a href="lists.html#cb177-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb177-5"><a href="lists.html#cb177-5" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> [[<span class="dv">2</span>]]</span>
+<span id="cb177-6"><a href="lists.html#cb177-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;A&quot;</span> <span class="st">&quot;B&quot;</span> <span class="st">&quot;C&quot;</span></span>
+<span id="cb177-7"><a href="lists.html#cb177-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb177-8"><a href="lists.html#cb177-8" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> [[<span class="dv">3</span>]]</span>
+<span id="cb177-9"><a href="lists.html#cb177-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>]  <span class="cn">TRUE</span> <span class="cn">FALSE</span>  <span class="cn">TRUE</span> <span class="cn">FALSE</span></span>
+<span id="cb177-10"><a href="lists.html#cb177-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb177-11"><a href="lists.html#cb177-11" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="er">$</span>new_elem</span>
+<span id="cb177-12"><a href="lists.html#cb177-12" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;nuevo&quot;</span></span></code></pre></div>
 <p>To remove the third element, which is unnamed, you use double brackets and
 assign a value <code>NULL</code> to that position:</p>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="lists.html#cb173-1" aria-hidden="true" tabindex="-1"></a>lst[[<span class="dv">3</span>]] <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb173-2"><a href="lists.html#cb173-2" aria-hidden="true" tabindex="-1"></a>lst</span>
-<span id="cb173-3"><a href="lists.html#cb173-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [[<span class="dv">1</span>]]</span>
-<span id="cb173-4"><a href="lists.html#cb173-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></span>
-<span id="cb173-5"><a href="lists.html#cb173-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb173-6"><a href="lists.html#cb173-6" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> [[<span class="dv">2</span>]]</span>
-<span id="cb173-7"><a href="lists.html#cb173-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;A&quot;</span> <span class="st">&quot;B&quot;</span> <span class="st">&quot;C&quot;</span></span>
-<span id="cb173-8"><a href="lists.html#cb173-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb173-9"><a href="lists.html#cb173-9" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="er">$</span>new_elem</span>
-<span id="cb173-10"><a href="lists.html#cb173-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;nuevo&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="lists.html#cb178-1" aria-hidden="true" tabindex="-1"></a>lst[[<span class="dv">3</span>]] <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb178-2"><a href="lists.html#cb178-2" aria-hidden="true" tabindex="-1"></a>lst</span>
+<span id="cb178-3"><a href="lists.html#cb178-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [[<span class="dv">1</span>]]</span>
+<span id="cb178-4"><a href="lists.html#cb178-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></span>
+<span id="cb178-5"><a href="lists.html#cb178-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb178-6"><a href="lists.html#cb178-6" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> [[<span class="dv">2</span>]]</span>
+<span id="cb178-7"><a href="lists.html#cb178-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;A&quot;</span> <span class="st">&quot;B&quot;</span> <span class="st">&quot;C&quot;</span></span>
+<span id="cb178-8"><a href="lists.html#cb178-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb178-9"><a href="lists.html#cb178-9" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="er">$</span>new_elem</span>
+<span id="cb178-10"><a href="lists.html#cb178-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;nuevo&quot;</span></span></code></pre></div>
 <p>As for those named elements, such as <code>lst$new_elem</code>, you do the same and assign
 a <code>NULL</code> value, but this time using dollar notation:</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="lists.html#cb174-1" aria-hidden="true" tabindex="-1"></a>lst<span class="sc">$</span>new_elem <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb174-2"><a href="lists.html#cb174-2" aria-hidden="true" tabindex="-1"></a>lst</span>
-<span id="cb174-3"><a href="lists.html#cb174-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [[<span class="dv">1</span>]]</span>
-<span id="cb174-4"><a href="lists.html#cb174-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></span>
-<span id="cb174-5"><a href="lists.html#cb174-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb174-6"><a href="lists.html#cb174-6" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> [[<span class="dv">2</span>]]</span>
-<span id="cb174-7"><a href="lists.html#cb174-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;A&quot;</span> <span class="st">&quot;B&quot;</span> <span class="st">&quot;C&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="lists.html#cb179-1" aria-hidden="true" tabindex="-1"></a>lst<span class="sc">$</span>new_elem <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb179-2"><a href="lists.html#cb179-2" aria-hidden="true" tabindex="-1"></a>lst</span>
+<span id="cb179-3"><a href="lists.html#cb179-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [[<span class="dv">1</span>]]</span>
+<span id="cb179-4"><a href="lists.html#cb179-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></span>
+<span id="cb179-5"><a href="lists.html#cb179-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb179-6"><a href="lists.html#cb179-6" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> [[<span class="dv">2</span>]]</span>
+<span id="cb179-7"><a href="lists.html#cb179-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="st">&quot;A&quot;</span> <span class="st">&quot;B&quot;</span> <span class="st">&quot;C&quot;</span></span></code></pre></div>
 <hr />
 </div>
 </div>
