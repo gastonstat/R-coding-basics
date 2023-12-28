@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>R Coding Basics - 6&nbsp; Matrices and Arrays</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./3-02-matrices-operations.html" rel="next">
+<link href="./2-01-factors.html" rel="prev">
+<link href="./images/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<script type="text/javascript">
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-46765288', 'auto');
+
+ga('send', {
+  hitType: 'pageview',
+  'anonymizeIp': true,
+});
+</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar docked">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Matrices and Arrays</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">R Coding Basics</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">About</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Vectors</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1-01-vectors-intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">First Contact with Vectors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1-02-vectors-properties.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Properties of Vectors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1-03-vectors-creation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Creating Vectors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1-04-vectors-concepts.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">More About Vectors</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">More Atomic Objects</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2-01-factors.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Factors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./3-01-matrices-intro.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Matrices and Arrays</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./3-02-matrices-operations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">More About Matrices</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Non-Atomic Objects</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./4-01-lists.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Lists</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./4-02-data-frames.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data Frames</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Programming</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5-01-functions-intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Intro to Functions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5-02-expressions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Expressions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5-03-conditionals.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Conditionals: If-Else</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5-04-for-loop.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Iterations: For Loop</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5-05-while-loop.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Iterations: While Loop</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5-06-more-functions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">More About Functions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Import &amp; Export</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./6-01-connections.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./6-02-import-tables.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Importing Data Tables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./6-03-exporting-data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Exporting Data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#motivation" id="toc-motivation" class="nav-link active" data-scroll-target="#motivation"><span class="toc-section-number">6.1</span>  Motivation</a></li>
+  <li><a href="#matrices" id="toc-matrices" class="nav-link" data-scroll-target="#matrices"><span class="toc-section-number">6.2</span>  Matrices</a>
+  <ul class="collapse">
+  <li><a href="#what-kind-of-object-is-a-matrix" id="toc-what-kind-of-object-is-a-matrix" class="nav-link" data-scroll-target="#what-kind-of-object-is-a-matrix"><span class="toc-section-number">6.2.1</span>  What kind of object is a matrix?</a></li>
+  </ul></li>
+  <li><a href="#creating-matrices-with-matrix" id="toc-creating-matrices-with-matrix" class="nav-link" data-scroll-target="#creating-matrices-with-matrix"><span class="toc-section-number">6.3</span>  Creating matrices with <code>matrix()</code></a>
+  <ul class="collapse">
+  <li><a href="#column-major-matrices" id="toc-column-major-matrices" class="nav-link" data-scroll-target="#column-major-matrices"><span class="toc-section-number">6.3.1</span>  Column-Major Matrices</a></li>
+  <li><a href="#giving-names-to-rows-and-columns" id="toc-giving-names-to-rows-and-columns" class="nav-link" data-scroll-target="#giving-names-to-rows-and-columns"><span class="toc-section-number">6.3.2</span>  Giving names to rows and columns</a></li>
+  <li><a href="#more-matrices" id="toc-more-matrices" class="nav-link" data-scroll-target="#more-matrices"><span class="toc-section-number">6.3.3</span>  More Matrices</a></li>
+  </ul></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="toc-section-number">6.4</span>  Exercises</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="matrices1" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Matrices and Arrays</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<p>In the previous four chapters, we discussed a number of ideas and concepts that basically have to do with vectors and their cousins factors. You can think of vectors and factors as one-dimensional objects. While many data sets can be handled through vectors and factors, there are occasions in which one dimension is not enough. The classic example for when one-dimensional objects are not enough involves working with data that fits better into a tabular structure consisting of a series of rows (one dimension) and columns (another dimension).</p>
+<p>In this chapter we introduce R <code>arrays</code>, which are multidimensional atomic objects including 2-dimensional arrays better known as matrices, and N-dimensional generic arrays.</p>
+<section id="motivation" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="motivation"><span class="header-section-number">6.1</span> Motivation</h2>
+<p>Let us continue discussing the savings-investing scenario in which you deposit $1000 into a savings account that pays you an annual interest rate of 2%.</p>
+<p>Assuming that you leave that money in the bank for several years, with a constant rate of return <span class="math inline">\(r\)</span>, you can use the Future Value (FV) formula to calculate how much money you’ll have at the end of year <span class="math inline">\(n\)</span>:</p>
+<p><span class="math display">\[
+\text{FV} = \text{PV} (1 + r)^n
+\]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(\text{FV}\)</span> = future value</li>
+<li><span class="math inline">\(\text{PV}\)</span> = present value</li>
+<li><span class="math inline">\(\text{r}\)</span> = annual interest rate</li>
+<li><span class="math inline">\(\text{n}\)</span> = number of years</li>
+</ul>
+<p>Here’s some R code to obtain a vector <code>amounts</code> containing the amount of money that you would have from the beginning of time, and at the end of every year during a 5 year period:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inputs</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>deposit <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>rate <span class="ot">=</span> <span class="fl">0.02</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>years <span class="ot">=</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># future values</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>amounts <span class="ot">=</span> deposit <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>amounts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1000.000 1020.000 1040.400 1061.208 1082.432
+[6] 1104.081</code></pre>
+</div>
+</div>
+<p>Recall that this code is an example of vectorized (and recycling) code because the FV formula is applied to all the elements of the involved vectors, some of which have different lengths.</p>
+<p>So far, so good.</p>
+<p>Now, consider a seemingly simple modification. What if you want to organize the amount values in a table? Something like this:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">year</th>
+<th style="text-align: center;">amount</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1000.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1020.000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1040.400</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1061.208</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">1082.432</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1104.081</td>
+</tr>
+</tbody>
+</table>
+<p>In other words, what if you are interested not in getting the set of future values in a vector, but instead you want them to be arranged in some sort of tabular object? How can you create a table in which the first column <code>year</code> corresponds to the years, and the second column <code>amount</code> corresponds to the future amounts? Let’s find out.</p>
+</section>
+<section id="matrices" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="matrices"><span class="header-section-number">6.2</span> Matrices</h2>
+<p>R provides two main ways to organize data in a tabular (i.e.&nbsp;rectangular) object. One of them is a <code>matrix</code>—the topic of this chapter—and the other one is a <code>data.frame</code>—to be discussed in a subsequent chapter.</p>
+<section id="creating-a-matrix-by-column-binding-vectors" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="creating-a-matrix-by-column-binding-vectors">Creating a matrix by column-binding vectors</h4>
+<p>You can build a matrix by <strong>column binding</strong> vectors using the function <code>cbind()</code>. In the code below we pass <code>years</code> and <code>amount</code> to the <code>cbind()</code> function, which returns a matrix having the tabular structure that we are looking for: <code>years</code> in the first column, and <code>amounts</code> in the second column.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inputs</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>deposit <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>rate <span class="ot">=</span> <span class="fl">0.02</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>years <span class="ot">=</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># future values</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>amounts <span class="ot">=</span> deposit <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> rate)<span class="sc">^</span>years</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># output as a matrix via cbind()</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>savings <span class="ot">=</span> <span class="fu">cbind</span>(years, amounts)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>savings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     years  amounts
+[1,]     0 1000.000
+[2,]     1 1020.000
+[3,]     2 1040.400
+[4,]     3 1061.208
+[5,]     4 1082.432
+[6,]     5 1104.081</code></pre>
+</div>
+</div>
+<p>As you can tell, the use of <code>cbind()</code> is straightforward. All you have to do is pass the vectors, separating them with a comma. Each vector will become a column of the returned matrix.</p>
+</section>
+<section id="creating-a-matrix-by-row-binding-vectors" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="creating-a-matrix-by-row-binding-vectors">Creating a matrix by row-binding vectors</h4>
+<p>You can also build a matrix by <strong>row binding</strong> vectors. For instance, pretend for a minute that we are interested in obtaining a tabular object in which the first row corresponds to <code>years</code>, and the second row to <code>amounts</code>. To obtain this object we use <code>rbind()</code> as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>savings <span class="ot">=</span> <span class="fu">rbind</span>(years, amounts)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>savings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        [,1] [,2]   [,3]     [,4]     [,5]
+years      0    1    2.0    3.000    4.000
+amounts 1000 1020 1040.4 1061.208 1082.432
+            [,6]
+years      5.000
+amounts 1104.081</code></pre>
+</div>
+</div>
+<p>The difference between <code>cbind()</code> and <code>rbind()</code> is that the latter will “stack” the given vectors on top of each other. That is, each vector will become a row of the returned matrix.</p>
+</section>
+<section id="what-kind-of-object-is-a-matrix" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="what-kind-of-object-is-a-matrix"><span class="header-section-number">6.2.1</span> What kind of object is a matrix?</h3>
+<p>In turns out that an R <code>matrix</code> is a special type of multi-dimensional atomic object called <code>array</code>. Both classes of objects, together with vectors and factors, form the triad of atomic objects. This is illustrated in the following diagram in terms of their number of dimensions.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/objects/obj-atomics.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<p></p><figcaption class="figure-caption">Triad of atomic data objects in R.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Personally, I prefer to reserve the term <code>array</code> for three or more dimensional arrays. As you can tell from the above diagram, this is how I’m using this term in the book. However, you should always keep in mind that a <code>matrix</code> is an <code>array</code>. The other way around is not necessarily true: not all arrays are matrices.</p>
+</section>
+</section>
+<section id="creating-matrices-with-matrix" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="creating-matrices-with-matrix"><span class="header-section-number">6.3</span> Creating matrices with <code>matrix()</code></h2>
+<p>The <code>cbind()</code> and <code>rbind()</code> functions provide a convenient way to create matrices from different input vectors. But the kind of matrices that you can create with them is limited if all you have is just one input vector.</p>
+<p>So, in addition to <code>cbind()</code> and <code>rbind()</code>, R comes with the function <code>matrix()</code> which is the workhorse function for creating matrices. Usually, you provide an input vector, and also the number of rows and columns (i.e.&nbsp;the <em>matrix dimensions</em>) that the returned matrix should have.</p>
+<p>Here is how to use <code>matrix()</code> to create the <code>savings</code> matrix that we are interested in obtaining:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>savings <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(years, amounts), <span class="at">nrow =</span> <span class="dv">6</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>savings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1]     [,2]
+[1,]    0 1000.000
+[2,]    1 1020.000
+[3,]    2 1040.400
+[4,]    3 1061.208
+[5,]    4 1082.432
+[6,]    5 1104.081</code></pre>
+</div>
+</div>
+<p>This is an interesting piece of code. Notice that <code>years</code> and <code>amounts</code> are combined into a single vector, which is the main input of <code>matrix()</code>. The two other arguments correspond to the matrix dimensions: <code>nrow = 6</code> tells R that we want to produce a matrix with 6 rows; <code>ncol = 2</code> indicates that we want the matrix to have 2 columns.</p>
+<section id="column-major-matrices" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="column-major-matrices"><span class="header-section-number">6.3.1</span> Column-Major Matrices</h3>
+<p>When creating a matrix via the function <code>matrix()</code>, R takes into consideration three important aspects:</p>
+<ol type="1">
+<li><p>the length of the input vector.</p></li>
+<li><p>the “size” of the matrix given by its number of rows and columns; think of this as the total number of cells or entries in the matrix.</p></li>
+<li><p>whether the length of the input vector is a multiple or sub-multiple of the size of the matrix.</p></li>
+</ol>
+<p>In the current example, the input vector <code>c(years, amounts)</code> has 12 elements. In turn, the size of the desired matrix is given by the multiplication of the number of rows (2) times the number of columns (6), that is:</p>
+<p><span class="math display">\[
+\text{size of matrix} = 6 \times 2 = 12 \text{ cells}
+\]</span></p>
+<p>R then compares the length of the input vector against the size of the matrix. If these numbers are the same, like in this example, R proceeds to split the elements of the input vector into 2 sections or sub-vectors, each one containing 6 elements. Each of these sections will become a column of the output matrix.</p>
+<p>In other words, the vector <code>c(years, amounts)</code> is split into 2 sub-vectors:</p>
+<pre><code># the first sub-vector is:
+0  1  2  3  4  5
+
+# the second sub-vector is:
+1000.000  1020.000  1040.400  1061.208  1082.432  1104.081</code></pre>
+<p>The first sub-vector, which corresponds to <code>years</code>, becomes the first column. The second sub-vector, which corresponds to <code>amounts</code>, becomes the second column. In technical terms we say that R matrices are stored <strong>column-major</strong> because of the mechanism used by R to arrange the elements of an input vector in order to create a matrix.</p>
+<section id="mismatch-between-length-of-input-vector-and-size-of-matrix" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="mismatch-between-length-of-input-vector-and-size-of-matrix">Mismatch between length of input vector and size of matrix</h4>
+<p>What about those cases in which the length of the input vector does not match the size of the desired matrix? For example, consider the following commands illustrating this type of situation:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># examples in which length of input vector</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># does not match size of matrix</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in matrix(1:12, nrow = 3, ncol = 2): data
+length differs from size of matrix: [12 != 3 x 2]</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>m4 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in matrix(1:4, nrow = 3, ncol = 2): data
+length [4] is not a sub-multiple or multiple of
+the number of rows [3]</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>m5 <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in matrix(1:8, nrow = 2, ncol = 3): data
+length [8] is not a sub-multiple or multiple of
+the number of columns [3]</code></pre>
+</div>
+</div>
+<p>In matrices <code>m1</code> and <code>m2</code> the input vector <code>1:3</code> is a sub-multiple of the size of the matrix 6.</p>
+<p>In matrix <code>m3</code> the input vector <code>1:12</code> is longer than the size of the matrix: 6. However, the entire length of the vector, 12, is a multiple of the size 6.</p>
+<p>In matrices <code>m4</code> and <code>m5</code>, all the input vectors have lengths that are neither a multiple or sub-multiple of the size of the returned matrix.</p>
+<p>When the length of the input vector does not match the size of the desired matrix, R applies its recycling rules. Let’s pay attention to <code>m1</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>m1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]    1    1
+[2,]    2    2
+[3,]    3    3</code></pre>
+</div>
+</div>
+<p>Note how the values of the input vector <code>1:3</code> are recycled to form the columns of <code>m1</code>. The values appear in the first column, but they also appear in the second column after being recycled.</p>
+<p>In contrast, matrix <code>m3</code> does not use all the elements in the input vector <code>1:12</code>. Instead, only the first six values are retained.</p>
+<p>As for the matrices <code>m4</code> and <code>m5</code>, they all have an input vector whose length is neither a multiple nor a sub-multiple of the size of the matrix. In these cases R will also apply its recycling rules, but it will also display a warning message letting us know that the length of the input vector is not a multiple or sub-multiple of either the number of rows or the number of columns.</p>
+</section>
+</section>
+<section id="giving-names-to-rows-and-columns" class="level3" data-number="6.3.2">
+<h3 data-number="6.3.2" class="anchored" data-anchor-id="giving-names-to-rows-and-columns"><span class="header-section-number">6.3.2</span> Giving names to rows and columns</h3>
+<p>Often, you may need to provide names for either the rows and/or the columns of a matrix. R comes with the functions <code>rownames()</code> and <code>colnames()</code> that can be used to assign names for the rows and columns, for example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># matrix of savings amounts</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>savings <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(years, amounts), <span class="at">nrow =</span> <span class="dv">6</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># row and columns names</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(savings) <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(savings) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"year"</span>, <span class="st">"amount"</span>)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>savings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  year   amount
+1    0 1000.000
+2    1 1020.000
+3    2 1040.400
+4    3 1061.208
+5    4 1082.432
+6    5 1104.081</code></pre>
+</div>
+</div>
+</section>
+<section id="more-matrices" class="level3" data-number="6.3.3">
+<h3 data-number="6.3.3" class="anchored" data-anchor-id="more-matrices"><span class="header-section-number">6.3.3</span> More Matrices</h3>
+<p>Let’s make things a bit more complex. Say you have the following investments:</p>
+<ul>
+<li><p>$1000 in a <strong>savings account</strong> that pays 2% annual return, during 4 years</p></li>
+<li><p>$2000 in a <strong>money market</strong> account that pays 2.5% annual return, during 2 years</p></li>
+<li><p>$5000 in a <strong>certificate of deposit</strong> that pays 3% annual return, during 3 years</p></li>
+</ul>
+<p>In R, we can calculate the future values of each type of investment product:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># savings account</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>savings <span class="ot">=</span> <span class="dv">1000</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fl">0.02</span>)<span class="sc">^</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">4</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>savings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1000.000 1020.000 1040.400 1061.208 1082.432</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># money market</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>moneymkt <span class="ot">=</span> <span class="dv">2000</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fl">0.025</span>)<span class="sc">^</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">2</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>moneymkt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2000.00 2050.00 2101.25</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># certificate of deposit</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>certificate <span class="ot">=</span> <span class="dv">5000</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fl">0.03</span>)<span class="sc">^</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>certificate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5000.000 5150.000 5304.500 5463.635</code></pre>
+</div>
+</div>
+<section id="separated-matrices" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="separated-matrices">Separated matrices</h4>
+<p>We can create individual matrices for each type of account:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># savings account</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>sav_mat <span class="ot">=</span> <span class="fu">cbind</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">4</span>, savings)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># money market</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>mm_mat <span class="ot">=</span> <span class="fu">cbind</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">2</span>, moneymkt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># certificate of deposit</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>cd_mat <span class="ot">=</span> <span class="fu">cbind</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>, certificate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="single-matrix" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="single-matrix">Single matrix</h4>
+<p>Alternatively, we can stack everything into a single matrix:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(<span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>), <span class="fu">c</span>(savings, moneymkt, certificate))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      [,1]     [,2]
+ [1,]    0 1000.000
+ [2,]    1 1020.000
+ [3,]    2 1040.400
+ [4,]    3 1061.208
+ [5,]    4 1082.432
+ [6,]    0 2000.000
+ [7,]    1 2050.000
+ [8,]    2 2101.250
+ [9,]    0 5000.000
+[10,]    1 5150.000
+[11,]    2 5304.500
+[12,]    3 5463.635</code></pre>
+</div>
+</div>
+</section>
+<section id="what-about-mixing-data-types" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="what-about-mixing-data-types">What about mixing data types?</h4>
+<p>What if you want some table like this:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">account</th>
+<th style="text-align: center;">year</th>
+<th style="text-align: center;">amount</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">savings</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1000.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">savings</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1020.000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">savings</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1040.400</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">savings</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1061.208</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">savings</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">1082.432</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">moneymkt</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">2000.000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">moneymkt</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2050.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">moneymkt</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2101.250</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">certif</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">5000.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">certif</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">5150.250</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">certif</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">5304.500</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">certif</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">5463.635</td>
+</tr>
+</tbody>
+</table>
+<p>We could use the <code>cbind()</code> function in an attempt to obtain a matrix having a similar rectangular structure as in the above table:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>investments <span class="ot">=</span> <span class="fu">cbind</span>(</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"savings"</span>, <span class="st">"moneymkt"</span>, <span class="st">"certif"</span>), <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">4</span>)),</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>), </span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(savings, moneymkt, certificate))</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>investments</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      [,1]       [,2] [,3]        
+ [1,] "savings"  "0"  "1000"      
+ [2,] "savings"  "1"  "1020"      
+ [3,] "savings"  "2"  "1040.4"    
+ [4,] "savings"  "3"  "1061.208"  
+ [5,] "savings"  "4"  "1082.43216"
+ [6,] "moneymkt" "0"  "2000"      
+ [7,] "moneymkt" "1"  "2050"      
+ [8,] "moneymkt" "2"  "2101.25"   
+ [9,] "certif"   "0"  "5000"      
+[10,] "certif"   "1"  "5150"      
+[11,] "certif"   "2"  "5304.5"    
+[12,] "certif"   "3"  "5463.635"  </code></pre>
+</div>
+</div>
+<p>Do you notice something funny with the matrix <code>investments</code>?</p>
+<p>As you can tell, all the values in <code>investments</code> are displayed being surrounded with double quotes. This indicates that all the values are of type <code>character</code>. Why is this?</p>
+<p>Recall that matrices are <strong>atomic</strong> objects. Usually, you provide an input vector containing the elements to be arranged into a rectangular array with a certain number of rows and columns. Because vectors are atomic, this property is “inherited” by the returned matrix.</p>
+<p>It turns out that you can use other classes of data objects, not necessarily atomic, for creating a matrix. If the input object is non-atomic, R will coerce it into a vector, making the input an atomic object.</p>
+<p>So either way, whether you provide an atomic input or a non-atomic input, to any of the matrix-creation functions, R will always produce an atomic output. This is the reason why the below command produces a <code>character</code> matrix:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>investments <span class="ot">=</span> <span class="fu">cbind</span>(</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"savings"</span>, <span class="st">"moneymkt"</span>, <span class="st">"certif"</span>), <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">4</span>)),</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>), </span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(savings, moneymkt, certificate))</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(investments)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "character"</code></pre>
+</div>
+</div>
+<p>The three input vectors are coerced into a single vector of <code>character</code> data type, causing the <code>investments</code> matrix to be of type <code>character</code>.</p>
+<hr>
+</section>
+</section>
+</section>
+<section id="exercises" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">6.4</span> Exercises</h2>
+<p><strong>1)</strong> Use <code>matrix()</code> to create a matrix <code>mat1</code> (see below) from the input vector <code>x = letters[1:15]</code>:</p>
+<pre><code># mat1
+"a"  "d"  "g"  "j"  "m" 
+"b"  "e"  "h"  "k"  "n" 
+"c"  "f"  "i"  "l"  "o"</code></pre>
+<div class="cell">
+<details>
+<summary>Show answer</summary>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>]</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>mat1 <span class="ot">=</span> <span class="fu">matrix</span>(x, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p><br></p>
+<p><strong>2)</strong> Look at the documentation of <code>matrix()</code> and find how to use it for obtaining the matrix <code>mat2</code> (see below) from the input vector <code>x = letters[1:15]</code>:</p>
+<pre><code># mat2
+"a"  "b"  "c"  "d"  "e" 
+"f"  "g"  "h"  "i"  "j" 
+"k"  "l"  "m"  "n"  "o" </code></pre>
+<div class="cell">
+<details>
+<summary>Show answer</summary>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>]</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>mat2 <span class="ot">=</span> <span class="fu">matrix</span>(x, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">5</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p><br></p>
+<p><strong>3)</strong> Find out how to use the functions <code>rownames()</code> and <code>colnames()</code> to give names to the rows and the columns of matrix <code>mat1</code>. Choose any names you want, and display matrix <code>mat1</code>.</p>
+<div class="cell">
+<details>
+<summary>Show answer</summary>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(mat1) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">'r1'</span>, <span class="st">'r2'</span>, <span class="st">'r3'</span>)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(mat1) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">'c1'</span>, <span class="st">'c2'</span>, <span class="st">'c3'</span>, <span class="st">'c4'</span>, <span class="st">'c5'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p><br></p>
+<p><strong>4)</strong> Use <code>matrix()</code> to create a matrix <code>mat3</code> (see below) from the input vector <code>y = month.name</code>:</p>
+<pre><code># mat3
+"January" "February" "March"    
+"April"   "May"      "June"     
+"July"    "August"   "September"
+"October" "November" "December" </code></pre>
+<div class="cell">
+<details>
+<summary>Show answer</summary>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> month.name</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>mat3 <span class="ot">=</span> <span class="fu">matrix</span>(y, <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p><br></p>
+<p><strong>5)</strong> Use <code>matrix()</code>—and its recycling principle—to create a matrix <code>mat4</code> (see below) from the input vector <code>a = c(3, 6, 9)</code>:</p>
+<pre><code># mat4
+3    3    3
+6    6    6
+9    9    9</code></pre>
+<div class="cell">
+<details>
+<summary>Show answer</summary>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">9</span>)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>mat4 <span class="ot">=</span> <span class="fu">matrix</span>(a, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p><br></p>
+<p><strong>6)</strong> Use <code>matrix()</code>—and its recycling principle—to create a matrix <code>mat5</code> (see below) from the input vector <code>a = c(3, 6, 9)</code>:</p>
+<pre><code># mat5
+3    3    3
+6    6    6
+9    9    9
+3    3    3
+6    6    6
+9    9    9</code></pre>
+<div class="cell">
+<details>
+<summary>Show answer</summary>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">9</span>)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>mat5 <span class="ot">=</span> <span class="fu">matrix</span>(a, <span class="at">nrow =</span> <span class="dv">6</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p><br></p>
+<p><strong>7)</strong> Consider the following vectors <code>a</code> and <code>b</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>)</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Use the row-binding function <code>rbind()</code>, with inputs <code>a</code> and <code>b</code>, to create a matrix <code>mat6</code> displayed below:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mat6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3]
+[1,]    1    3    5
+[2,]    2    4    6</code></pre>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Show answer</summary>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>mat6 <span class="ot">=</span> <span class="fu">rbind</span>(b, a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p><br></p>
+<p><strong>8)</strong> Consider the following vectors <code>u</code> and <code>v</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>u <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>)</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>v <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Use the column-binding function <code>cbind()</code>, with inputs <code>u</code> and <code>v</code>, to create a matrix <code>mat7</code> displayed below:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mat7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3]
+[1,]    2    1    2
+[2,]    4    3    4
+[3,]    6    5    6
+[4,]    8    7    8</code></pre>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Show answer</summary>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>mat7 <span class="ot">=</span> <span class="fu">cbind</span>(u, v, u)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p><br></p>
+<p><strong>9)</strong> Find out how to use the <code>diag()</code> function to create an <strong>identity matrix</strong> of dimensions 4 rows and 4 columns (see below). BTW: An identity matrix is a matrix with the same number of rows and columns, has ones in the diagonal, and zeroes off-diagonal.</p>
+<pre><code>1    0    0    0
+0    1    0    0
+0    0    1    0
+0    0    0    1</code></pre>
+<div class="cell">
+<details>
+<summary>Show answer</summary>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diag</span>(<span class="dv">1</span>, <span class="at">nrow =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p><br></p>
+<p><strong>10)</strong> Refer to matrices <code>mat4</code> and <code>mat7</code>. Use both <code>cbind()</code> and <code>rbind()</code> to attempt binding these two matrices. If one of the binding operations fails, explain why.</p>
+<div class="cell">
+<details>
+<summary>Show answer</summary>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cbind(mat4, mat7) fails because these matrices have different number of rows</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="co"># rbind(mat4, mat7) works</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./2-01-factors.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Factors</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./3-02-matrices-operations.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">More About Matrices</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2024, <a href="https://www.gastonsanchez.com">Gaston Sanchez</a></div>   
+    <div class="nav-footer-right"><a href="https://www.paypal.com/donate?business=ZF6U7K5MW25W2&amp;currency_code=USD" target="_blank">Donate via PayPal</a></div>
+  </div>
+</footer>
+
+
+
+</body></html>

@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>R Coding Basics - 17&nbsp; Importing Data Tables</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./6-03-exporting-data.html" rel="next">
+<link href="./6-01-connections.html" rel="prev">
+<link href="./images/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<script type="text/javascript">
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-46765288', 'auto');
+
+ga('send', {
+  hitType: 'pageview',
+  'anonymizeIp': true,
+});
+</script>
+
+
+</head>
+
+<body class="nav-sidebar docked">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Importing Data Tables</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">R Coding Basics</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">About</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Vectors</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1-01-vectors-intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">First Contact with Vectors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1-02-vectors-properties.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Properties of Vectors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1-03-vectors-creation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Creating Vectors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1-04-vectors-concepts.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">More About Vectors</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">More Atomic Objects</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2-01-factors.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Factors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./3-01-matrices-intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Matrices and Arrays</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./3-02-matrices-operations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">More About Matrices</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Non-Atomic Objects</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./4-01-lists.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Lists</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./4-02-data-frames.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data Frames</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Programming</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5-01-functions-intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Intro to Functions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5-02-expressions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Expressions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5-03-conditionals.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Conditionals: If-Else</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5-04-for-loop.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Iterations: For Loop</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5-05-while-loop.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Iterations: While Loop</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5-06-more-functions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">More About Functions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Import &amp; Export</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./6-01-connections.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./6-02-import-tables.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Importing Data Tables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./6-03-exporting-data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Exporting Data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#motivation" id="toc-motivation" class="nav-link active" data-scroll-target="#motivation"><span class="toc-section-number">17.1</span>  Motivation</a>
+  <ul class="collapse">
+  <li><a href="#data-in-text-files" id="toc-data-in-text-files" class="nav-link" data-scroll-target="#data-in-text-files"><span class="toc-section-number">17.1.1</span>  Data in Text Files</a></li>
+  </ul></li>
+  <li><a href="#character-delimited-text-files" id="toc-character-delimited-text-files" class="nav-link" data-scroll-target="#character-delimited-text-files"><span class="toc-section-number">17.2</span>  Character Delimited Text Files</a>
+  <ul class="collapse">
+  <li><a href="#common-delimiters" id="toc-common-delimiters" class="nav-link" data-scroll-target="#common-delimiters"><span class="toc-section-number">17.2.1</span>  Common Delimiters</a></li>
+  <li><a href="#delimiters-in-data-values" id="toc-delimiters-in-data-values" class="nav-link" data-scroll-target="#delimiters-in-data-values"><span class="toc-section-number">17.2.2</span>  Delimiters in Data Values</a></li>
+  <li><a href="#fixed-width-format-files" id="toc-fixed-width-format-files" class="nav-link" data-scroll-target="#fixed-width-format-files"><span class="toc-section-number">17.2.3</span>  Fixed-Width Format Files</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="toc-section-number">17.2.4</span>  Summary</a></li>
+  </ul></li>
+  <li><a href="#importing-data-tables" id="toc-importing-data-tables" class="nav-link" data-scroll-target="#importing-data-tables"><span class="toc-section-number">17.3</span>  Importing Data Tables</a>
+  <ul class="collapse">
+  <li><a href="#function-read.table-and-friends" id="toc-function-read.table-and-friends" class="nav-link" data-scroll-target="#function-read.table-and-friends"><span class="toc-section-number">17.3.1</span>  Function <code>read.table()</code> and friends</a></li>
+  <li><a href="#reading-space-separated-files" id="toc-reading-space-separated-files" class="nav-link" data-scroll-target="#reading-space-separated-files"><span class="toc-section-number">17.3.2</span>  Reading space-separated files</a></li>
+  <li><a href="#reading-comma-separated-files-with-read.csv" id="toc-reading-comma-separated-files-with-read.csv" class="nav-link" data-scroll-target="#reading-comma-separated-files-with-read.csv"><span class="toc-section-number">17.3.3</span>  Reading comma-separated files with <code>read.csv()</code></a></li>
+  </ul></li>
+  <li><a href="#importing-with-scan" id="toc-importing-with-scan" class="nav-link" data-scroll-target="#importing-with-scan"><span class="toc-section-number">17.4</span>  Importing with <code>scan()</code></a></li>
+  <li><a href="#in-summary" id="toc-in-summary" class="nav-link" data-scroll-target="#in-summary"><span class="toc-section-number">17.5</span>  In Summary</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="import-tables" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Importing Data Tables</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<p>The most common type of data-import operation in R has to do with importing data tables. Because of this, I have decided to exclusively dedicate this chapter to review this type of operation. In a nutshell, I describe various standard ways to import tabular data. By “standard” I mean using base functions such as <code>read.table()</code> and friends. This is in contrast to alternative functions from packages such as <code>"readr"</code>, and other packages.</p>
+<section id="motivation" class="level2" data-number="17.1">
+<h2 data-number="17.1" class="anchored" data-anchor-id="motivation"><span class="header-section-number">17.1</span> Motivation</h2>
+<p>Suppose we have data about the accounts of an individual’s portfolio (see table below). There are five different accounts, the type of bank (brick-and-mortar or online) associated to the account, the annual rate of return, and the balance amount (in dollars).</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">account</th>
+<th style="text-align: left;">bank</th>
+<th style="text-align: left;">rate</th>
+<th style="text-align: left;">balance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">savings</td>
+<td style="text-align: left;">brick-n-mortar</td>
+<td style="text-align: left;">0.020</td>
+<td style="text-align: left;">1000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">money market</td>
+<td style="text-align: left;">online</td>
+<td style="text-align: left;">0.025</td>
+<td style="text-align: left;">2000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">certificate</td>
+<td style="text-align: left;">brick-n-mortar</td>
+<td style="text-align: left;">0.030</td>
+<td style="text-align: left;">3000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">brokerage</td>
+<td style="text-align: left;">online</td>
+<td style="text-align: left;">0.070</td>
+<td style="text-align: left;">5000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">retirement</td>
+<td style="text-align: left;">online</td>
+<td style="text-align: left;">0.050</td>
+<td style="text-align: left;">9000</td>
+</tr>
+</tbody>
+</table>
+<p>A data table like this one could be stored in various types of files. For example, it could be stored in a <em>Comma Separated Value</em> (CSV) file, which is a very common kind of text file format used to store tables. Another possible way in which this table could be stored is in a spreadsheet (e.g.&nbsp;Excel, Google Sheets, Mac Numbers).</p>
+<section id="data-in-text-files" class="level3" data-number="17.1.1">
+<h3 data-number="17.1.1" class="anchored" data-anchor-id="data-in-text-files"><span class="header-section-number">17.1.1</span> Data in Text Files</h3>
+<p>Let’s assume that the table is stored in a text file. Because the term text file is used in slightly different ways, let me be a bit more specific about what I mean by <em>text</em> file:</p>
+<ul>
+<li><p>By text file I mean a plain text file that can be read and manipulated with a text editor (not to be confused with a word-processor)</p></li>
+<li><p>Plain text as an umbrella term for any file that is in a human-readable form, with comon file extensions such as <code>.txt</code>, <code>.csv</code>, <code>.xml</code>, <code>.html</code>.</p></li>
+<li><p>Text file implying that its content is stored as a sequence of characters</p></li>
+<li><p>Each character stored as a single byte of data</p></li>
+<li><p>Data is arranged in rows, with several values stored on each row</p></li>
+</ul>
+</section>
+</section>
+<section id="character-delimited-text-files" class="level2" data-number="17.2">
+<h2 data-number="17.2" class="anchored" data-anchor-id="character-delimited-text-files"><span class="header-section-number">17.2</span> Character Delimited Text Files</h2>
+<p>A common way to store data tables is via text files. But how is this actually done? How can a data table be stored in a text file?</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/inout/table-storing-data.png" class="img-fluid figure-img" style="width:65.0%"></p>
+<p></p><figcaption class="figure-caption">How are data tables stored in text files?</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>You may not have thought about this before. This was certainly the case for me back when I was an undergraduate student. I could perfectly picture a data table in my head, with a bunch of rows and columns forming its grid-like structure. But I never considered a table’s storage format in a text file.</p>
+<p>Think about it: a table is made of cells that come from the intersection of rows and columns. So the two fundamental questions when storing data in a text file are: 1) how to represent rows?, and 2) how to represent columns? Or in other words: how to convey the notion of cells in a text file?</p>
+<p>The answer to this question comes from realizing what a data cell does. A cell is basically a placeholder for a data value. Cells let us separate or delimit one data value from another. So all we have to do is to come up with a <strong>delimiter</strong> or <strong>separator</strong> to differentiate from one data point to the next one. The way this is done is by choosing a certain character as the delimiter. As for the notion of rows, we can simply use newlines.</p>
+<p>Here is an example of how the accounts data table can be store in a text file, using commas <code>","</code> as the character to separate values:</p>
+<pre><code>account,bank,rate,balance
+savings,bricknmor,0.020,1000
+monmarket,online,0.025,2000
+certificate,bricknmor,0.030,3000
+brokerage,online,0.070,5000
+retirement,online,0.050,9000</code></pre>
+<section id="common-delimiters" class="level3" data-number="17.2.1">
+<h3 data-number="17.2.1" class="anchored" data-anchor-id="common-delimiters"><span class="header-section-number">17.2.1</span> Common Delimiters</h3>
+<p>As you can tell, the idea of storing data tables via text files is very simple and clever. More formally, this storage option is commonly referred to as <strong>field-delimiter</strong> formats. The term “field” is a synonym of <em>variable</em> or <em>column</em>. The term “delimiter” indicates that a certain character is used to delimit the values of every column.</p>
+<p>Common examples of such delimiters are blank space characters <code>" "</code>, tab characters <code>"\t"</code>, or comma characters <code>","</code>.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Delimiter</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>" "</code></td>
+<td style="text-align: left;">white space</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>","</code></td>
+<td style="text-align: left;">comma</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>"\t"</code></td>
+<td style="text-align: left;">tab</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>";"</code></td>
+<td style="text-align: left;">semicolon</td>
+</tr>
+</tbody>
+</table>
+<p>As a matter of fact, you can come up with your own delimiter. For instance, I can use vertical bars <code>"|"</code> as delimiters:</p>
+<pre><code>account|bank|rate|balance
+savings|bricknmor|0.020|1000
+monmarket|online|0.025|2000
+certificate|bricknmor|0.030|3000
+brokerage|online|0.070|5000
+retirement|online|0.050|9000</code></pre>
+<p>Or even use double colons as delimiters:</p>
+<pre><code>account::bank::rate::balance
+savings::bricknmor::0.020::1000
+monmarket::online::0.025::2000
+certificate::bricknmor::0.030::3000
+brokerage::online::0.070::5000
+retirement::online::0.050::9000</code></pre>
+<p>To be honest, if you have to choose a certain character for delimiting purposes, I would recommend not to be creative, and instead to stick with one of the conventional delimiters. Below are some examples of what the content of a text file—storing the accounts table—could look like when using different delimiters.</p>
+<section id="space-delimited" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="space-delimited">Space Delimited</h4>
+<p>Example of a <strong>space</strong> delimited file (common file extension <code>.txt</code>)</p>
+<pre><code>account bank rate balance
+savings bricknmor 0.020 1000
+monmarket online 0.025 2000
+certificate bricknmor 0.030 3000
+brokerage online 0.070 5000
+retirement online 0.050 9000</code></pre>
+</section>
+<section id="tab-delimited" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="tab-delimited">Tab Delimited</h4>
+<p>Example of a <strong>tab</strong> delimited file (common file extensions <code>.txt</code> or <code>.tsv</code>)</p>
+<pre><code>account   bank    rate    balance
+savings   bricknmor   0.020   1000
+monmarket   online    0.025   2000
+certificate   bricknmor   0.030   3000
+brokerage   online    0.070   5000
+retirement    online    0.050   9000</code></pre>
+</section>
+<section id="semicolon-delimited" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="semicolon-delimited">Semicolon Delimited</h4>
+<p>Example of a <strong>semicolon</strong> delimited file (common file extension <code>.csv</code>)</p>
+<pre><code>account;bank;rate;balance
+savings;bricknmor;0.020;1000
+monmarket;online;0.025;2000
+certificate;bricknmor;0.030;3000
+brokerage;online;0.070;5000
+retirement;online;0.050;9000</code></pre>
+</section>
+</section>
+<section id="delimiters-in-data-values" class="level3" data-number="17.2.2">
+<h3 data-number="17.2.2" class="anchored" data-anchor-id="delimiters-in-data-values"><span class="header-section-number">17.2.2</span> Delimiters in Data Values</h3>
+<p>What happens if the chosen delimiter is actually part of a data value? As an example of this type of situation, let’s modify the accounts data table. In particular, suppose that the values in column <code>balance</code> contain a comma to better distinguish numbers in thousands of dollars:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">account</th>
+<th style="text-align: left;">bank</th>
+<th style="text-align: left;">rate</th>
+<th style="text-align: left;">balance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">savings</td>
+<td style="text-align: left;">brick-n-mortar</td>
+<td style="text-align: left;">0.020</td>
+<td style="text-align: left;">1,000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">money market</td>
+<td style="text-align: left;">online</td>
+<td style="text-align: left;">0.025</td>
+<td style="text-align: left;">2,000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">certificate</td>
+<td style="text-align: left;">brick-n-mortar</td>
+<td style="text-align: left;">0.030</td>
+<td style="text-align: left;">3,000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">brokerage</td>
+<td style="text-align: left;">online</td>
+<td style="text-align: left;">0.070</td>
+<td style="text-align: left;">5,000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">retirement</td>
+<td style="text-align: left;">online</td>
+<td style="text-align: left;">0.050</td>
+<td style="text-align: left;">9,000</td>
+</tr>
+</tbody>
+</table>
+<p>If commas are also used as delimiters, we will have a conflict because the commas in balance values are not intended to be delimiters:</p>
+<pre><code>account,bank,rate,balance
+savings,bricknmor,0.020,1,000
+monmarket,online,0.025,2,000
+certificate,bricknmor,0.030,3,000
+brokerage,online,0.070,5,000
+retirement,online,0.050,9,000</code></pre>
+<p>When something like this happens, to avoid a conflict between the delimiting character and its usage as part of a data value, the convention is to surround the values within quotes (typically double quotes), like this:</p>
+<pre><code>account,bank,rate,balance
+savings,bricknmor,0.020,"1,000"
+monmarket,online,0.025,"2,000"
+certificate,bricknmor,0.030,"3,000"
+brokerage,online,0.070,"5,000"
+retirement,online,0.050,"9,000"</code></pre>
+</section>
+<section id="fixed-width-format-files" class="level3" data-number="17.2.3">
+<h3 data-number="17.2.3" class="anchored" data-anchor-id="fixed-width-format-files"><span class="header-section-number">17.2.3</span> Fixed-Width Format Files</h3>
+<p>In addition to character-delimited files, there is another kind of plain text format that can also be used to store data tables: the so-called <strong>fixed-width formats</strong> or <em>fwf</em> for short.</p>
+<p>In a fixed-width format file, the way in which values are separated is not with a character. Instead, values in a column are given a fixed width expressed in a certain number of characters.</p>
+<p>Here’s an example of a <strong>fixed width</strong> delimited file (common file extension <code>.txt</code>). For sake of illustration, I’m adding a sequence of digits at the top. In real life, the first line of digits is not supposed to be part of the file.</p>
+<pre><code>12345678901234567890123456789012345
+account     bank      rate  balance
+savings     bricknmor 0.020 1000
+monmarket   online    0.025 2000
+certificate bricknmor 0.030 3000
+brokerage   online    0.070 5000
+retirement  online    0.050 9000</code></pre>
+<p>All the data of the first column <code>account</code> is given a width of 12 characters (i.e.&nbsp;digits <code>123456789012</code>). In turn, all the data in column <code>bank</code> fits within a width of 10 characters (i.e.&nbsp;digits <code>3456789012</code>), and so on.</p>
+</section>
+<section id="summary" class="level3" data-number="17.2.4">
+<h3 data-number="17.2.4" class="anchored" data-anchor-id="summary"><span class="header-section-number">17.2.4</span> Summary</h3>
+<p>To summarize:</p>
+<ul>
+<li><p>A common way to store data in tabular form is via text files</p></li>
+<li><p>To store the data we need a way to separate data values</p></li>
+<li><p>Each line represents a “row”</p></li>
+<li><p>The idea of “columns” is conveyed with delimiters</p></li>
+<li><p>Fields within each line are separated by the delimiter</p></li>
+<li><p>Quotation marks are used when the delimiter character occurs within one of the fields</p></li>
+</ul>
+</section>
+</section>
+<section id="importing-data-tables" class="level2" data-number="17.3">
+<h2 data-number="17.3" class="anchored" data-anchor-id="importing-data-tables"><span class="header-section-number">17.3</span> Importing Data Tables</h2>
+<p>Now that we have talked about how data tables are stored in text files, and the various formats in which this is done, let’s review the set of functions to import tables in R, as well as important considerations to keep in mind when importing data in general.</p>
+<p>Considerations before importing a data table in R:</p>
+<ul>
+<li><p>What is the character used as field delimiter?</p></li>
+<li><p>Does the file contain names of columns?</p></li>
+<li><p>Does the file contain a column for row names?</p></li>
+<li><p>Are there any missing values? If yes, how are missing values encoded?</p></li>
+<li><p>Do you want to read in all rows, or just some of them?</p></li>
+<li><p>Do you want to read in all columns, or just some of them?</p></li>
+<li><p>Do you need to convert delimiter characters? (e.g.&nbsp;from space to comma)</p></li>
+<li><p>Can you determine the data-type of each column?</p></li>
+<li><p>Are there any uninformative numbers?</p></li>
+<li><p>Can you convert those uninformative numbers to informative labels?</p></li>
+</ul>
+<div class="cell">
+
+</div>
+<section id="function-read.table-and-friends" class="level3" data-number="17.3.1">
+<h3 data-number="17.3.1" class="anchored" data-anchor-id="function-read.table-and-friends"><span class="header-section-number">17.3.1</span> Function <code>read.table()</code> and friends</h3>
+<p>The most common way to read and import tables in R is by using <code>read.table()</code> and friends such as <code>read.csv()</code>, <code>read.delim()</code>, etc. If you take a look at the arguments of <code>read.table()</code> you’ll see that this function has more than 20 of them. Actually, if you inspect the help documentation, <code>read.table()</code> comes with the following usage:</p>
+<pre><code>read.table(file, header = FALSE, sep = "", quote = "\"'",
+           dec = ".", row.names, col.names,
+           as.is = !stringsAsFactors,
+           na.strings = "NA", colClasses = NA, nrows = -1,
+           skip = 0, check.names = TRUE,
+           fill = !blank.lines.skip,
+           strip.white = FALSE, blank.lines.skip = TRUE,
+           comment.char = "#",
+           allowEscapes = FALSE, flush = FALSE,
+           stringsAsFactors = default.stringsAsFactors(),
+           fileEncoding = "", encoding = "unknown", text,
+           skipNul = FALSE)</code></pre>
+<p>As I mention in the foregoing chapter, the mandatory input for <code>read.table()</code> and friends is <code>file</code> which is the name of the file which the data are to be read from. On the more technical side, recall that there is a <code>connection()</code> function used by R related to the <code>file</code> argument.</p>
+<p>The following table lists some <code>read.table()</code> arguments and their meaning:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Argument</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>file</code></td>
+<td style="text-align: left;">Name of file</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>header</code></td>
+<td style="text-align: left;">Whether column names are in 1st line</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>sep</code></td>
+<td style="text-align: left;">Character used as field separator</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>quote</code></td>
+<td style="text-align: left;">Quoting characters</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>dec</code></td>
+<td style="text-align: left;">Character for decimal point</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>row.names</code></td>
+<td style="text-align: left;">Optional vector of row names</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>col.names</code></td>
+<td style="text-align: left;">Optional vector of column names</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>na.strings</code></td>
+<td style="text-align: left;">Characters treated as missing values</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>colClasses</code></td>
+<td style="text-align: left;">Optional vector of data types for columns</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>nrows</code></td>
+<td style="text-align: left;">Maximum number of rows to read in</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>skip</code></td>
+<td style="text-align: left;">Number of lines to skip before reading data</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>check.names</code></td>
+<td style="text-align: left;">Check valid column names</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>stringsAsFactors</code></td>
+<td style="text-align: left;">Should characters be converted to factors</td>
+</tr>
+</tbody>
+</table>
+<p>In versions of R <code>&lt; 4.0.0</code>, <code>read.table()</code> and friends convert character strings into factors by default.</p>
+<p>In addition to <code>read.table()</code>, there’s a handful of sibling functions to read other types of text files (see table below). By the way, all these functions are actually wrappers of <code>read.table()</code>:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Function</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>read.csv()</code></td>
+<td style="text-align: left;">import comma separated values</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>read.csv2()</code></td>
+<td style="text-align: left;">import semicolon separated values (Europe)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>read.delim()</code></td>
+<td style="text-align: left;">import tab separated values</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>read.delim2()</code></td>
+<td style="text-align: left;">import tab separated values (Europe)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="reading-space-separated-files" class="level3" data-number="17.3.2">
+<h3 data-number="17.3.2" class="anchored" data-anchor-id="reading-space-separated-files"><span class="header-section-number">17.3.2</span> Reading space-separated files</h3>
+<p>Let’s review some examples that illustrate the use of the read-table functions. For simplicity’s sake, we’ll assume that all data files are located in your working directory.</p>
+<p>Suppose you have the following data in a file: <code>accounts.txt</code></p>
+<pre><code>account bank rate balance
+savings bricknmor 0.020 1000
+monmarket online 0.025 2000
+certificate bricknmor 0.030 3000
+brokerage online 0.070 5000
+retirement online 0.050 9000</code></pre>
+<p><strong>Example 1</strong>. Importing table in blank separated file</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using read.table()</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.table</span>(</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">"accounts.txt"</span>, </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The imported data frame <code>dat</code> will be:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>       account       bank   rate  balance
+1      savings  bricknmor  0.020     1000
+2    monmarket     online  0.025     2000
+3  certificate  bricknmor  0.030     3000
+4    brokerage     online  0.070     5000
+5   retirement     online  0.050     9000</code></pre>
+</div>
+</div>
+<p><strong>Example 2</strong>. Limit the number of rows to read in (first 2 rows):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.table</span>(</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">"accounts.txt"</span>, </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrows =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The imported data frame <code>dat</code> will be:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>     account       bank   rate  balance
+1    savings  bricknmor  0.020     1000
+2  monmarket     online  0.025     2000</code></pre>
+</div>
+</div>
+<p><strong>Example 3</strong>. Skip the first row (no header) and limit the number of rows to read in (4 rows)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.table</span>(</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">"accounts.txt"</span>, </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">skip =</span> <span class="dv">1</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrows =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The imported data frame <code>dat</code> will be:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>            V1         V2     V3    V4
+1      savings  bricknmor  0.020  1000
+2    monmarket     online  0.025  2000
+3  certificate  bricknmor  0.030  3000
+4    brokerage     online  0.070  5000</code></pre>
+</div>
+</div>
+<p><strong>Example 4</strong>. Skip importing the second and third columns</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.table</span>(</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">"accounts.txt"</span>, </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">colClasses =</span> <span class="fu">c</span>(</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"character"</span>,</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"NULL"</span>,</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"NULL"</span>,</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"numeric"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The imported data frame <code>dat</code> will be:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>       account  balance
+1      savings     1000
+2    monmarket     2000
+3  certificate     3000
+4    brokerage     5000
+5   retirement     9000</code></pre>
+</div>
+</div>
+</section>
+<section id="reading-comma-separated-files-with-read.csv" class="level3" data-number="17.3.3">
+<h3 data-number="17.3.3" class="anchored" data-anchor-id="reading-comma-separated-files-with-read.csv"><span class="header-section-number">17.3.3</span> Reading comma-separated files with <code>read.csv()</code></h3>
+<p>Let’s now consider a data table stored in a CSV file: <code>accounts.csv</code></p>
+<pre><code>account,bank,rate,balance
+savings,bricknmor,0.020,1000
+monmarket,online,0.025,2000
+certificate,bricknmor,0.030,3000
+brokerage,online,0.070,5000
+retirement,online,0.050,9000</code></pre>
+<p><strong>Example 1.</strong> Data in comma separated value (CSV) file</p>
+<p>We can use <code>read.table()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using read.table()</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.table</span>(</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">"accounts.csv"</span>,</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep =</span> <span class="st">","</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Or more conveniently, we can use <code>read.csv()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using read.csv()</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"accounts.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The imported data frame <code>dat</code> will be:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>       account       bank   rate  balance
+1      savings  bricknmor  0.020     1000
+2    monmarket     online  0.025     2000
+3  certificate  bricknmor  0.030     3000
+4    brokerage     online  0.070     5000
+5   retirement     online  0.050     9000</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="importing-with-scan" class="level2" data-number="17.4">
+<h2 data-number="17.4" class="anchored" data-anchor-id="importing-with-scan"><span class="header-section-number">17.4</span> Importing with <code>scan()</code></h2>
+<p>To finish this chapter, I want to briefly talk to you about the <code>scan()</code> function. This is another function that you can use to read data into a vector or list from the console or from a file. As a matter of fact, <code>scan()</code> is under the hood of <code>read.table()</code> and friends. Because of this, I often refer to <code>scan()</code> as a low-level function.</p>
+<p>Let’s see an example for how to use <code>scan()</code> with a <strong>space</strong> delimited file. Suppose that we have the data in the file <code>accounts.txt</code>, located in our working directory.</p>
+<pre><code>account bank rate balance
+savings bricknmor 0.020 1000
+monmarket online 0.025 2000
+certificate bricknmor 0.030 3000
+brokerage online 0.070 5000
+retirement online 0.050 9000</code></pre>
+<div class="cell">
+
+</div>
+<p><code>scan()</code> is what I call a “low-level function”. What I mean by that is that we typically need to write more code when using this kind of functions. To be more precise, we usually have to specify more arguments when calling <code>scan()</code> than when calling other high-level functions like <code>read.table()</code> and friends.</p>
+<p>Like all other data-import functions, the first argument of <code>scan()</code> is the the name of the file (i.e.&nbsp;file path) to be imported. The second argument is called <code>what</code>, and this has to do with the <em>type of data</em> to be read.</p>
+<p>If you look at the content of <code>accounts.txt</code>, the first line contains the column names: <code>account bank rate balance</code>. Because the data in this first line is to be used as names, their data-type is <code>"character"</code>.</p>
+<p>The rest of the lines have to do with the actual data of the accounts. Each line contains four pieces of data:</p>
+<ul>
+<li><p>the kind of <code>account</code>, to be encoded as <code>"character"</code></p></li>
+<li><p>the kind of <code>bank</code>, to be encoded also as <code>"character"</code></p></li>
+<li><p>the <code>rate</code> of return, to be encoded as <code>"double"</code> (or <code>"numeric"</code>)</p></li>
+<li><p>the <code>balance</code> amount, to be encoded as <code>"integer"</code> or if you prefer as <code>"double"</code> (or generically as <code>"numeric"</code>)</p></li>
+</ul>
+<p>In order to import the <code>accounts.txt</code> data into R, we must use a two-step process:</p>
+<ol type="1">
+<li><p>first we import the column names into a character vector</p></li>
+<li><p>then we import the rest of the lines into a list</p></li>
+</ol>
+<p>Here is how to do it:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># step 1) scan column names</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ins a character vector</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>header <span class="ot">=</span> <span class="fu">scan</span>(</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">"accounts.txt"</span>, </span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">what =</span> <span class="fu">list</span>(<span class="st">""</span>, <span class="st">""</span>, <span class="st">""</span>, <span class="st">""</span>), </span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">nmax =</span> <span class="dv">1</span>)</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>header</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "account" "bank"    "rate"    "balance"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># step 2) scan the rest of the lines</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># into a list</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>dat_list <span class="ot">=</span> <span class="fu">scan</span>(</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">"accounts.txt"</span>, </span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">what =</span> <span class="fu">list</span>(<span class="fu">character</span>(), <span class="fu">character</span>(), <span class="fu">double</span>(), <span class="fu">integer</span>()),</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">skip =</span> <span class="dv">1</span>)</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>dat_list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1] "savings"     "monmarket"   "certificate" "brokerage"   "retirement" 
+
+[[2]]
+[1] "bricknmor" "online"    "bricknmor" "online"    "online"   
+
+[[3]]
+[1] 0.020 0.025 0.030 0.070 0.050
+
+[[4]]
+[1] 1000 2000 3000 5000 9000</code></pre>
+</div>
+</div>
+<p>Once we have the vector of column names <code>header</code> and the list with the data for each of the columns, we can then assemble the data into a data table using the <code>as.data.frame()</code> function as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">=</span> <span class="fu">as.data.frame</span>(dat_list, <span class="at">col.names =</span> header)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>dat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>      account      bank  rate balance
+1     savings bricknmor 0.020    1000
+2   monmarket    online 0.025    2000
+3 certificate bricknmor 0.030    3000
+4   brokerage    online 0.070    5000
+5  retirement    online 0.050    9000</code></pre>
+</div>
+</div>
+</section>
+<section id="in-summary" class="level2" data-number="17.5">
+<h2 data-number="17.5" class="anchored" data-anchor-id="in-summary"><span class="header-section-number">17.5</span> In Summary</h2>
+<p>When importing a data table, you should keep in mind the following considerations.</p>
+<p>What is the field separator?</p>
+<ul>
+<li><p>space <code>" "</code></p></li>
+<li><p>tab <code>"\t"</code></p></li>
+<li><p>comma <code>","</code></p></li>
+<li><p>semicolon <code>";"</code></p></li>
+<li><p>other?</p></li>
+</ul>
+<p>Does the data file contains:</p>
+<ul>
+<li><p>row names?</p></li>
+<li><p>column names?</p></li>
+<li><p>missing values?</p></li>
+<li><p>special characters?</p></li>
+</ul>
+<p>So far …</p>
+<ul>
+<li><p>There are multiple ways to import data tables</p></li>
+<li><p>The workhorse function is <code>read.table()</code></p></li>
+<li><p>But you can use the other wrappers, e.g.&nbsp;<code>read.csv()</code></p></li>
+<li><p>The output is a <code>"data.frame"</code> object</p></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./6-01-connections.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./6-03-exporting-data.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Exporting Data</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2024, <a href="https://www.gastonsanchez.com">Gaston Sanchez</a></div>   
+    <div class="nav-footer-right"><a href="https://www.paypal.com/donate?business=ZF6U7K5MW25W2&amp;currency_code=USD" target="_blank">Donate via PayPal</a></div>
+  </div>
+</footer>
+
+
+
+</body></html>
